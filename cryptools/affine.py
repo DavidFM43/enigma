@@ -15,8 +15,8 @@ def encrypt(plain_text, key):
         alphabet_copy[x] = alphabet[i]
     alphabet_copy = "".join(alphabet_copy)
     table = str.maketrans(alphabet_copy, alphabet)
-    decrypted_plain_text = plain_text.translate(table)
-    return decrypted_plain_text.upper()
+    decrypt_plain_text = plain_text.translate(table)
+    return decrypt_plain_text.upper()
 
 
 def decrypt(plain_cipher, key):
@@ -36,8 +36,8 @@ def decrypt(plain_cipher, key):
 
     alphabet_copy = "".join(alphabet_copy)
     table = str.maketrans(alphabet_copy, alphabet)
-    decrypted_plain_text = plain_cipher.translate(table)
-    return decrypted_plain_text.lower()
+    decrypt_plain_text = plain_cipher.translate(table)
+    return decrypt_plain_text.lower()
 
 
 key = [7, 3]
