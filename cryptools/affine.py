@@ -1,6 +1,7 @@
 import string
 import math
 
+
 def encrypt(plain_text, key):
     plain_text = plain_text.lower()
 
@@ -12,7 +13,7 @@ def encrypt(plain_text, key):
     for i in range(26):
         x = (key[0] * i + key[1]) % 26
         alphabet_copy[x] = alphabet[i]
-    alphabet_copy = ''.join(alphabet_copy)
+    alphabet_copy = "".join(alphabet_copy)
     table = str.maketrans(alphabet_copy, alphabet)
     decrypted_plain_text = plain_text.translate(table)
     return decrypted_plain_text.upper()
@@ -30,10 +31,10 @@ def decrypt(plain_cipher, key):
     alphabet_copy = list(alphabet)
 
     for i in range(26):
-        x = (inverse*(i - key[1])) % 26
+        x = (inverse * (i - key[1])) % 26
         alphabet_copy[x] = alphabet[i]
 
-    alphabet_copy = ''.join(alphabet_copy)
+    alphabet_copy = "".join(alphabet_copy)
     table = str.maketrans(alphabet_copy, alphabet)
     decrypted_plain_text = plain_cipher.translate(table)
     return decrypted_plain_text.lower()
