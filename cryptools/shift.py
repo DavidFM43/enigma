@@ -1,33 +1,20 @@
 import string
-import random
 
 
-def encrypt(plain_text, key):
-    plain_text = plain_text.replace(" ", "")
-    plain_text = plain_text.lower()
-    alphabet = string.ascii_lowercase
-    shifted = alphabet[key:] + alphabet[:key]
-    table = str.maketrans(alphabet, shifted)
-    encrypt_plain_text = plain_text.translate(table)
-    return encrypt_plain_text.upper()
+# char to int
+c = {x: idx for idx, x in enumerate(string.ascii_lowercase)}
+# int to char
+d = {idx: x for idx, x in enumerate(string.ascii_lowercase)}
 
 
-def decrypt(cipher_text):
-    cipher_text = cipher_text.lower()
-    for i in range(1, 26):
-        key = 26 - i
-        key %= 26
-        alphabet = string.ascii_lowercase
-        shifted = alphabet[key:] + alphabet[:key]
-        table = str.maketrans(alphabet, shifted)
-        decrypt_plain_text = cipher_text.translate(table)
-        print(decrypt_plain_text)
+def encrypt(plain_text: str, k: int) -> str:
+    return "".join([d[(c[i] + k) % 26] for i in plain_text]).upper()
 
 
-key = random.randint(1, 25)
-plain_text = input()
-print("Encrypting ......")
-print(encrypt(plain_text, key))
-cipher_text = encrypt(plain_text, key)
-print("Decrypting ......")
-print(decrypt(cipher_text))
+def decrypt(cipher_text: str, k: int) -> str:
+    return "".join([d[(c[i] - k) % 26] for i in cipher_text.lower()])
+
+
+if __name__ == "__main__":
+    assert encrypt("attackatdown", 11) == "LEELNVLEOZHY"
+    assert decrypt("LEELNVLEOZHY", 11) == "attackatdown"
