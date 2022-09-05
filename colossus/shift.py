@@ -1,14 +1,15 @@
-from flask import Blueprint
+from flask import Blueprint, request, render_template
 
 
 bp = Blueprint("shift", __name__, url_prefix="/shift")
 
 
-@bp.route("/encrypt", methods=["GET"])
+@bp.route("/encrypt", methods=("GET", "POST"))
 def encrypt():
-    return "encrypt shift"
 
+    if request.method == "POST":
+        plain_text = request.form["plain_text"]
+        pass  
 
-@bp.route("/crypto_analysis", methods=["GET"])
-def crypto_analysis():
-    return "shift crypto analysis"
+    return render_template("shift.html")
+
