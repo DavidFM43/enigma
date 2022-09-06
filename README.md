@@ -3,7 +3,6 @@
 Proyecto para el curso de Introducción a la criptografia y a la teoria de la informacion.
 
 ## Usage
-For Linux:
 
 1. Create the virtual environment:
 
@@ -14,11 +13,14 @@ make create_environment
 ```bash
 make requirements
 ```
-3. Setup the Flask application:
+3. Set the FLASK_APP environment variable:
+
 ```bash
-export FLASK_APP=colossus
-export FLASK_DEBUG=1
+(Unix/Mac) export FLASK_APP=colossus
+(Windows) set FLASK_APP=colossus
+(Powershell) $env:FLASK_APP="colossus"
 ```
+
 4. Run the application locally:
 ```bash
 flask run

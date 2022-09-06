@@ -24,3 +24,7 @@ def decrypt(cipher, key):
         return "KEYERROR"
 
     return text
+
+
+def analyze():
+    pass

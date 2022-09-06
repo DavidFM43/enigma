@@ -9,7 +9,7 @@ def encrypt():
 
     if request.method == "POST":
         plain_text = request.form["plain_text"]
-        pass  
+        pass
 
     return render_template("shift.html")
 

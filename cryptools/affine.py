@@ -40,6 +40,11 @@ def decrypt(plain_cipher, key):
     return decrypt_plain_text.lower()
 
 
+def analyze():
+
+    pass
+
+
 key = [7, 3]
 plain_cipher = encrypt("hot", key)
 print(plain_cipher)

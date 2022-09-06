@@ -18,6 +18,10 @@ def decrypt(cipher_text, key):
     return encrypt_plain_text
 
 
+def analyze():
+    pass
+
+
 key = "fcpevqkzgmtrayonujdlwhbxsi"
 print(encrypt("Hello", key))
 print(decrypt("ZVRRO", key))

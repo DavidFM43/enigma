@@ -53,3 +53,7 @@ def decrypt(text, key):
     text = "".join([chr(i + 97).upper() for i in sequence])
 
     return text
+
+
+def analyze():
+    pass
