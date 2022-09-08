@@ -2,7 +2,9 @@
 
 Proyecto para el curso de Introducción a la criptografia y a la teoria de la informacion.
 
-## Usage
+## Development
+
+# Backend
 
 1. Create the virtual environment:
 
@@ -26,3 +28,17 @@ make requirements
 flask run
 ```
 
+# Frontend
+
+Install NodeJs from NodeJs Official Page.
+
+Go to the frontend directory:
+
+Then run:
+```bass
+npm install -g @angular/cli
+npm install
+npm start
+```
+
+Navigate to http://localhost:4200
