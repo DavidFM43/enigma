@@ -2,12 +2,11 @@
 
 Proyecto para el curso de Introducción a la criptografia y a la teoria de la informacion.
 
-## Development
+## Development setup
 
-# Backend
+# Flask Backend
 
-1. Create the virtual environment:
-
+1. Create a python virtual environment:
 ```bash
 make create_environment
 ```
@@ -16,13 +15,11 @@ make create_environment
 make requirements
 ```
 3. Set the FLASK_APP environment variable:
-
 ```bash
 (Unix/Mac) export FLASK_APP=colossus
 (Windows) set FLASK_APP=colossus
 (Powershell) $env:FLASK_APP="colossus"
 ```
-
 4. Run the application locally:
 ```bash
 flask run
@@ -30,9 +27,9 @@ flask run
 
 # Frontend
 
-Install NodeJs from NodeJs Official Page.
+First install NodeJs and npm.
 
-Go to the frontend directory:
+Go to the `frontend` directory:
 
 Then run:
 ```bass
