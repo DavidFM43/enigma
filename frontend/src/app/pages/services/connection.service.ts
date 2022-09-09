@@ -1,5 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { throwError } from 'rxjs';
+import { catchError} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +14,15 @@ export class ConnectionService {
     this.type = null;
     this.baseUrl = 'http://127.0.0.1:5000/';
   }
-  /*private handleError(error: HttpErrorResponse) {
+  private handleError(error: HttpErrorResponse) {
     console.log(error);
     return throwError('Error! something went wrong. >:v');
   }
+  shift(key: number, textToEncrypt: string){
+    return this.http.get(this.baseUrl + `shift?key=${key}&textToEncrypt=${textToEncrypt}`)
+    .pipe(catchError(this.handleError));
+  }
+  /*
   seeAll(first: number, last: number){
     return this.http.get(this.baseUrl + `seeAll?first=${first}&last=${last}`)
     .pipe( catchError(this.handleError));
