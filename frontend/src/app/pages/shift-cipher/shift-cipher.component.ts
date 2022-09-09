@@ -17,7 +17,7 @@ export class ShiftCipherComponent implements OnInit {
   constructor(private connection: ConnectionService) {
     this.arguments = new FormGroup(
       {
-        key: new FormControl('', [Validators.required, correctKey(1)]),
+        key: new FormControl('', [Validators.required, correctKey(1, 0, 25)]),
         textToEncrypt: new FormControl('', Validators.pattern('^[a-zA-Z\s]+$', ))
       }
     )
