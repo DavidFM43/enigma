@@ -4,7 +4,7 @@
        
 
             <div class="col-sm-6 col-lg-6 ml-auto">
-                <div class="input-group">
+                <div [ngClass]="key.invalid && key.dirty ? 'form-group has-danger' :'input-group'">
                     <input
                     class="form-control"
                     placeholder="Key"
@@ -12,30 +12,43 @@
                     autofocus
                     formControlName="key"
                     />
-                
-                    <div class="input-group-append">
-                    <span class="input-group-text">
-                        <i class="tim-icons icon-lock-circle"> </i>
-                    </span>
-                    </div>
+                    <ng-template [ngIf]="!key.invalid || !key.dirty">
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <i class="tim-icons icon-lock-circle"> </i>
+                            </span>
+                            </div>
+                    </ng-template>
                 </div>
             </div>
             <div class="col-sm-3 col-lg-3 mr-auto random-btn-cont">
-                <button type="submit" class="btn mr-1 random-btn" (click)="random()" >Random</button>
+                <button class="btn mr-1 random-btn" (click)="random()" >Random</button>
             </div>
             
     </div>
     <div class="row">
             <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
-                <textarea placeholder="Text to cipher" class="texrtocr form-control"></textarea>
+                <textarea placeholder="Text to cipher"
+                 class="texrtocr form-control"
+                 formControlName="plainText"
+                 [ngClass]="{'plainTextError' : plainText.invalid && plainText.dirty}"
+                 ></textarea>
+            </div>
+            <div class="col-sm-12 col-lg-10 mr-auto ml-auto submit">
+                <button type="button"
+             class="btn btn-primary" 
+             (click)="submit()"
+             [disabled]="!arguments.valid">
+             Cipher</button>
             </div>
             
 
+
     </div>
 
-    <div class="row">
+    <div class="row"  *ngIf="submitted">
         <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
-            <div class="title"><h3 class="mb-3">Cipher text</h3></div>
+            <div ><h3 class="mb-3">Cipher text</h3></div>
         </div>
         
 
@@ -43,11 +56,7 @@
             <blockquote>
 
                 <p class="blockquote blockquote-danger">
-                  "I will be the leader of a company that ends up being worth
-                  billions of dollars, because I got the answers. I understand
-                  culture. I am the nucleus. I think thatâs a responsibility
-                  that I have, to push possibilities, to show people, this is
-                  the level that things could be at." <br />
+                  {{ cipherText }}
                 </p>
               </blockquote>
         </div>

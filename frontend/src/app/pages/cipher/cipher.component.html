@@ -5,11 +5,8 @@
 >
   <div class="container">
     <div class="navbar-translate">
-      <a
-        class="navbar-brand"
-        placement="bottom"
-        [routerLink]="['/crypto']"      >
-        <span> ∃nigma • </span> Cypto System
+      <a class="navbar-brand" placement="bottom" [routerLink]="['/crypto']">
+        <span> ∃nigma • </span> Crypto System
       </a>
       <button
         aria-controls="navigation-index"
@@ -57,7 +54,7 @@
             target="_blank"
             tooltip="Follow us on GitHub"
           >
-          <i class="fa-brands fa-github"></i>
+            <i class="fa-brands fa-github"></i>
             <p class="d-lg-none d-xl-none">GitHub</p>
           </a>
         </li>
@@ -78,13 +75,13 @@
               <i class="tim-icons icon-paper"> </i> Documentation
             </a>
             <a class="dropdown-item" [routerLink]="['/register']">
-                <i class="fa-solid fa-lock"></i> Cipher
+              <i class="fa-solid fa-lock"></i> Encrypt
             </a>
             <a class="dropdown-item" [routerLink]="['/register']">
-                <i class="fa-solid fa-lock-open"></i> Decipher
+              <i class="fa-solid fa-lock-open"></i> Decrypt
             </a>
             <a class="dropdown-item" [routerLink]="['/landing']">
-                <i class="fa-solid fa-bolt"></i> Atack
+              <i class="fa-solid fa-bolt"></i> Attack
             </a>
           </div>
         </li>
@@ -92,69 +89,71 @@
     </div>
   </div>
 </nav>
+
+<!-- Index page wrapper -->
 <div class="index-page wrapper">
-    <div class="page-header header-filter">
-        <div class="squares square1"></div>
-        <div class="squares square2"></div>
-        <div class="squares square3"></div>
-        <div class="squares square4"></div>
-        <div class="squares square5"></div>
-        <div class="squares square6"></div>
-        <div class="squares square7"></div>
-        <div class="container">
-          <div class="content-center brand">
-            <h1 class="h1-seo">∃nigma•</h1>
-            <h3>
-              Select an algorithm.
-            </h3>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-10 ml-auto col-xl-8 mr-auto">
-      <div class="mb-3">
-            </div>
-            <div class="card">
-              <div class="card-header">
-                <tabset class="nav-tabs-danger">
-                  <tab heading="Shift Cipher">
-                    <app-shift-cipher></app-shift-cipher>
-                  </tab>
-                  <tab heading="Affine Cipher">
-                    <app-affine-cipher></app-affine-cipher>
-                  </tab>
-                  <tab heading="Substitution Cipher">
-                    <app-substitution-cipher></app-substitution-cipher>
-                  </tab>
-                  <tab heading="Hill Cipher">
-                    <app-hill-cipher></app-hill-cipher>
-                  </tab>
-                  <tab heading="Permutation Cipher">
-                    <app-permutation-cipher></app-permutation-cipher>
-                  </tab>
-                  <tab heading="Vigenère Cipher">
-                    <app-vigenere-cipher></app-vigenere-cipher>
-                  </tab>
-                </tabset>
-              </div>
-            </div>
-            </div>
-</div>
-<footer class="footer">
+  <div class="page-header header-filter">
+    <div class="squares square1"></div>
+    <div class="squares square2"></div>
+    <div class="squares square3"></div>
+    <div class="squares square4"></div>
+    <div class="squares square5"></div>
+    <div class="squares square6"></div>
+    <div class="squares square7"></div>
     <div class="container">
-      <div class="row">
-        <div class="col-md-3"><h1 class="title">∃nigma •</h1></div>
-        <div class="col-md-9 info">
-          <h3 class="title">Follow us:</h3>
-          <div class="btn-wrapper profile">
-            <a
-              class="btn btn-icon btn-neutral btn-round btn-simple"
-              href="https://github.com/TheComputerCat/Cryptograhpy"
-              target="_blank"
-            >
+      <div class="content-center brand">
+        <h1 class="h1-seo">∃nigma•</h1>
+        <h3>Select a cipher.</h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-10 ml-auto col-xl-8 mr-auto">
+    <div class="mb-3"></div>
+    <div class="card">
+      <div class="card-header">
+        <!-- Ciphers nav tabs -->
+        <tabset class="nav-tabs-danger">
+          <tab heading="Shift Cipher">
+            <app-shift-cipher></app-shift-cipher>
+          </tab>
+          <tab heading="Affine Cipher">
+            <app-affine-cipher></app-affine-cipher>
+          </tab>
+          <tab heading="Substitution Cipher">
+            <app-substitution-cipher></app-substitution-cipher>
+          </tab>
+          <tab heading="Hill Cipher">
+            <app-hill-cipher></app-hill-cipher>
+          </tab>
+          <tab heading="Permutation Cipher">
+            <app-permutation-cipher></app-permutation-cipher>
+          </tab>
+          <tab heading="Vigenère Cipher">
+            <app-vigenere-cipher></app-vigenere-cipher>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3"><h1 class="title">∃nigma •</h1></div>
+      <div class="col-md-9 info">
+        <h3 class="title">Follow us:</h3>
+        <div class="btn-wrapper profile">
+          <a
+            class="btn btn-icon btn-neutral btn-round btn-simple"
+            href="https://github.com/TheComputerCat/Cryptograhpy"
+            target="_blank"
+          >
             <i class="fab fa-brands fa-github"></i>
-                        </a>
-          </div>
+          </a>
         </div>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>

@@ -12,7 +12,7 @@ export class AffineCipherComponent implements OnInit {
   private fistKey: number[];
 
   constructor() {
-    this.fistKey = [1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23];
+    this.fistKey = [1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25];
     this.arguments = new FormGroup(
       {
         key: new FormControl('', [Validators.required, Validators.pattern('^[1-9][0-9]?$|^26$')])
@@ -26,7 +26,7 @@ export class AffineCipherComponent implements OnInit {
   random(): void{
     this.arguments.patchValue(
       {
-        key:  this.fistKey[Math.floor(Math.random() * (11))]+ ',' + Math.floor(Math.random() * (26))
+        key:  this.fistKey[Math.floor(Math.random() * (12))]+ ',' + Math.floor(Math.random() * (25))
       }
     );
   }
