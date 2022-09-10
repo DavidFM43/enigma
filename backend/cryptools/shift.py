@@ -18,3 +18,6 @@ def decrypt(cipher_text: str, k: int) -> str:
 if __name__ == "__main__":
     assert encrypt("attackatdown", 11) == "LEELNVLEOZHY"
     assert decrypt("LEELNVLEOZHY", 11) == "attackatdown"
+
+
+#funcion analisis; es el mismo analisis de frecuencia 
