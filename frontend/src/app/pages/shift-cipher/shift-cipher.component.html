@@ -1,0 +1,66 @@
+<form [formGroup]="arguments" (ngSubmit)="submit()">
+<div class="container">
+    <div class="row justify-content-center">
+       
+
+            <div class="col-sm-6 col-lg-6 ml-auto">
+                <div [ngClass]="key.invalid && key.dirty ? 'form-group has-danger' :'input-group'">
+                    <input
+                    class="form-control"
+                    placeholder="Key"
+                    type="text"
+                    autofocus
+                    formControlName="key"
+                    />
+                    <ng-template [ngIf]="!key.invalid || !key.dirty">
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <i class="tim-icons icon-lock-circle"> </i>
+                            </span>
+                            </div>
+                    </ng-template>
+                </div>
+            </div>
+            <div class="col-sm-3 col-lg-3 mr-auto random-btn-cont">
+                <button class="btn mr-1 random-btn" (click)="random()" >Random</button>
+            </div>
+            
+    </div>
+    <div class="row">
+            <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+                <textarea placeholder="Text to cipher"
+                 class="texrtocr form-control"
+                 formControlName="plainText"
+                 [ngClass]="{'plainTextError' : plainText.invalid && plainText.dirty}"
+                 ></textarea>
+            </div>
+            <div class="col-sm-12 col-lg-10 mr-auto ml-auto submit">
+                <button type="button"
+             class="btn btn-primary" 
+             (click)="submit()"
+             [disabled]="!arguments.valid">
+             Cipher</button>
+            </div>
+            
+
+
+    </div>
+
+    <div class="row"  *ngIf="submitted">
+        <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+            <div ><h3 class="mb-3">Cipher text</h3></div>
+        </div>
+        
+
+        <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+            <blockquote>
+
+                <p class="blockquote blockquote-danger">
+                  {{ cipherText }}
+                </p>
+              </blockquote>
+        </div>
+    </div>
+    
+</div>
+</form>

@@ -1,0 +1,43 @@
+<form [formGroup]="arguments" (ngSubmit)="submit()">
+    <div class="container">
+        <div class="row justify-content-center">
+           
+    
+                <div class="col-sm-9 col-lg-9 ml-auto">
+                    <textarea placeholder="Key" class="textkey form-control" formControlName="key"></textarea>
+                </div>
+                <div class="col-sm-3 col-lg-3 mr-auto random-btn-cont">
+                    <button type="submit" class="btn mr-1 random-btn" (click)="random()" >Random</button>
+                </div>
+                
+        </div>
+        <div class="row">
+                <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+                    <textarea placeholder="Text to cipher" class="texrtocr form-control"></textarea>
+                </div>
+                
+    
+        </div>
+    
+        <div class="row">
+            <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+                <div class="title"><h3 class="mb-3">Cipher text</h3></div>
+            </div>
+            
+    
+            <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+                <blockquote>
+    
+                    <p class="blockquote blockquote-danger">
+                      "I will be the leader of a company that ends up being worth
+                      billions of dollars, because I got the answers. I understand
+                      culture. I am the nucleus. I think thatâs a responsibility
+                      that I have, to push possibilities, to show people, this is
+                      the level that things could be at." <br />
+                    </p>
+                  </blockquote>
+            </div>
+        </div>
+        
+    </div>
+    </form>
