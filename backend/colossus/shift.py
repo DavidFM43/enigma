@@ -24,7 +24,6 @@ def encrypt_r():
     response_dict = { "cipherText": cipher_text, "error": error, "typeError": typeError}
     return dumps(response_dict)
 
-
 @bp.route("/decrypt", methods=["GET"])
 def decrypt_r():
     """
