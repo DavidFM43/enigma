@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { textEncyptersReponse } from '../Interfaces';
+import { ConnectionService } from '../services/connection.service';
+import { correctKey } from '../shared/correct-key.directive';
 
 @Component({
   selector: 'app-shift-cipher',
@@ -9,13 +12,16 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class ShiftCipherComponent implements OnInit {
 
   public arguments: FormGroup;
+  public decryptedText: string;
 
-  constructor() {
+  constructor(private connection: ConnectionService) {
     this.arguments = new FormGroup(
       {
-        key: new FormControl('', [Validators.required, Validators.pattern('^[1-9][0-9]?$|^26$')])
+        key: new FormControl('', [Validators.required, correctKey(1, 0, 25)]),
+        textToEncrypt: new FormControl('', Validators.pattern('^[a-zA-Z\s]+$', ))
       }
     )
+    //this.decryptedText = '';
    }
 
   ngOnInit(): void {
@@ -30,7 +36,21 @@ export class ShiftCipherComponent implements OnInit {
   }
 
   submit():void{
+    console.log(Number("2.4d"));
+    console.log(this.arguments.get('key').errors);
+    this.connection.shift(this.arguments.get('key').value,
+     this.arguments.get('textToEncrypt').value).subscribe((ans:textEncyptersReponse) => {
+      if (!ans.error) {
+        console.log("xd");
+       this.decryptedText = ans.decryptedText;
+      } else {
+        //this.flagLog = true;
+        //this.error = 'Clave o usuario incorrectos';
+      }
+      //this.validing = false;
     
+  });
   }
+  
 
 }

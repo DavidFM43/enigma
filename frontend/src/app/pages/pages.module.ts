@@ -29,6 +29,7 @@ import { SubstitutionCipherComponent } from './substitution-cipher/substitution-
 import { HillCipherComponent } from './hill-cipher/hill-cipher.component';
 import { PermutationCipherComponent } from './permutation-cipher/permutation-cipher.component';
 import { VigenereCipherComponent } from './vigenere-cipher/vigenere-cipher.component';
+import { correctKey } from './shared/correct-key.directive';
 
 @NgModule({
   imports: [
@@ -62,13 +63,13 @@ import { VigenereCipherComponent } from './vigenere-cipher/vigenere-cipher.compo
     SubstitutionCipherComponent,
     HillCipherComponent,
     PermutationCipherComponent,
-    VigenereCipherComponent
+    VigenereCipherComponent, 
   ],
   exports: [
     IndexComponent,
     ProfilepageComponent,
     RegisterpageComponent,
-    LandingpageComponent
+    LandingpageComponent,
   ],
   providers: []
 })
