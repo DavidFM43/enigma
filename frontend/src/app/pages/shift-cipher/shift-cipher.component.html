@@ -1,18 +1,8 @@
 <form [formGroup]="arguments" (ngSubmit)="submit()">
-  <div class="container">
+<div class="container">
     <div class="row justify-content-center">
-      <div class="col-sm-6 col-lg-6 ml-auto">
-        <!-- key input -->
-        <div class="input-group">
-          <input
-            class="form-control"
-            placeholder="Key"
-            type="text"
-            autofocus
-            formControlName="key"
-          />
+       
 
-<<<<<<< HEAD
             <div class="col-sm-6 col-lg-6 ml-auto">
                 <div [ngClass]="key.invalid && key.dirty ? 'form-group has-danger' :'input-group'">
                     <input
@@ -40,8 +30,8 @@
             <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
                 <textarea placeholder="Text to cipher"
                  class="texrtocr form-control"
-                 formControlName="textToEncrypt"
-                 [ngClass]="{'textToEncryptError' : textToEncrypt.invalid && textToEncrypt.dirty}"
+                 formControlName="plainText"
+                 [ngClass]="{'plainTextError' : plainText.invalid && plainText.dirty}"
                  ></textarea>
             </div>
             <div class="col-sm-12 col-lg-10 mr-auto ml-auto submit">
@@ -66,52 +56,11 @@
             <blockquote>
 
                 <p class="blockquote blockquote-danger">
-                  {{ decryptedText }}
+                  {{ cipherText }}
                 </p>
               </blockquote>
-=======
-          <div class="input-group-append">
-            <span class="input-group-text">
-              <i class="tim-icons icon-lock-circle"> </i>
-            </span>
-          </div>
->>>>>>> 1ebf400e1845c38ce8d29c7b40c6c14b2ef72c71
         </div>
-      </div>
-      <div class="col-sm-3 col-lg-3 mr-auto random-btn-cont">
-        <button class="btn mr-1 random-btn" (click)="random()">Random</button>
-      </div>
     </div>
-
-    <!-- Plain text area -->
-    <div class="row">
-      <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
-        <textarea
-          placeholder="Text to cipher"
-          class="texrtocr form-control"
-          formControlName="textToEncrypt"
-        ></textarea>
-      </div>
-      <div class="col-sm-12 col-lg-10 mr-auto ml-auto submit">
-        <button type="button" class="btn btn-primary" (click)="submit()">
-          Cipher
-        </button>
-      </div>
-    </div>
-
-    <!-- Cipher text -->
-    <div class="row">
-      <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
-        <div class="title"><h3 class="mb-3">Cipher text</h3></div>
-      </div>
-
-      <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
-        <blockquote>
-          <p class="blockquote blockquote-danger">
-            {{ decryptedText }}
-          </p>
-        </blockquote>
-      </div>
-    </div>
-  </div>
+    
+</div>
 </form>

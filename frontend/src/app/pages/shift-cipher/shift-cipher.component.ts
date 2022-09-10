@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { textEncyptersReponse } from '../Interfaces';
 import { ConnectionService } from '../services/connection.service';
+import { NormalizerService } from '../services/normalizer.service';
 import { correctKey } from '../shared/correct-key.directive';
 
 @Component({
@@ -12,18 +13,18 @@ import { correctKey } from '../shared/correct-key.directive';
 export class ShiftCipherComponent implements OnInit {
 
   public arguments: FormGroup;
-  public decryptedText: string;
+  public cipherText: string;
   public submitted: boolean;
 
-  constructor(private connection: ConnectionService) {
+  constructor(private connection: ConnectionService, private normalizer: NormalizerService) {
     this.arguments = new FormGroup(
       {
         key: new FormControl('', [Validators.required, correctKey([1], 0, 25)]),
-        textToEncrypt: new FormControl('', [Validators.required,
+        plainText: new FormControl('', [Validators.required,
           Validators.pattern('^[a-zA-Z ]+[ ]*[a-zA-Z ]*$')])
       }
     )
-    this.decryptedText = '';
+    this.cipherText = '';
     this.submitted = false;
    }
 
@@ -39,10 +40,12 @@ export class ShiftCipherComponent implements OnInit {
   }
 
   submit():void{
+    let normalizedText: string =  this.normalizer
+    .setplainText(this.arguments.get('plainText').value);
     this.connection.shift(this.arguments.get('key').value,
-     this.arguments.get('textToEncrypt').value).subscribe((ans:textEncyptersReponse) => {
+     normalizedText).subscribe((ans:textEncyptersReponse) => {
       if (!ans.error) {
-       this.decryptedText = ans.decryptedText;
+       this.cipherText = ans.cipherText;
       }
       this.submitted = true;
   });
@@ -51,8 +54,8 @@ export class ShiftCipherComponent implements OnInit {
   get key(): AbstractControl{
     return this.arguments.get('key');
   }
-  get textToEncrypt(): AbstractControl{
-    return this.arguments.get('textToEncrypt');
+  get plainText(): AbstractControl{
+    return this.arguments.get('plainText');
   }
   
 
