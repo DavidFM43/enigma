@@ -1,25 +1,29 @@
 from flask import Blueprint, request
 from json import dumps
-from cryptools.substitution import encrypt, decrypt
+from cryptools.affine import encrypt, decrypt
 
 
-"""Substitution cipher routes"""
-bp = Blueprint("substitution", __name__, url_prefix="/substitution")
+"""Affine cipher routes"""
+bp = Blueprint("affine", __name__, url_prefix="/affine")
 
 
 @bp.route("/encrypt", methods=["GET"])
 def encrypt_r():
     """
-    Substitution cipher encryption route.
+    Affine cipher encryption route.
     Receives plain text and key as request arguments
     Returns JSON with cipher text and if needed error information.
     """
     plain_text = request.args["textToEncrypt"]
+    # TODO: Parse key to (int, int)
     key = request.args["key"]
 
     cipher_text = encrypt(plain_text, key)
     error = False
-    typeError = ""
+    if not cipher_text:
+        error = True
+        typeError = "First integer is not relatively prime with 26."
+        cipher_text = ""
 
     response_dict = {"cipherText": cipher_text, "error": error, "typeError": typeError}
 
@@ -34,13 +38,17 @@ def decrypt_r():
     Returns JSON with cipher text and if needed error information.
     """
     cipher_text = request.args["textToDecrypt"]
+    # TODO: Parse key to (int, int)
     key = request.args["key"]
 
-    plain_text = decrypt(cipher_text, key)
+    cipher_text = decrypt(plain_text, key)
     error = False
-    typeError = ""
+    if not cipher_text:
+        error = True
+        typeError = "First integer is not relatively prime with 26."
+        cipher_text = ""
 
-    response_dict = {"cipherText": plain_text, "error": error, "typeError": typeError}
+    response_dict = {"cipherText": cipher_text, "error": error, "typeError": typeError}
 
     return dumps(response_dict)
 

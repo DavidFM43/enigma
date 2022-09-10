@@ -1,7 +1,7 @@
 """
 Substitution cipher.
 
-`key` is an (uppercase) permutation of the english alphabet.
+`key` must be a (uppercase) permutation of the english alphabet.
 """
 import string
 

@@ -1,14 +1,14 @@
 """
 Shift cipher
-`key` is an integer from 0 to 25.
+`key` must be an integer from Z_26.
 """
-import string
+from string import ascii_lowercase
 
 
 # char to int
-c = {x: idx for idx, x in enumerate(string.ascii_lowercase)}
+c = {x: idx for idx, x in enumerate(ascii_lowercase)}
 # int to char
-d = {idx: x for idx, x in enumerate(string.ascii_lowercase)}
+d = {idx: x for idx, x in enumerate(ascii_lowercase)}
 
 
 def encrypt(plain_text: str, k: int) -> str:

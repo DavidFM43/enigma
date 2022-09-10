@@ -21,7 +21,8 @@ def encrypt_r():
     error = False
     typeError = ""
 
-    response_dict = { "cipherText": cipher_text, "error": error, "typeError": typeError}
+    response_dict = {"cipherText": cipher_text, "error": error, "typeError": typeError}
+
     return dumps(response_dict)
 
 
@@ -39,7 +40,8 @@ def decrypt_r():
     error = False
     typeError = ""
 
-    response_dict = { 'cipherText': plain_text, 'error': error, 'typeError': typeError}
+    response_dict = {"cipherText": plain_text, "error": error, "typeError": typeError}
+
     return dumps(response_dict)
 
 
