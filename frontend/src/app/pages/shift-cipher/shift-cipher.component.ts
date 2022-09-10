@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { textEncyptersReponse } from '../Interfaces';
 import { ConnectionService } from '../services/connection.service';
+import { NormalizerService } from '../services/normalizer.service';
 import { correctKey } from '../shared/correct-key.directive';
 
 @Component({
@@ -12,16 +13,19 @@ import { correctKey } from '../shared/correct-key.directive';
 export class ShiftCipherComponent implements OnInit {
 
   public arguments: FormGroup;
-  public decryptedText: string;
+  public cipherText: string;
+  public submitted: boolean;
 
-  constructor(private connection: ConnectionService) {
+  constructor(private connection: ConnectionService, private normalizer: NormalizerService) {
     this.arguments = new FormGroup(
       {
-        key: new FormControl('', [Validators.required, correctKey(1, 0, 25)]),
-        textToEncrypt: new FormControl('', Validators.pattern('^[a-zA-Z\s]+$', ))
+        key: new FormControl('', [Validators.required, correctKey([1], 0, 25)]),
+        plainText: new FormControl('', [Validators.required,
+          Validators.pattern('^[a-zA-Z ]+[ ]*[a-zA-Z ]*$')])
       }
     )
-    //this.decryptedText = '';
+    this.cipherText = '';
+    this.submitted = false;
    }
 
   ngOnInit(): void {
@@ -30,26 +34,28 @@ export class ShiftCipherComponent implements OnInit {
   random(): void{
     this.arguments.patchValue(
       {
-        key: Math.floor(Math.random() * (26))
+        key: Math.floor(Math.random() * (25)).toString()
       }
     );
   }
 
   submit():void{
-    console.log(Number("2.4d"));
-    console.log(this.arguments.get('key').errors);
+    let normalizedText: string =  this.normalizer
+    .setplainText(this.arguments.get('plainText').value);
     this.connection.shift(this.arguments.get('key').value,
-     this.arguments.get('textToEncrypt').value).subscribe((ans:textEncyptersReponse) => {
+     normalizedText).subscribe((ans:textEncyptersReponse) => {
       if (!ans.error) {
-        console.log("xd");
-       this.decryptedText = ans.decryptedText;
-      } else {
-        //this.flagLog = true;
-        //this.error = 'Clave o usuario incorrectos';
+       this.cipherText = ans.cipherText;
       }
-      //this.validing = false;
-    
+      this.submitted = true;
   });
+  }
+
+  get key(): AbstractControl{
+    return this.arguments.get('key');
+  }
+  get plainText(): AbstractControl{
+    return this.arguments.get('plainText');
   }
   
 

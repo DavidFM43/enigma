@@ -1,13 +1,14 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
-export function correctKey(allowedLength: number, min: number, max: number): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {   
-    return  verifyStructure(control.value.split(','), min, max) ? {incorrectKey: {value: control.value}} : null;
+export function correctKey(allowedLengths: number[], min: number, max: number): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {  
+    const valueInpt: string =  control.value;
+    return  !verifyStructure(valueInpt.split(','), min, max, allowedLengths) ? {incorrectKey: {value: valueInpt}} : null;
   }
 }
 
-function verifyStructure(arrInpt:string, min: number, max: number): boolean{
-  if(arrInpt.length == 0){
+function verifyStructure(arrInpt:string[], min: number, max: number, allowedLengths: number[]): boolean{
+  if(!allowedLengths.includes(arrInpt.length)){
     return false;
   }
   for (let i = 0; i < arrInpt.length; i++) {

@@ -18,8 +18,8 @@ export class ConnectionService {
     console.log(error);
     return throwError('Error! something went wrong. >:v');
   }
-  shift(key: number, textToEncrypt: string){
-    return this.http.get(this.baseUrl + `shift?key=${key}&textToEncrypt=${textToEncrypt}`)
+  shift(key: number, plainText: string){
+    return this.http.get(this.baseUrl + `/shift/encrypt?key=${key}&plainText=${plainText}`)
     .pipe(catchError(this.handleError));
   }
   /*
