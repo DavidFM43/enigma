@@ -14,7 +14,7 @@ def encrypt_r():
     Receives plain text and key as request arguments
     Returns JSON with cipher text and if needed error information.
     """
-    plain_text = request.args["textToEncrypt"]
+    plain_text: str = request.args["plainText"]
     key = request.args["key"]
 
     cipher_text = encrypt(plain_text, key)
@@ -33,7 +33,7 @@ def decrypt_r():
     Receives cipher text and key as request arguments
     Returns JSON with cipher text and if needed error information.
     """
-    cipher_text = request.args["textToDecrypt"]
+    cipher_text: str = request.args["textToDecrypt"]
     key = request.args["key"]
 
     plain_text = decrypt(cipher_text, key)
