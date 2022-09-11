@@ -20,3 +20,4 @@ def decrypt(cipher, key):
 def analyze():
     pass
 
+     

@@ -4,7 +4,7 @@ from re import A
 import string
 import math
 import analysis
-import sympy
+
 
 def encrypt(plain_text, key):
     plain_text = plain_text.lower() 
@@ -87,6 +87,7 @@ def analyze(plain_cipher):
     }
     a = 0
     c = 0
+    d = 0
     textos = list()
     #Proceso para la segunda conjetura
     while True:
@@ -120,7 +121,7 @@ def analyze(plain_cipher):
             
             textos.append(decrypt(plain_cipher, [x,y]))
             a +=1 
-            if a ==3:
+            if a ==4:
                 return textos
 
 
