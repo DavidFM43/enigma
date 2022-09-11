@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from json import dumps
-from cryptools.shift import encrypt, decrypt
+from cryptools.shift import encrypt, decrypt, attack
 
 
 """Shift cipher routes"""
@@ -47,4 +47,8 @@ def decrypt_r():
 
 @bp.route("/attack/", methods=["GET"])
 def attack_r():
-    return dumps({})
+    """Returns a dictionary of all 26 possible (decryption, key) pairs"""
+    cipher_text: str = request.args["cipherText"]
+
+    return dumps(attack(cipher_text))
+
