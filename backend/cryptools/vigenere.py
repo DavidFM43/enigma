@@ -10,6 +10,7 @@ from collections import Counter
 from itertools import islice
 from util import int2char, str2int, probs
 
+
 def encrypt(plain_text: str, key: str) -> str:
     """
     Encrypts a text in Vigenere cipher given a `cipher_text` and the `key`.
@@ -103,7 +104,8 @@ def attack(cipher_text: str, m: int):
         f = Counter(ascii_lowercase) + Counter("".join(y[i]).lower())
         # Mgs (C.t.p pg 35)
         mg_quantity = [
-            sum([probs[j] * (f[int2char[(j + g) % 26]] - 1) for j in range(26)]) / len(y[i])
+            sum([probs[j] * (f[int2char[(j + g) % 26]] - 1) for j in range(26)])
+            / len(y[i])
             for g in range(26)
         ]
         # index with the highest
@@ -157,4 +159,3 @@ if __name__ == "__main__":
         """,
     )
     assert decrypt(cipher_text, "JANET") == plain_text
-

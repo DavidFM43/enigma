@@ -51,5 +51,5 @@ def decrypt_r():
 def attack_r():
     request_data = request.get_json()
     cipher_text: str = request_data["cipherText"]
-    
+
     return dumps(attack(cipher_text))

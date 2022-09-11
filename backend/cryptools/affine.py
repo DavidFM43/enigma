@@ -7,6 +7,7 @@ from typing import Tuple, Union
 from math import gcd
 from util import char2int, int2char
 
+
 def encrypt(plain_text: str, key: Tuple[int, int]) -> Union[str, bool]:
     plain_text = plain_text.replace(" ", "").lower()
     a, b = key
@@ -26,7 +27,9 @@ def decrypt(cipher_text: str, key: Tuple[int, int]) -> Union[str, bool]:
 
     a_inv = pow(a, -1, 26)
 
-    return "".join([int2char[(a_inv * (char2int[l] - b)) % 26] for l in cipher_text]).lower()
+    return "".join(
+        [int2char[(a_inv * (char2int[l] - b)) % 26] for l in cipher_text]
+    ).lower()
 
 
 def attack():

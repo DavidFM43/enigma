@@ -7,6 +7,7 @@ from nltk.util import trigrams, bigrams
 from string import ascii_lowercase
 from collections import Counter
 
+
 def encrypt(plain_text: str, key: str) -> str:
     plain_text = plain_text.replace(" ", "").lower()
     c = {e: d for e, d in zip(ascii_lowercase, key)}
@@ -22,9 +23,11 @@ def decrypt(cipher_text: str, key: str) -> str:
 
 
 def attack(cipher_text: str):
-    return {"letters": Counter(cipher_text) ,
-            "bigrams": Counter(bigrams(cipher_text)),
-            "trigrams": Counter(trigrams(cipher_text))}
+    return {
+        "letters": Counter(cipher_text),
+        "bigrams": Counter(bigrams(cipher_text)),
+        "trigrams": Counter(trigrams(cipher_text)),
+    }
 
 
 if __name__ == "__main__":
@@ -48,4 +51,3 @@ if __name__ == "__main__":
         XZWGCHSMRNMDHNCMFQCHZJMXJZWIEJYUCFWDJNZDIR
         """,
     )
-

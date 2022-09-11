@@ -35,6 +35,7 @@ probs = [
     0.001,
 ]
 
+
 def str2int(plain_text: str) -> list[int]:
     return [char2int[l] for l in plain_text]
 
