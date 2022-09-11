@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { textDecyptersReponse, textEncyptersReponse } from '../Interfaces';
+import { ConnectionService } from '../services/connection.service';
+import { NormalizerService } from '../services/normalizer.service';
+import { correctKey, isPermutation } from '../shared/correct-key.directive';
 
 @Component({
   selector: 'app-substitution-cipher',
@@ -8,16 +12,22 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class SubstitutionCipherComponent implements OnInit {
 
-
   public arguments: FormGroup;
+  public cipherText: string;
+  public submitted: boolean;
 
-  constructor() {
+  constructor(private connection: ConnectionService, private normalizer: NormalizerService) {
     this.arguments = new FormGroup(
       {
-        key: new FormControl('', [Validators.required, Validators.pattern('^[1-9][0-9]?$|^26$')])
+        key: new FormControl('', [Validators.required, correctKey([26], 0, 26), isPermutation(26)]),
+        plainText: new FormControl('', [Validators.required,
+          Validators.pattern('^[a-zA-Z ]+[ ]*[a-zA-Z ]*$')])
       }
     )
+    this.cipherText = '';
+    this.submitted = false;
    }
+
 
   ngOnInit(): void {
   }
@@ -27,7 +37,7 @@ export class SubstitutionCipherComponent implements OnInit {
         
     let inx, aux;
     for(let i=0; i<26; i++){
-      inx = Math.floor(Math.random() * 26);
+      inx = Math.floor(Math.random() * 25);
       aux = arrBase[inx];
       arrBase[inx] = arrBase[i];
       arrBase[i] = aux;
@@ -38,13 +48,40 @@ export class SubstitutionCipherComponent implements OnInit {
         key: arrBase.toString()
       }
     );
-
   }
 
  
+  encrypt():void{
+    let normalizedText: string =  this.normalizer
+    .setplainText(this.arguments.get('plainText').value);
+    let keysArr: number[] = this.arguments.get('key').value.split(',').map(i=>Number(i));
+    this.connection.substitutionEncrypt(keysArr,
+     normalizedText).subscribe((ans:textEncyptersReponse) => {
+      if (!ans.error) {
+       this.cipherText = ans.cipherText;
+      }
+      this.submitted = true;
+  });
+  }
 
-  submit():void{
-    
+  decrypt():void{
+    let normalizedText: string =  this.normalizer
+    .setplainText(this.arguments.get('plainText').value);
+    let keysArr: number[] = this.arguments.get('key').value.split(',').map(i=>Number(i));
+    this.connection.substitutionEncrypt(keysArr,
+     normalizedText).subscribe((ans:textDecyptersReponse) => {
+      if (!ans.error) {
+       this.cipherText = ans.decipherText;
+      }
+      this.submitted = true;
+  });
+  }
+
+  get key(): AbstractControl{
+    return this.arguments.get('key');
+  }
+  get plainText(): AbstractControl{
+    return this.arguments.get('plainText');
   }
 
 
