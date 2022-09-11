@@ -52,7 +52,7 @@
         <li class="nav-item p-0">
           <a
             class="nav-link"
-            href="https://github.com/TheComputerCat/Cryptograhpy"
+            href="https://github.com/DavidFM43/colossus"
             placement="bottom"
             target="_blank"
             tooltip="Follow us on GitHub"
@@ -77,11 +77,8 @@
             >
               <i class="tim-icons icon-paper"> </i> Documentation
             </a>
-            <a class="dropdown-item" [routerLink]="['/register']">
-                <i class="fa-solid fa-lock"></i> Encrypt
-            </a>
-            <a class="dropdown-item" [routerLink]="['/register']">
-                <i class="fa-solid fa-lock-open"></i> Decrypt
+            <a class="dropdown-item" [routerLink]="['/cipher']">
+                <i class="fa-solid fa-lock"></i> Encrypt-Decrypt
             </a>
             <a class="dropdown-item" [routerLink]="['/landing']">
                 <i class="fa-solid fa-bolt"></i> Attack
@@ -146,7 +143,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-6">
             <div class="card card-coin card-plain">
               <div class="card-header">
                 <img class="img-center img-fluid" src="assets/img/bitcoin.png" />
@@ -154,13 +151,13 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-12 text-center">
-                    <h4 class="text-uppercase">Encrypt</h4>
+                    <h4 class="text-uppercase">Encrypt-Decrypt</h4>
                     <hr class="line-primary" />
                   </div>
                 </div>
                 <div class="row">
                   <ul class="list-group">
-                    <li class="list-group-item">Encrypt all your important texts</li>
+                    <li class="list-group-item">Encrypt & Decrypt all your important texts</li>
                   </ul>
                 </div>
               </div>
@@ -170,30 +167,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="card card-coin card-plain">
-              <div class="card-header">
-                <img class="img-center img-fluid" src="assets/img/etherum.png" />
-              </div>
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-12 text-center">
-                    <h4 class="text-uppercase">Decrypt</h4>
-                    <hr class="line-success" />
-                  </div>
-                </div>
-                <div class="row">
-                  <ul class="list-group">
-                    <li class="list-group-item">Decrypt your files</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="card-footer text-center">
-                <button class="btn btn-success btn-simple">Get started</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
+          <div class="col-md-6">
             <div class="card card-coin card-plain">
               <div class="card-header">
                 <img class="img-center img-fluid" src="assets/img/ripp.png" />
@@ -228,7 +202,7 @@
             <div class="btn-wrapper profile">
               <a
                 class="btn btn-icon btn-neutral btn-round btn-simple"
-                href="https://github.com/TheComputerCat/Cryptograhpy"
+                href="https://github.com/DavidFM43/colossus"
                 target="_blank"
               >
               <i class="fab fa-brands fa-github"></i>

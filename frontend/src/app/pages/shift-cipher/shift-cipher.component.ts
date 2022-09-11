@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { textEncyptersReponse } from '../Interfaces';
+import { textDecyptersReponse, textEncyptersReponse } from '../Interfaces';
 import { ConnectionService } from '../services/connection.service';
 import { NormalizerService } from '../services/normalizer.service';
 import { correctKey } from '../shared/correct-key.directive';
@@ -39,13 +39,25 @@ export class ShiftCipherComponent implements OnInit {
     );
   }
 
-  submit():void{
+  encrypt():void{
     let normalizedText: string =  this.normalizer
     .setplainText(this.arguments.get('plainText').value);
-    this.connection.shift(this.arguments.get('key').value,
+    this.connection.shiftEncrypt(this.arguments.get('key').value,
      normalizedText).subscribe((ans:textEncyptersReponse) => {
       if (!ans.error) {
        this.cipherText = ans.cipherText;
+      }
+      this.submitted = true;
+  });
+  }
+
+  decrypt():void{
+    let normalizedText: string =  this.normalizer
+    .setplainText(this.arguments.get('plainText').value);
+    this.connection.shiftDecrypt(this.arguments.get('key').value,
+     normalizedText).subscribe((ans:textDecyptersReponse) => {
+      if (!ans.error) {
+       this.cipherText = ans.decipherText;
       }
       this.submitted = true;
   });

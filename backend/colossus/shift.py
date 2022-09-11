@@ -33,14 +33,14 @@ def decrypt_r():
     Receives cipher text and key as request arguments
     Returns JSON with clear text and, if needed, error information.
     """
-    cipher_text: str = request.args["textToDecrypt"]
+    cipher_text: str = request.args["cipherText"]
     key = int(request.args["key"])
 
     plain_text = decrypt(cipher_text, key)
     error = False
     typeError = ""
 
-    response_dict = {"cipherText": plain_text, "error": error, "typeError": typeError}
+    response_dict = {"decipherText": plain_text, "error": error, "typeError": typeError}
 
     return dumps(response_dict)
 
