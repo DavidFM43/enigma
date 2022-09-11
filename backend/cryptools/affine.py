@@ -1,3 +1,6 @@
+from ast import Break
+from multiprocessing.resource_sharer import stop
+from re import A
 import string
 import math
 import analysis
@@ -58,19 +61,78 @@ def analyze(plain_cipher):
     alphabet = string.ascii_lowercase 
     freq = analysis.freq
 
+
+
     #Selección de la letra con mayor frecuencia 
-    letterInput = max(frecuencyText, key=frecuencyText.get)
+    letterInput = max(frecuencyText, key=frecuencyText.get) #r-e
+    frecuencyText.pop(letterInput)
+
     letter = max(freq, key=freq.get)
+    freq.pop(letter)
 
-    #Función de asignación de la encriptación e_k(4)=17
-    e_k =  dict() 
-    e_k[alphabet.index(letter.lowe())] = alphabet.index(letterInput.lower()) 
+    #Indice de las dos letras de mayor frecuencia
+    n , m = alphabet.index(letter.lower()), alphabet.index(letterInput.lower()) 
 
-    #Solución del sistema de ecuaciones en Z_n 
+    ''''
+    Sistema en Z_26
+
+        n*x + y = m
+        p*x + y = q
+    con n ,m , p y q estan en Z_26
+    '''
+    #inversos
+    inv = {
+        1:1, 3:9, 5:21, 7:25, 9:3, 11:19, 15:7, 17:23, 
+        19:11, 21:5, 23:17, 25:25
+    }
+    a = 0
+    c = 0
+    textos = list()
+    #Proceso para la segunda conjetura
+    while True:
+        while True:
+            letterInput = max(frecuencyText, key=frecuencyText.get) #d->t
+            frecuencyText.pop(letterInput)
+
+            letter = max(freq, key=freq.get)
+            if c == 3:
+                #prueba de la siguiente mas frecuente
+                freq.pop(letter)
+                frecuencyText = dict()
+                frecuencyText = {i : plain_cipher.count(i) for i in set(plain_cipher)}
+                frecuencyText.pop(letterInput)
+                c = 0
 
 
-key = [7, 3]
-plain_cipher = encrypt("hot", key)
-print(plain_cipher)
-plain_text = decrypt(plain_cipher, key)
-print(plain_text)
+            p, q = alphabet.index(letter.lower()), alphabet.index(letterInput.lower()) 
+            
+            c += 1
+
+            if (n-p)%2 == 0 or (n-p)%13 == 0: 
+                break
+
+            x = int((m-q) *inv[(n-p)%26]) %26   
+            y = int( (q-x*p) %26)
+
+            if math.gcd(x, 26) >1 :
+                break
+
+            
+            textos.append(decrypt(plain_cipher, [x,y]))
+            a +=1 
+            if a ==3:
+                return textos
+
+
+#key = [7, 3]
+
+cadena = 'FMXVEDKAPHFERBNDKRXRSREFMORUDSDKDVSHVUFEDKAPRKDLYEVLRHHRH'
+p =analyze(cadena)
+
+for i in p:
+    print(i)
+ 
+#plain_cipher = encrypt("hot", key)
+#print(plain_cipher)
+#plain_text = decrypt(cadena, [3,5] )
+#print(plain_text)
