@@ -1,21 +1,21 @@
 from flask import Blueprint, request
 from json import dumps
-from cryptools.shift import encrypt, decrypt
+from cryptools.vigenere import encrypt, decrypt
 
 
-"""Shift cipher routes"""
-bp = Blueprint("shift", __name__, url_prefix="/shift")
+"""Vigenère cipher routes"""
+bp = Blueprint("vigenere", __name__, url_prefix="/vigenere")
 
 
 @bp.route("/encrypt", methods=["GET"])
 def encrypt_r():
     """
-    Shift cipher encryption route.
+    Vigenère cipher encryption route.
     Receives plain text and key as request arguments
     Returns JSON with cipher text and if needed error information.
     """
-    plain_text: str = request.args["plainText"]
-    key = int(request.args["key"])
+    plain_text = request.args["plainText"]
+    key = request.args["key"]
 
     cipher_text = encrypt(plain_text, key)
     error = False
@@ -29,12 +29,12 @@ def encrypt_r():
 @bp.route("/decrypt", methods=["GET"])
 def decrypt_r():
     """
-    Shift cipher decryption route.
+    Vigenère cipher decryption route.
     Receives cipher text and key as request arguments
     Returns JSON with clear text and, if needed, error information.
     """
-    cipher_text: str = request.args["textToDecrypt"]
-    key = int(request.args["key"])
+    cipher_text = request.args["textToDecrypt"]
+    key = request.args["key"]
 
     plain_text = decrypt(cipher_text, key)
     error = False

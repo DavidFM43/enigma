@@ -1,52 +1,44 @@
-import string
-import math
+"""
+Affine cipher.
+`key` must a tuple of two integer from Z_26 and the firt one must be
+relatively prime with 26
+"""
+from string import ascii_lowercase
+from typing import Tuple, Union
+from math import gcd
+
+# char to int
+c = {x: idx for idx, x in enumerate(ascii_lowercase)}
+# int to char
+d = {idx: x for idx, x in enumerate(ascii_lowercase)}
 
 
-def encrypt(plain_text, key):
-    plain_text = plain_text.lower()
-
-    if math.gcd(key[0], 26) != 1:
+def encrypt(plain_text: str, key: Tuple[int, int]) -> Union[str, bool]:
+    plain_text = plain_text.replace(" ", "").lower()
+    a, b = key
+    # TODO: especify error
+    if gcd(a, 26) != 1:
         return False
 
-    alphabet = string.ascii_lowercase
-    alphabet_copy = list(alphabet)
-    for i in range(26):
-        x = (key[0] * i + key[1]) % 26
-        alphabet_copy[x] = alphabet[i]
-    alphabet_copy = "".join(alphabet_copy)
-    table = str.maketrans(alphabet_copy, alphabet)
-    decrypt_plain_text = plain_text.translate(table)
-    return decrypt_plain_text.upper()
+    return "".join([d[(a * c[l] + b) % 26] for l in plain_text]).upper()
 
 
-def decrypt(plain_cipher, key):
-
-    plain_cipher = plain_cipher.lower()
-
-    if math.gcd(key[0], 26) != 1:
+def decrypt(cipher_text: str, key: Tuple[int, int]) -> Union[str, bool]:
+    cipher_text = cipher_text.replace(" ", "").lower()
+    a, b = key
+    # TODO: especify error
+    if gcd(a, 26) != 1:
         return False
 
-    inverse = pow(key[0], -1, 26)
-    alphabet = string.ascii_lowercase
-    alphabet_copy = list(alphabet)
-
-    for i in range(26):
-        x = (inverse * (i - key[1])) % 26
-        alphabet_copy[x] = alphabet[i]
-
-    alphabet_copy = "".join(alphabet_copy)
-    table = str.maketrans(alphabet_copy, alphabet)
-    decrypt_plain_text = plain_cipher.translate(table)
-    return decrypt_plain_text.lower()
+    a_inv = pow(a, -1, 26)
+    return "".join([d[(a_inv * (c[l] - b)) % 26] for l in cipher_text]).lower()
 
 
-def analyze():
-
+def attack():
     pass
 
 
-key = [7, 3]
-plain_cipher = encrypt("hot", key)
-print(plain_cipher)
-plain_text = decrypt(plain_cipher, key)
-print(plain_text)
+if __name__ == "__main__":
+    key = (7, 3)
+    assert encrypt("hot", key) == "AXG"
+    assert decrypt("AXG", key) == "hot"
