@@ -3,7 +3,6 @@ Vigenère cipher.
 `key` must a string of alphabetical characters
 """
 
-import re
 from nltk.util import trigrams
 from string import ascii_lowercase, ascii_uppercase
 from math import ceil, gcd
@@ -58,7 +57,7 @@ def encrypt(plain_text: str, key: str) -> str:
 
 
 def decrypt(cipher_text: str, key: str) -> str:
-    key_int = [c[l] for l in key.replace(r"\s+", "").lower()]
+    key_int = [c[l] for l in key.replace(" ", "").lower()]
     cipher_text_int = [c[l] for l in cipher_text.lower()]
     n = ceil(len(cipher_text_int) / len(key_int))
 
@@ -131,6 +130,8 @@ def attack(cipher_text: str, m: int):
 
 
 if __name__ == "__main__":
+    import re
+
     assert (
         encrypt("thiscryptosystemisnotsecure", "CIPHER")
         == "VPXZGIAXIVWPUBTTMJPWIZITWZT"

@@ -1,7 +1,14 @@
+"""
+Hill cipher.
+Key must be a matrix in Z^{m x m}. 
+"""
 import sympy as sp
 
+def encrypt(key: str, key) -> str:
 
-def encrypt(text, key):
+    return ""
+
+def encrypt_t(text, key):
 
     key = sp.Matrix(key)
 
@@ -28,7 +35,7 @@ def encrypt(text, key):
     return cipher
 
 
-def decrypt(text, key):
+def decrypt_t(text, key):
 
     key = sp.Matrix(key)
 
@@ -55,5 +62,5 @@ def decrypt(text, key):
     return text
 
 
-def analyze():
+def attack():
     pass
