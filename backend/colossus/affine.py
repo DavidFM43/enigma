@@ -21,6 +21,7 @@ def encrypt_r():
     cipher_text = encrypt(plain_text, key)
     error = False
     typeError = ""
+
     if not cipher_text:
         error = True
         typeError = "First integer is not relatively prime with 26."
@@ -42,15 +43,16 @@ def decrypt_r():
     cipher_text: str = request_data["cipherText"]
     key = request_data["key"]
 
-    decipher_text = decrypt(cipher_text, key)
+    plain_text = decrypt(cipher_text, key)
     error = False
-    typeError=""
-    if not decipher_text:
+    typeError = ""
+
+    if not plain_text:
         error = True
         typeError = "First integer is not relatively prime with 26."
-        decipher_text = ""
+        plain_text = ""
 
-    response_dict = {"decipherText": decipher_text, "error": error, "typeError": typeError}
+    response_dict = {"decipherText": plain_text, "error": error, "typeError": typeError}
 
     return dumps(response_dict)
 
