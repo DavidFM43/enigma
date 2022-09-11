@@ -22,24 +22,24 @@ export class ConnectionService {
     return this.http.get(this.baseUrl + `/shift/encrypt?key=${key}&plainText=${plainText}`)
     .pipe(catchError(this.handleError));
   }
-  shiftDecrypt(key: number, plainText: string){
-    return this.http.get(this.baseUrl + `/shift/decrypt?key=${key}&plainText=${plainText}`)
+  shiftDecrypt(key: number, cipherText: string){
+    return this.http.get(this.baseUrl + `/shift/decrypt?key=${key}&cipherText=${cipherText}`)
     .pipe(catchError(this.handleError));
   }
   affineEncrypt(keys: number[], plainText: string){
-    return this.http.post(this.baseUrl + '/affine/encrypt', { keys: keys, plainText : plainText})
+    return this.http.post(this.baseUrl + '/affine/encrypt', { key: keys, plainText : plainText})
     .pipe( catchError(this.handleError));
   }
-  affineDecrypt(keys: number[], plainText: string){
-    return this.http.post(this.baseUrl + '/affine/decrypt', { keys: keys, plainText : plainText})
+  affineDecrypt(keys: number[], cipherText: string){
+    return this.http.post(this.baseUrl + '/affine/decrypt', { key: keys, cipherText : cipherText})
     .pipe( catchError(this.handleError));
   }
-  substitutionEncrypt(keys: number[], plainText: string){
-    return this.http.post(this.baseUrl + '/substitution/encrypt', { keys: keys, plainText : plainText})
+  substitutionEncrypt(key: string, plainText: string){
+    return this.http.post(this.baseUrl + '/substitution/encrypt', { key: key, plainText : plainText})
     .pipe( catchError(this.handleError));
   }
-  substitutionDecrypt(keys: number[], plainText: string){
-    return this.http.post(this.baseUrl + '/substitution/decrypt', { keys: keys, plainText : plainText})
+  substitutionDecrypt(key: string, cipherText: string){
+    return this.http.post(this.baseUrl + '/substitution/decrypt', { key: key, cipherText : cipherText})
     .pipe( catchError(this.handleError));
   }
   /*

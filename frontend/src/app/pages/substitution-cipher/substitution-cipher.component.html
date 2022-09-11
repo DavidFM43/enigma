@@ -9,7 +9,7 @@
                          class="textkey form-control" 
                          formControlName="key"
                          [ngClass]="{'plainTextError' : key.invalid && key.dirty}"
-                         
+                         (ngModelChange)="forceUpperCase()"
                          ></textarea>
 
                     </div>

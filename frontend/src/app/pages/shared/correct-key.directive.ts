@@ -38,9 +38,9 @@ export function correctFistKeyAffine(): ValidatorFn {
 export function isPermutation(Zn: number): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     let setNum: Set<string> = new Set<string>();
-    control.value.split(',').forEach(element => {
+    control.value.split('').forEach(element => {
       setNum.add(element);
     });
-    return setNum.size != Zn || !setNum.has(Zn.toString())? {incorrectKey: {value: control.value}} : null;
+    return setNum.size != Zn || !setNum.has('Z')? {incorrectKey: {value: control.value}} : null;
   }
 }

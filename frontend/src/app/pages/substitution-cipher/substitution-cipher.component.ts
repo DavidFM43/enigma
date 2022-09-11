@@ -19,7 +19,7 @@ export class SubstitutionCipherComponent implements OnInit {
   constructor(private connection: ConnectionService, private normalizer: NormalizerService) {
     this.arguments = new FormGroup(
       {
-        key: new FormControl('', [Validators.required, correctKey([26], 0, 26), isPermutation(26)]),
+        key: new FormControl('', [Validators.required, Validators.pattern('^[A-Z]*$'), isPermutation(26)]),
         plainText: new FormControl('', [Validators.required,
           Validators.pattern('^[a-zA-Z ]+[ ]*[a-zA-Z ]*$')])
       }
@@ -33,7 +33,8 @@ export class SubstitutionCipherComponent implements OnInit {
   }
 
   random(): void{
-    let arrBase = Array.from({length: 26}, (_,i) => i+1);
+    let arrBase = Array.from({length: 26}, (_,i) => i);
+    let key: string="";
         
     let inx, aux;
     for(let i=0; i<26; i++){
@@ -42,20 +43,22 @@ export class SubstitutionCipherComponent implements OnInit {
       arrBase[inx] = arrBase[i];
       arrBase[i] = aux;
     }
-
+    arrBase.forEach(element => {
+      key+= String.fromCharCode(65 + element)
+    });
     this.arguments.patchValue(
       {
-        key: arrBase.toString()
+        key: key
       }
     );
+    console.log(this.arguments.get('key').errors);
   }
 
  
   encrypt():void{
     let normalizedText: string =  this.normalizer
     .setplainText(this.arguments.get('plainText').value);
-    let keysArr: number[] = this.arguments.get('key').value.split(',').map(i=>Number(i));
-    this.connection.substitutionEncrypt(keysArr,
+    this.connection.substitutionEncrypt(this.arguments.get('key').value,
      normalizedText).subscribe((ans:textEncyptersReponse) => {
       if (!ans.error) {
        this.cipherText = ans.cipherText;
@@ -67,8 +70,7 @@ export class SubstitutionCipherComponent implements OnInit {
   decrypt():void{
     let normalizedText: string =  this.normalizer
     .setplainText(this.arguments.get('plainText').value);
-    let keysArr: number[] = this.arguments.get('key').value.split(',').map(i=>Number(i));
-    this.connection.substitutionEncrypt(keysArr,
+    this.connection.substitutionDecrypt(this.arguments.get('key').value,
      normalizedText).subscribe((ans:textDecyptersReponse) => {
       if (!ans.error) {
        this.cipherText = ans.decipherText;
@@ -82,6 +84,13 @@ export class SubstitutionCipherComponent implements OnInit {
   }
   get plainText(): AbstractControl{
     return this.arguments.get('plainText');
+  }
+  forceUpperCase(){
+    this.arguments.patchValue(
+      {
+        key: this.arguments.get('key').value.toUpperCase()
+      }
+    );
   }
 
 
