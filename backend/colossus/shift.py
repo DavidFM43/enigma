@@ -51,4 +51,3 @@ def attack_r():
     cipher_text: str = request.args["cipherText"]
 
     return dumps(attack(cipher_text))
-

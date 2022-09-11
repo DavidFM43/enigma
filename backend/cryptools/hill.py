@@ -7,7 +7,7 @@ import numpy as np
 from sympy import Matrix
 from string import ascii_lowercase
 from sympy.matrices.common import NonInvertibleMatrixError
-from .util import text_to_int, int_to_text
+from .util import text2int, int2text
 
 # char to int
 c = {x: idx for idx, x in enumerate(ascii_lowercase)}
@@ -17,7 +17,7 @@ d = {idx: x for idx, x in enumerate(ascii_lowercase)}
 
 def encrypt(plain_text, key):
 
-    plain_text = text_to_int(plain_text)
+    plain_text = text2int(plain_text)
     m = len(key)
 
     try:
@@ -30,9 +30,7 @@ def encrypt(plain_text, key):
     y = [np.array(plain_text[i : i + m]) for i in range(0, len(plain_text), m)]
 
     x = [(y[i] @ key) % 26 for i in range(len(y))]
-    
-    
-    
+
     return x
 
 
