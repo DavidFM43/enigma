@@ -8,7 +8,7 @@
       <a
         class="navbar-brand"
         placement="bottom"
-        [routerLink]="['/crypto']"      >
+        [routerLink]="['/']"      >
         <span> ∃nigma • </span> Cypto System
       </a>
       <button
@@ -78,9 +78,9 @@
               <i class="tim-icons icon-paper"> </i> Documentation
             </a>
             <a class="dropdown-item" [routerLink]="['/cipher']">
-                <i class="fa-solid fa-lock"></i> Encrypt-Decrypt
+                <i class="fa-solid fa-lock"></i> Encrypt & Decrypt
             </a>
-            <a class="dropdown-item" [routerLink]="['/landing']">
+            <a class="dropdown-item" [routerLink]="['/attack']">
                 <i class="fa-solid fa-bolt"></i> Attack
             </a>
           </div>
@@ -151,7 +151,7 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-12 text-center">
-                    <h4 class="text-uppercase">Encrypt-Decrypt</h4>
+                    <h4 class="text-uppercase">Encrypt & Decrypt</h4>
                     <hr class="line-primary" />
                   </div>
                 </div>
@@ -185,7 +185,7 @@
                 </div>
               </div>
               <div class="card-footer text-center">
-                <button class="btn btn-info btn-simple">Get started</button>
+                <button class="btn btn-info btn-simple"  [routerLink]="['/attack']">Get started</button>
               </div>
             </div>
           </div>

@@ -75,7 +75,7 @@
               <i class="tim-icons icon-paper"> </i> Documentation
             </a>
             <a class="dropdown-item" [routerLink]="['/cipher']">
-              <i class="fa-solid fa-lock"></i> Enctypt & Decrypt
+              <i class="fa-solid fa-lock"></i> Enctypt-Decrypt
             </a>
             <a class="dropdown-item" [routerLink]="['/attack']">
               <i class="fa-solid fa-bolt"></i> Attack
@@ -90,17 +90,10 @@
 <!-- Index page wrapper -->
 <div class="index-page wrapper">
   <div class="page-header header-filter">
-    <div class="squares square1"></div>
-    <div class="squares square2"></div>
-    <div class="squares square3"></div>
-    <div class="squares square4"></div>
-    <div class="squares square5"></div>
-    <div class="squares square6"></div>
-    <div class="squares square7"></div>
     <div class="container">
       <div class="content-center brand">
         <h1 class="h1-seo">∃nigma•</h1>
-        <h3>Select a cipher</h3>
+        <h3>Attack and Decrypt!</h3>
       </div>
     </div>
   </div>
@@ -111,13 +104,13 @@
         <!-- Ciphers nav tabs -->
         <tabset class="nav-tabs-danger">
           <tab heading="Shift Cipher">
-            <app-shift-cipher></app-shift-cipher>
+            <app-shift-attack></app-shift-attack>
           </tab>
           <tab heading="Affine Cipher">
             <app-affine-cipher></app-affine-cipher>
           </tab>
           <tab heading="Substitution Cipher">
-            <app-substitution-cipher></app-substitution-cipher>
+            <app-substitution-attack></app-substitution-attack>
           </tab>
           <tab heading="Hill Cipher">
             <app-hill-cipher></app-hill-cipher>
@@ -126,7 +119,7 @@
             <app-permutation-cipher></app-permutation-cipher>
           </tab>
           <tab heading="Vigenère Cipher">
-            <app-vigenere-cipher></app-vigenere-cipher>
+            <app-vigenere-attack></app-vigenere-attack>
           </tab>
         </tabset>
       </div>

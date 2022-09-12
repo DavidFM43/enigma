@@ -1,0 +1,44 @@
+.info{
+    margin: 0 auto;
+    padding: 0;
+}
+.card-header{
+    padding-bottom: 15px;
+}
+.page-header{
+    max-height: 70vh !important;
+    min-height: 70vh !important;
+    height: 70vh;
+}
+
+.random-btn-cont{
+    text-align: center;
+}
+.random-btn{
+    margin: 0%;
+}
+.texrtocr{
+    border: 1em !important;
+    border: 1px solid #171941 ;
+    background-color: #171941;
+    border-radius: 0.4285rem;
+    padding: 10px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    min-height: 10rem;
+}
+.textkey{
+    border: 1em !important;
+    border: 1px solid #171941 ;
+    background-color: #171941;
+    border-radius: 0.4285rem;
+    padding: 10px;
+    max-height: 3rem;
+}
+.submit{
+    text-align: center;
+}
+.plainTextError{
+    border: 0.09rem solid #f33620 !important;
+    color: #ec250d;
+}

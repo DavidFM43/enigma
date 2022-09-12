@@ -18,6 +18,7 @@ export class ConnectionService {
     console.log(error);
     return throwError('Error! something went wrong. >:v');
   }
+  //shift
   shiftEncrypt(key: number, plainText: string){
     return this.http.get(this.baseUrl + `/shift/encrypt?key=${key}&plainText=${plainText}`)
     .pipe(catchError(this.handleError));
@@ -26,6 +27,12 @@ export class ConnectionService {
     return this.http.get(this.baseUrl + `/shift/decrypt?key=${key}&cipherText=${cipherText}`)
     .pipe(catchError(this.handleError));
   }
+  shiftAttack(cipherText: string){
+    return this.http.get(this.baseUrl + `/shift/attack?cipherText=${cipherText}`)
+    .pipe(catchError(this.handleError));
+  }
+
+  //affine
   affineEncrypt(keys: number[], plainText: string){
     return this.http.post(this.baseUrl + '/affine/encrypt', { key: keys, plainText : plainText})
     .pipe( catchError(this.handleError));
@@ -34,6 +41,7 @@ export class ConnectionService {
     return this.http.post(this.baseUrl + '/affine/decrypt', { key: keys, cipherText : cipherText})
     .pipe( catchError(this.handleError));
   }
+  //substitution
   substitutionEncrypt(key: string, plainText: string){
     return this.http.post(this.baseUrl + '/substitution/encrypt', { key: key, plainText : plainText})
     .pipe( catchError(this.handleError));
@@ -42,6 +50,11 @@ export class ConnectionService {
     return this.http.post(this.baseUrl + '/substitution/decrypt', { key: key, cipherText : cipherText})
     .pipe( catchError(this.handleError));
   }
+  substitutionAttack(cipherText: string){
+    return this.http.post(this.baseUrl + '/substitution/attack', { cipherText : cipherText})
+    .pipe( catchError(this.handleError));
+  }
+  //vigenere
   vigenereEncrypt(key: string, plainText: string){
     return this.http.post(this.baseUrl + '/vigenere/encrypt', { key: key, plainText : plainText})
     .pipe( catchError(this.handleError));
@@ -50,6 +63,17 @@ export class ConnectionService {
     return this.http.post(this.baseUrl + '/vigenere/decrypt', { key: key, cipherText : cipherText})
     .pipe( catchError(this.handleError));
   }
+  vigenereKeyAttack(keySize: number, cipherText: string){
+    return this.http.post(this.baseUrl + '/vigenere/attack/key', { keySize: keySize, cipherText : cipherText})
+    .pipe( catchError(this.handleError));
+  }
+  vigenereNoKeyAttack(cipherText: string){
+    return this.http.post(this.baseUrl + '/vigenere/attack/nokey', { cipherText : cipherText})
+    .pipe( catchError(this.handleError));
+  }
+
+
+
   permutationEncrypt(key: number[], plainText: string){
     return this.http.post(this.baseUrl + '/permutation/encrypt', { key: key, plainText : plainText})
     .pipe( catchError(this.handleError));
