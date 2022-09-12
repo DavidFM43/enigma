@@ -20,7 +20,6 @@ def encrypt_r():
     Receives plain text and key as request arguments
     Returns JSON with cipher text and if needed error information.
     """
-
     request_data = request.get_json()
     plain_text: str = request_data["plainText"]
     key = request_data["key"]

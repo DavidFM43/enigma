@@ -15,6 +15,8 @@ export class ShiftCipherComponent implements OnInit {
   public arguments: FormGroup;
   public cipherText: string;
   public submitted: boolean;
+  public resposeDymcMess: string;
+
 
   constructor(private connection: ConnectionService, private normalizer: NormalizerService) {
     this.arguments = new FormGroup(
@@ -26,6 +28,7 @@ export class ShiftCipherComponent implements OnInit {
     )
     this.cipherText = '';
     this.submitted = false;
+    this.resposeDymcMess = "";
    }
 
   ngOnInit(): void {
@@ -46,6 +49,7 @@ export class ShiftCipherComponent implements OnInit {
      normalizedText).subscribe((ans:textEncyptersReponse) => {
       if (!ans.error) {
        this.cipherText = ans.cipherText;
+       this.resposeDymcMess = "Cipher";
       }
       this.submitted = true;
   });
@@ -58,6 +62,7 @@ export class ShiftCipherComponent implements OnInit {
      normalizedText).subscribe((ans:textDecyptersReponse) => {
       if (!ans.error) {
        this.cipherText = ans.decipherText;
+       this.resposeDymcMess = "Decipher";
       }
       this.submitted = true;
   });
