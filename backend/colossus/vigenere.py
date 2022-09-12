@@ -77,11 +77,15 @@ def ioc_test_r():
 
     return dumps(index_of_coincidence(cipher_text))
 
+@bp.route("/attack/nokey", methods=["POST"])
+def attackNoKey():
+    request_data = request.get_json()
+    cipher_text: str = request_data["cipherText"]
 
-bp.route("/attack", methods=["POST"])
+    return dumps( {"ioc":index_of_coincidence(cipher_text), "kasiski": kasiski_test(cipher_text)})
 
-
-def attack_r():
+@bp.route("/attack/key", methods=["POST"])
+def attackKey():
     """
     This route receives a `cipher_text` and `key_size` from the request's JSON
     and returns a possible key.
@@ -89,11 +93,14 @@ def attack_r():
 
     request_data = request.get_json()
     cipher_text: str = request_data["cipherText"]
-    key_size = request_data["key_size"]
+    key_size = request_data["keySize"]
 
     possible_key = attack(cipher_text, key_size)
     possible_plain_text = decrypt(cipher_text, possible_key)
 
+    error = False
+    typeError = ""
+
     return dumps(
-        {"possible_key": possible_key, "possible_plain_text": possible_plain_text}
+        {"possibleKey": possible_key, "possiblePlainText": possible_plain_text, "error" : error, "typeError": typeError}
     )

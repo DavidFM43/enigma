@@ -47,7 +47,7 @@ def decrypt_r():
     return dumps(response_dict)
 
 
-@bp.route("/attack/", methods=["POST"])
+@bp.route("/attack", methods=["POST"])
 def attack_r():
     request_data = request.get_json()
     cipher_text: str = request_data["cipherText"]

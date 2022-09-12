@@ -9,16 +9,18 @@ import { RegisterpageComponent } from "./pages/examples/registerpage/registerpag
 import { LandingpageComponent } from "./pages/examples/landingpage/landingpage.component";
 import { CryptoHomeComponent } from "./pages/Crypto/crypto-home/crypto-home.component";
 import { CipherComponent } from "./pages/cipher/cipher.component";
+import { AttacksComponent } from "./pages/attacks/attacks/attacks.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
-  { path: "home", component: IndexComponent },
+  { path: "template", component: IndexComponent },
   { path: "profile", component: ProfilepageComponent },
   { path: "register", component: RegisterpageComponent },
   { path: "landing", component: LandingpageComponent },
-  { path: "crypto", component: CryptoHomeComponent},
-  { path: "cipher", component: CipherComponent}
-];
+  { path: "home", component: CryptoHomeComponent},
+  { path: "cipher", component: CipherComponent},
+  { path: "attack", component: AttacksComponent}
+,];
 
 @NgModule({
   imports: [

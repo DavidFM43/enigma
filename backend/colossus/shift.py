@@ -50,4 +50,8 @@ def attack_r():
     """Returns a dictionary of all 26 possible (decryption, key) pairs"""
     cipher_text: str = request.args["cipherText"]
 
-    return dumps(attack(cipher_text))
+    error = False
+    typeError = ""
+    response_dict = {"options": attack(cipher_text), "error": error, "typeError": typeError}
+
+    return dumps(response_dict)

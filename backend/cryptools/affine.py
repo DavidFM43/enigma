@@ -5,7 +5,7 @@ relatively prime with 26
 """
 from typing import Tuple, Union
 from math import gcd
-from util import char2int, int2char, probs
+from .util import char2int, int2char, probs
 import string
 import math
 

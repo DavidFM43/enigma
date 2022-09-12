@@ -8,7 +8,7 @@ from string import ascii_lowercase, ascii_uppercase
 from math import ceil, gcd
 from collections import Counter
 from itertools import islice
-from util import int2char, str2int, probs
+from .util import int2char, str2int, probs
 
 
 def encrypt(plain_text: str, key: str) -> str:

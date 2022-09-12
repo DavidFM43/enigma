@@ -2,7 +2,7 @@
 Shift cipher
 `key` must be an integer from Z_26.
 """
-from util import char2int, int2char
+from .util import char2int, int2char
 
 
 def encrypt(plain_text: str, k: int) -> str:
@@ -17,7 +17,10 @@ def decrypt(cipher_text: str, k: int) -> str:
 
 def attack(chipher_text: str):
     """Returns a dictionary of all 26 possible (decryption, key) pairs"""
-    return {decrypt(chipher_text, k): k for k in range(26)}
+    arr_res = []
+    for k in range(26):
+        arr_res.append(decrypt(chipher_text, k))
+    return arr_res
 
 
 if __name__ == "__main__":
