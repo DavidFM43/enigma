@@ -30,7 +30,7 @@ export class VigenereCipherComponent {
    }
 
   random(): void{
-    let ranLength: number = Math.floor(Math.random()*8 + 2)
+    let ranLength: number = Math.floor(Math.random()*5 + 2)
     let arrBase:string[] = Array.from({length: ranLength},
        () => String.fromCharCode(65 + Math.floor(Math.random()*25)));
 
