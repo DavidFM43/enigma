@@ -1,46 +1,48 @@
 """
 Hill cipher.
 Key must be a matrix in Z^{m x m}.  
-(Question) What m's are allowed
 """
 import numpy as np
-from sympy import Matrix
 from util import str2int, int2str
+from sympy import Matrix
 from sympy.matrices.common import NonInvertibleMatrixError
+from pprint import pprint
 
 
-def encrypt(plain_text, key):
+def encrypt_text(plain_text: str, key):
+    data = str2int(plain_text)
+    return int2str(encrypt(data, key, 26)).upper()
 
-    plain_text = str2int(plain_text)
-    m = len(key)
+def decrypt_text(cipher_text: str, key):
+    data = str2int(cipher_text.lower())
+    return int2str(decrypt(data, key, 26)).lower()
 
+def encrypt(data, key, mod):
     try:
-        Matrix(key).inv_mod(26)
+        Matrix(key).inv_mod(mod)
     except NonInvertibleMatrixError:
         return False
 
+    m = len(key)
     key = np.array(key)
-    xs = [np.array(plain_text[i : i + m]) for i in range(0, len(plain_text), m)]
-    ys = [(xs[i] @ key) % 26 for i in range(len(xs))]
+    xs = [np.array(data[i : i + m]) for i in range(0, len(data), m)]
+    ys = [(xs[i] @ key) % mod for i in range(len(xs))]
 
-    return int2str(list(np.concatenate(ys))).upper()
+    return list(np.concatenate(ys))
 
 
-def decrypt(cipher_text: str, key):
-
-    cipher_text = str2int(cipher_text.lower())
-    m = len(key)
-
+def decrypt(data, key, mod):
     try:
-        inv_key = Matrix(key).inv_mod(26)
+        inv_key = Matrix(key).inv_mod(mod)
     except NonInvertibleMatrixError:
         return False
 
+    m = len(key)
     inv_key = np.array(inv_key)
-    xs = [np.array(cipher_text[i : i + m]) for i in range(0, len(cipher_text), m)]
-    ys = [(xs[i] @ inv_key) % 26 for i in range(len(xs))]
+    xs = [np.array(data[i : i + m]) for i in range(0, len(data), m)]
+    ys = [(xs[i] @ inv_key) % mod for i in range(len(xs))]
 
-    return int2str(list(np.concatenate(ys))).lower()
+    return list(np.concatenate(ys))
 
 
 def attack():
@@ -49,5 +51,5 @@ def attack():
 
 if __name__ == "__main__":
 
-    assert encrypt("july", [[11, 8], [3, 7]]) == "DELW"
-    assert decrypt("DELW", [[11, 8], [3, 7]]) == "july"
+    assert encrypt_text("july", [[11, 8], [3, 7]]) == "DELW"
+    assert decrypt_text("DELW", [[11, 8], [3, 7]]) == "july"
