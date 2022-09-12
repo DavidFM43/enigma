@@ -37,14 +37,19 @@ probs = [
 
 
 def str2int(plain_text: str) -> list[int]:
-    ''' 
-    Pasa un string a un entero.
-    
+    """ 
+    Convertir de string a int.
+
     Codificación:
     enumeración del alfabeto en ingles 
-    '''
+    """
     return [char2int[l] for l in plain_text]
 
 
 def int2str(integer_text: list[int]) -> str:
+    """
+    Convertir int a string
+
+    Invierte la codificacion de str2int
+    """
     return "".join([int2char[l] for l in integer_text])
