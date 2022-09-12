@@ -3,7 +3,7 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { textDecyptersReponse, textEncyptersReponse } from '../Interfaces';
 import { ConnectionService } from '../services/connection.service';
 import { NormalizerService } from '../services/normalizer.service';
-import { correctKey } from '../shared/correct-key.directive';
+import { correctKey, isPermutationNum } from '../shared/correct-key.directive';
 
 @Component({
   selector: 'app-permutation-cipher',
@@ -14,50 +14,53 @@ export class PermutationCipherComponent implements OnInit {
   public arguments: FormGroup;
   public cipherText: string;
   public submitted: boolean;
+  public resposeDymcMess: string;
+  
+
 
   constructor(private connection: ConnectionService, private normalizer: NormalizerService) {
     this.arguments = new FormGroup(
       {
-        key: new FormControl('', [Validators.required, correctKey([], 0, 25)]),
+        key: new FormControl('', [Validators.required, correctKey([26], 0, 25), isPermutationNum(26)]),
         plainText: new FormControl('', [Validators.required,
           Validators.pattern('^[a-zA-Z ]+[ ]*[a-zA-Z ]*$')])
       }
     )
     this.cipherText = '';
     this.submitted = false;
+    this.resposeDymcMess = "";
    }
+
 
   ngOnInit(): void {
   }
 
   random(): void{
-    let keyLen = Math.floor(Math.random() * 10 + 2);
-    let arrBase = Array.from({length: keyLen}, (_,i) => i+1);
-        
+    let arrBase = Array.from({length: 26}, (_,i) => i);        
     let inx, aux;
-    for(let i=0; i<keyLen; i++){
-      inx = Math.floor(Math.random() * keyLen);
+    for(let i=0; i<26; i++){
+      inx = Math.floor(Math.random() * 25);
       aux = arrBase[inx];
       arrBase[inx] = arrBase[i];
       arrBase[i] = aux;
     }
-
     this.arguments.patchValue(
       {
         key: arrBase.toString()
       }
     );
-
-
   }
 
+ 
   encrypt():void{
     let normalizedText: string =  this.normalizer
     .setplainText(this.arguments.get('plainText').value);
-    this.connection.shiftEncrypt(this.arguments.get('key').value,
+    let arrkeys: number[] = this.arguments.get('key').value.split(",").map(i=>Number(i));
+    this.connection.permutationEncrypt(arrkeys,
      normalizedText).subscribe((ans:textEncyptersReponse) => {
       if (!ans.error) {
        this.cipherText = ans.cipherText;
+       this.resposeDymcMess = "Cipher";
       }
       this.submitted = true;
   });
@@ -66,10 +69,12 @@ export class PermutationCipherComponent implements OnInit {
   decrypt():void{
     let normalizedText: string =  this.normalizer
     .setplainText(this.arguments.get('plainText').value);
-    this.connection.shiftDecrypt(this.arguments.get('key').value,
+    let arrkeys: number[] = this.arguments.get('key').value.split(",").map(i=>Number(i));
+    this.connection.permutationDecrypt(arrkeys,
      normalizedText).subscribe((ans:textDecyptersReponse) => {
       if (!ans.error) {
        this.cipherText = ans.decipherText;
+       this.resposeDymcMess = "Decipher";
       }
       this.submitted = true;
   });
@@ -80,6 +85,13 @@ export class PermutationCipherComponent implements OnInit {
   }
   get plainText(): AbstractControl{
     return this.arguments.get('plainText');
+  }
+  forceUpperCase(){
+    this.arguments.patchValue(
+      {
+        key: this.arguments.get('key').value.toUpperCase()
+      }
+    );
   }
 
 }

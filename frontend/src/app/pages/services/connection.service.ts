@@ -50,6 +50,14 @@ export class ConnectionService {
     return this.http.post(this.baseUrl + '/vigenere/decrypt', { key: key, cipherText : cipherText})
     .pipe( catchError(this.handleError));
   }
+  permutationEncrypt(key: number[], plainText: string){
+    return this.http.post(this.baseUrl + '/permutation/encrypt', { key: key, plainText : plainText})
+    .pipe( catchError(this.handleError));
+  }
+  permutationDecrypt(key: number[], cipherText: string){
+    return this.http.post(this.baseUrl + '/permutation/decrypt', { key: key, cipherText : cipherText})
+    .pipe( catchError(this.handleError));
+  }
   /*
   seeAll(first: number, last: number){
     return this.http.get(this.baseUrl + `seeAll?first=${first}&last=${last}`)

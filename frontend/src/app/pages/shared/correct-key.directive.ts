@@ -35,12 +35,22 @@ export function correctFistKeyAffine(): ValidatorFn {
              {incorrectKey: {value: fistKeyInpt}} : null;
   }
 }
-export function isPermutation(Zn: number): ValidatorFn {
+export function isPermutationAbc(Zn: number): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     let setNum: Set<string> = new Set<string>();
     control.value.split('').forEach(element => {
       setNum.add(element);
     });
     return setNum.size != Zn || !setNum.has('Z')? {incorrectKey: {value: control.value}} : null;
+  }
+}
+
+export function isPermutationNum(Zn: number): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    let setNum: Set<string> = new Set<string>();
+    control.value.split(',').forEach(element => {
+      setNum.add(element);
+    });
+    return setNum.size != Zn || !setNum.has('25')? {incorrectKey: {value: control.value}} : null;
   }
 }

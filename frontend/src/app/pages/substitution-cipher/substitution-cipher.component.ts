@@ -3,7 +3,7 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { textDecyptersReponse, textEncyptersReponse } from '../Interfaces';
 import { ConnectionService } from '../services/connection.service';
 import { NormalizerService } from '../services/normalizer.service';
-import { correctKey, isPermutation } from '../shared/correct-key.directive';
+import { isPermutationAbc } from '../shared/correct-key.directive';
 
 @Component({
   selector: 'app-substitution-cipher',
@@ -21,7 +21,7 @@ export class SubstitutionCipherComponent implements OnInit {
   constructor(private connection: ConnectionService, private normalizer: NormalizerService) {
     this.arguments = new FormGroup(
       {
-        key: new FormControl('', [Validators.required, Validators.pattern('^[A-Z]*$'), isPermutation(26)]),
+        key: new FormControl('', [Validators.required, Validators.pattern('^[A-Z]*$'), isPermutationAbc(26)]),
         plainText: new FormControl('', [Validators.required,
           Validators.pattern('^[a-zA-Z ]+[ ]*[a-zA-Z ]*$')])
       }

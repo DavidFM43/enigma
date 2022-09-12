@@ -5,20 +5,12 @@
     
                 <div class="col-sm-6 col-lg-6 ml-auto">
                     <div [ngClass]="key.invalid && key.dirty ? 'form-group has-danger' :'input-group'">
-                        <input
-                        class="form-control"
-                        placeholder="Key"
-                        type="text"
-                        autofocus
-                        formControlName="key"
-                        />
-                        <ng-template [ngIf]="!key.invalid || !key.dirty">
-                            <div class="input-group-append">
-                                <span class="input-group-text">
-                                    <i class="tim-icons icon-lock-circle"> </i>
-                                </span>
-                                </div>
-                        </ng-template>
+                        <textarea placeholder="Key"
+                         class="textkey form-control" 
+                         formControlName="key"
+                         [ngClass]="{'plainTextError' : key.invalid && key.dirty}"
+                         ></textarea>
+
                     </div>
                 </div>
                 <div class="col-sm-3 col-lg-3 mr-auto random-btn-cont">
@@ -56,7 +48,7 @@
     
         <div class="row"  *ngIf="submitted">
             <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
-                <div ><h3 class="mb-3">Cipher text</h3></div>
+                <div ><h3 class="mb-3">{{resposeDymcMess}} text</h3></div>
             </div>
             
     
