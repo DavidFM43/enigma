@@ -46,7 +46,7 @@ frecuencia, esto para las dos tablas
 
 
 def attack(plain_cipher: str) -> str:
-    """Comentarios de la funcion: """
+    """Comentarios de la funcion:"""
 
     # Frecuencia de la caneda, alfabeto, Frecuencia en ingles
     frecuency_text = {i: plain_cipher.count(i) for i in set(plain_cipher)}
