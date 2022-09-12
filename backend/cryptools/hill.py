@@ -4,9 +4,11 @@ Key must be a matrix in Z^{m x m}.
 """
 import sympy as sp
 
+
 def encrypt(key: str, key) -> str:
 
     return ""
+
 
 def encrypt_t(text, key):
 
