@@ -40,5 +40,5 @@ def str2int(plain_text: str) -> list[int]:
     return [char2int[l] for l in plain_text]
 
 
-def str2text(integer_text: list[int]) -> str:
+def int2str(integer_text: list[int]) -> str:
     return "".join([int2char[l] for l in integer_text])

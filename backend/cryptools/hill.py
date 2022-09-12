@@ -5,19 +5,13 @@ Key must be a matrix in Z^{m x m}.
 """
 import numpy as np
 from sympy import Matrix
-from string import ascii_lowercase
+from util import str2int, int2str
 from sympy.matrices.common import NonInvertibleMatrixError
-from .util import text2int, int2text
-
-# char to int
-c = {x: idx for idx, x in enumerate(ascii_lowercase)}
-# int to char
-d = {idx: x for idx, x in enumerate(ascii_lowercase)}
 
 
 def encrypt(plain_text, key):
 
-    plain_text = text2int(plain_text)
+    plain_text = str2int(plain_text)
     m = len(key)
 
     try:
@@ -26,66 +20,27 @@ def encrypt(plain_text, key):
         return False
 
     key = np.array(key)
+    xs = [np.array(plain_text[i : i + m]) for i in range(0, len(plain_text), m)]
+    ys = [(xs[i] @ key) % 26 for i in range(len(xs))]
 
-    y = [np.array(plain_text[i : i + m]) for i in range(0, len(plain_text), m)]
-
-    x = [(y[i] @ key) % 26 for i in range(len(y))]
-
-    return x
+    return int2str(list(np.concatenate(ys))).upper()
 
 
-def encrypt_t(text, key):
+def decrypt(cipher_text: str, key):
 
-    key = Matrix(key)
-
-    try:
-        kinv = key.inv_mod(26)
-    except:
-        return "ERRORLaMatrizIngresadaNoEsInvertible"
-
-    l = len(text)
-    n = key.shape[0]
-
-    text += "Z" * (n - l % n)
-
-    chunks = [text[i : i + n] for i in range(0, l, n)]
-
-    chunksequence = [sp.Matrix([ord(x.lower()) - 97 for x in i]) for i in chunks]
-
-    ciphersequence = [key * i % 26 for i in chunksequence]
-
-    sequence = [x for i in ciphersequence for x in i]
-
-    cipher = "".join([chr(i + 97).upper() for i in sequence])
-
-    return cipher
-
-
-def decrypt_t(text, key):
-
-    key = Matrix(key)
-
-    l = len(text)
-    n = key.shape[0]
-
-    text += "Z" * (n - l % n)
+    cipher_text = str2int(cipher_text.lower())
+    m = len(key)
 
     try:
-        kinv = key.inv_mod(26)
-    except:
-        return "ERRORLaMatrizIngresadaNoEsInvertible"
+        inv_key = Matrix(key).inv_mod(26)
+    except NonInvertibleMatrixError:
+        return False
 
-    chunks = [text[i : i + n] for i in range(0, l, n)]
+    inv_key = np.array(inv_key)
+    xs = [np.array(cipher_text[i : i + m]) for i in range(0, len(cipher_text), m)]
+    ys = [(xs[i] @ inv_key) % 26 for i in range(len(xs))]
 
-    chunksequence = [Matrix([ord(x.lower()) - 97 for x in i]) for i in chunks]
-
-    ciphersequence = [kinv * i % 26 for i in chunksequence]
-
-    sequence = [x for i in ciphersequence for x in i]
-
-    text = "".join([chr(i + 97).upper() for i in sequence])
-
-    return text
+    return int2str(list(np.concatenate(ys))).lower()
 
 
 def attack():
@@ -94,4 +49,5 @@ def attack():
 
 if __name__ == "__main__":
 
-    print(encrypt("july", [[11, 8], [3, 7]]))
+    assert encrypt("july", [[11, 8], [3, 7]]) == "DELW"
+    assert decrypt("DELW", [[11, 8], [3, 7]]) == "july"
