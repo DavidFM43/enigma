@@ -3,13 +3,14 @@ Hill cipher.
 Key must be a matrix in Z^{m x m}.  
 (Question) What m's are allowed
 """
+
 import numpy as np
 from sympy import Matrix
 from util import str2int, int2str
 from sympy.matrices.common import NonInvertibleMatrixError
 
 
-def encrypt(plain_text, key):
+def encrypt(plain_text: str, key: list[list]) -> str:
 
     plain_text = str2int(plain_text)
     m = len(key)
