@@ -6,7 +6,6 @@ import numpy as np
 from util import str2int, int2str
 from sympy import Matrix
 from sympy.matrices.common import NonInvertibleMatrixError
-from pprint import pprint
 
 
 def encrypt_text(plain_text: str, key):
