@@ -7,12 +7,12 @@ import analysis
 
 
 def encrypt(plain_text, key):
-    plain_text = plain_text.lower() 
+    plain_text = plain_text.lower()
 
     if math.gcd(key[0], 26) != 1:
         return False
 
-    alphabet = string.ascii_lowercase 
+    alphabet = string.ascii_lowercase
     alphabet_copy = list(alphabet)
 
     for i in range(26):
@@ -22,7 +22,7 @@ def encrypt(plain_text, key):
     alphabet_copy = "".join(alphabet_copy)
     table = str.maketrans(alphabet_copy, alphabet)
     decrypt_plain_text = plain_text.translate(table)
-    return decrypt_plain_text.upper() #por que se lo retorna en mayus?
+    return decrypt_plain_text.upper()  # por que se lo retorna en mayus?
 
 
 def decrypt(plain_cipher, key):
@@ -45,7 +45,8 @@ def decrypt(plain_cipher, key):
     decrypt_plain_text = plain_cipher.translate(table)
     return decrypt_plain_text.lower()
 
-'''
+
+"""
 Conjetura
 
 Las suposiciones seran apartir de los dos valores con mayor frecuencia 
@@ -53,87 +54,98 @@ de nuestra cadena, estos los coincidimos con los valores de mayor frecuencia
 en la tabla de frecuencia para el idioma en ingles. Vamos a fijar el primer 
 valor de mayor frecuencia y el otro iremos rotandolo a uno de menor 
 frecuencia, esto para las dos tablas
-'''
+"""
 
-def analyze(plain_cipher):
-    #Frecuencia de la caneda, alfabeto, Frecuencia en ingles
-    frecuencyText = {i : plain_cipher.count(i) for i in set(plain_cipher)}
-    alphabet = string.ascii_lowercase 
+
+def analyze(plain_cipher: string) -> string:
+    """
+    
+    """
+
+    # Frecuencia de la caneda, alfabeto, Frecuencia en ingles
+    frecuencyText = {i: plain_cipher.count(i) for i in set(plain_cipher)}
+    alphabet = string.ascii_lowercase
     freq = analysis.freq
 
-
-
-    #Selección de la letra con mayor frecuencia 
-    letterInput = max(frecuencyText, key=frecuencyText.get) #r-e
+    # Selección de la letra con mayor frecuencia
+    letterInput = max(frecuencyText, key=frecuencyText.get)  # r-e
     frecuencyText.pop(letterInput)
 
     letter = max(freq, key=freq.get)
     freq.pop(letter)
 
-    #Indice de las dos letras de mayor frecuencia
-    n , m = alphabet.index(letter.lower()), alphabet.index(letterInput.lower()) 
+    # Indice de las dos letras de mayor frecuencia
+    n, m = alphabet.index(letter.lower()), alphabet.index(letterInput.lower())
 
-    ''''
+    """'
     Sistema en Z_26
 
         n*x + y = m
         p*x + y = q
     con n ,m , p y q estan en Z_26
-    '''
-    #inversos
+    """
+    # inversos
     inv = {
-        1:1, 3:9, 5:21, 7:25, 9:3, 11:19, 15:7, 17:23, 
-        19:11, 21:5, 23:17, 25:25
+        1: 1,
+        3: 9,
+        5: 21,
+        7: 25,
+        9: 3,
+        11: 19,
+        15: 7,
+        17: 23,
+        19: 11,
+        21: 5,
+        23: 17,
+        25: 25,
     }
     a = 0
     c = 0
     d = 0
     textos = list()
-    #Proceso para la segunda conjetura
+    # Proceso para la segunda conjetura
     while True:
         while True:
-            letterInput = max(frecuencyText, key=frecuencyText.get) #d->t
+            letterInput = max(frecuencyText, key=frecuencyText.get)  # d->t
             frecuencyText.pop(letterInput)
 
             letter = max(freq, key=freq.get)
             if c == 3:
-                #prueba de la siguiente mas frecuente
+                # prueba de la siguiente mas frecuente
                 freq.pop(letter)
                 frecuencyText = dict()
-                frecuencyText = {i : plain_cipher.count(i) for i in set(plain_cipher)}
+                frecuencyText = {i: plain_cipher.count(i) for i in set(plain_cipher)}
                 frecuencyText.pop(letterInput)
                 c = 0
 
+            p, q = alphabet.index(letter.lower()), alphabet.index(letterInput.lower())
 
-            p, q = alphabet.index(letter.lower()), alphabet.index(letterInput.lower()) 
-            
             c += 1
 
-            if (n-p)%2 == 0 or (n-p)%13 == 0: 
+            if (n - p) % 2 == 0 or (n - p) % 13 == 0:
                 break
 
-            x = int((m-q) *inv[(n-p)%26]) %26   
-            y = int( (q-x*p) %26)
+            x = int((m - q) * inv[(n - p) % 26]) % 26
+            y = int((q - x * p) % 26)
 
-            if math.gcd(x, 26) >1 :
+            if math.gcd(x, 26) > 1:
                 break
 
-            
-            textos.append(decrypt(plain_cipher, [x,y]))
-            a +=1 
-            if a ==4:
+            textos.append(decrypt(plain_cipher, [x, y]))
+            a += 1
+            if a == 4:
                 return textos
 
 
-#key = [7, 3]
+# key = [7, 3]
 
-cadena = 'FMXVEDKAPHFERBNDKRXRSREFMORUDSDKDVSHVUFEDKAPRKDLYEVLRHHRH'
-p =analyze(cadena)
+cadena = "FMXVEDKAPHFERBNDKRXRSREFMORUDSDKDVSHVUFEDKAPRKDLYEVLRHHRH"
+p = analyze(cadena)
 
 for i in p:
     print(i)
- 
-#plain_cipher = encrypt("hot", key)
-#print(plain_cipher)
-#plain_text = decrypt(cadena, [3,5] )
-#print(plain_text)
+
+# plain_cipher = encrypt("hot", key)
+# print(plain_cipher)
+# plain_text = decrypt(cadena, [3,5] )
+# print(plain_text)
