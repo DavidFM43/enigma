@@ -42,6 +42,14 @@ export class ConnectionService {
     return this.http.post(this.baseUrl + '/substitution/decrypt', { key: key, cipherText : cipherText})
     .pipe( catchError(this.handleError));
   }
+  vigenereEncrypt(key: string, plainText: string){
+    return this.http.post(this.baseUrl + '/vigenere/encrypt', { key: key, plainText : plainText})
+    .pipe( catchError(this.handleError));
+  }
+  vigenereDecrypt(key: string, cipherText: string){
+    return this.http.post(this.baseUrl + '/vigenere/decrypt', { key: key, cipherText : cipherText})
+    .pipe( catchError(this.handleError));
+  }
   /*
   seeAll(first: number, last: number){
     return this.http.get(this.baseUrl + `seeAll?first=${first}&last=${last}`)
