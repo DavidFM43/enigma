@@ -1,59 +1,53 @@
-import sympy as sp
+"""
+Hill cipher.
+Key must be a matrix in Z^{m x m}.  
+(Question) What m's are allowed
+"""
+import numpy as np
+from sympy import Matrix
+from util import str2int, int2str
+from sympy.matrices.common import NonInvertibleMatrixError
 
 
-def encrypt(text, key):
+def encrypt(plain_text, key):
 
-    key = sp.Matrix(key)
-
-    try:
-        kinv = key.inv_mod(26)
-    except:
-        return "ERRORLaMatrizIngresadaNoEsInvertible"
-
-    l = len(text)
-    n = key.shape[0]
-
-    text += "Z" * (n - l % n)
-
-    chunks = [text[i : i + n] for i in range(0, l, n)]
-
-    chunksequence = [sp.Matrix([ord(x.lower()) - 97 for x in i]) for i in chunks]
-
-    ciphersequence = [key * i % 26 for i in chunksequence]
-
-    sequence = [x for i in ciphersequence for x in i]
-
-    cipher = "".join([chr(i + 97).upper() for i in sequence])
-
-    return cipher
-
-
-def decrypt(text, key):
-
-    key = sp.Matrix(key)
-
-    l = len(text)
-    n = key.shape[0]
-
-    text += "Z" * (n - l % n)
+    plain_text = str2int(plain_text)
+    m = len(key)
 
     try:
-        kinv = key.inv_mod(26)
-    except:
-        return "ERRORLaMatrizIngresadaNoEsInvertible"
+        Matrix(key).inv_mod(26)
+    except NonInvertibleMatrixError:
+        return False
 
-    chunks = [text[i : i + n] for i in range(0, l, n)]
+    key = np.array(key)
+    xs = [np.array(plain_text[i : i + m]) for i in range(0, len(plain_text), m)]
+    ys = [(xs[i] @ key) % 26 for i in range(len(xs))]
 
-    chunksequence = [sp.Matrix([ord(x.lower()) - 97 for x in i]) for i in chunks]
-
-    ciphersequence = [kinv * i % 26 for i in chunksequence]
-
-    sequence = [x for i in ciphersequence for x in i]
-
-    text = "".join([chr(i + 97).upper() for i in sequence])
-
-    return text
+    return int2str(list(np.concatenate(ys))).upper()
 
 
-def analyze():
+def decrypt(cipher_text: str, key):
+
+    cipher_text = str2int(cipher_text.lower())
+    m = len(key)
+
+    try:
+        inv_key = Matrix(key).inv_mod(26)
+    except NonInvertibleMatrixError:
+        return False
+
+    inv_key = np.array(inv_key)
+    xs = [np.array(cipher_text[i : i + m]) for i in range(0, len(cipher_text), m)]
+    ys = [(xs[i] @ inv_key) % 26 for i in range(len(xs))]
+
+    return int2str(list(np.concatenate(ys))).lower()
+
+
+def attack():
     pass
+
+
+if __name__ == "__main__":
+
+    assert encrypt("july", [[11, 8], [3, 7]]) == "DELW"
+    assert decrypt("DELW", [[11, 8], [3, 7]]) == "july"

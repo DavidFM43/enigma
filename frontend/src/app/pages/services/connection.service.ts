@@ -18,9 +18,29 @@ export class ConnectionService {
     console.log(error);
     return throwError('Error! something went wrong. >:v');
   }
-  shift(key: number, plainText: string){
+  shiftEncrypt(key: number, plainText: string){
     return this.http.get(this.baseUrl + `/shift/encrypt?key=${key}&plainText=${plainText}`)
     .pipe(catchError(this.handleError));
+  }
+  shiftDecrypt(key: number, cipherText: string){
+    return this.http.get(this.baseUrl + `/shift/decrypt?key=${key}&cipherText=${cipherText}`)
+    .pipe(catchError(this.handleError));
+  }
+  affineEncrypt(keys: number[], plainText: string){
+    return this.http.post(this.baseUrl + '/affine/encrypt', { key: keys, plainText : plainText})
+    .pipe( catchError(this.handleError));
+  }
+  affineDecrypt(keys: number[], cipherText: string){
+    return this.http.post(this.baseUrl + '/affine/decrypt', { key: keys, cipherText : cipherText})
+    .pipe( catchError(this.handleError));
+  }
+  substitutionEncrypt(key: string, plainText: string){
+    return this.http.post(this.baseUrl + '/substitution/encrypt', { key: key, plainText : plainText})
+    .pipe( catchError(this.handleError));
+  }
+  substitutionDecrypt(key: string, cipherText: string){
+    return this.http.post(this.baseUrl + '/substitution/decrypt', { key: key, cipherText : cipherText})
+    .pipe( catchError(this.handleError));
   }
   /*
   seeAll(first: number, last: number){

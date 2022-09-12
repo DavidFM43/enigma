@@ -1,49 +1,37 @@
-from ast import Break
-from multiprocessing.resource_sharer import stop
-from re import A
+"""
+Affine cipher.
+`key` must a tuple of two integer from Z_26 and the firt one must be
+relatively prime with 26
+"""
+from typing import Tuple, Union
+from math import gcd
+from util import char2int, int2char, probs
 import string
 import math
-import analysis
 
 
-def encrypt(plain_text, key):
-    plain_text = plain_text.lower()
+def encrypt(plain_text: str, key: Tuple[int, int]) -> Union[str, bool]:
+    plain_text = plain_text.replace(" ", "").lower()
+    a, b = key
 
-    if math.gcd(key[0], 26) != 1:
+    if gcd(a, 26) != 1:
         return False
 
-    alphabet = string.ascii_lowercase
-    alphabet_copy = list(alphabet)
-
-    for i in range(26):
-        x = (key[0] * i + key[1]) % 26
-        alphabet_copy[x] = alphabet[i]
-
-    alphabet_copy = "".join(alphabet_copy)
-    table = str.maketrans(alphabet_copy, alphabet)
-    decrypt_plain_text = plain_text.translate(table)
-    return decrypt_plain_text.upper()  # por que se lo retorna en mayus?
+    return "".join([int2char[(a * char2int[l] + b) % 26] for l in plain_text]).upper()
 
 
-def decrypt(plain_cipher, key):
+def decrypt(cipher_text: str, key: Tuple[int, int]) -> Union[str, bool]:
+    cipher_text = cipher_text.replace(" ", "").lower()
+    a, b = key
 
-    plain_cipher = plain_cipher.lower()
-
-    if math.gcd(key[0], 26) != 1:
+    if gcd(a, 26) != 1:
         return False
 
-    inverse = pow(key[0], -1, 26)
-    alphabet = string.ascii_lowercase
-    alphabet_copy = list(alphabet)
+    a_inv = pow(a, -1, 26)
 
-    for i in range(26):
-        x = (inverse * (i - key[1])) % 26
-        alphabet_copy[x] = alphabet[i]
-
-    alphabet_copy = "".join(alphabet_copy)
-    table = str.maketrans(alphabet_copy, alphabet)
-    decrypt_plain_text = plain_cipher.translate(table)
-    return decrypt_plain_text.lower()
+    return "".join(
+        [int2char[(a_inv * (char2int[l] - b)) % 26] for l in cipher_text]
+    ).lower()
 
 
 """
@@ -57,25 +45,24 @@ frecuencia, esto para las dos tablas
 """
 
 
-def analyze(plain_cipher: string) -> string:
-    """
-    
-    """
+def attack(plain_cipher: str) -> str:
+    """Comentarios de la funcion: """
 
     # Frecuencia de la caneda, alfabeto, Frecuencia en ingles
-    frecuencyText = {i: plain_cipher.count(i) for i in set(plain_cipher)}
+    frecuency_text = {i: plain_cipher.count(i) for i in set(plain_cipher)}
     alphabet = string.ascii_lowercase
-    freq = analysis.freq
+    freq = {letter: freq for letter, freq in zip(alphabet, probs)}
+    # freq = analysis.freq
 
     # Selección de la letra con mayor frecuencia
-    letterInput = max(frecuencyText, key=frecuencyText.get)  # r-e
-    frecuencyText.pop(letterInput)
+    letter_input = max(frecuency_text, key=frecuency_text.get)
+    frecuency_text.pop(letter_input)
 
     letter = max(freq, key=freq.get)
     freq.pop(letter)
 
     # Indice de las dos letras de mayor frecuencia
-    n, m = alphabet.index(letter.lower()), alphabet.index(letterInput.lower())
+    n, m = alphabet.index(letter.lower()), alphabet.index(letter_input.lower())
 
     """'
     Sistema en Z_26
@@ -101,24 +88,23 @@ def analyze(plain_cipher: string) -> string:
     }
     a = 0
     c = 0
-    d = 0
     textos = list()
     # Proceso para la segunda conjetura
     while True:
         while True:
-            letterInput = max(frecuencyText, key=frecuencyText.get)  # d->t
-            frecuencyText.pop(letterInput)
+            letter_input = max(frecuency_text, key=frecuency_text.get)  # d->t
+            frecuency_text.pop(letter_input)
 
             letter = max(freq, key=freq.get)
             if c == 3:
                 # prueba de la siguiente mas frecuente
                 freq.pop(letter)
-                frecuencyText = dict()
-                frecuencyText = {i: plain_cipher.count(i) for i in set(plain_cipher)}
-                frecuencyText.pop(letterInput)
+                frecuency_text = dict()
+                frecuency_text = {i: plain_cipher.count(i) for i in set(plain_cipher)}
+                frecuency_text.pop(letter_input)
                 c = 0
 
-            p, q = alphabet.index(letter.lower()), alphabet.index(letterInput.lower())
+            p, q = alphabet.index(letter.lower()), alphabet.index(letter_input.lower())
 
             c += 1
 
@@ -137,15 +123,12 @@ def analyze(plain_cipher: string) -> string:
                 return textos
 
 
-# key = [7, 3]
+if __name__ == "__main__":
+    assert encrypt("hot", (7, 3)) == "AXG"
+    assert decrypt("AXG", (7, 3)) == "hot"
 
-cadena = "FMXVEDKAPHFERBNDKRXRSREFMORUDSDKDVSHVUFEDKAPRKDLYEVLRHHRH"
-p = analyze(cadena)
+    cadena = "FMXVEDKAPHFERBNDKRXRSREFMORUDSDKDVSHVUFEDKAPRKDLYEVLRHHRH"
+    p = attack(cadena)
 
-for i in p:
-    print(i)
-
-# plain_cipher = encrypt("hot", key)
-# print(plain_cipher)
-# plain_text = decrypt(cadena, [3,5] )
-# print(plain_text)
+    for i in p:
+        print(i)
