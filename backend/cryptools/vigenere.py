@@ -9,7 +9,6 @@ from math import ceil, gcd
 from collections import Counter
 from itertools import islice
 from util import int2char, str2int, probs
-from pprint import pprint
 
 
 def encrypt(plain_text: str, key: str) -> str:
@@ -87,7 +86,9 @@ def index_of_coincidence(cipher_text: str):
 
     # substrings must be of length of at least 2
     max_word_size = 1
-    while (len(cipher_text) // max_word_size > 2 and max_word_size < 8): max_word_size += 1 
+    # key size must be less than 8
+    while len(cipher_text) // max_word_size > 2 and max_word_size < 8:
+        max_word_size += 1
 
     for k in range(1, max_word_size + 1):
         # k substrings of the cipher text

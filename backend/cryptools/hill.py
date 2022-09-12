@@ -2,6 +2,7 @@
 Hill cipher.
 Key must be a matrix in Z^{m x m}.  
 """
+
 import numpy as np
 from urllib import request
 from PIL import Image
@@ -59,8 +60,11 @@ def encrypt(data, key, mod):
     m = len(key)
     key = np.array(key)
 
-    xs = [np.array(data[i : i + m]) for i in range(0, len(data), m)]
-    ys = [(xs[i] @ key) % mod for i in range(len(xs))]
+    if len(data) % m == 0:
+        xs = [np.array(data[i : i + m]) for i in range(0, len(data), m)]
+        ys = [(xs[i] @ key) % mod for i in range(len(xs))]
+    else:
+        raise Exception("Data length must be a multiple of the order of the key.")
 
     return np.concatenate(ys)
 
@@ -78,8 +82,11 @@ def decrypt(data: np.ndarray, key, mod):
     m = len(key)
     inv_key = np.array(inv_key)
 
-    xs = [np.array(data[i : i + m]) for i in range(0, len(data), m)]
-    ys = [(xs[i] @ inv_key) % mod for i in range(len(xs))]
+    if len(data) % m == 0:
+        xs = [np.array(data[i : i + m]) for i in range(0, len(data), m)]
+        ys = [(xs[i] @ inv_key) % mod for i in range(len(xs))]
+    else:
+        raise Exception("Data length must be a multiple of the order of the key.")
 
     return np.concatenate(ys)
 
@@ -110,6 +117,8 @@ if __name__ == "__main__":
 
     img_arr = np.array(img)
 
-    encrypted_img_arr = encrypt_image(img_arr, [[11, 8], [3, 7]])
+    key = [[11, 8], [3, 7]]
+
+    encrypted_img_arr = encrypt_image(img_arr, key)
 
     Image.fromarray(encrypted_img_arr).show()
