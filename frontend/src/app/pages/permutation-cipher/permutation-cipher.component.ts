@@ -21,7 +21,7 @@ export class PermutationCipherComponent implements OnInit {
   constructor(private connection: ConnectionService, private normalizer: NormalizerService) {
     this.arguments = new FormGroup(
       {
-        key: new FormControl('', [Validators.required, correctKey([26], 0, 25), isPermutationNum(26)]),
+        key: new FormControl('', [Validators.required, correctKey(Array.from({length: 26}, (_,i) => i + 1), 0, 25), isPermutationNum()]),
         plainText: new FormControl('', [Validators.required,
           Validators.pattern('^[a-zA-Z ]+[ ]*[a-zA-Z ]*$')])
       }
@@ -36,10 +36,11 @@ export class PermutationCipherComponent implements OnInit {
   }
 
   random(): void{
-    let arrBase = Array.from({length: 26}, (_,i) => i);        
+    let ranLen: number = Math.floor(Math.random()*20 + 6);
+    let arrBase = Array.from({length: ranLen}, (_,i) => i + 1);        
     let inx, aux;
-    for(let i=0; i<26; i++){
-      inx = Math.floor(Math.random() * 25);
+    for(let i=0; i<ranLen; i++){
+      inx = Math.floor(Math.random() * ranLen);
       aux = arrBase[inx];
       arrBase[inx] = arrBase[i];
       arrBase[i] = aux;

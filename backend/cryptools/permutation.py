@@ -1,3 +1,5 @@
+import sys
+
 def encrypt(plain_text: str, key: list[int]) -> str:
     """
     `plain_text` -> str(texto para encriptar)
@@ -5,7 +7,7 @@ def encrypt(plain_text: str, key: list[int]) -> str:
 
     Retorna un texto encriptado (en mayusculas) con el cripto sistema de permutaciones
     """
-
+    print(key, plain_text,file=sys.stderr)
     # partición en m bloques de tamaño m, llaves desde el indice 0, aginación de la llave con el dic
     m = len(key)
     key = [x - 1 for x in key]
@@ -13,7 +15,7 @@ def encrypt(plain_text: str, key: list[int]) -> str:
 
     # Validación para partir el texto
     if len(plain_text) % m != 0:
-        return "El texto no se puede partir"
+        return "Text cannot be partitioned"
 
     # Partiendo la cadena en m = len(key)
     def chunks(text: str, m: int) -> list[list[str]]:
@@ -51,7 +53,7 @@ def decrypt(cipher_text: str, key: list[int]) -> str:
 
     # Validación para partir el texto
     if len(cipher_text) % m != 0:
-        return "El texto no se puede partir"
+        return "Text cannot be partitioned"
 
     # Partiendo la cadena en m = len(key)
     def chunks(text: str, m: int) -> list[list[str]]:

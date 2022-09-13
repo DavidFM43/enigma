@@ -82,6 +82,20 @@ export class ConnectionService {
     return this.http.post(this.baseUrl + '/permutation/decrypt', { key: key, cipherText : cipherText})
     .pipe( catchError(this.handleError));
   }
+
+
+  hillEncrypt(value: any) {
+    return this.http.post(this.baseUrl + '/hill/encrypt', value, {
+      reportProgress: true,
+      observe: 'events'
+    }).pipe( catchError(this.handleError));
+  }
+  hillDecrypt(value: any) {
+    return this.http.post(this.baseUrl + '/hill/decrypt', value, {
+      reportProgress: true,
+      observe: 'events'
+    }).pipe( catchError(this.handleError));
+  }
   /*
   seeAll(first: number, last: number){
     return this.http.get(this.baseUrl + `seeAll?first=${first}&last=${last}`)
@@ -112,12 +126,7 @@ export class ConnectionService {
     return this.http.get(this.baseUrl + `sort?type=${type}&fisrt=${fist}&last=${last}`)
     .pipe( catchError(this.handleError));
   }
-  detecteItem(value: any) {
-    return this.http.post('http://localhost/e2/backend/detecte.php', value, {
-      reportProgress: true,
-      observe: 'events'
-    }).pipe( catchError(this.handleError));
-  }
+  
   logIn(user: string, pass: string){
     return this.http.get(this.baseUrl + `login?user=${user}&pass=${pass}`)
     .pipe( catchError(this.handleError));

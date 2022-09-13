@@ -8,9 +8,6 @@ from string import ascii_lowercase, ascii_uppercase
 from math import ceil, gcd
 from collections import Counter
 from itertools import islice
-<<<<<<< HEAD
-from .util import int2char, str2int, probs
-=======
 from string import ascii_lowercase
 
 # char to int
@@ -66,7 +63,6 @@ def int2str(integer_text: list[int]) -> str:
     Invierte la codificacion de str2int
     """
     return "".join([int2char[l] for l in integer_text])
->>>>>>> origin/routes-hill-permutation
 
 
 def encrypt(plain_text: str, key: str) -> str:

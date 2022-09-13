@@ -81,13 +81,8 @@ def encrypt(data: list, key: list[list], mod: int):
         Matrix(key).inv_mod(mod)
     except NonInvertibleMatrixError:
         return False
-<<<<<<< HEAD
-    
-    #Partición de la cadena y solución del sistema
-=======
 
     # Partición de la cadena y solución del sistema
->>>>>>> origin/routes-hill-permutation
     m = len(key)
     key = np.array(key)
 
@@ -126,11 +121,6 @@ def attack(cipher_text: str, plain_text: str, m: int) -> list[list]:
     Función para que retorna la llave del cripto sistema Hill
     """
 
-<<<<<<< HEAD
-    #codificación a numeros
-    cipher_text, plain_text = str2int(cipher_text.lower()), str2int(plain_text)
-    
-=======
 def attack(cipher_text: str, plain_text: str, m: int) -> list[list]:
     """
     Función para que retorna la llave del cripto sistema Hill
@@ -139,14 +129,10 @@ def attack(cipher_text: str, plain_text: str, m: int) -> list[list]:
     # codificación a numeros
     cipher_text, plain_text = str2int(cipher_text.lower()), str2int(plain_text)
 
->>>>>>> origin/routes-hill-permutation
     """
     Condición para poder formar la matriz cuadrada
     Función para dejar la lista para formar la matriz cuadrada
     """
-<<<<<<< HEAD
-    if len(plain_text)// m < m: return "No se puede formar la matriz cuadrada, intente con otro m" 
-=======
     if len(plain_text) // m < m:
         return "No se puede formar la matriz cuadrada, intente con otro m"
 
@@ -200,7 +186,6 @@ def attack(cipher_text: str, plain_text: str, m: int) -> tuple[list[list], bool,
     key = np.array(key).astype(int).flatten().tolist()
 
     return key, False, ""
->>>>>>> origin/routes-hill-permutation
 
     def square(lst: list)->list[int]:#como se pued mejorar eso para no hacer una funcion
         l = list()

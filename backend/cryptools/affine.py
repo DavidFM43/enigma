@@ -6,10 +6,6 @@ relatively prime with 26
 from typing import Tuple, Union
 from string import ascii_lowercase
 from math import gcd
-<<<<<<< HEAD
-from .util import char2int, int2char, probs
-=======
->>>>>>> origin/routes-hill-permutation
 import string
 import math
 

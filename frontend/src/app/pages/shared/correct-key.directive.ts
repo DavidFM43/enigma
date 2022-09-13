@@ -1,5 +1,6 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-
+import * as math from 'mathjs';
+import { boolean } from 'mathjs';
 export function correctKey(allowedLengths: number[], min: number, max: number): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {  
     const valueInpt: string =  control.value;
@@ -45,12 +46,47 @@ export function isPermutationAbc(Zn: number): ValidatorFn {
   }
 }
 
-export function isPermutationNum(Zn: number): ValidatorFn {
+export function isPermutationNum(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     let setNum: Set<string> = new Set<string>();
     control.value.split(',').forEach(element => {
       setNum.add(element);
     });
-    return setNum.size != Zn || !setNum.has('25')? {incorrectKey: {value: control.value}} : null;
+    console.log(setNum.size, control.value.split(',').length , setNum.has(control.value.split(',').length.toString()));
+    return setNum.size != control.value.split(',').length || !setNum.has(control.value.split(',').length.toString())? {incorrectKey: {value: control.value}} : null;
   }
+}
+export function correctKeyHill(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    let mtx = control.value.split(',').map(Number);
+    return !checkDiv(calDet(mtx))? {incorrectKey: {value: control.value}} : null;
+  }
+}
+function calDet(mtx: number[]): number{
+  let n: number = Math.sqrt(mtx.length);
+  if(!isInt(n.toString())){
+    return 0;
+  }
+  let auxMax: number[][] = new Array(n);
+
+for (var i = 0; i < n; i++) {
+    auxMax[i] = new Array(n);
+}
+
+  if(n != 1){
+    for (let i = 0; i < n; i++) {
+      for (let j = 0; j < n; j++) {
+        auxMax[i][j] = mtx[i*n +j];
+      }
+      
+    }
+  }else{
+    return 0;
+    
+  }
+  console.log(math.det(auxMax));
+  return math.det(auxMax);
+}
+function checkDiv(det: number): boolean{
+  return det%2 == 0?false:true;
 }

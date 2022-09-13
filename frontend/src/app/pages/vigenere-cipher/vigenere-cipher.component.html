@@ -9,7 +9,7 @@
                          class="textkey form-control" 
                          formControlName="key"
                          [ngClass]="{'plainTextError' : key.invalid && key.dirty}"
-                         (ngModelChange)="forceUpperCase()"
+                         (keyup)="forceUpperCase()"
                          ></textarea>
 
                     </div>
@@ -25,6 +25,7 @@
                      class="texrtocr form-control"
                      formControlName="plainText"
                      [ngClass]="{'plainTextError' : plainText.invalid && plainText.dirty}"
+                     (keyup)="updateValidators()"
                      ></textarea>
                 </div>
                 <div class="col-sm-6 col-lg-5 mr-auto ml-auto submit">
