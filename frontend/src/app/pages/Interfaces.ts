@@ -47,3 +47,12 @@ export interface hillAttackerResponse{
     error: boolean;
     typeError: string;
 }
+export interface substitutionAttackerResponse{
+    analysis:{
+        bigrams:[string, number[]],
+        letters:[string, number],
+        trigrams: [string, number[]]
+    }
+    error: boolean;
+    typeError: string;
+}

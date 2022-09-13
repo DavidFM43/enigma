@@ -17,35 +17,63 @@
                 </div>   
         </div>
     
-        <div class="row"  *ngIf="submitted">
-            <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
-                <div ><h3 class="mb-3">Decipher text</h3></div>
+        <div class="row tests" *ngIf="submitted">
+
+          <div class="col-sm-6 col-lg-5 mr-auto ml-auto test" style="margin-right: 10px;">
+            <h2>Bigrams</h2>
+            <div class="row" class="col-sm-12 col-lg-10 mr-auto ml-auto">
+              <ng-container *ngFor="let mnt of resp.analysis.bigrams | slice:0:limitMntsBi; let i = index"><!--  -->
+                <div class="row">
+                  <ng-container *ngFor="let mntr of resp.analysis.bigrams | slice:i*3:i*3 + getShiftBi(i); let j = index">
+  
+                  <div class="col-sm-4 col-lg-4 mr-auto ml-auto">
+                    {{i*3 + j + 1}}: {{resp.analysis.bigrams[i*3 + j][0]}},{{resp.analysis.bigrams[i*3 + j][1]}}
+                  </div>
+                </ng-container>
+                </div>
+                
+              </ng-container>
+          </div>
+
+          
+          </div>
+          <div class="col-sm-6 col-lg-5 mr-auto ml-auto test" style="margin-right: 10px;">
+            <h2>Letters</h2>
+            <div class="row" class="col-sm-12 col-lg-10 mr-auto ml-auto">
+               <ng-container *ngFor="let mnt of resp.analysis.letters| slice:0:limitMntsLet; let i = index">
+                  <!--  -->
+                  <div class="row">
+                     <ng-container *ngFor="let mntr of resp.analysis.letters| slice:i*3:i*3 + getShiftLet(i); let j = index">
+                        <div class="col-sm-4 col-lg-4 mr-auto ml-auto">
+                           {{i*3 + j + 1}}: {{resp.analysis.letters[i*3 + j][0]}},{{resp.analysis.letters[i*3 + j][1]}}
+                        </div>
+                     </ng-container>
+                  </div>
+               </ng-container>
             </div>
-            
-    
-            <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
-                <tab heading="">
-                    <div class="table-responsive">
-                      <table class="table tablesorter" id="plain-table">
-                        <thead class="text-danger">
-                          <tr>
-                            <th class="header tr-center">Key</th>
-                            <th class="header tr-center">Text Decryption Options</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                            <ng-container *ngFor="let opt of options; let i = index">
-                                <tr>
-                                    <td class="tr-center">{{i}}</td>
-                                    <td class="tr-center">{{opt}}</td>
-                                  </tr>
-                            </ng-container>
-                        </tbody>
-                      </table>
-                    </div>
-                  </tab>
-            </div>
+         </div>
         </div>
-        
+        <div class="row tests" *ngIf="submitted">
+
+          <div class="col-sm-6 col-lg-5 mr-auto ml-auto test" style="margin-right: 10px;">
+            <h2>Bigrams</h2>
+            <div class="row" class="col-sm-12 col-lg-10 mr-auto ml-auto">
+              <ng-container *ngFor="let mnt of resp.analysis.trigrams | slice:0:limitMntsTri; let i = index"><!--  -->
+                <div class="row">
+                  <ng-container *ngFor="let mntr of resp.analysis.trigrams | slice:i*3:i*3 + getShiftTri(i); let j = index">
+  
+                  <div class="col-sm-4 col-lg-4 mr-auto ml-auto">
+                    {{i*3 + j + 1}}: {{resp.analysis.trigrams[i*3 + j][0]}},{{resp.analysis.trigrams[i*3 + j][1]}}
+                  </div>
+                </ng-container>
+                </div>
+                
+              </ng-container>
+          </div>
+
+          
+          </div>
+         
+        </div>
     </div>
-    </form>
+</form>

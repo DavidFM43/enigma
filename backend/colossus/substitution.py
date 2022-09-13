@@ -51,5 +51,9 @@ def decrypt_r():
 def attack_r():
     request_data = request.get_json()
     cipher_text: str = request_data["cipherText"]
+    error = False
+    typeError = ""
 
-    return jsonify(attack(cipher_text))
+    response_dict = {"analysis": attack(cipher_text), "error": error, "typeError": typeError}
+
+    return dumps(response_dict)

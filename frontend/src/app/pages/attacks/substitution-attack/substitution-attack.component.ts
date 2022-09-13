@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { shiftAttackerResponse } from '../../Interfaces';
+import { shiftAttackerResponse, substitutionAttackerResponse } from '../../Interfaces';
 import { ConnectionService } from '../../services/connection.service';
 import { NormalizerService } from '../../services/normalizer.service';
 
@@ -13,6 +13,7 @@ export class SubstitutionAttackComponent implements OnInit {
 
   public arguments: FormGroup;
   public submitted: boolean;
+  public resp: substitutionAttackerResponse;
 
   constructor(private connection: ConnectionService, private normalizer: NormalizerService) {
     this.arguments = new FormGroup(
@@ -22,6 +23,7 @@ export class SubstitutionAttackComponent implements OnInit {
       }
     )
     this.submitted = false;
+    this.resp = null;
    }
 
   ngOnInit(): void {
@@ -38,9 +40,9 @@ export class SubstitutionAttackComponent implements OnInit {
   attack():void{
     let normalizedText: string =  this.normalizer
     .setplainText(this.arguments.get('plainText').value);
-    this.connection.substitutionAttack(normalizedText).subscribe((ans:shiftAttackerResponse) => {
+    this.connection.substitutionAttack(normalizedText).subscribe((ans:substitutionAttackerResponse) => {
       if (!ans.error) {
-       //this.options = ans.options;
+        this.resp = ans;
       }
       this.submitted = true;
   });
@@ -48,6 +50,29 @@ export class SubstitutionAttackComponent implements OnInit {
 
   get plainText(): AbstractControl{
     return this.arguments.get('plainText');
+  }
+
+  get limitMntsBi(): number{
+    return Math.ceil(this.resp.analysis.bigrams.length/3)
+  }
+
+  getShiftBi(i): number{
+    return i*3 + 3 <= this.resp.analysis.bigrams.length ? 3 : this.resp.analysis.bigrams.length - i*3
+  }
+  get limitMntsLet(): number{
+    return Math.ceil(this.resp.analysis.letters.length/3)
+  }
+
+  getShiftLet(i): number{
+    return i*3 + 3 <= this.resp.analysis.letters.length ? 3 : this.resp.analysis.letters.length - i*3
+  }
+
+  get limitMntsTri(): number{
+    return Math.ceil(this.resp.analysis.trigrams.length/3)
+  }
+
+  getShiftTri(i): number{
+    return i*3 + 3 <= this.resp.analysis.trigrams.length ? 3 : this.resp.analysis.trigrams.length - i*3
   }
 
 }
