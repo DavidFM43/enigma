@@ -87,7 +87,7 @@ def index_of_coincidence(cipher_text: str):
     # substrings must be of length of at least 2
     max_word_size = 1
     # key size must be less than 8
-    while len(cipher_text) // max_word_size > 2 and max_word_size < 8:
+    while len(cipher_text) // max_word_size > 1 and max_word_size < 8:
         max_word_size += 1
 
     for k in range(1, max_word_size + 1):

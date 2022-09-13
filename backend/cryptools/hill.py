@@ -11,20 +11,20 @@ from sympy import Matrix
 from sympy.matrices.common import NonInvertibleMatrixError
 
 
-def encrypt_image(img_arr: np.ndarray, key):
+def encrypt_image(img_arr, key):
     """
-    Encrypts an image `img_arr` in the form of Numpy NDarray
-    with a invertible matrix `key` using the Hill cipher.
+    Encrypts an image `img_file` in the form of a numpy NDarray with a invertible matrix `key`
+    using the Hill cipher.
 
     Returns the encrypted image array of the same shape.
     """
     return encrypt(img_arr.flatten(), key, 256).astype(np.uint8).reshape(*img_arr.shape)
 
 
-def decrypt_image(img_arr: np.ndarray, key):
+def decrypt_image(img_arr, key):
     """
-    Decrypts an image `img_arr` in the form of Numpy NDarray
-    with a invertible matrix `key` using the Hill cipher.
+    Decrypts an image `img_file` in the form of a numpy NDarray with a invertible matrix `key`
+    using the Hill cipher.
 
     Returns the original image array.
     """
@@ -148,12 +148,11 @@ if __name__ == "__main__":
         """,
     )
 
-    img = Image.open(request.urlopen(img_url))
+    img_file = request.urlopen(img_url)
 
     # img.show()
 
-    img_arr = np.array(img)
     key = [[11, 8], [3, 7]]
-    encrypted_img_arr = encrypt_image(img_arr, key)
+    encrypted_img_arr = encrypt_image(img_file, key)
 
-    # Image.fromarray(encrypted_img_arr).show()
+    Image.fromarray(encrypted_img_arr).show()
