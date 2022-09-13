@@ -57,8 +57,8 @@ def encrypt(data: list, key: list[list], mod: int):
         Matrix(key).inv_mod(mod)
     except NonInvertibleMatrixError:
         return False
-    
-    #Partición de la cadena y solución del sistema
+
+    # Partición de la cadena y solución del sistema
     m = len(key)
     key = np.array(key)
 
@@ -92,30 +92,59 @@ def decrypt(data: np.ndarray, key, mod):
 
     return np.concatenate(ys)
 
+
 def attack(cipher_text: str, plain_text: str, m: int) -> list[list]:
     """
     Función para que retorna la llave del cripto sistema Hill
     """
 
-    #codificación a numeros
+    # codificación a numeros
     cipher_text, plain_text = str2int(cipher_text.lower()), str2int(plain_text)
-    
 
     """
     Condición para poder formar la matriz cuadrada
     Función para dejar la lista para formar la matriz cuadrada
     """
-    if len(plain_text)// m < m: return "No se puede formar la matriz cuadrada, intente con otro m" 
+    if len(plain_text) // m < m:
+        return "No se puede formar la matriz cuadrada, intente con otro m"
 
-    def square(lst: list)->list[int]:#como se pued mejorar eso para no hacer una funcion
+    def square(
+        lst: list,
+    ) -> list[int]:  # como se pued mejorar eso para no hacer una funcion
         l = list()
-        for i in range(0, m*m):
+        for i in range(0, m * m):
             l.append(lst[i])
         return l
+
     cipher_text, plain_text = square(cipher_text), square(plain_text)
 
 
-    #exist inverse
+def attack(cipher_text: str, plain_text: str, m: int) -> list[list]:
+    """
+    Función para que retorna la llave del cripto sistema Hill
+    """
+
+    # codificación a numeros
+    cipher_text, plain_text = str2int(cipher_text.lower()), str2int(plain_text)
+
+    """
+    Condición para poder formar la matriz cuadrada
+    Función para dejar la lista para formar la matriz cuadrada
+    """
+    if len(plain_text) // m < m:
+        return "No se puede formar la matriz cuadrada, intente con otro m"
+
+    def square(
+        lst: list,
+    ) -> list[int]:  # como se pued mejorar eso para no hacer una funcion
+        l = list()
+        for i in range(0, m * m):
+            l.append(lst[i])
+        return l
+
+    cipher_text, plain_text = square(cipher_text), square(plain_text)
+
+    # exist inverse
     try:
         inv_plain_text = Matrix(np.array(plain_text).reshape(m, m)).inv_mod(26)
     except NonInvertibleMatrixError:
@@ -126,9 +155,10 @@ def attack(cipher_text: str, plain_text: str, m: int) -> list[list]:
     cipher_text = plain_text * K
     """
     # Producto con la inversa
-    key = (inv_plain_text @ Matrix(np.array(cipher_text).reshape(m,m)) ) %26 
+    key = (inv_plain_text @ Matrix(np.array(cipher_text).reshape(m, m))) % 26
 
     return list(key)
+
 
 if __name__ == "__main__":
     import re
@@ -147,7 +177,7 @@ if __name__ == "__main__":
         """,
     )
 
-    img= Image.open(request.urlopen(img_url))
+    img = Image.open(request.urlopen(img_url))
     img_arr = np.array(img)
 
     img.show()

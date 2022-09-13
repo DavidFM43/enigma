@@ -1,7 +1,7 @@
 from PIL import Image
 import numpy as np
 from flask import Blueprint, request, send_file
-from cryptools.hill import encrypt_image, decrypt_image 
+from cryptools.hill import encrypt_image, decrypt_image
 from werkzeug.utils import secure_filename
 from json import dumps
 
@@ -14,14 +14,14 @@ bp = Blueprint("hill", __name__, url_prefix="/hill")
 def encrypt_r():
     """
     This route receives an image file `img` and a key `key` over the request,
-    saves it locally, encrypts the image, and overwrites the original image with 
+    saves it locally, encrypts the image, and overwrites the original image with
     the encrypted image, before sending it as a response.
     """
     data = request.get_json()
 
     if data is not None:
         key = data["key"]
-        img = request.files["img"] 
+        img = request.files["img"]
 
         # save image locally
         if img.filename is not None:
@@ -30,7 +30,7 @@ def encrypt_r():
             f_local_path = "/imgs/img.jpg"
 
         img.save(f_local_path)
-        
+
         # open image, cast to numpy array and encrypt
         cipher_image_arr = encrypt_image(np.array(img.open(f_local_path)), key)
 
@@ -47,14 +47,14 @@ def encrypt_r():
 def decrypt_r():
     """
     This route receives an image file `img` and a key `key` over the request,
-    saves it locally, decrypts the image, and overwrites the cipher image with 
+    saves it locally, decrypts the image, and overwrites the cipher image with
     the decrypted image, before sending it as a response.
     """
     data = request.get_json()
 
     if data is not None:
         key = data["key"]
-        img = request.files["img"] 
+        img = request.files["img"]
 
         # save image locally
         if img.filename is not None:
@@ -63,7 +63,7 @@ def decrypt_r():
             img_local_path = "/imgs/img.jpg"
 
         img.save(img_local_path)
-        
+
         # open image, cast to numpy array and encrypt
         cipher_image_arr = decrypt_image(np.array(img.open(img_local_path)), key)
 
@@ -73,7 +73,7 @@ def decrypt_r():
         return send_file(img_local_path)
 
     # bad request
-    return dumps({'success': False}), 400
+    return dumps({"success": False}), 400
 
 
 @bp.route("/attack", methods=["POST"])

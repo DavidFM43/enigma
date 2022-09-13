@@ -1,17 +1,17 @@
 from flask import Blueprint, request
 from json import dumps
-from cryptools.affine import encrypt, decrypt, attack
+from cryptools.permutation import encrypt, decrypt
 
 
-"""Affine cipher routes"""
-bp = Blueprint("affine", __name__, url_prefix="/affine")
+"""Permutation cipher routes"""
+bp = Blueprint("permutation", __name__, url_prefix="/permutation")
 
 
 @bp.route("/encrypt", methods=["POST"])
 def encrypt_r():
     """
-    Affine cipher encryption route.
-    Receives plain text and key as request arguments
+    Permutation cipher encryption route.
+    Receives plain text and key as request argumentss
     Returns JSON with cipher text and if needed error information.
     """
     request_data = request.get_json()
@@ -24,7 +24,7 @@ def encrypt_r():
 
     if not cipher_text:
         error = True
-        typeError = "First integer is not relatively prime with 26."
+        typeError = "No se puede dividir la cadena en m subcadenas de tamaño m"
         cipher_text = ""
 
     response_dict = {"cipherText": cipher_text, "error": error, "typeError": typeError}
@@ -35,7 +35,7 @@ def encrypt_r():
 @bp.route("/decrypt", methods=["POST"])
 def decrypt_r():
     """
-    Substitution cipher decryption route.
+    Permutation cipher decryption route.
     Receives cipher text and key as request arguments
     Returns JSON with cipher text and if needed error information.
     """
@@ -49,7 +49,7 @@ def decrypt_r():
 
     if not plain_text:
         error = True
-        typeError = "First integer is not relatively prime with 26."
+        typeError = "No se puede dividir la cadena en subcadenas de tamaño n"
         plain_text = ""
 
     response_dict = {"decipherText": plain_text, "error": error, "typeError": typeError}
@@ -57,14 +57,6 @@ def decrypt_r():
     return dumps(response_dict)
 
 
-@bp.route("/attack/", methods=["POST"])
+@bp.route("/attack/", methods=["GET"])
 def attack_r():
-    """
-    This route receives a `plain_text` JSON
-    and returns some possible texts.
-    """
-
-    request_data = request.get_json()
-    plain_text: str = request_data["plainText"]
-
-    return dumps(attack(plain_text))
+    return dumps({})
