@@ -82,7 +82,10 @@ def attackNoKey():
     request_data = request.get_json()
     cipher_text: str = request_data["cipherText"]
 
-    return dumps( {"ioc":index_of_coincidence(cipher_text), "kasiski": kasiski_test(cipher_text)})
+    error = False
+    typeError = ""
+    return dumps( {"ioc":index_of_coincidence(cipher_text), "kasiski": kasiski_test(cipher_text),
+                    "error" : error, "typeError": typeError })
 
 @bp.route("/attack/key", methods=["POST"])
 def attackKey():
