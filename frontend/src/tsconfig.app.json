@@ -7,6 +7,5 @@
   "exclude": [
     "test.ts",
     "**/*.spec.ts",
-    "/assets/imgs/img.png"
   ]
 }

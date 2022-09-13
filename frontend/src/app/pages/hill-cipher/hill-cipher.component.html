@@ -25,7 +25,7 @@
             </div>
             
     
-            <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+            <div class="col-sm-12 col-lg-10 mr-auto ml-auto" style="text-align: center;">
                 <div style="text-align: center; margin-top: 10px;">
                     <ng-container *ngIf="file == null; else elseUploadrer">
                         <label for="file-upload-adder">
@@ -41,12 +41,12 @@
                 
                         <img id="file" [src]="fileUrl">
 
-                        <button
+                        <button (click)="removeFile()"
                         class="btn btn-primary btn-icon btn-round mr-1"
                         type="button"
                       >
-                        <i class="fa-solid fa-xmark"(click)="removeFile()"> </i>
-                      </button>
+                        <i class="fa-solid fa-xmark"> </i>
+                      </button >
                 
                     </ng-template>
                 
@@ -88,7 +88,7 @@
             </div>
             
     
-            <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+            <div class="col-sm-12 col-lg-10 mr-auto ml-auto" style="text-align: center;">
                 <img class="img-fluid rounded shadow" [src]="pathEncryptedImage">
             </div>
         </div>

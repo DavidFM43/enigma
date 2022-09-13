@@ -97,7 +97,7 @@ export class HillCipherComponent implements OnInit {
     this.encrypted = false;
     this.file = null;
     this.notAdmit = false;
-    this.pathEncryptedImage = ";"
+    this.pathEncryptedImage = "";
     console.log(this.file);
   }
 
