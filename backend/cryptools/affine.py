@@ -89,6 +89,8 @@ def attack(plain_cipher: str) -> str:
     a = 0
     c = 0
     textos = list()
+
+    ayuda = 0 
     # Proceso para la segunda conjetura
     while True:
         while True:
@@ -103,6 +105,10 @@ def attack(plain_cipher: str) -> str:
                 frecuency_text = {i: plain_cipher.count(i) for i in set(plain_cipher)}
                 frecuency_text.pop(letter_input)
                 c = 0
+
+            if ayuda == 8: 
+                frecuency_text = {i: plain_cipher.count(i) for i in set(plain_cipher)}
+                
 
             p, q = alphabet.index(letter.lower()), alphabet.index(letter_input.lower())
 
