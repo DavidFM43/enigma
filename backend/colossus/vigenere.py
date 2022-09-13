@@ -89,9 +89,6 @@ def attackNoKey():
 
 @bp.route("/attack/key", methods=["POST"])
 def attackKey():
-
-@bp.route("/attack", methods=["POST"])
-def attack_r():
     """
     This route receives a `cipher_text` and `key_size` from the request's JSON
     and returns a possible key.
