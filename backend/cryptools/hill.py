@@ -6,7 +6,7 @@ Key must be a matrix in Z^{m x m}.
 import numpy as np
 from urllib import request
 from PIL import Image
-from util import str2int, int2str
+from .util import str2int, int2str
 from sympy import Matrix
 from sympy.matrices.common import NonInvertibleMatrixError
 

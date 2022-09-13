@@ -1,4 +1,4 @@
-from hill import attack
+from .hill import attack
 
 
 def encrypt(plain_text: str, key: list[int]) -> str:

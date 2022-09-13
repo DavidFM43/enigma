@@ -2,7 +2,7 @@
 Shift cipher
 `key` must be an integer from Z_26.
 """
-from util import char2int, int2char
+from .util import char2int, int2char 
 
 
 def encrypt(plain_text: str, k: int) -> str:

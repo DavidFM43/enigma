@@ -5,7 +5,7 @@ relatively prime with 26
 """
 from typing import Tuple, Union
 from math import gcd
-from util import char2int, int2char, probs
+from .util import char2int, int2char, probs
 import string
 import math
 
@@ -117,18 +117,14 @@ def attack(plain_cipher: str) -> str:
             if math.gcd(x, 26) > 1:
                 break
 
-            textos.append(decrypt(plain_cipher, [x, y]))
+            textos.append([decrypt(plain_cipher, [x, y]), [x,y]])
             a += 1
-            if a == 4:
+            if a == 2:
                 return textos
 
 
 if __name__ == "__main__":
     assert encrypt("hot", (7, 3)) == "AXG"
     assert decrypt("AXG", (7, 3)) == "hot"
-
     cadena = "FMXVEDKAPHFERBNDKRXRSREFMORUDSDKDVSHVUFEDKAPRKDLYEVLRHHRH"
     p = attack(cadena)
-
-    for i in p:
-        print(i)
