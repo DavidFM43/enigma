@@ -41,6 +41,10 @@ export class ConnectionService {
     return this.http.post(this.baseUrl + '/affine/decrypt', { key: keys, cipherText : cipherText})
     .pipe( catchError(this.handleError));
   }
+  affineAttack( cipherText: string){
+    return this.http.post(this.baseUrl + '/affine/attack', { cipherText : cipherText})
+    .pipe( catchError(this.handleError));
+  }
   //substitution
   substitutionEncrypt(key: string, plainText: string){
     return this.http.post(this.baseUrl + '/substitution/encrypt', { key: key, plainText : plainText})

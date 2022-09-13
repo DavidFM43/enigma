@@ -1,1 +1,41 @@
-<p>affine-attack works!</p>
+<form [formGroup]="arguments" >
+    <div class="container">
+        <div class="row">
+                <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+                    <textarea placeholder="Text to cipher"
+                     class="texrtocr form-control"
+                     formControlName="plainText"
+                     [ngClass]="{'plainTextError' : plainText.invalid && plainText.dirty}"
+                     ></textarea>
+                </div>
+                <div class="col-sm-12 col-lg-10 mr-auto ml-auto submit">
+                    <button type="button"
+                 class="btn btn-primary" 
+                 (click)="attack()"
+                 [disabled]="!arguments.valid">
+                 Decrypt</button>
+                </div>   
+        </div>
+    
+        <div class="row"  *ngIf="submitted">
+            <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+                <div ><h3 class="mb-3">Decipher text</h3></div>
+            </div>
+            
+    
+            <div class="col-sm-8 col-lg-10 mr-auto ml-auto test" style="margin-right: 10px;">
+                <div class="row" class="col-sm-8 col-lg-10 mr-auto ml-auto">
+                  <h4>Possible Text:</h4>
+                  <div>            {{options[0]}}
+                  </div>
+                </div>
+
+                <div class="row" class="col-sm-8 col-lg-10 mr-auto ml-auto">
+                  <h4>Possible key:</h4>
+                  {{options[1][0]}}, {{options[1][1]}}
+                </div>
+              </div>
+        </div>
+        
+    </div>
+    </form>
