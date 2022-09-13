@@ -42,3 +42,8 @@ export interface affineAttackerResponse{
     error: boolean;
     typeError: string;
 }
+export interface hillAttackerResponse{
+    options:[string, number[]]
+    error: boolean;
+    typeError: string;
+}

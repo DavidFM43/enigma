@@ -100,6 +100,10 @@ export class ConnectionService {
       observe: 'events'
     }).pipe( catchError(this.handleError));
   }
+  hillAttack(cipherText: string, plainText: string, matrixSize: number){
+    return this.http.post(this.baseUrl + '/hill/attack', { matrixSize:matrixSize, plainText: plainText ,cipherText : cipherText})
+    .pipe( catchError(this.handleError));
+  }
   /*
   seeAll(first: number, last: number){
     return this.http.get(this.baseUrl + `seeAll?first=${first}&last=${last}`)

@@ -35,6 +35,7 @@ import { ShiftAttackComponent } from './attacks/shift-attack/shift-attack.compon
 import { AffineAttackComponent } from './attacks/affine-attack/affine-attack.component';
 import { SubstitutionAttackComponent } from './attacks/substitution-attack/substitution-attack.component';
 import { VigenereAttackComponent } from './attacks/vigenere-attack/vigenere-attack.component';
+import { HillAttackComponent } from './attacks/hill-attack/hill-attack.component';
 
 @NgModule({
   imports: [
@@ -73,7 +74,8 @@ import { VigenereAttackComponent } from './attacks/vigenere-attack/vigenere-atta
     ShiftAttackComponent,
     AffineAttackComponent,
     SubstitutionAttackComponent,
-    VigenereAttackComponent, 
+    VigenereAttackComponent,
+    HillAttackComponent
   ],
   exports: [
     IndexComponent,

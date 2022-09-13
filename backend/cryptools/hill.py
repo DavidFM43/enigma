@@ -160,7 +160,7 @@ def attack(cipher_text: str, plain_text: str, m: int) -> tuple[list[list], bool,
     Función para dejar la lista para formar la matriz cuadrada
     """
     if len(plain_text) // m < m:
-        return [], True, "No se puede formar la matriz cuadrada, intente con otro m"
+        return [], True, "Cannot form the square matrix, try another m"
 
     def square(lst: list) -> list[int]:
         l = list()
@@ -174,7 +174,7 @@ def attack(cipher_text: str, plain_text: str, m: int) -> tuple[list[list], bool,
     try:
         inv_plain_text = Matrix(np.array(plain_text).reshape(m, m)).inv_mod(26)
     except NonInvertibleMatrixError:
-        return [], True, "The matrix is not invertible."
+        return [], True, "The matrix is not invertible"
 
     """
     Sistema en Z_26:
