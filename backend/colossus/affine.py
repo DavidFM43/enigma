@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from json import dumps
-from cryptools.affine import encrypt, decrypt
+from cryptools.affine import encrypt, decrypt, attack
 
 
 """Affine cipher routes"""
@@ -57,6 +57,17 @@ def decrypt_r():
     return dumps(response_dict)
 
 
-@bp.route("/attack/", methods=["GET"])
+@bp.route("/attack/", methods=["POST"])
 def attack_r():
-    return dumps({})
+    """
+    This route receives a `plain_text` JSON
+    and returns some possible texts.
+    """
+
+    request_data = request.get_json()
+    plain_text: str = request_data["plainText"]
+    
+
+    return dumps(
+       attack(plain_text)
+    )
