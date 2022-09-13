@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 from json import dumps
 from cryptools.permutation import encrypt, decrypt
+from cryptools.hill import attack
 
 
 """Permutation cipher routes"""
@@ -59,4 +60,19 @@ def decrypt_r():
 
 @bp.route("/attack/", methods=["GET"])
 def attack_r():
-    return dumps({})
+    """
+    This route receives a `cipher_text`, `plain_text` and ` m := matrix size ` from the request's JSON
+    and returns a possible key.
+    """
+
+    request_data = request.get_json()
+    cipher_text: str = request_data["cipherText"]
+    plain_text: str = request_data["plainText"]
+    m: int = request_data[" matrixSize"]
+
+    possible_key = attack(cipher_text, plain_text, m)
+
+
+    return dumps(
+        {"possible_key": possible_key}
+    )
