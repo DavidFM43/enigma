@@ -18,28 +18,74 @@
        Guess Key Size</button>
       </div>
       </div>
-       <div class="col-sm-6 col-lg-5 mr-auto ml-auto submit">
+       
+       <div class="row tests" *ngIf="respNoKey != null">
+
+        <div class="col-sm-6 col-lg-5 mr-auto ml-auto test" style="margin-right: 10px;">
+          <h2>Kasiski Test</h2>
+          <div class="row" class="col-sm-12 col-lg-10 mr-auto ml-auto">
+            <h4>Most Common Trigram:</h4>
+            <div>            {{respNoKey.kasiski.trg.join("")}}
+            </div>
+          </div>
+          <div class="row" class="col-sm-12 col-lg-10 mr-auto ml-auto">
+            <h4>Positions in the text:</h4>
+            <div>
+              {{respNoKey.kasiski.trg_indices}}
+            </div>
+            
+          </div>
+          <div class="row" class="col-sm-12 col-lg-10 mr-auto ml-auto">
+            <h4>Guess:</h4>
+            {{respNoKey.kasiski.m_kasiski}}
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-5 mr-auto ml-auto test">
+          <h2>Index Of Coincidence</h2>
+          <div class="row" class="col-sm-12 col-lg-10 mr-auto ml-auto">
+            <h4>Mean index of confidence per substrings of size k:</h4>
+            <ng-container *ngFor="let mnt of respNoKey.ioc.mean_iocs | slice:0:limitMnts; let i = index"><!--  -->
               <div class="row">
-                <div class="col-sm-6 col-lg-5 ml-auto mr-auto">
-                    <div [ngClass]="keySize.invalid && keySize.dirty ? 'form-group has-danger' :'input-group'">
-                        <input
-                        class="form-control"
-                        placeholder="Key Size"
-                        type="text"
-                        autofocus
-                        formControlName="keySize"
-                        />
-                        <ng-template [ngIf]="!keySize.invalid || !keySize.dirty">
-                            <div class="input-group-append">
-                                <span class="input-group-text">
-                                    <i class="tim-icons icon-lock-circle"> </i>
-                                </span>
-                                </div>
-                        </ng-template>
-                    </div>
-                </div>              
-      </div>
+                <ng-container *ngFor="let mntr of respNoKey.ioc.mean_iocs | slice:i*3:i*3 + getShift(i); let j = index">
+
+                <div class="col-sm-4 col-lg-4 mr-auto ml-auto">
+                  {{i*3 + j + 1}}: {{respNoKey.ioc.mean_iocs[i*3 + j]}}
+                </div>
+              </ng-container>
+              </div>
+              
+            </ng-container>
+          </div>
+          <div class="row" class="col-sm-12 col-lg-10 mr-auto ml-auto">
+            <h4>Size with highest mean index of confidence:</h4>
+            {{respNoKey.ioc.m_ioc}}
+          </div>
+        </div>
+
        </div>
+       <div class="col-sm-6 col-lg-5 mr-auto ml-auto submit">
+        <div class="row">
+          <div class="col-sm-8 col-lg-6 ml-auto mr-auto">
+              <div [ngClass]="keySize.invalid && keySize.dirty ? 'form-group has-danger' :'input-group'">
+                  <input
+                  class="form-control"
+                  placeholder="Key Size"
+                  type="text"
+                  autofocus
+                  formControlName="keySize"
+                  />
+                  <ng-template [ngIf]="!keySize.invalid || !keySize.dirty">
+                      <div class="input-group-append">
+                          <span class="input-group-text">
+                              <i class="tim-icons icon-lock-circle"> </i>
+                          </span>
+                          </div>
+                  </ng-template>
+              </div>
+          </div>              
+</div>
+ </div>
       <div class="row">
         <div class="col-sm-6 col-lg-5 mr-auto ml-auto submit">
 
@@ -50,9 +96,9 @@
         Attack</button>
       </div>
       </div>  
-      <div class="row"  *ngIf="submitted">
+      <div class="row"  *ngIf="submitted && respKey != null">
           <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
-              <div ><h3 class="mb-3">{{resposeDymcMess}} text</h3></div>
+              <div ><h3 class="mb-3">Possible Decipher Text</h3></div>
           </div>
           
   
@@ -60,7 +106,7 @@
               <blockquote>
   
                   <p class="blockquote blockquote-danger">
-                    {{ cipherText }}
+                    {{ respKey.possiblePlainText }}
                   </p>
                 </blockquote>
           </div>

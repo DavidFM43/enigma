@@ -11,11 +11,12 @@
     border-radius: 0.4285rem;
     padding: 10px;
     margin-top: 1rem;
-    margin-bottom: 1rem;
     min-height: 10rem;
 }
 .submit{
     text-align: center;
+    margin-top: 10px;
+
 }
 .plainTextError{
     border: 0.09rem solid #f33620 !important;
@@ -29,4 +30,13 @@
 }
 .input-group, .form-group{
     margin-top: 10px;
+}
+.test{
+    background-color: #171941;
+    border-radius: 0.4285rem;
+    padding: 20px;
+    margin-top: 10px;
+}
+.tests h4{
+    margin-bottom: 0;
 }

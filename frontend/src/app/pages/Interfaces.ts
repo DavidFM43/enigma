@@ -17,19 +17,23 @@ export interface shiftAttackerResponse{
     error: boolean;
     typeError: string;
 }
-export interface vigeneretAttackerResponse{
+export interface vigenereKeyAttackResponse{
     possibleKey:string;
     possiblePlainText: string;
     error: boolean;
     typeError: string;
 }
-export interface vigeneretKasiskiResponse{
-    options:string[];
-    error: boolean;
-    typeError: string;
-}
-export interface vigeneretIocResponse{
-    options:string[];
+export interface vigenereNoKeyAttackResponse{
+    ioc:{
+        mean_iocs: number[],
+        m_ioc: number
+    },
+    kasiski:{
+        trg: string[],
+        trg_indices: number[],
+        m_kasiski: number
+
+    },
     error: boolean;
     typeError: string;
 }

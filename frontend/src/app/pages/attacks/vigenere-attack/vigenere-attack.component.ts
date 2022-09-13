@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { shiftAttackerResponse, vigeneretAttackerResponse } from '../../Interfaces';
+import { shiftAttackerResponse, vigenereKeyAttackResponse, vigenereNoKeyAttackResponse } from '../../Interfaces';
 import { ConnectionService } from '../../services/connection.service';
 import { NormalizerService } from '../../services/normalizer.service';
 
@@ -13,6 +13,8 @@ export class VigenereAttackComponent implements OnInit {
 
   public arguments: FormGroup;
   public submitted: boolean;
+  public respNoKey: vigenereNoKeyAttackResponse;
+  public respKey: vigenereKeyAttackResponse;
 
   constructor(private connection: ConnectionService, private normalizer: NormalizerService) {
     this.arguments = new FormGroup(
@@ -24,6 +26,8 @@ export class VigenereAttackComponent implements OnInit {
       }
     )
     this.submitted = false;
+    this.respKey = null;
+    this.respNoKey = null;
    }
 
   ngOnInit(): void {
@@ -32,22 +36,27 @@ export class VigenereAttackComponent implements OnInit {
   noKeyAttack():void{
     let normalizedText: string =  this.normalizer
     .setplainText(this.arguments.get('plainText').value);
-    this.connection.vigenereNoKeyAttack(normalizedText).subscribe((ans:shiftAttackerResponse) => {
+    this.connection.vigenereNoKeyAttack(normalizedText).subscribe((ans:vigenereNoKeyAttackResponse) => {
       if (!ans.error) {
-       //this.options = ans.options;
+       this.respNoKey = ans;
+       for(let i = 0; i < this.respNoKey.ioc.mean_iocs.length; i++){
+          this.respNoKey.ioc.mean_iocs[i] = parseFloat(this.respNoKey.ioc.mean_iocs[i].toFixed(3));
+       }
       }
       this.submitted = true;
+      this.respKey = null;
   });
   }
   keyAttack():void{
     let normalizedText: string =  this.normalizer
     .setplainText(this.arguments.get('plainText').value);
     this.connection.vigenereKeyAttack( parseInt(this.keySize.value)
-    ,normalizedText).subscribe((ans:vigeneretAttackerResponse) => {
+    ,normalizedText).subscribe((ans:vigenereKeyAttackResponse) => {
       if (!ans.error) {
-       //this.options = ans.options;
+       this.respKey = ans;
       }
       this.submitted = true;
+      this.respNoKey = null;
   });
   }
 
@@ -59,5 +68,12 @@ export class VigenereAttackComponent implements OnInit {
     return this.arguments.get('plainText');
   }
 
+  get limitMnts(): number{
+    return Math.ceil(this.respNoKey.ioc.mean_iocs.length/3)
+  }
+
+  getShift(i): number{
+    return i*3 + 3 <= this.respNoKey.ioc.mean_iocs.length ? 3 : this.respNoKey.ioc.mean_iocs.length - i*3
+  }
 
 }
