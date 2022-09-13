@@ -82,6 +82,7 @@ def attackNoKey():
     request_data = request.get_json()
     cipher_text: str = request_data["cipherText"]
 
+<<<<<<< HEAD
     error = False
     typeError = ""
     return dumps( {"ioc":index_of_coincidence(cipher_text), "kasiski": kasiski_test(cipher_text),
@@ -89,6 +90,10 @@ def attackNoKey():
 
 @bp.route("/attack/key", methods=["POST"])
 def attackKey():
+=======
+@bp.route("/attack", methods=["POST"])
+def attack_r():
+>>>>>>> origin/routes-hill-permutation
     """
     This route receives a `cipher_text` and `key_size` from the request's JSON
     and returns a possible key.

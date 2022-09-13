@@ -23,8 +23,16 @@ def decrypt(cipher_text: str, key: str) -> str:
 
 
 def attack(cipher_text: str):
+<<<<<<< HEAD
     return { "letters": Counter(cipher_text), "bigrams": Counter(bigrams(cipher_text)),
              "trigrams": Counter(trigrams(cipher_text))}
+=======
+    return {
+        "letters": tuple(Counter(cipher_text).items()),
+        "bigrams": tuple(Counter(bigrams(cipher_text)).items()),
+        "trigrams": tuple(Counter(trigrams(cipher_text)).items()),
+    }
+>>>>>>> origin/routes-hill-permutation
 
 
 if __name__ == "__main__":
