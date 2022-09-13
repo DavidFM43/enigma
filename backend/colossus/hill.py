@@ -1,7 +1,7 @@
 from PIL import Image
 import numpy as np
 from flask import Blueprint, request, send_file
-from cryptools.hill import encrypt_image, decrypt_image
+from cryptools.hill import encrypt_image, decrypt_image, attack
 from werkzeug.utils import secure_filename
 from json import dumps
 
@@ -78,4 +78,19 @@ def decrypt_r():
 
 @bp.route("/attack", methods=["POST"])
 def attack_r():
-    return dumps({})
+    """
+    This route receives a `cipher_text`, `plain_text` and ` m := matrix size ` from the request's JSON
+    and returns a possible key.
+    """
+
+    request_data = request.get_json()
+    cipher_text: str = request_data["cipherText"]
+    plain_text: str = request_data["plainText"]
+    m: int = request_data[" matrixSize"]
+
+    possible_key = attack(cipher_text, plain_text, m)
+
+
+    return dumps(
+        {"possible_key": possible_key}
+    )
