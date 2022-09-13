@@ -57,7 +57,8 @@ def encrypt(data: list, key: list[list], mod: int):
         Matrix(key).inv_mod(mod)
     except NonInvertibleMatrixError:
         return False
-
+    
+    #Partición de la cadena y solución del sistema
     m = len(key)
     key = np.array(key)
 
@@ -91,31 +92,30 @@ def decrypt(data: np.ndarray, key, mod):
 
     return np.concatenate(ys)
 
-
-def attack(cipher_text: str, plain_text: str, m: int) -> list[list] | str | bool:
+def attack(cipher_text: str, plain_text: str, m: int) -> list[list]:
     """
     Función para que retorna la llave del cripto sistema Hill
     """
 
-    # codificación a numeros
+    #codificación a numeros
     cipher_text, plain_text = str2int(cipher_text.lower()), str2int(plain_text)
+    
 
     """
     Condición para poder formar la matriz cuadrada
     Función para dejar la lista para formar la matriz cuadrada
     """
-    if len(plain_text) // m < m:
-        return "No se puede formar la matriz cuadrada, intente con otro m"
+    if len(plain_text)// m < m: return "No se puede formar la matriz cuadrada, intente con otro m" 
 
-    def square(lst: list) -> list[int]:
+    def square(lst: list)->list[int]:#como se pued mejorar eso para no hacer una funcion
         l = list()
-        for i in range(0, m * m):
+        for i in range(0, m*m):
             l.append(lst[i])
         return l
-
     cipher_text, plain_text = square(cipher_text), square(plain_text)
 
-    # inverse existence
+
+    #exist inverse
     try:
         inv_plain_text = Matrix(np.array(plain_text).reshape(m, m)).inv_mod(26)
     except NonInvertibleMatrixError:
@@ -125,11 +125,10 @@ def attack(cipher_text: str, plain_text: str, m: int) -> list[list] | str | bool
     Sistema en Z_26:
     cipher_text = plain_text * K
     """
-    # producto con la inversa
-    key = (inv_plain_text @ Matrix(np.array(cipher_text).reshape(m, m))) % 26
+    # Producto con la inversa
+    key = (inv_plain_text @ Matrix(np.array(cipher_text).reshape(m,m)) ) %26 
 
     return list(key)
-
 
 if __name__ == "__main__":
     import re
@@ -148,11 +147,12 @@ if __name__ == "__main__":
         """,
     )
 
-    img_file = request.urlopen(img_url)
+    img= Image.open(request.urlopen(img_url))
+    img_arr = np.array(img)
 
-    # img.show()
+    img.show()
 
     key = [[11, 8], [3, 7]]
-    encrypted_img_arr = encrypt_image(img_file, key)
+    encrypted_img_arr = encrypt_image(img_arr, key)
 
     Image.fromarray(encrypted_img_arr).show()
