@@ -2,7 +2,12 @@
 Shift cipher
 `key` must be an integer from Z_26.
 """
-from .util import char2int, int2char 
+from string import ascii_lowercase
+
+# char to int
+char2int = {x: idx for idx, x in enumerate(ascii_lowercase)}
+# int to char
+int2char = {idx: x for idx, x in enumerate(ascii_lowercase)}
 
 
 def encrypt(plain_text: str, k: int) -> str:

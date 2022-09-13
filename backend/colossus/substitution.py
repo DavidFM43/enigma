@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from json import dumps
 from cryptools.substitution import encrypt, decrypt, attack
 
@@ -52,4 +52,4 @@ def attack_r():
     request_data = request.get_json()
     cipher_text: str = request_data["cipherText"]
 
-    return dumps(attack(cipher_text))
+    return jsonify(attack(cipher_text))

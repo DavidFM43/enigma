@@ -4,10 +4,46 @@ Affine cipher.
 relatively prime with 26
 """
 from typing import Tuple, Union
+from string import ascii_lowercase
 from math import gcd
-from .util import char2int, int2char, probs
 import string
 import math
+
+
+# char to int
+char2int = {x: idx for idx, x in enumerate(ascii_lowercase)}
+# int to char
+int2char = {idx: x for idx, x in enumerate(ascii_lowercase)}
+
+# probabilty density function of the letter in the alphabet
+probs = [
+    0.082,
+    0.015,
+    0.028,
+    0.043,
+    0.127,
+    0.022,
+    0.02,
+    0.061,
+    0.07,
+    0.002,
+    0.008,
+    0.04,
+    0.024,
+    0.067,
+    0.075,
+    0.019,
+    0.001,
+    0.06,
+    0.063,
+    0.091,
+    0.028,
+    0.01,
+    0.023,
+    0.001,
+    0.02,
+    0.001,
+]
 
 
 def encrypt(plain_text: str, key: Tuple[int, int]) -> Union[str, bool]:
@@ -90,7 +126,7 @@ def attack(plain_cipher: str) -> str:
     c = 0
     textos = list()
 
-    ayuda = 0 
+    ayuda = 0
     # Proceso para la segunda conjetura
     while True:
         while True:
@@ -106,9 +142,8 @@ def attack(plain_cipher: str) -> str:
                 frecuency_text.pop(letter_input)
                 c = 0
 
-            if ayuda == 8: 
+            if ayuda == 8:
                 frecuency_text = {i: plain_cipher.count(i) for i in set(plain_cipher)}
-                
 
             p, q = alphabet.index(letter.lower()), alphabet.index(letter_input.lower())
 
@@ -123,9 +158,9 @@ def attack(plain_cipher: str) -> str:
             if math.gcd(x, 26) > 1:
                 break
 
-            textos.append([decrypt(plain_cipher, [x, y]), [x,y]])
+            textos.append([decrypt(plain_cipher, [x, y]), [x, y]])
             a += 1
-            if a == 2:
+            if a == 1:
                 return textos
 
 

@@ -17,7 +17,7 @@ def encrypt_r():
     """
     request_data = request.get_json()
     plain_text: str = request_data["plainText"]
-    key = request_data["key"]
+    key: list[int] = request_data["key"]
 
     cipher_text = encrypt(plain_text, key)
     error = False
@@ -58,7 +58,7 @@ def decrypt_r():
     return dumps(response_dict)
 
 
-@bp.route("/attack/", methods=["GET"])
+@bp.route("/attack", methods=["POST"])
 def attack_r():
     """
     This route receives a `cipher_text`, `plain_text` and ` m := matrix size ` from the request's JSON
@@ -68,11 +68,8 @@ def attack_r():
     request_data = request.get_json()
     cipher_text: str = request_data["cipherText"]
     plain_text: str = request_data["plainText"]
-    m: int = request_data[" matrixSize"]
+    m: int = request_data["matrixSize"]
 
     possible_key = attack(cipher_text, plain_text, m)
 
-
-    return dumps(
-        {"possible_key": possible_key}
-    )
+    return dumps({"possible_key": possible_key})

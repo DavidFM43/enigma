@@ -86,11 +86,14 @@ def attack_r():
     request_data = request.get_json()
     cipher_text: str = request_data["cipherText"]
     plain_text: str = request_data["plainText"]
-    m: int = request_data[" matrixSize"]
+    m: int = request_data["matrixSize"]
 
-    possible_key = attack(cipher_text, plain_text, m)
+    possible_key, error, error_type = attack(cipher_text, plain_text, m)
 
+    response_dict = {
+        "possibleKey": possible_key,
+        "error": error,
+        "typeError": error_type,
+    }
 
-    return dumps(
-        {"possible_key": possible_key}
-    )
+    return dumps(response_dict)

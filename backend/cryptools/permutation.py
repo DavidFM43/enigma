@@ -1,10 +1,7 @@
-from .hill import attack
-
-
 def encrypt(plain_text: str, key: list[int]) -> str:
     """
-    text-> str(texto para encriptar)
-    key -> list[imagenes de la permutación en orden 1,2,3,...]
+    `plain_text` -> str(texto para encriptar)
+    `key` -> list[imagenes de la permutación en orden 1,2,3,...]
 
     Retorna un texto encriptado (en mayusculas) con el cripto sistema de permutaciones
     """
