@@ -15,8 +15,13 @@ def encrypt(plain_text: str, key: str) -> str:
     """
     Encrypts a text in Vigenere cipher given a `cipher_text` and the `key`.
     """
+
     key_int = str2int(key.lower())
     plain_text_int = str2int(plain_text.lower())
+
+    if len(key_int) > len(plain_text_int):
+        raise Exception("Key length can't be greater than plain tet length.")
+
     n = ceil(len(plain_text_int) / len(key_int))
 
     return "".join(
@@ -78,7 +83,14 @@ def index_of_coincidence(cipher_text: str):
         return sum([(i - 1) * (i - 2) for i in freqs.values()]) / (n * (n - 1))
 
     mean_iocs = []
-    for k in range(1, 8):
+
+    # substrings must be of length of at least 2
+    max_word_size = 1
+    # key size must be less than 8
+    while len(cipher_text) // max_word_size > 1 and max_word_size < 8:
+        max_word_size += 1
+
+    for k in range(1, max_word_size + 1):
         # k substrings of the cipher text
         ys = [list(islice(cipher_text, i, None, k)) for i in range(k)]
         # mean of the iocs of the k substrings

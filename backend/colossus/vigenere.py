@@ -79,9 +79,7 @@ def ioc_test_r():
     return dumps(index_of_coincidence(cipher_text))
 
 
-bp.route("/attack", methods=["POST"])
-
-
+@bp.route("/attack", methods=["POST"])
 def attack_r():
     """
     This route receives a `cipher_text` and `key_size` from the request's JSON

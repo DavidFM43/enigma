@@ -66,8 +66,5 @@ def attack_r():
 
     request_data = request.get_json()
     plain_text: str = request_data["plainText"]
-    
 
-    return dumps(
-       attack(plain_text)
-    )
+    return dumps(attack(plain_text))
