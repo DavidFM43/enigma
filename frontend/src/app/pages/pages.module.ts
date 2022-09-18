@@ -30,6 +30,12 @@ import { HillCipherComponent } from './hill-cipher/hill-cipher.component';
 import { PermutationCipherComponent } from './permutation-cipher/permutation-cipher.component';
 import { VigenereCipherComponent } from './vigenere-cipher/vigenere-cipher.component';
 import { correctKey } from './shared/correct-key.directive';
+import { AttacksComponent } from './attacks/attacks/attacks.component';
+import { ShiftAttackComponent } from './attacks/shift-attack/shift-attack.component';
+import { AffineAttackComponent } from './attacks/affine-attack/affine-attack.component';
+import { SubstitutionAttackComponent } from './attacks/substitution-attack/substitution-attack.component';
+import { VigenereAttackComponent } from './attacks/vigenere-attack/vigenere-attack.component';
+import { HillAttackComponent } from './attacks/hill-attack/hill-attack.component';
 
 @NgModule({
   imports: [
@@ -63,7 +69,13 @@ import { correctKey } from './shared/correct-key.directive';
     SubstitutionCipherComponent,
     HillCipherComponent,
     PermutationCipherComponent,
-    VigenereCipherComponent, 
+    VigenereCipherComponent,
+    AttacksComponent,
+    ShiftAttackComponent,
+    AffineAttackComponent,
+    SubstitutionAttackComponent,
+    VigenereAttackComponent,
+    HillAttackComponent
   ],
   exports: [
     IndexComponent,

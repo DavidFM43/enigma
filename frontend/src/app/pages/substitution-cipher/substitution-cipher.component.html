@@ -1,27 +1,55 @@
-<form [formGroup]="arguments" (ngSubmit)="submit()">
+<form [formGroup]="arguments" >
     <div class="container">
         <div class="row justify-content-center">
            
     
-                <div class="col-sm-9 col-lg-9 ml-auto">
-                    <textarea placeholder="Key" class="textkey form-control" formControlName="key"></textarea>
+                <div class="col-sm-6 col-lg-6 ml-auto">
+                    <div [ngClass]="key.invalid && key.dirty ? 'form-group has-danger' :'input-group'">
+                        <textarea placeholder="Key"
+                         class="textkey form-control" 
+                         formControlName="key"
+                         [ngClass]="{'plainTextError' : key.invalid && key.dirty}"
+                         (keyUP)="forceUpperCase()"
+                         ></textarea>
+
+                    </div>
                 </div>
                 <div class="col-sm-3 col-lg-3 mr-auto random-btn-cont">
-                    <button type="submit" class="btn mr-1 random-btn" (click)="random()" >Random</button>
+                    <button class="btn mr-1 random-btn" (click)="random()" >Random</button>
                 </div>
                 
         </div>
         <div class="row">
                 <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
-                    <textarea placeholder="Text to cipher" class="texrtocr form-control"></textarea>
+                    <textarea placeholder="Text to cipher"
+                     class="texrtocr form-control"
+                     formControlName="plainText"
+                     [ngClass]="{'plainTextError' : plainText.invalid && plainText.dirty}"
+                     ></textarea>
+                </div>
+                <div class="col-sm-6 col-lg-5 mr-auto ml-auto submit">
+                    <button type="button"
+                 class="btn btn-primary" 
+                 (click)="encrypt()"
+                 [disabled]="!arguments.valid">
+                 Encrypt</button>
+                </div>
+                 <div class="col-sm-6 col-lg-5 mr-auto ml-auto submit">
+    
+                 <button type="button"
+                 class="btn btn-primary" 
+                 (click)="decrypt()"
+                 [disabled]="!arguments.valid">
+                 Decrypt</button>
                 </div>
                 
     
+    
         </div>
     
-        <div class="row">
+        <div class="row"  *ngIf="submitted">
             <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
-                <div class="title"><h3 class="mb-3">Cipher text</h3></div>
+                <div ><h3 class="mb-3">{{resposeDymcMess}} text</h3></div>
             </div>
             
     
@@ -29,11 +57,7 @@
                 <blockquote>
     
                     <p class="blockquote blockquote-danger">
-                      "I will be the leader of a company that ends up being worth
-                      billions of dollars, because I got the answers. I understand
-                      culture. I am the nucleus. I think thatâs a responsibility
-                      that I have, to push possibilities, to show people, this is
-                      the level that things could be at." <br />
+                      {{ cipherText }}
                     </p>
                   </blockquote>
             </div>

@@ -1,4 +1,4 @@
-<form [formGroup]="arguments" (ngSubmit)="submit()">
+<form [formGroup]="arguments" >
 <div class="container">
     <div class="row justify-content-center">
        
@@ -34,12 +34,20 @@
                  [ngClass]="{'plainTextError' : plainText.invalid && plainText.dirty}"
                  ></textarea>
             </div>
-            <div class="col-sm-12 col-lg-10 mr-auto ml-auto submit">
+            <div class="col-sm-6 col-lg-5 mr-auto ml-auto submit">
                 <button type="button"
              class="btn btn-primary" 
-             (click)="submit()"
+             (click)="encrypt()"
              [disabled]="!arguments.valid">
-             Cipher</button>
+             Encrypt</button>
+            </div>
+             <div class="col-sm-6 col-lg-5 mr-auto ml-auto submit">
+
+             <button type="button"
+             class="btn btn-primary" 
+             (click)="decrypt()"
+             [disabled]="!arguments.valid">
+             Decrypt</button>
             </div>
             
 
@@ -48,7 +56,7 @@
 
     <div class="row"  *ngIf="submitted">
         <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
-            <div ><h3 class="mb-3">Cipher text</h3></div>
+            <div ><h3 class="mb-3">{{resposeDymcMess}} text</h3></div>
         </div>
         
 

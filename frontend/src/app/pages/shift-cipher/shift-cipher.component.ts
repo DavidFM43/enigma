@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { textEncyptersReponse } from '../Interfaces';
+import { textDecyptersReponse, textEncyptersReponse } from '../Interfaces';
 import { ConnectionService } from '../services/connection.service';
 import { NormalizerService } from '../services/normalizer.service';
 import { correctKey } from '../shared/correct-key.directive';
@@ -15,6 +15,8 @@ export class ShiftCipherComponent implements OnInit {
   public arguments: FormGroup;
   public cipherText: string;
   public submitted: boolean;
+  public resposeDymcMess: string;
+
 
   constructor(private connection: ConnectionService, private normalizer: NormalizerService) {
     this.arguments = new FormGroup(
@@ -26,6 +28,7 @@ export class ShiftCipherComponent implements OnInit {
     )
     this.cipherText = '';
     this.submitted = false;
+    this.resposeDymcMess = "";
    }
 
   ngOnInit(): void {
@@ -39,13 +42,27 @@ export class ShiftCipherComponent implements OnInit {
     );
   }
 
-  submit():void{
+  encrypt():void{
     let normalizedText: string =  this.normalizer
     .setplainText(this.arguments.get('plainText').value);
-    this.connection.shift(this.arguments.get('key').value,
+    this.connection.shiftEncrypt(this.arguments.get('key').value,
      normalizedText).subscribe((ans:textEncyptersReponse) => {
       if (!ans.error) {
        this.cipherText = ans.cipherText;
+       this.resposeDymcMess = "Cipher";
+      }
+      this.submitted = true;
+  });
+  }
+
+  decrypt():void{
+    let normalizedText: string =  this.normalizer
+    .setplainText(this.arguments.get('plainText').value);
+    this.connection.shiftDecrypt(this.arguments.get('key').value,
+     normalizedText).subscribe((ans:textDecyptersReponse) => {
+      if (!ans.error) {
+       this.cipherText = ans.decipherText;
+       this.resposeDymcMess = "Decipher";
       }
       this.submitted = true;
   });

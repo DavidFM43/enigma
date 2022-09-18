@@ -2,13 +2,20 @@
     <div class="container">
         <div class="row justify-content-center">
            
-    
-                <div class="col-sm-9 col-lg-9 ml-auto">
-                    <textarea placeholder="Key" class="textkey form-control" formControlName="key"></textarea>
+            <div class="col-sm-6 col-lg-6 ml-auto">
+                <div [ngClass]="key.invalid && key.dirty ? 'form-group has-danger' :'input-group'">
+                    <textarea placeholder="Key"
+                     class="textkey form-control" 
+                     formControlName="key"
+                     [ngClass]="{'plainTextError' : key.invalid && key.dirty}"
+                     ></textarea>
+
                 </div>
-                <div class="col-sm-3 col-lg-3 mr-auto random-btn-cont">
-                    <button type="submit" class="btn mr-1 random-btn" (click)="random()" >Random</button>
-                </div>
+            </div>
+            <div class="col-sm-3 col-lg-3 mr-auto random-btn-cont">
+                <button class="btn mr-1 random-btn" (click)="random()" >Random</button>
+            </div>
+
                 
         </div>
     
@@ -18,7 +25,7 @@
             </div>
             
     
-            <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+            <div class="col-sm-12 col-lg-10 mr-auto ml-auto" style="text-align: center;">
                 <div style="text-align: center; margin-top: 10px;">
                     <ng-container *ngIf="file == null; else elseUploadrer">
                         <label for="file-upload-adder">
@@ -28,24 +35,39 @@
                                                 </div>
                                             </label>
                         <input id="file-upload-adder" accept=".pdf,image/png,image/jpeg,image/jpg" type="file" style="display: none;" (change)="addFileGroup($event)">
-                        <div *ngIf="notAdmit" class="alertForm">El tipo de archivo no es admitido o el nombre del archivo contiene puntos(.).</div>
+                        <div *ngIf="notAdmit" class="alertForm">Image name can not have points(.).</div>
                     </ng-container>
                     <ng-template #elseUploadrer>
                 
                         <img id="file" [src]="fileUrl">
 
-                        <button
+                        <button (click)="removeFile()"
                         class="btn btn-primary btn-icon btn-round mr-1"
                         type="button"
                       >
-                        <i class="fa-solid fa-xmark"(click)="removeFile()"> </i>
-                      </button>
+                        <i class="fa-solid fa-xmark"> </i>
+                      </button >
                 
                     </ng-template>
                 
-                    <div>
-                        <button type="button" class="btn btn-primary" [disabled]="file == null" (click)="detecteItem()">Cipher</button>
+
+                   <div class="row">
+                    <div class="col-sm-6 col-lg-5 mr-auto ml-auto submit">
+                        <button type="button"
+                     class="btn btn-primary" 
+                     (click)="encrypt()"
+                     [disabled]="file == null || arguments.invalid">
+                     Encrypt</button>
                     </div>
+                     <div class="col-sm-6 col-lg-5 mr-auto ml-auto submit">
+        
+                     <button type="button"
+                     class="btn btn-primary" 
+                     (click)="decrypt()"
+                     [disabled]="file == null || arguments.invalid">
+                     Decrypt</button>
+                    </div>
+                   </div>
                 
                 
                     <div style="margin-top: 10px;">
@@ -58,6 +80,16 @@
                 
                     </div>
                 </div>                
+            </div>
+        </div>
+        <div class="row"  *ngIf="encrypted">
+            <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+                <div ><h3 class="mb-3">{{resposeDymcMess}} Image</h3></div>
+            </div>
+            
+    
+            <div class="col-sm-12 col-lg-10 mr-auto ml-auto" style="text-align: center;">
+                <img class="img-fluid rounded shadow" [src]="pathEncryptedImage">
             </div>
         </div>
         

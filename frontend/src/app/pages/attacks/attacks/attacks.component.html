@@ -1,0 +1,149 @@
+<nav
+  class="navbar navbar-expand-lg fixed-top navbar-transparent"
+  color-on-scroll="100"
+  id="navbar-top"
+>
+  <div class="container">
+    <div class="navbar-translate">
+      <a class="navbar-brand" placement="bottom" [routerLink]="['/']">
+        <span> ∃nigma • </span> Crypto System
+      </a>
+      <button
+        aria-controls="navigation-index"
+        aria-label="Toggle navigation"
+        class="navbar-toggler navbar-toggler"
+        [attr.aria-expanded]="!isCollapsed"
+        (click)="isCollapsed = !isCollapsed"
+        id="navigation"
+        type="button"
+      >
+        <span class="navbar-toggler-bar bar1"> </span>
+        <span class="navbar-toggler-bar bar2"> </span>
+        <span class="navbar-toggler-bar bar3"> </span>
+      </button>
+    </div>
+    <div
+      class="navbar-collapse justify-content-end"
+      [collapse]="isCollapsed"
+      id="navigation"
+    >
+      <div class="navbar-collapse-header">
+        <div class="row">
+          <div class="col-6 collapse-brand"><a> ∃nigma • </a></div>
+          <div class="col-6 collapse-close text-right">
+            <button
+              aria-controls="navigation-index"
+              aria-label="Toggle navigation"
+              class="navbar-toggler"
+              [attr.aria-expanded]="!isCollapsed"
+              (click)="isCollapsed = !isCollapsed"
+              id="navigation"
+              type="button"
+            >
+              <i class="tim-icons icon-simple-remove"> </i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <ul class="navbar-nav">
+        <li class="nav-item p-0">
+          <a
+            class="nav-link"
+            href="https://github.com/DavidFM43/colossus"
+            placement="bottom"
+            target="_blank"
+            tooltip="Follow us on GitHub"
+          >
+            <i class="fa-brands fa-github"></i>
+            <p class="d-lg-none d-xl-none">GitHub</p>
+          </a>
+        </li>
+        <li class="dropdown nav-item" dropdown>
+          <a
+            class="dropdown-toggle nav-link dropdown-toggle"
+            data-toggle="dropdown"
+            dropdownToggle
+            href="javascript:void(0)"
+          >
+            <i class="fa fa-cogs d-lg-none d-xl-none"> </i> Getting started
+          </a>
+          <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
+            <a
+              class="dropdown-item"
+              href="https://demos.creative-tim.com/blk-design-system-angular/#/documentation/overview"
+            >
+              <i class="tim-icons icon-paper"> </i> Documentation
+            </a>
+            <a class="dropdown-item" [routerLink]="['/cipher']">
+              <i class="fa-solid fa-lock"></i> Enctypt-Decrypt
+            </a>
+            <a class="dropdown-item" [routerLink]="['/attack']">
+              <i class="fa-solid fa-bolt"></i> Attack
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Index page wrapper -->
+<div class="index-page wrapper">
+  <div class="page-header header-filter">
+    <div class="container">
+      <div class="content-center brand">
+        <h1 class="h1-seo">∃nigma•</h1>
+        <h3>Attack and Decrypt!</h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-10 ml-auto col-xl-8 mr-auto">
+    <div class="mb-3"></div>
+    <div class="card">
+      <div class="card-header">
+        <!-- Ciphers nav tabs -->
+        <tabset class="nav-tabs-danger">
+          <tab heading="Shift Cipher">
+            <app-shift-attack></app-shift-attack>
+          </tab>
+          <tab heading="Affine Cipher">
+            <app-affine-attack></app-affine-attack>
+          </tab>
+          <tab heading="Substitution Cipher">
+            <app-substitution-attack></app-substitution-attack>
+          </tab>
+          <tab heading="Hill Cipher">
+            <app-hill-attack></app-hill-attack>
+          </tab>
+          <tab heading="Permutation Cipher">
+            <app-hill-attack></app-hill-attack>
+          </tab>
+          <tab heading="Vigenère Cipher">
+            <app-vigenere-attack></app-vigenere-attack>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3"><h1 class="title">∃nigma •</h1></div>
+      <div class="col-md-9 info">
+        <h3 class="title">Follow us:</h3>
+        <div class="btn-wrapper profile">
+          <a
+            class="btn btn-icon btn-neutral btn-round btn-simple"
+            href="https://github.com/DavidFM43/colossus"
+            target="_blank"
+          >
+            <i class="fab fa-brands fa-github"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

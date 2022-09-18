@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { textDecyptersReponse, textEncyptersReponse } from '../Interfaces';
+import { ConnectionService } from '../services/connection.service';
+import { NormalizerService } from '../services/normalizer.service';
+import { correctFistKeyAffine, correctKey } from '../shared/correct-key.directive';
 
 @Component({
   selector: 'app-affine-cipher',
@@ -7,17 +11,27 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./affine-cipher.component.scss']
 })
 export class AffineCipherComponent implements OnInit {
-
   public arguments: FormGroup;
   private fistKey: number[];
+  public cipherText: string;
+  public submitted: boolean;
+  public resposeDymcMess: string;
 
-  constructor() {
+
+
+  constructor(private connection: ConnectionService, private normalizer: NormalizerService) {
     this.fistKey = [1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25];
     this.arguments = new FormGroup(
       {
-        key: new FormControl('', [Validators.required, Validators.pattern('^[1-9][0-9]?$|^26$')])
+        key: new FormControl('', [Validators.required, correctKey([2], 0, 25),
+                        correctFistKeyAffine()]),
+        plainText: new FormControl('', [Validators.required,
+          Validators.pattern('^[a-zA-Z ]+[ ]*[a-zA-Z ]*$')])
       }
     )
+    this.cipherText = '';
+    this.submitted = false;
+    this.resposeDymcMess="";
    }
 
   ngOnInit(): void {
@@ -30,9 +44,41 @@ export class AffineCipherComponent implements OnInit {
       }
     );
   }
-
-  submit():void{
-    
+  
+  encrypt():void{
+    let normalizedText: string =  this.normalizer
+    .setplainText(this.arguments.get('plainText').value);
+    let keysArr: number[] = this.arguments.get('key').value.split(',').map(i=>Number(i));
+    this.connection.affineEncrypt(keysArr,
+     normalizedText).subscribe((ans:textEncyptersReponse) => {
+      if (!ans.error) {
+       this.cipherText = ans.cipherText;
+       this.resposeDymcMess = "Cipher";
+      }
+      this.submitted = true;
+  });
   }
+
+  decrypt():void{
+    let normalizedText: string =  this.normalizer
+    .setplainText(this.arguments.get('plainText').value);
+    let keysArr: number[] = this.arguments.get('key').value.split(',').map(i=>Number(i));
+    this.connection.affineDecrypt(keysArr,
+     normalizedText).subscribe((ans:textDecyptersReponse) => {
+      if (!ans.error) {
+       this.cipherText = ans.decipherText;
+       this.resposeDymcMess = "Decipher";
+      }
+      this.submitted = true;
+  });
+  }
+
+  get key(): AbstractControl{
+    return this.arguments.get('key');
+  }
+  get plainText(): AbstractControl{
+    return this.arguments.get('plainText');
+  }
+
 
 }

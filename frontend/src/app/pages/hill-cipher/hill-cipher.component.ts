@@ -1,7 +1,9 @@
+import { HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ConnectionService } from '../services/connection.service';
+import { correctKey, correctKeyHill } from '../shared/correct-key.directive';
 
 @Component({
   selector: 'app-hill-cipher',
@@ -9,11 +11,8 @@ import { ConnectionService } from '../services/connection.service';
   styleUrls: ['./hill-cipher.component.scss']
 })
 export class HillCipherComponent implements OnInit {
-
-  
   
   public arguments: FormGroup;
-  private loadChild: boolean;
   public file: File;
   public fileUrl: any;
   public notAdmit: boolean;
@@ -22,31 +21,47 @@ export class HillCipherComponent implements OnInit {
   public errorUpload: boolean;
   public progress: string;
 
-  public added: boolean;
+  public encrypted: boolean;
+  public pathEncryptedImage: string;
+  public resposeDymcMess: string;
 
-  constructor(private conn: ConnectionService, public domS: DomSanitizer) {
+  constructor(private connection: ConnectionService, public domS: DomSanitizer) {
     this.arguments = new FormGroup(
       {
-        key: new FormControl('', [Validators.required, Validators.pattern('^[1-9][0-9]?$|^26$')])
+        key: new FormControl('', [Validators.required, correctKey([4,9,16], 0, 255),
+                        correctKeyHill()])
       }
     )
-    this.loadChild = false;
     this.file = null;
     this.fileUrl = null;
     this.notAdmit = false;
     this.sending = false;
     this.errorUpload = false;
     this.progress = '';
-        this.added = false;
+        this.encrypted = false;
+        this.pathEncryptedImage = "";
+        this.resposeDymcMess = "";
    }
 
   ngOnInit(): void {
   }
 
   random(): void{
-    let keyLen = Math.floor(Math.random() * 26)
-    let arrBase = Array.from({length: keyLen}, () => Math.floor(Math.random() * 26));
-
+    let keyLen = Math.floor(Math.random() *2 + 2);
+    let arrBase = Array.from({length: keyLen*keyLen}, () => 0);
+    let invMaxDigVal: number[] = Array.from({length: keyLen}, () => 2*Math.floor(Math.random()*127) + 1);
+    for (let i = 0; i < keyLen; i++) {
+      for (let j = 0; j < keyLen; j++) {
+        if(i==j){
+          arrBase[i*keyLen + j]=invMaxDigVal[i];
+        }
+        if(j > i){
+          arrBase[i*keyLen + j]=Math.floor(Math.random()*255)
+        }
+        
+      }
+      
+    }
     this.arguments.patchValue(
       {
         key: arrBase.toString()
@@ -61,16 +76,9 @@ export class HillCipherComponent implements OnInit {
     
   }
 
-  /*submit(){
-    this.added = false;
-    this.conn.add(this.adder.edit.value).subscribe((ans: boolean) => {
-      this.added = true;
-    });
-  }*/
-
   addFileGroup(event) {
     let auxType: string;
-    this.added = false;
+    this.encrypted = false;
     auxType = event.target.files[0].name.substring(event.target.files[0].name.indexOf('.')).toLowerCase();
     if (auxType === '.png' || auxType === '.jpeg' || auxType === '.jpg') {
 
@@ -86,38 +94,77 @@ export class HillCipherComponent implements OnInit {
     console.log(this.file);
   }
   removeFile() {
-    this.added = false;
+    this.encrypted = false;
     this.file = null;
     this.notAdmit = false;
+    this.pathEncryptedImage = "";
     console.log(this.file);
   }
 
-  detecteItem() {
+  encrypt() {
     const formData = new FormData();
     formData.append('file', this.file, 'img' + this.file.name.substring(this.file.name.indexOf('.')).toLowerCase());
+    formData.append('key', this.key.value);
 
-    /*this.sending = true;
-    this.conn.detecteItem(formData).subscribe((events) => {
+    this.sending = true;
+    this.connection.hillEncrypt(formData).subscribe((events) => {
         if (events.type === HttpEventType.UploadProgress) {
           const auxProgress = Math.round(events.loaded / events.total * 100);
           if (auxProgress === 100) {
-            this.progress = 'Procesando';
+            this.progress = 'Encypting';
           } else {
-            this.progress = 'Subiendo: ' + auxProgress.toString() + '%';
+            this.progress = 'Uploading: ' + auxProgress.toString() + '%';
           }
         } else if (events.type === HttpEventType.Response) {
           // tslint:disable-next-line:no-string-literal
-          if (!(events.body['query'])) {
+          if (events.body['error']) {
             this.errorUpload = true;
-            this.recomendations = [];
+            this.encrypted = false;
           } else {
-            this.progress = 'Guardado exitosamente.';
+            this.encrypted = true;
+            this.pathEncryptedImage = "assets/imgs/img.png";
+            this.resposeDymcMess = "Encrypted";
+
+            console.log(22);
             // tslint:disable-next-line:no-string-literal
-            this.recomendations = events.body['ans'];
           }
           this.sending = false;
         }
-     });*/
+     });
+  }
+  decrypt() {
+    const formData = new FormData();
+    formData.append('file', this.file, 'img' + this.file.name.substring(this.file.name.indexOf('.')).toLowerCase());
+    formData.append('key', this.key.value);
+
+    this.sending = true;
+    this.connection.hillDecrypt(formData).subscribe((events) => {
+        if (events.type === HttpEventType.UploadProgress) {
+          const auxProgress = Math.round(events.loaded / events.total * 100);
+          if (auxProgress === 100) {
+            this.progress = 'Decypting';
+          } else {
+            this.progress = 'Uploading: ' + auxProgress.toString() + '%';
+          }
+        } else if (events.type === HttpEventType.Response) {
+          // tslint:disable-next-line:no-string-literal
+          if (events.body['error']) {
+            this.errorUpload = true;
+            this.encrypted = false;
+          } else {
+            this.encrypted = true;
+            this.pathEncryptedImage = "assets/imgs/img2.png";
+            this.resposeDymcMess = "Decrypted";
+
+            console.log(22);
+            // tslint:disable-next-line:no-string-literal
+          }
+          this.sending = false;
+        }
+     });
+  }
+  get key(): AbstractControl{
+    return this.arguments.get('key');
   }
 
 
