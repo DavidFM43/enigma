@@ -8,8 +8,7 @@ from string import ascii_lowercase, ascii_uppercase
 from math import ceil, gcd
 from collections import Counter
 from itertools import islice
-from .util import int2char, str2int, probs
-from pprint import pprint
+from cryptools.util import int2char, str2int, probs
 
 
 def encrypt(plain_text: str, key: str) -> str:
@@ -124,49 +123,3 @@ def attack(cipher_text: str, m: int):
 
     return key.upper()
 
-
-if __name__ == "__main__":
-    import re
-
-    assert (
-        encrypt("thiscryptosystemisnotsecure", "CIPHER")
-        == "VPXZGIAXIVWPUBTTMJPWIZITWZT"
-    )
-    assert (
-        decrypt("VPXZGIAXIVWPUBTTMJPWIZITWZT", "CIPHER")
-        == "thiscryptosystemisnotsecure"
-    )
-
-    cipher_text = re.sub(
-        re.compile(r"\s+"),
-        "",
-        """
-        CHREEVOAHMAERATBIAXXWTNXBEEOPHBSBQMQEQERBW
-        RVXUOAKXAOSXXWEAHBWGJMMQMNKGRFVGXWTRZXWIAK
-        LXFPSKAUTEMNDCMGTSXMXBTUIADNGMGPSRELXNJELX
-        VRVPRTULHDNQWTWDTYGBPHXTFALJHASVBFXNGLLCHR
-        ZBWELEKMSJIKNBHWRJGNMGJSGLXFEYPHAGNRBIEQJT
-        AMRVLCRREMNDGLXRRIMGNSNRWCHRQHAEYEVTAQEBBI
-        PEEWEVKAKOEWADREMXMTBHHCHRTKDNVRZCHRCLQOHP
-        WQAIIWXNRMGWOIIFKEE
-        """,
-    )
-
-    assert kasiski_test(cipher_text)["m_kasiski"] == 5
-    assert index_of_coincidence(cipher_text)["m_ioc"] == 5
-    assert attack(cipher_text, 5) == "JANET"
-    plain_text = re.sub(
-        re.compile(r"\s+"),
-        "",
-        """
-        thealmondtreewasintentativeblossomthedays
-        werelongeroftenendingwithmagnificenteveni
-        ngsofcorrugatedpinkskiesthehuntingseasonw
-        asoverwithhoundsandgunsputawayforsixmonth
-        sthevineyardswerebusyagainasthewellorgani
-        zedfarmerstreatedtheirvinesandthemorelack
-        adaisicalneighborshurriedtodothepruningth
-        eyshouldhavedoneinnovember
-        """,
-    )
-    assert decrypt(cipher_text, "JANET") == plain_text
