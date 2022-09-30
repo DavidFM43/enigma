@@ -29,25 +29,3 @@ def attack(cipher_text: str):
         "trigrams": tuple(Counter(trigrams(cipher_text)).items()),
     }
 
-
-if __name__ == "__main__":
-    import re
-
-    assert (
-        encrypt("thisciphertextcannotbedecrypted", "XNYAHPOGZQWBTSFLRCVMUEKJDI")
-        == "MGZVYZLGHCMHJMYXSSFMNHAHYCDLMHA"
-    )
-    assert (
-        decrypt("MGZVYZLGHCMHJMYXSSFMNHAHYCDLMHA", "XNYAHPOGZQWBTSFLRCVMUEKJDI")
-        == "thisciphertextcannotbedecrypted"
-    )
-    cipher_text = re.sub(
-        re.compile(r"\s+"),
-        "",
-        """
-        YIFQFMZRWQFYVECFMDZPCVMRZWNMDZVEJBTXCDDUMJ
-        NDIFEFMDZCDMOZKCEYFCJMYRNCWJCSZREXCHZUNMXZ
-        NZUCDRJXYYSMRTMEYIFZWDYVZVYFZUMRZCRWNZDZJJ
-        XZWGCHSMRNMDHNCMFQCHZJMXJZWIEJYUCFWDJNZDIR
-        """,
-    )
