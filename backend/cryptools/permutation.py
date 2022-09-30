@@ -1,5 +1,3 @@
-import sys
-
 def encrypt(plain_text: str, key: list[int]) -> str:
     """
     `plain_text` -> str(texto para encriptar)
@@ -7,7 +5,6 @@ def encrypt(plain_text: str, key: list[int]) -> str:
 
     Retorna un texto encriptado (en mayusculas) con el cripto sistema de permutaciones
     """
-    print(key, plain_text,file=sys.stderr)
     # partición en m bloques de tamaño m, llaves desde el indice 0, aginación de la llave con el dic
     m = len(key)
     key = [x - 1 for x in key]
@@ -87,17 +84,3 @@ Es igual para la función que ataqua el hill. Por lo tanto usaremos la del Hill
 
 Aquí el usuario llega con una matriz dada
 """
-
-if __name__ == "__main__":
-
-    """
-    Para la permutación, se ingresan las imagenes de cada permutación en orden 1,2,3,...
-    """
-    assert (
-        encrypt("shesellsseashellsbytheseashore", [3, 6, 1, 5, 2, 4])
-        == "EESLSHSALSESLSHBLEHSYEETHRAEOS"
-    )
-    assert (
-        decrypt("EESLSHSALSESLSHBLEHSYEETHRAEOS", [3, 6, 1, 5, 2, 4])
-        == "shesellsseashellsbytheseashore"
-    )
