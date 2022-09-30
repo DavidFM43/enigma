@@ -68,7 +68,10 @@ def attack_r():
     cipher_text: str = request_data["cipherText"]
     error = False
     typeError = ""
-    response_dict = {"options": attack(cipher_text)[0], "error": error, "typeError": typeError}
-
+    response_dict = {
+        "options": attack(cipher_text)[0],
+        "error": error,
+        "typeError": typeError,
+    }
 
     return dumps(response_dict)

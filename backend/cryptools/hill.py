@@ -96,43 +96,42 @@ def decrypt(
     return np.concatenate(ys)
 
 
-def attack(cipher_text, plain_text , m: int) -> tuple[list[list], bool, str]:
-   """
-   Función para que retorna la llave del cripto sistema Hill
-   """
+def attack(cipher_text, plain_text, m: int) -> tuple[list[list], bool, str]:
+    """
+    Función para que retorna la llave del cripto sistema Hill
+    """
 
-   cipher_text, plain_text = str2int(cipher_text.lower()), str2int(plain_text)
+    cipher_text, plain_text = str2int(cipher_text.lower()), str2int(plain_text)
 
-   """
+    """
    Condición para poder formar la matriz cuadrada
    Función para dejar la lista para formar la matriz cuadrada
    """
-   if len(plain_text) // m < m:
-       # raise Exception("Cannot form the square matrix, try another m")
-       return [], True, "Cannot form the square matrix, try another m"
+    if len(plain_text) // m < m:
+        # raise Exception("Cannot form the square matrix, try another m")
+        return [], True, "Cannot form the square matrix, try another m"
 
-   def square(lst: list) -> list[int]:
-       l = list()
-       for i in range(0, m * m):
-           l.append(lst[i])
-       return l
+    def square(lst: list) -> list[int]:
+        l = list()
+        for i in range(0, m * m):
+            l.append(lst[i])
+        return l
 
-   cipher_text, plain_text = square(cipher_text), square(plain_text)
+    cipher_text, plain_text = square(cipher_text), square(plain_text)
 
-   try:
-       inv_plain_text = Matrix(np.array(plain_text).reshape(m, m)).inv_mod(26)
-   except NonInvertibleMatrixError:
-       # raise Exception("The key matrix is not invertible modulo 26.")
-       return [], True, "The matrix is not invertible"
+    try:
+        inv_plain_text = Matrix(np.array(plain_text).reshape(m, m)).inv_mod(26)
+    except NonInvertibleMatrixError:
+        # raise Exception("The key matrix is not invertible modulo 26.")
+        return [], True, "The matrix is not invertible"
 
-   """
+    """
    Sistema en Z_26:
    cipher_text = plain_text * K
    """
-   # Producto con la inversa
-   inv_plain_text = np.array(inv_plain_text)
-   key = (inv_plain_text @ Matrix(np.array(cipher_text).reshape(m, m))) % 26
-   key = np.array(key).astype(int).flatten().tolist()
+    # Producto con la inversa
+    inv_plain_text = np.array(inv_plain_text)
+    key = (inv_plain_text @ Matrix(np.array(cipher_text).reshape(m, m))) % 26
+    key = np.array(key).astype(int).flatten().tolist()
 
-   return key, False, ""
-
+    return key, False, ""

@@ -77,6 +77,7 @@ def ioc_test_r():
 
     return dumps(index_of_coincidence(cipher_text))
 
+
 @bp.route("/attack/nokey", methods=["POST"])
 def attackNoKey():
     request_data = request.get_json()
@@ -84,8 +85,15 @@ def attackNoKey():
 
     error = False
     typeError = ""
-    return dumps( {"ioc":index_of_coincidence(cipher_text), "kasiski": kasiski_test(cipher_text),
-                    "error" : error, "typeError": typeError })
+    return dumps(
+        {
+            "ioc": index_of_coincidence(cipher_text),
+            "kasiski": kasiski_test(cipher_text),
+            "error": error,
+            "typeError": typeError,
+        }
+    )
+
 
 @bp.route("/attack/key", methods=["POST"])
 def attackKey():
@@ -105,5 +113,10 @@ def attackKey():
     typeError = ""
 
     return dumps(
-        {"possibleKey": possible_key, "possiblePlainText": possible_plain_text, "error" : error, "typeError": typeError}
+        {
+            "possibleKey": possible_key,
+            "possiblePlainText": possible_plain_text,
+            "error": error,
+            "typeError": typeError,
+        }
     )

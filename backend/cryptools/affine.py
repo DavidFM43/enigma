@@ -126,4 +126,3 @@ def attack(plain_cipher: str) -> str:
             a += 1
             if a == 1:
                 return textos
-
