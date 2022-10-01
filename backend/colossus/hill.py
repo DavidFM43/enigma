@@ -1,13 +1,13 @@
-from http.client import IM_USED
-import math
-from PIL import Image
-import numpy as np
 from flask import Blueprint, request, send_file
 from cryptools.hill import encrypt_image, decrypt_image, attack
-from werkzeug.utils import secure_filename
+
+from math import sqrt
+from PIL import Image
+import numpy as np
+from tempfile import gettempdir
+from os.path import join
 from json import dumps
 
-import sys
 
 """Hill cipher routes"""
 bp = Blueprint("hill", __name__, url_prefix="/hill")
@@ -16,73 +16,80 @@ bp = Blueprint("hill", __name__, url_prefix="/hill")
 @bp.route("/encrypt", methods=["POST"])
 def encrypt_r():
     """
-    This route receives an image file `img` and a key `key` over the request,
-    saves it locally, encrypts the image, and overwrites the original image with
-    the encrypted image, before sending it as a response.
+    This route receives an image file `img` and a list `key` over the request,
+    saves the image temporarily, encrypts the image and sends it to the client.
     """
-    key = request.form["key"]
-    if key is not None:
+
+    if "key" in request.form and "file" in request.files:
+
+        key = request.form["key"]
         img = request.files["file"]
 
-        # save image locally
+        # set image path
         if img.filename is not None:
-            f_local_path = f"/home/juanitoalimanha/Documents/Criptografia/colossus/frontend/src/assets/imgs/img.png"
+            file_type = img.filename.rsplit(".", 1)[1].lower()
+            img_path = join(gettempdir(), f"plain_image.{file_type}")
         else:
-            f_local_path = "/home/juanitoalimanha/Documents/Criptografia/colossus/frontend/src/assets/imgs/img.jpg"
+            img_path = join(gettempdir(), "plain_image.png")
 
-        img.save(f_local_path)
+        # save image in temp directory
+        img.save(img_path)
 
-        key =  np.array(list(map(int, key.split(","))))
-        sizeMtx = math.floor(math.sqrt(len(key)))
+        # parse incoming data
+        m = int(sqrt(len(key.split(","))))
+        key = np.array(key.split(",")).astype(int).reshape(m, m)
+        plain_image_arr = np.array(Image.open(img_path))
 
         # open image, cast to numpy array and encrypt
-        cipher_image_arr = encrypt_image(np.array(Image.open(f_local_path)), key.reshape((sizeMtx, sizeMtx)))
+        cipher_image_arr = encrypt_image(plain_image_arr, key)
 
         # save the cipher image array to an image file
-        Image.fromarray(cipher_image_arr).save(f_local_path)
-        error = False
-        typeError = ""
-        return dumps({"cipherImagePath":f_local_path,  "error": error, "typeError": typeError})
+        Image.fromarray(cipher_image_arr).save(img_path)
+
+        # TODO: Handle errors
+        return send_file(img_path, as_attachment=True)
 
     # bad request
-    return dumps({"success": False}), 400
-
+    return dumps({"error": False}), 400
 
 @bp.route("/decrypt", methods=["POST"])
 def decrypt_r():
     """
-    This route receives an image file `img` and a key `key` over the request,
-    saves it locally, decrypts the image, and overwrites the cipher image with
-    the decrypted image, before sending it as a response.
+    This route receives an image file `img` and a list `key` over the request,
+    saves the image temporarily, decrypts the image and sends it to the client.
     """
-    key = request.form["key"]
-    if key is not None:
+
+    if "key" in request.form and "file" in request.files:
+
+        key = request.form["key"]
         img = request.files["file"]
 
-        # save image locally
+        # set image path
         if img.filename is not None:
-            f_local_path = f"/home/juanitoalimanha/Documents/Criptografia/colossus/frontend/src/assets/imgs/img2.png"
+            file_type = img.filename.rsplit(".", 1)[1].lower()
+            img_path = join(gettempdir(), f"plain_image.{file_type}")
         else:
-            f_local_path = "/home/juanitoalimanha/Documents/Criptografia/colossus/frontend/src/assets/imgs/img2.jpg"
+            img_path = join(gettempdir(), "plain_image.png")
 
-        img.save(f_local_path)
+        # save image in temp directory
+        img.save(img_path)
 
-        key =  np.array(list(map(int, key.split(","))))
-        sizeMtx = math.floor(math.sqrt(len(key)))
-
+        # parse incoming data
+        m = int(sqrt(len(key.split(","))))
+        key = np.array(key.split(",")).astype(int).reshape(m, m)
+        cipher_image_arr = np.array(Image.open(img_path))
 
         # open image, cast to numpy array and encrypt
-        cipher_image_arr = decrypt_image(np.array(Image.open(f_local_path)), key.reshape((sizeMtx, sizeMtx)))
+        plain_image_arr = decrypt_image(cipher_image_arr, key)
 
         # save the cipher image array to an image file
-        Image.fromarray(cipher_image_arr).save(f_local_path)
-        error = False
-        typeError = ""
-        
-        return dumps({"cipherImagePath":f_local_path,  "error": error, "typeError": typeError})
+        Image.fromarray(plain_image_arr).save(img_path)
+
+        # TODO: Handle errors
+        return send_file(img_path, as_attachment=True)
 
     # bad request
-    return dumps({"success": False}), 400
+    return dumps({"error": False}), 400
 
 
 @bp.route("/attack", methods=["POST"])
