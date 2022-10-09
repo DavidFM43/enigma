@@ -10,4 +10,8 @@ export class NormalizerService {
   setplainText(plainText: string):string{
     return plainText.replace(/ /g,'').toLocaleLowerCase();
   }
+
+  setcipherText(cipherText: string):string{
+    return cipherText.replace(/ /g,'').toLocaleUpperCase();
+  }
 }

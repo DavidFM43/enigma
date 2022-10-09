@@ -1,31 +1,30 @@
 """
 Affine cipher.
-`key` must a tuple of two integer from Z_26 and the firt one must be
+`key` must a tuple of two integers from Z_26 and the firt one must be
 relatively prime with 26
 """
-from typing import Tuple, Union
 from math import gcd
 import string
 import math
 from cryptools.util import char2int, int2char, probs
 
 
-def encrypt(plain_text: str, key: Tuple[int, int]) -> Union[str, bool]:
+def encrypt(plain_text: str, key: list[int]) -> str:
     plain_text = plain_text.replace(" ", "").lower()
     a, b = key
 
     if gcd(a, 26) != 1:
-        return False
+        raise Exception("a is not invertible modulo 26")
 
     return "".join([int2char[(a * char2int[l] + b) % 26] for l in plain_text]).upper()
 
 
-def decrypt(cipher_text: str, key: Tuple[int, int]) -> Union[str, bool]:
+def decrypt(cipher_text: str, key: list[int]) -> str:
     cipher_text = cipher_text.replace(" ", "").lower()
     a, b = key
 
     if gcd(a, 26) != 1:
-        return False
+        raise Exception("a is not invertible modulo 26")
 
     a_inv = pow(a, -1, 26)
 
@@ -45,11 +44,11 @@ frecuencia, esto para las dos tablas
 """
 
 
-def attack(plain_cipher: str) -> str:
+def attack(cipher_text: str) -> tuple[str, list]:
     """Comentarios de la funcion:"""
 
     # Frecuencia de la caneda, alfabeto, Frecuencia en ingles
-    frecuency_text = {i: plain_cipher.count(i) for i in set(plain_cipher)}
+    frecuency_text = {i: cipher_text.count(i) for i in set(cipher_text)}
     alphabet = string.ascii_lowercase
     freq = {letter: freq for letter, freq in zip(alphabet, probs)}
     # freq = analysis.freq
@@ -88,7 +87,6 @@ def attack(plain_cipher: str) -> str:
     }
     a = 0
     c = 0
-    textos = list()
 
     ayuda = 0
     # Proceso para la segunda conjetura
@@ -102,12 +100,12 @@ def attack(plain_cipher: str) -> str:
                 # prueba de la siguiente mas frecuente
                 freq.pop(letter)
                 frecuency_text = dict()
-                frecuency_text = {i: plain_cipher.count(i) for i in set(plain_cipher)}
+                frecuency_text = {i: cipher_text.count(i) for i in set(cipher_text)}
                 frecuency_text.pop(letter_input)
                 c = 0
 
             if ayuda == 8:
-                frecuency_text = {i: plain_cipher.count(i) for i in set(plain_cipher)}
+                frecuency_text = {i: cipher_text.count(i) for i in set(cipher_text)}
 
             p, q = alphabet.index(letter.lower()), alphabet.index(letter_input.lower())
 
@@ -122,7 +120,8 @@ def attack(plain_cipher: str) -> str:
             if math.gcd(x, 26) > 1:
                 break
 
-            textos.append([decrypt(plain_cipher, [x, y]), [x, y]])
+
+            plain_text = decrypt(cipher_text, [x, y])
             a += 1
             if a == 1:
-                return textos
+                return plain_text, [x, y]

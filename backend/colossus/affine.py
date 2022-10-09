@@ -18,16 +18,16 @@ def encrypt_r():
     plain_text: str = request_data["plainText"]
     key = request_data["key"]
 
-    cipher_text = encrypt(plain_text, key)
-    error = False
-    typeError = ""
-
-    if not cipher_text:
-        error = True
-        typeError = "First integer is not relatively prime with 26."
+    try:
+        cipher_text = encrypt(plain_text, key)
+        error = False
+        type_error = ""
+    except Exception as e:
         cipher_text = ""
+        error = True
+        type_error = str(e) 
 
-    response_dict = {"cipherText": cipher_text, "error": error, "typeError": typeError}
+    response_dict = {"cipherText": cipher_text, "error": error, "typeError": type_error}
 
     return dumps(response_dict)
 
@@ -43,16 +43,16 @@ def decrypt_r():
     cipher_text: str = request_data["cipherText"]
     key = request_data["key"]
 
-    plain_text = decrypt(cipher_text, key)
-    error = False
-    typeError = ""
-
-    if not plain_text:
-        error = True
-        typeError = "First integer is not relatively prime with 26."
+    try:
+        plain_text = encrypt(cipher_text, key)
+        error = False
+        type_error = ""
+    except Exception as e:
         plain_text = ""
+        error = True
+        type_error = str(e) 
 
-    response_dict = {"decipherText": plain_text, "error": error, "typeError": typeError}
+    response_dict = {"decipherText": plain_text, "error": error, "typeError": type_error}
 
     return dumps(response_dict)
 
@@ -66,12 +66,13 @@ def attack_r():
 
     request_data = request.get_json()
     cipher_text: str = request_data["cipherText"]
-    error = False
-    typeError = ""
+    plain_text, key = attack(cipher_text)
+
     response_dict = {
-        "options": attack(cipher_text)[0],
-        "error": error,
-        "typeError": typeError,
+        "plainText": plain_text,
+        "key": key,
+        "error": False,
+        "typeError": "",
     }
 
     return dumps(response_dict)

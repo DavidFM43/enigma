@@ -38,7 +38,8 @@ export interface vigenereNoKeyAttackResponse{
     typeError: string;
 }
 export interface affineAttackerResponse{
-    options:[string, number[]]
+    plainText: string;
+    key: number[];
     error: boolean;
     typeError: string;
 }

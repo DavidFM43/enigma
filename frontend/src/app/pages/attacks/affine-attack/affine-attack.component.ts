@@ -1,49 +1,58 @@
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { affineAttackerResponse } from '../../Interfaces';
-import { ConnectionService } from '../../services/connection.service';
-import { NormalizerService } from '../../services/normalizer.service';
+import { Component, OnInit } from "@angular/core";
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  Validators,
+} from "@angular/forms";
+import { affineAttackerResponse } from "../../Interfaces";
+import { ConnectionService } from "../../services/connection.service";
+import { NormalizerService } from "../../services/normalizer.service";
 
 @Component({
-  selector: 'app-affine-attack',
-  templateUrl: './affine-attack.component.html',
-  styleUrls: ['./affine-attack.component.scss']
+  selector: "app-affine-attack",
+  templateUrl: "./affine-attack.component.html",
+  styleUrls: ["./affine-attack.component.scss"],
 })
 export class AffineAttackComponent implements OnInit {
-
   public arguments: FormGroup;
-  public options:[string, number[]];
+  public plainText: string;
+  public key: number[];
   public submitted: boolean;
 
-  constructor(private connection: ConnectionService, private normalizer: NormalizerService) {
-    this.arguments = new FormGroup(
-      {
-        plainText: new FormControl('', [Validators.required,
-          Validators.pattern('^[a-zA-Z ]+[ ]*[a-zA-Z ]*$')])
-      }
-    )
-    this.options = null;
+  constructor(
+    private connection: ConnectionService,
+    private normalizer: NormalizerService
+  ) {
+    this.arguments = new FormGroup({
+      cipherText: new FormControl("", [
+        Validators.required,
+        Validators.pattern("[a-zA-Z][a-zA-Z ]*$"),
+      ]),
+    });
+    this.plainText = "";
+    this.key = null;
     this.submitted = false;
-   }
-
-  ngOnInit(): void {
   }
 
+  ngOnInit(): void {}
 
-
-  attack():void{
-    let normalizedText: string =  this.normalizer
-    .setplainText(this.arguments.get('plainText').value);
-    this.connection.affineAttack(normalizedText).subscribe((ans:affineAttackerResponse) => {
-      if (!ans.error) {
-       this.options = ans.options;
-      }
-      this.submitted = true;
-      console.log(this.options);
-  });
+  attack(): void {
+    let normalizedText: string = this.normalizer.setcipherText(
+      this.arguments.get("cipherText").value
+    );
+    this.connection
+      .affineAttack(normalizedText)
+      .subscribe((ans: affineAttackerResponse) => {
+        if (!ans.error) {
+          this.plainText = ans.plainText;
+          this.key = ans.key;
+        }
+        this.submitted = true;
+      });
   }
 
-  get plainText(): AbstractControl{
-    return this.arguments.get('plainText');
+  get cipherText(): AbstractControl {
+    return this.arguments.get("cipherText");
   }
 }
