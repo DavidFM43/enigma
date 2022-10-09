@@ -4,46 +4,10 @@ Affine cipher.
 relatively prime with 26
 """
 from typing import Tuple, Union
-from string import ascii_lowercase
 from math import gcd
 import string
 import math
-
-
-# char to int
-char2int = {x: idx for idx, x in enumerate(ascii_lowercase)}
-# int to char
-int2char = {idx: x for idx, x in enumerate(ascii_lowercase)}
-
-# probabilty density function of the letter in the alphabet
-probs = [
-    0.082,
-    0.015,
-    0.028,
-    0.043,
-    0.127,
-    0.022,
-    0.02,
-    0.061,
-    0.07,
-    0.002,
-    0.008,
-    0.04,
-    0.024,
-    0.067,
-    0.075,
-    0.019,
-    0.001,
-    0.06,
-    0.063,
-    0.091,
-    0.028,
-    0.01,
-    0.023,
-    0.001,
-    0.02,
-    0.001,
-]
+from cryptools.util import char2int, int2char, probs
 
 
 def encrypt(plain_text: str, key: Tuple[int, int]) -> Union[str, bool]:
@@ -162,10 +126,3 @@ def attack(plain_cipher: str) -> str:
             a += 1
             if a == 1:
                 return textos
-
-
-if __name__ == "__main__":
-    assert encrypt("hot", (7, 3)) == "AXG"
-    assert decrypt("AXG", (7, 3)) == "hot"
-    cadena = "FMXVEDKAPHFERBNDKRXRSREFMORUDSDKDVSHVUFEDKAPRKDLYEVLRHHRH"
-    p = attack(cadena)
