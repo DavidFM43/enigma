@@ -33,5 +33,4 @@ def test_decrypt_image():
 
 
 def test_attack():
-    assert attack("PQCFKU", "friday", 2)[0] == [7, 19, 8, 3]
-    pass
+    assert attack("PQCFKU", "friday", 2) == [7, 19, 8, 3]

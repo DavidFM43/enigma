@@ -104,7 +104,14 @@ def attack_r():
     plain_text: str = request_data["plainText"]
     m: int = request_data["matrixSize"]
 
-    possible_key, error, error_type = attack(cipher_text, plain_text, m)
+    try: 
+        possible_key = attack(cipher_text, plain_text, m)
+        error = False
+        error_type = ""
+    except Exception as e:
+        possible_key = ""
+        error = True
+        error_type = str(e)
 
     response_dict = {
         "possibleKey": possible_key,
