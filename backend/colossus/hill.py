@@ -44,7 +44,7 @@ def encrypt_r():
         cipher_image_arr = encrypt_image(plain_image_arr, key)
 
         # save the cipher image array to an image file
-        Image.fromarray(cipher_image_arr).save(img_path)
+        Image.fromarray(cipher_image_arr).save(img_path, "png")
 
         # TODO: Handle errors
         return send_file(img_path, as_attachment=True)
@@ -83,7 +83,7 @@ def decrypt_r():
         plain_image_arr = decrypt_image(cipher_image_arr, key)
 
         # save the cipher image array to an image file
-        Image.fromarray(plain_image_arr).save(img_path)
+        Image.fromarray(plain_image_arr).save(img_path, "png")
 
         # TODO: Handle errors
         return send_file(img_path, as_attachment=True)
