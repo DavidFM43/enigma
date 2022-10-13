@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { SubstitutionAttackComponent } from './substitution-attack.component';
+import { SubstitutionAttackComponent } from "./substitution-attack.component";
 
-describe('SubstitutionAttackComponent', () => {
+describe("SubstitutionAttackComponent", () => {
   let component: SubstitutionAttackComponent;
   let fixture: ComponentFixture<SubstitutionAttackComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SubstitutionAttackComponent ]
-    })
-    .compileComponents();
+      declarations: [SubstitutionAttackComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('SubstitutionAttackComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

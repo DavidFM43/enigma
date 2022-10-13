@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { HillAttackComponent } from './hill-attack.component';
+import { HillAttackComponent } from "./hill-attack.component";
 
-describe('HillAttackComponent', () => {
+describe("HillAttackComponent", () => {
   let component: HillAttackComponent;
   let fixture: ComponentFixture<HillAttackComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HillAttackComponent ]
-    })
-    .compileComponents();
+      declarations: [HillAttackComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('HillAttackComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

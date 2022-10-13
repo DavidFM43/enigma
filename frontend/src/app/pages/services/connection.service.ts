@@ -81,7 +81,7 @@ export class ConnectionService {
       .post(this.baseUrl + "/substitution/attack", { cipherText: cipherText })
       .pipe(catchError(this.handleError));
   }
-  
+
   //vigenere
   vigenereEncrypt(key: string, plainText: string) {
     return this.http

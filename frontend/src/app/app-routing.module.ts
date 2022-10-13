@@ -17,19 +17,19 @@ const routes: Routes = [
   { path: "profile", component: ProfilepageComponent },
   { path: "register", component: RegisterpageComponent },
   { path: "landing", component: LandingpageComponent },
-  { path: "home", component: CryptoHomeComponent},
-  { path: "cipher", component: CipherComponent},
-  { path: "attack", component: AttacksComponent}
-,];
+  { path: "home", component: CryptoHomeComponent },
+  { path: "cipher", component: CipherComponent },
+  { path: "attack", component: AttacksComponent },
+];
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserModule,
     RouterModule.forRoot(routes, {
-      useHash: true
-    })
+      useHash: true,
+    }),
   ],
-  exports: []
+  exports: [],
 })
 export class AppRoutingModule {}

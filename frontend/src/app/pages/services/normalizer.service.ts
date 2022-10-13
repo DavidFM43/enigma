@@ -1,17 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class NormalizerService {
+  constructor() {}
 
-  constructor() { }
-
-  setplainText(plainText: string):string{
-    return plainText.replace(/ /g,'').toLocaleLowerCase();
+  setplainText(plainText: string): string {
+    return plainText.replace(/ /g, "").toLocaleLowerCase();
   }
 
-  setcipherText(cipherText: string):string{
-    return cipherText.replace(/ /g,'').toLocaleUpperCase();
+  setcipherText(cipherText: string): string {
+    return cipherText.replace(/ /g, "").toLocaleUpperCase();
   }
 }

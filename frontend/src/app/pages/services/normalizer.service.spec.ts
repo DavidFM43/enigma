@@ -1,8 +1,8 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
-import { NormalizerService } from './normalizer.service';
+import { NormalizerService } from "./normalizer.service";
 
-describe('NormalizerService', () => {
+describe("NormalizerService", () => {
   let service: NormalizerService;
 
   beforeEach(() => {
@@ -10,7 +10,7 @@ describe('NormalizerService', () => {
     service = TestBed.inject(NormalizerService);
   });
 
-  it('should be created', () => {
+  it("should be created", () => {
     expect(service).toBeTruthy();
   });
 });

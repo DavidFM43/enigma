@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { HillCipherComponent } from './hill-cipher.component';
+import { HillCipherComponent } from "./hill-cipher.component";
 
-describe('HillCipherComponent', () => {
+describe("HillCipherComponent", () => {
   let component: HillCipherComponent;
   let fixture: ComponentFixture<HillCipherComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HillCipherComponent ]
-    })
-    .compileComponents();
+      declarations: [HillCipherComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('HillCipherComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

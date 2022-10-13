@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { SubstitutionCipherComponent } from './substitution-cipher.component';
+import { SubstitutionCipherComponent } from "./substitution-cipher.component";
 
-describe('SubstitutionCipherComponent', () => {
+describe("SubstitutionCipherComponent", () => {
   let component: SubstitutionCipherComponent;
   let fixture: ComponentFixture<SubstitutionCipherComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SubstitutionCipherComponent ]
-    })
-    .compileComponents();
+      declarations: [SubstitutionCipherComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('SubstitutionCipherComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

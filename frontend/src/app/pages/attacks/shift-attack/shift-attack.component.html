@@ -1,51 +1,53 @@
-<form [formGroup]="arguments" >
-    <div class="container">
-        <div class="row">
-                <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
-                    <textarea placeholder="Text to cipher"
-                     class="texrtocr form-control"
-                     formControlName="plainText"
-                     [ngClass]="{'plainTextError' : plainText.invalid && plainText.dirty}"
-                     ></textarea>
-                </div>
-                <div class="col-sm-12 col-lg-10 mr-auto ml-auto submit">
-                    <button type="button"
-                 class="btn btn-primary" 
-                 (click)="attack()"
-                 [disabled]="!arguments.valid">
-                 Decrypt</button>
-                </div>   
-        </div>
-    
-        <div class="row"  *ngIf="submitted">
-            <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
-                <div ><h3 class="mb-3">Decipher text</h3></div>
-            </div>
-            
-    
-            <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
-                <tab heading="">
-                    <div class="table-responsive">
-                      <table class="table tablesorter" id="plain-table">
-                        <thead class="text-danger">
-                          <tr>
-                            <th class="header tr-center">Key</th>
-                            <th class="header tr-center">Text Decryption Options</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                            <ng-container *ngFor="let opt of options; let i = index">
-                                <tr>
-                                    <td class="tr-center">{{i}}</td>
-                                    <td class="tr-center">{{opt}}</td>
-                                  </tr>
-                            </ng-container>
-                        </tbody>
-                      </table>
-                    </div>
-                  </tab>
-            </div>
-        </div>
-        
+<form [formGroup]="arguments">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+        <textarea
+          placeholder="Text to cipher"
+          class="texrtocr form-control"
+          formControlName="plainText"
+          [ngClass]="{ plainTextError: plainText.invalid && plainText.dirty }"
+        ></textarea>
+      </div>
+      <div class="col-sm-12 col-lg-10 mr-auto ml-auto submit">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="attack()"
+          [disabled]="!arguments.valid"
+        >
+          Decrypt
+        </button>
+      </div>
     </div>
-    </form>
+
+    <div class="row" *ngIf="submitted">
+      <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+        <div><h3 class="mb-3">Decipher text</h3></div>
+      </div>
+
+      <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+        <tab heading="">
+          <div class="table-responsive">
+            <table class="table tablesorter" id="plain-table">
+              <thead class="text-danger">
+                <tr>
+                  <th class="header tr-center">Key</th>
+                  <th class="header tr-center">Text Decryption Options</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let opt of options; let i = index">
+                  <tr>
+                    <td class="tr-center">{{ i }}</td>
+                    <td class="tr-center">{{ opt }}</td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+        </tab>
+      </div>
+    </div>
+  </div>
+</form>

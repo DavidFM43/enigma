@@ -1,90 +1,98 @@
-<form [formGroup]="arguments" >
-    <div class="container">
-        <div class="row">
-                <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
-                    <textarea placeholder="Plain text"
-                     class="texrtocr form-control"
-                     formControlName="plainText"
-                     [ngClass]="{'plainTextError' : plainText.invalid && plainText.dirty}"
-                     ></textarea>
-                </div>
-        </div>
-                <div class="row">
-                <div class="col-sm-10 col-lg-12 ml-auto mr-auto">
-                                    <div [ngClass]="keySize.invalid && keySize.dirty ? 'form-group has-danger' :'input-group'">
-                                        <input
-                                        class="form-control"
-                                        placeholder="Key size"
-                                        type="text"
-                                        formControlName="keySize"
-                                        />
-                                        <ng-template [ngIf]="!keySize.invalid || !keySize.dirty">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">
-                                                    <i class="tim-icons icon-lock-circle"> </i>
-                                                </span>
-                                                </div>
-                                        </ng-template>
-                                    </div>
-                                </div>
-                </div>
-                
-<div class="row">
-                <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
-                    <textarea placeholder="Cipher text"
-                     class="texrtocr form-control"
-                     formControlName="cipherText"
-                     [ngClass]="{'plainTextError' : cipherText.invalid && cipherText.dirty}"
-                     ></textarea>
-                </div>
-                <div class="col-sm-12 col-lg-10 mr-auto ml-auto submit">
-                    <button type="button"
-                 class="btn btn-primary" 
-                 (click)="attack()"
-                 [disabled]="!arguments.valid">
-                 Decrypt</button>
-                </div>   
-        </div>
-    
-        <div class="row"  *ngIf="submitted && !error">
-            <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
-                <div ><h3 class="mb-3">Decipher text</h3></div>
-            </div>
-            
-    
-            <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
-                <tab heading="">
-                    <div class="table-responsive">
-                      <table class="table tablesorter" id="plain-table">
-                        <thead class="text-danger">
-                          <tr>
-                            <th class="header tr-center">Key</th>
-                            <!-- <th class="header tr-center">Text Decryption Options</th> -->
-                          </tr>
-                        </thead>
-                        <tbody>
-                            <ng-container *ngFor="let opt of options">
-                                <tr>
-                                    <!-- <td class="tr-center">{{i}}</td> -->
-                                    <td class="tr-center">{{opt}}</td>
-                                  </tr>
-                            </ng-container>
-                        </tbody>
-                      </table>
-                    </div>
-                  </tab>
-            </div>
-        </div>
-        <div class="row"  *ngIf="error">
-            <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
-                <div ><h3 class="mb-3">Error</h3></div>
-            </div>
-            
-    
-            <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
-                <h4>{{options.typeError}}</h4>
-            </div>
-        </div>
-        
+<form [formGroup]="arguments">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+        <textarea
+          placeholder="Plain text"
+          class="texrtocr form-control"
+          formControlName="plainText"
+          [ngClass]="{ plainTextError: plainText.invalid && plainText.dirty }"
+        ></textarea>
+      </div>
     </div>
-    </form>
+    <div class="row">
+      <div class="col-sm-10 col-lg-12 ml-auto mr-auto">
+        <div
+          [ngClass]="
+            keySize.invalid && keySize.dirty
+              ? 'form-group has-danger'
+              : 'input-group'
+          "
+        >
+          <input
+            class="form-control"
+            placeholder="Key size"
+            type="text"
+            formControlName="keySize"
+          />
+          <ng-template [ngIf]="!keySize.invalid || !keySize.dirty">
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="tim-icons icon-lock-circle"> </i>
+              </span>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+        <textarea
+          placeholder="Cipher text"
+          class="texrtocr form-control"
+          formControlName="cipherText"
+          [ngClass]="{ plainTextError: cipherText.invalid && cipherText.dirty }"
+        ></textarea>
+      </div>
+      <div class="col-sm-12 col-lg-10 mr-auto ml-auto submit">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="attack()"
+          [disabled]="!arguments.valid"
+        >
+          Decrypt
+        </button>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="submitted && !error">
+      <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+        <div><h3 class="mb-3">Decipher text</h3></div>
+      </div>
+
+      <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+        <tab heading="">
+          <div class="table-responsive">
+            <table class="table tablesorter" id="plain-table">
+              <thead class="text-danger">
+                <tr>
+                  <th class="header tr-center">Key</th>
+                  <!-- <th class="header tr-center">Text Decryption Options</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let opt of options">
+                  <tr>
+                    <!-- <td class="tr-center">{{i}}</td> -->
+                    <td class="tr-center">{{ opt }}</td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+        </tab>
+      </div>
+    </div>
+    <div class="row" *ngIf="error">
+      <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+        <div><h3 class="mb-3">Error</h3></div>
+      </div>
+
+      <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+        <h4>{{ options.typeError }}</h4>
+      </div>
+    </div>
+  </div>
+</form>

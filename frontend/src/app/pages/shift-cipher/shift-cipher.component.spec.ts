@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ShiftCipherComponent } from './shift-cipher.component';
+import { ShiftCipherComponent } from "./shift-cipher.component";
 
-describe('ShiftCipherComponent', () => {
+describe("ShiftCipherComponent", () => {
   let component: ShiftCipherComponent;
   let fixture: ComponentFixture<ShiftCipherComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ShiftCipherComponent ]
-    })
-    .compileComponents();
+      declarations: [ShiftCipherComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('ShiftCipherComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

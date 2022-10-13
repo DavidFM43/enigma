@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CryptoHomeComponent } from './crypto-home.component';
+import { CryptoHomeComponent } from "./crypto-home.component";
 
-describe('CryptoHomeComponent', () => {
+describe("CryptoHomeComponent", () => {
   let component: CryptoHomeComponent;
   let fixture: ComponentFixture<CryptoHomeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CryptoHomeComponent ]
-    })
-    .compileComponents();
+      declarations: [CryptoHomeComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('CryptoHomeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

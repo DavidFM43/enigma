@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { VigenereAttackComponent } from './vigenere-attack.component';
+import { VigenereAttackComponent } from "./vigenere-attack.component";
 
-describe('VigenereAttackComponent', () => {
+describe("VigenereAttackComponent", () => {
   let component: VigenereAttackComponent;
   let fixture: ComponentFixture<VigenereAttackComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VigenereAttackComponent ]
-    })
-    .compileComponents();
+      declarations: [VigenereAttackComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('VigenereAttackComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

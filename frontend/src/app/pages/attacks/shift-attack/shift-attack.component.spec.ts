@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ShiftAttackComponent } from './shift-attack.component';
+import { ShiftAttackComponent } from "./shift-attack.component";
 
-describe('ShiftAttackComponent', () => {
+describe("ShiftAttackComponent", () => {
   let component: ShiftAttackComponent;
   let fixture: ComponentFixture<ShiftAttackComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ShiftAttackComponent ]
-    })
-    .compileComponents();
+      declarations: [ShiftAttackComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('ShiftAttackComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

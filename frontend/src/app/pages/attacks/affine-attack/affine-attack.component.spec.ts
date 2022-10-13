@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { AffineAttackComponent } from './affine-attack.component';
+import { AffineAttackComponent } from "./affine-attack.component";
 
-describe('AffineAttackComponent', () => {
+describe("AffineAttackComponent", () => {
   let component: AffineAttackComponent;
   let fixture: ComponentFixture<AffineAttackComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AffineAttackComponent ]
-    })
-    .compileComponents();
+      declarations: [AffineAttackComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('AffineAttackComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

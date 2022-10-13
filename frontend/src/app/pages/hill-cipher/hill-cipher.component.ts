@@ -10,7 +10,6 @@ import { DomSanitizer } from "@angular/platform-browser";
 import { ConnectionService } from "../services/connection.service";
 import { correctKey, correctKeyHill } from "../shared/correct-key.directive";
 
-
 @Component({
   selector: "app-hill-cipher",
   templateUrl: "./hill-cipher.component.html",
@@ -34,7 +33,6 @@ export class HillCipherComponent implements OnInit {
     private connection: ConnectionService,
     public domS: DomSanitizer
   ) {
-
     this.arguments = new FormGroup({
       key: new FormControl("", [
         Validators.required,
@@ -126,8 +124,7 @@ export class HillCipherComponent implements OnInit {
 
     this.sending = true;
     this.connection.hillEncrypt(formData).subscribe((events) => {
-
-      // sending  
+      // sending
       if (events.type === HttpEventType.UploadProgress) {
         const auxProgress = Math.round((events.loaded / events.total) * 100);
         if (auxProgress === 100) {
@@ -136,10 +133,9 @@ export class HillCipherComponent implements OnInit {
           this.progress = "Uploading: " + auxProgress.toString() + "%";
         }
 
-      // response
+        // response
       } else if (events.type === HttpEventType.Response) {
-
-        // Can't properly handle errors with blob response type, so this if 
+        // Can't properly handle errors with blob response type, so this if
         // statement does nothing
         if (events.body["error"]) {
           this.errorUpload = true;
@@ -170,7 +166,6 @@ export class HillCipherComponent implements OnInit {
 
     this.sending = true;
     this.connection.hillDecrypt(formData).subscribe((events) => {
-
       // sending
       if (events.type === HttpEventType.UploadProgress) {
         const auxProgress = Math.round((events.loaded / events.total) * 100);
@@ -180,10 +175,9 @@ export class HillCipherComponent implements OnInit {
           this.progress = "Uploading: " + auxProgress.toString() + "%";
         }
 
-      // response
+        // response
       } else if (events.type === HttpEventType.Response) {
-
-        // Can't properly handle errors with blob response type, so this if 
+        // Can't properly handle errors with blob response type, so this if
         // statement does nothing
         if (events.body["error"]) {
           this.errorUpload = true;
@@ -216,5 +210,4 @@ export class HillCipherComponent implements OnInit {
   get key(): AbstractControl {
     return this.arguments.get("key");
   }
-
 }

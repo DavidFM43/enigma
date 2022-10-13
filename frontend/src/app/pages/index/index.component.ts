@@ -3,7 +3,7 @@ import noUiSlider from "nouislider";
 
 @Component({
   selector: "app-index",
-  templateUrl: "index.component.html"
+  templateUrl: "index.component.html",
 })
 export class IndexComponent implements OnInit, OnDestroy {
   isCollapsed = true;
@@ -28,8 +28,8 @@ export class IndexComponent implements OnInit, OnDestroy {
       connect: false,
       range: {
         min: 0,
-        max: 100
-      }
+        max: 100,
+      },
     });
 
     var slider2 = document.getElementById("sliderDouble");
@@ -39,8 +39,8 @@ export class IndexComponent implements OnInit, OnDestroy {
       connect: true,
       range: {
         min: 0,
-        max: 100
-      }
+        max: 100,
+      },
     });
   }
   ngOnDestroy() {

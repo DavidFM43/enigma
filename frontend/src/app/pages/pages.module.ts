@@ -21,21 +21,21 @@ import { IndexComponent } from "./index/index.component";
 import { ProfilepageComponent } from "./examples/profilepage/profilepage.component";
 import { RegisterpageComponent } from "./examples/registerpage/registerpage.component";
 import { LandingpageComponent } from "./examples/landingpage/landingpage.component";
-import { CryptoHomeComponent } from './Crypto/crypto-home/crypto-home.component';
-import { CipherComponent } from './cipher/cipher.component';
-import { ShiftCipherComponent } from './shift-cipher/shift-cipher.component';
-import { AffineCipherComponent } from './affine-cipher/affine-cipher.component';
-import { SubstitutionCipherComponent } from './substitution-cipher/substitution-cipher.component';
-import { HillCipherComponent } from './hill-cipher/hill-cipher.component';
-import { PermutationCipherComponent } from './permutation-cipher/permutation-cipher.component';
-import { VigenereCipherComponent } from './vigenere-cipher/vigenere-cipher.component';
-import { correctKey } from './shared/correct-key.directive';
-import { AttacksComponent } from './attacks/attacks/attacks.component';
-import { ShiftAttackComponent } from './attacks/shift-attack/shift-attack.component';
-import { AffineAttackComponent } from './attacks/affine-attack/affine-attack.component';
-import { SubstitutionAttackComponent } from './attacks/substitution-attack/substitution-attack.component';
-import { VigenereAttackComponent } from './attacks/vigenere-attack/vigenere-attack.component';
-import { HillAttackComponent } from './attacks/hill-attack/hill-attack.component';
+import { CryptoHomeComponent } from "./Crypto/crypto-home/crypto-home.component";
+import { CipherComponent } from "./cipher/cipher.component";
+import { ShiftCipherComponent } from "./shift-cipher/shift-cipher.component";
+import { AffineCipherComponent } from "./affine-cipher/affine-cipher.component";
+import { SubstitutionCipherComponent } from "./substitution-cipher/substitution-cipher.component";
+import { HillCipherComponent } from "./hill-cipher/hill-cipher.component";
+import { PermutationCipherComponent } from "./permutation-cipher/permutation-cipher.component";
+import { VigenereCipherComponent } from "./vigenere-cipher/vigenere-cipher.component";
+import { correctKey } from "./shared/correct-key.directive";
+import { AttacksComponent } from "./attacks/attacks/attacks.component";
+import { ShiftAttackComponent } from "./attacks/shift-attack/shift-attack.component";
+import { AffineAttackComponent } from "./attacks/affine-attack/affine-attack.component";
+import { SubstitutionAttackComponent } from "./attacks/substitution-attack/substitution-attack.component";
+import { VigenereAttackComponent } from "./attacks/vigenere-attack/vigenere-attack.component";
+import { HillAttackComponent } from "./attacks/hill-attack/hill-attack.component";
 
 @NgModule({
   imports: [
@@ -55,7 +55,7 @@ import { HillAttackComponent } from './attacks/hill-attack/hill-attack.component
     BsDatepickerModule.forRoot(),
     CarouselModule.forRoot(),
     ModalModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   declarations: [
     IndexComponent,
@@ -75,7 +75,7 @@ import { HillAttackComponent } from './attacks/hill-attack/hill-attack.component
     AffineAttackComponent,
     SubstitutionAttackComponent,
     VigenereAttackComponent,
-    HillAttackComponent
+    HillAttackComponent,
   ],
   exports: [
     IndexComponent,
@@ -83,6 +83,6 @@ import { HillAttackComponent } from './attacks/hill-attack/hill-attack.component
     RegisterpageComponent,
     LandingpageComponent,
   ],
-  providers: []
+  providers: [],
 })
 export class PagesModule {}
