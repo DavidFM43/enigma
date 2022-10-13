@@ -17,7 +17,7 @@ import { NormalizerService } from "../../services/normalizer.service";
 export class HillAttackComponent implements OnInit {
   public arguments: FormGroup;
   // public options: hillAttackerResponse;
-  public options: number[];
+  public options: [number[]];
   public submitted: boolean;
   public error: boolean;
 
