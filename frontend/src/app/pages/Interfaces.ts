@@ -39,12 +39,12 @@ export interface vigenereNoKeyAttackResponse{
 }
 export interface affineAttackerResponse{
     plainText: string;
-    key: number[];
+    key: [number[]];
     error: boolean;
     typeError: string;
 }
 export interface hillAttackerResponse{
-    options:[string, number[]]
+    possibleKeys: number[];
     error: boolean;
     typeError: string;
 }
