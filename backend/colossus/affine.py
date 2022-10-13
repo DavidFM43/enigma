@@ -44,7 +44,7 @@ def decrypt_r():
     key = request_data["key"]
 
     try:
-        plain_text = encrypt(cipher_text, key)
+        plain_text = decrypt(cipher_text, key)
         error = False
         type_error = ""
     except Exception as e:

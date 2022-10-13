@@ -131,7 +131,7 @@ export class HillCipherComponent implements OnInit {
       if (events.type === HttpEventType.UploadProgress) {
         const auxProgress = Math.round((events.loaded / events.total) * 100);
         if (auxProgress === 100) {
-          this.progress = "Encypting";
+          this.progress = "Encrypting";
         } else {
           this.progress = "Uploading: " + auxProgress.toString() + "%";
         }

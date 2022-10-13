@@ -102,7 +102,7 @@ def attack_r():
     request_data = request.get_json()
     cipher_text: str = request_data["cipherText"]
     plain_text: str = request_data["plainText"]
-    m: int = request_data["matrixSize"]
+    m: int = int(request_data["matrixSize"])
 
     try: 
         possible_key = attack(cipher_text, plain_text, m)
@@ -114,7 +114,7 @@ def attack_r():
         error_type = str(e)
 
     response_dict = {
-        "possibleKey": possible_key,
+        "possibleKeys": [possible_key],
         "error": error,
         "typeError": error_type,
     }

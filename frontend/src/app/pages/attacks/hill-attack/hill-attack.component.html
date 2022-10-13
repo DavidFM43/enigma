@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
                 <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
-                    <textarea placeholder="Decipher text"
+                    <textarea placeholder="Plain text"
                      class="texrtocr form-control"
                      formControlName="plainText"
                      [ngClass]="{'plainTextError' : plainText.invalid && plainText.dirty}"
@@ -59,13 +59,13 @@
                         <thead class="text-danger">
                           <tr>
                             <th class="header tr-center">Key</th>
-                            <th class="header tr-center">Text Decryption Options</th>
+                            <!-- <th class="header tr-center">Text Decryption Options</th> -->
                           </tr>
                         </thead>
                         <tbody>
-                            <ng-container *ngFor="let opt of options; let i = index">
+                            <ng-container *ngFor="let opt of options">
                                 <tr>
-                                    <td class="tr-center">{{i}}</td>
+                                    <!-- <td class="tr-center">{{i}}</td> -->
                                     <td class="tr-center">{{opt}}</td>
                                   </tr>
                             </ng-container>
