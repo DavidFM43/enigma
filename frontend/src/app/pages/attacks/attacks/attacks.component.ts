@@ -6,7 +6,6 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./attacks.component.scss"],
 })
 export class AttacksComponent implements OnInit {
-  isCollapsed = true;
 
   constructor() {}
 

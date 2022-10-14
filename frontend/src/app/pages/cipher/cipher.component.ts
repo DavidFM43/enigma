@@ -6,7 +6,6 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./cipher.component.scss"],
 })
 export class CipherComponent implements OnInit {
-  isCollapsed = true;
 
   constructor() {}
 
