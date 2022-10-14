@@ -2,9 +2,10 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
+import { HttpClientModule } from "@angular/common/http";
+
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { HttpClientModule } from "@angular/common/http";
 
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { ProgressbarModule } from "ngx-bootstrap/progressbar";
@@ -23,14 +24,8 @@ import { IndexComponent } from "./pages/index/index.component";
 import { ProfilepageComponent } from "./pages/examples/profilepage/profilepage.component";
 import { RegisterpageComponent } from "./pages/examples/registerpage/registerpage.component";
 import { LandingpageComponent } from "./pages/examples/landingpage/landingpage.component";
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    // IndexComponent,
-    // ProfilepageComponent,
-    // RegisterpageComponent,
-    // LandingpageComponent
-  ],
   imports: [
     BrowserAnimationsModule,
     FormsModule,
@@ -50,6 +45,13 @@ import { LandingpageComponent } from "./pages/examples/landingpage/landingpage.c
     // ModalModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
+  ],
+  declarations: [
+    AppComponent,
+    // IndexComponent,
+    // ProfilepageComponent,
+    // RegisterpageComponent,
+    // LandingpageComponent
   ],
   providers: [],
   bootstrap: [AppComponent],

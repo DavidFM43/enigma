@@ -21,6 +21,7 @@ import { IndexComponent } from "./index/index.component";
 import { ProfilepageComponent } from "./examples/profilepage/profilepage.component";
 import { RegisterpageComponent } from "./examples/registerpage/registerpage.component";
 import { LandingpageComponent } from "./examples/landingpage/landingpage.component";
+
 import { CryptoHomeComponent } from "./Crypto/crypto-home/crypto-home.component";
 import { CipherComponent } from "./cipher/cipher.component";
 import { ShiftCipherComponent } from "./shift-cipher/shift-cipher.component";
@@ -36,6 +37,7 @@ import { AffineAttackComponent } from "./attacks/affine-attack/affine-attack.com
 import { SubstitutionAttackComponent } from "./attacks/substitution-attack/substitution-attack.component";
 import { VigenereAttackComponent } from "./attacks/vigenere-attack/vigenere-attack.component";
 import { HillAttackComponent } from "./attacks/hill-attack/hill-attack.component";
+import { TopBarComponent } from './top-bar/top-bar.component';
 
 @NgModule({
   imports: [
@@ -76,6 +78,7 @@ import { HillAttackComponent } from "./attacks/hill-attack/hill-attack.component
     SubstitutionAttackComponent,
     VigenereAttackComponent,
     HillAttackComponent,
+    TopBarComponent,
   ],
   exports: [
     IndexComponent,
