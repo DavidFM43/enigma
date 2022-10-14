@@ -1,11 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 @Component({
   selector: "app-crypto-home",
   templateUrl: "./crypto-home.component.html",
   styleUrls: ["./crypto-home.component.scss"],
 })
-export class CryptoHomeComponent implements OnInit {
-  isCollapsed = true;
+export class CryptoHomeComponent implements OnInit, OnDestroy {
+
   constructor() {}
 
   ngOnInit() {
