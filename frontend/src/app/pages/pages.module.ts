@@ -38,6 +38,7 @@ import { SubstitutionAttackComponent } from "./attacks/substitution-attack/subst
 import { VigenereAttackComponent } from "./attacks/vigenere-attack/vigenere-attack.component";
 import { HillAttackComponent } from "./attacks/hill-attack/hill-attack.component";
 import { TopBarComponent } from './top-bar/top-bar.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   imports: [
@@ -79,6 +80,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
     VigenereAttackComponent,
     HillAttackComponent,
     TopBarComponent,
+    FooterComponent,
   ],
   exports: [
     IndexComponent,
