@@ -7,7 +7,7 @@ import { IndexComponent } from "./pages/index/index.component";
 import { ProfilepageComponent } from "./pages/examples/profilepage/profilepage.component";
 import { RegisterpageComponent } from "./pages/examples/registerpage/registerpage.component";
 import { LandingpageComponent } from "./pages/examples/landingpage/landingpage.component";
-import { CryptoHomeComponent } from "./pages/Crypto/crypto-home/crypto-home.component";
+import { CryptoHomeComponent } from "./pages/crypto-home/crypto-home.component";
 import { CipherComponent } from "./pages/cipher/cipher.component";
 import { AttacksComponent } from "./pages/attacks/attacks/attacks.component";
 

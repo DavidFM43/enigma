@@ -22,7 +22,7 @@ import { ProfilepageComponent } from "./examples/profilepage/profilepage.compone
 import { RegisterpageComponent } from "./examples/registerpage/registerpage.component";
 import { LandingpageComponent } from "./examples/landingpage/landingpage.component";
 
-import { CryptoHomeComponent } from "./Crypto/crypto-home/crypto-home.component";
+import { CryptoHomeComponent } from "./crypto-home/crypto-home.component";
 import { CipherComponent } from "./cipher/cipher.component";
 import { ShiftCipherComponent } from "./shift-cipher/shift-cipher.component";
 import { AffineCipherComponent } from "./affine-cipher/affine-cipher.component";
