@@ -1,4 +1,5 @@
 from string import ascii_lowercase
+import numpy as np
 
 # char to int
 char2int = {x: idx for idx, x in enumerate(ascii_lowercase)}
@@ -53,3 +54,25 @@ def int2str(integer_text: list[int]) -> str:
     Invierte la codificacion de str2int
     """
     return "".join([int2char[l] for l in integer_text])
+
+
+def pad_image_arr(img_arr, block_size):
+
+    shape = img_arr.shape
+    num_pad_rows = block_size - (shape[0] % block_size)
+    pad_shape = (num_pad_rows,) + shape[1:]
+    pad = np.full(pad_shape, num_pad_rows, dtype=np.uint8)
+    padded_arr = np.vstack((img_arr, pad))
+    
+    return padded_arr
+
+def unpad_image_arr(img_arr):
+
+    if len(img_arr.shape) == 3:
+        num_pad_rows = int(img_arr[-1, -1, -1])
+        plain_img_arr = img_arr[:-num_pad_rows, :, :]
+    else:
+        num_pad_rows = int(img_arr[-1, -1])
+        plain_img_arr = img_arr[:-num_pad_rows, :]
+
+    return plain_img_arr
