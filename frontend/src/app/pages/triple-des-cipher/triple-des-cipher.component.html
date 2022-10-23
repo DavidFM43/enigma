@@ -1,0 +1,210 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <form [formGroup]="cipherParams" #formDir="ngForm" class="col-sm-9">
+      <label for="key">Key</label>
+
+      <!-- key input and random btn -->
+      <div class="form-row">
+        <div class="col-sm-9 col-lg-9 mr-auto">
+          <div
+            class="form-group"
+            [class.has-success]="key.valid && key.touched"
+            [class.has-danger]="key.invalid && key.dirty"
+          >
+            <input
+              type="text"
+              class="form-control"
+              formControlName="key"
+              id="key"
+              oninput="this.value = this.value.toUpperCase()"
+              required
+            />
+          </div>
+          <!-- key validation alerts -->
+          <div *ngIf="key.invalid && key.dirty" class="alert alert-danger">
+            <div *ngIf="key.errors?.required">Key can't be empty.</div>
+            <div *ngIf="key.errors?.pattern">
+              Key must be 16 bytes in hexadecimal.
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-3 col-lg-3 mr-auto random-btn-cont">
+          <button class="btn mr-1 random-btn" (click)="random()">
+            Random Key
+          </button>
+        </div>
+      </div>
+
+      <!-- encryption modes -->
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="encryptionMode">Encryption Mode</label>
+            <select
+              id="encryptionMode"
+              class="form-control"
+              formControlName="mode"
+              required
+            >
+              <option *ngFor="let m of modes" [value]="m">{{ m }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- initial vector -->
+      <div *ngIf="ivModes.indexOf(cipherParams.value.mode) > -1">
+        <div class="row">
+          <div class="form-group col-md-9">
+            <label for="initializationVector">IV</label>
+            <div
+              class="form-group"
+              [class.has-success]="
+                initializationVector.valid && initializationVector.touched
+              "
+              [class.has-danger]="
+                initializationVector.invalid && initializationVector.dirty
+              "
+            >
+              <input
+                type="text"
+                class="form-control"
+                formControlName="initializationVector"
+                id="initializationVector"
+                oninput="this.value = this.value.toUpperCase()"
+                required
+              />
+            </div>
+            <!-- IV validation alerts -->
+            <div
+              *ngIf="initializationVector.invalid && initializationVector.dirty"
+              class="alert alert-danger"
+            >
+              <div *ngIf="initializationVector.errors?.required">
+                Initialization vector can't be empty.
+              </div>
+              <div *ngIf="initializationVector.errors?.pattern">
+                Initialization vector must be 16 bytes in hexadecimal.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- counter -->
+      <div *ngIf="cipherParams.value.mode === 'CTR'">
+        <div class="row">
+          <div class="form-group col-md-9">
+            <label for="counter">Counter</label>
+            <div
+              class="form-group"
+              [class.has-success]="counter.valid && counter.touched"
+              [class.has-danger]="counter.invalid && counter.dirty"
+            >
+              <input
+                type="text"
+                class="form-control"
+                formControlName="counter"
+                id="counter"
+                oninput="this.value = this.value.toUpperCase()"
+                required
+              />
+            </div>
+            <!-- IV validation alerts -->
+            <div
+              *ngIf="counter.invalid && counter.dirty"
+              class="alert alert-danger"
+            >
+              <div *ngIf="counter.errors?.required">
+                Counter can't be empty.
+              </div>
+              <div *ngIf="counter.errors?.pattern">
+                Counter must be 16 bytes in hexadecimal.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+    <h3 class="mb-3">Select an image</h3>
+  </div>
+
+  <div class="col-sm-12 col-lg-10 mr-auto ml-auto" style="text-align: center">
+    <div style="text-align: center; margin-top: 10px">
+      <ng-container *ngIf="file == null; else elseUploadrer">
+        <label for="file-upload-adder">
+          <div class="addResourcesS">
+            <i class="far fa-plus-square"> </i>
+          </div>
+        </label>
+        <input
+          id="file-upload-adder"
+          accept=".pdf,image/png,image/jpeg,image/jpg"
+          type="file"
+          style="display: none"
+          (change)="addFileGroup($event)"
+        />
+        <div *ngIf="notAdmit" class="alertForm">
+          Image name can not have points(.).
+        </div>
+      </ng-container>
+
+      <ng-template #elseUploadrer>
+        <img id="file" [src]="fileUrl" />
+
+        <button
+          (click)="removeFile()"
+          class="btn btn-primary btn-icon btn-round mr-1"
+          type="button"
+        >
+          <i class="fa-solid fa-xmark"> </i>
+        </button>
+      </ng-template>
+
+      <div class="row">
+        <div class="col-sm-6 col-lg-5 mr-auto ml-auto submit">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="encrypt()"
+            [disabled]="file == null || cipherParams.invalid"
+          >
+            Encrypt
+          </button>
+        </div>
+        <div class="col-sm-6 col-lg-5 mr-auto ml-auto submit">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="decrypt()"
+            [disabled]="file == null || cipherParams.invalid"
+          >
+            Decrypt
+          </button>
+        </div>
+      </div>
+
+      <div style="margin-top: 10px">
+        <div *ngIf="sending">
+          {{ progress }}
+        </div>
+        <div *ngIf="errorUpload">Ups, intente otra vez.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="encrypted">
+    <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+      <div>
+        <h3 class="mb-3">{{ responseDymcMess }} Image</h3>
+      </div>
+    </div>
+    <div class="col-sm-12 col-lg-10 mr-auto ml-auto" style="text-align: center">
+      <img class="img-fluid rounded shadow" [src]="imageToShow" />
+    </div>
+  </div>
+</div>
