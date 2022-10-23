@@ -20,14 +20,14 @@ from os.path import isfile, join
 key = b"holamellamodavid"
 iv = b"initvect"
 ctr = b"casaverd"
-img_name = "woman"
+img_name = "deers"
 img_path = f"tests/imgs/block/clear/{img_name}.png"
 nonce = b""
 
 img_arr = np.asarray(Image.open(img_path))
 # des3 = DES3.new(key, DES3.MODE_CTR, nonce=nonce)
 # des3.encrypt(img_arr.tobytes())
-cipher_img_arr = encrypt_image(img_arr, key, "ctr", initial_value=ctr)
+cipher_img_arr = encrypt_image(img_arr, key, "OFB", iv=iv)
 cipher_path = f"tests/imgs/block/cipher_triple_des/{img_name}.png"
 Image.fromarray(cipher_img_arr).save(cipher_path, "png")
 

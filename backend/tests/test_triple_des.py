@@ -14,9 +14,9 @@ def test_ecb():
     plain_img_arr = np.asarray(Image.open("tests/imgs/block/clear/bw.png"))
     cipher_img_arr = np.asarray(Image.open("tests/imgs/block/cipher_triple_des/bw.png"))
 
-    assert np.array_equal(cipher_img_arr, encrypt_image(plain_img_arr, key, "ecb"))
+    assert np.array_equal(cipher_img_arr, encrypt_image(plain_img_arr, key, "ECB"))
 
-    assert np.array_equal(plain_img_arr, decrypt_image(cipher_img_arr, key, "ecb"))
+    assert np.array_equal(plain_img_arr, decrypt_image(cipher_img_arr, key, "ECB"))
 
 
 def test_cbc():
@@ -29,11 +29,11 @@ def test_cbc():
     )
 
     assert np.array_equal(
-        cipher_img_arr, encrypt_image(plain_img_arr, key, "cbc", iv=iv)
+        cipher_img_arr, encrypt_image(plain_img_arr, key, "CBC", iv=iv)
     )
 
     assert np.array_equal(
-        plain_img_arr, decrypt_image(cipher_img_arr, key, "cbc", iv=iv)
+        plain_img_arr, decrypt_image(cipher_img_arr, key, "CBC", iv=iv)
     )
 
 
@@ -47,11 +47,11 @@ def test_ofb():
     )
 
     assert np.array_equal(
-        cipher_img_arr, encrypt_image(plain_img_arr, key, "ofb", iv=iv)
+        cipher_img_arr, encrypt_image(plain_img_arr, key, "OFB", iv=iv)
     )
 
     assert np.array_equal(
-        plain_img_arr, decrypt_image(cipher_img_arr, key, "ofb", iv=iv)
+        plain_img_arr, decrypt_image(cipher_img_arr, key, "OFB", iv=iv)
     )
 
 
@@ -59,17 +59,17 @@ def test_cfb():
 
     iv = b"initvect"
 
-    plain_img_arr = np.asarray(Image.open("tests/imgs/block/clear/deers.png"))
+    plain_img_arr = np.asarray(Image.open("tests/imgs/block/clear/tree.png"))
     cipher_img_arr = np.asarray(
-        Image.open("tests/imgs/block/cipher_triple_des/deers.png")
+        Image.open("tests/imgs/block/cipher_triple_des/tree.png")
     )
 
     assert np.array_equal(
-        cipher_img_arr, encrypt_image(plain_img_arr, key, "ofb", iv=iv)
+        cipher_img_arr, encrypt_image(plain_img_arr, key, "CFB", iv=iv)
     )
 
     assert np.array_equal(
-        plain_img_arr, decrypt_image(cipher_img_arr, key, "ofb", iv=iv)
+        plain_img_arr, decrypt_image(cipher_img_arr, key, "CFB", iv=iv)
     )
 
 
@@ -83,9 +83,9 @@ def test_ctr():
     )
 
     assert np.array_equal(
-        cipher_img_arr, encrypt_image(plain_img_arr, key, "ctr", initial_value=ctr)
+        cipher_img_arr, encrypt_image(plain_img_arr, key, "CTR", initial_value=ctr)
     )
 
     assert np.array_equal(
-        plain_img_arr, decrypt_image(cipher_img_arr, key, "ctr", initial_value=ctr)
+        plain_img_arr, decrypt_image(cipher_img_arr, key, "CTR", initial_value=ctr)
     )
