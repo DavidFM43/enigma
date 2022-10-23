@@ -178,4 +178,23 @@ export class ConnectionService {
       })
       .pipe(catchError(this.handleError));
   }
+  // aes
+  aesEncrypt(value: any) {
+    return this.http
+      .post(this.baseUrl + "/aes/encrypt", value, {
+        reportProgress: true,
+        observe: "events",
+        responseType: "blob",
+      })
+      .pipe(catchError(this.handleError));
+  }
+  aesDecrypt(value: any) {
+    return this.http
+      .post(this.baseUrl + "/aes/decrypt", value, {
+        reportProgress: true,
+        observe: "events",
+        responseType: "blob",
+      })
+      .pipe(catchError(this.handleError));
+  }
 }

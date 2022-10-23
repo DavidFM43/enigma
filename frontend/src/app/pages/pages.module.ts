@@ -42,6 +42,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SquaresPresentationComponent } from './squares-presentation/squares-presentation.component';
 import { BlockCiphersComponent } from './block-ciphers/block-ciphers.component';
 import { TripleDesCipherComponent } from './triple-des-cipher/triple-des-cipher.component';
+import { AesCipherComponent } from './aes-cipher/aes-cipher.component';
 
 @NgModule({
   imports: [
@@ -87,6 +88,7 @@ import { TripleDesCipherComponent } from './triple-des-cipher/triple-des-cipher.
     SquaresPresentationComponent,
     BlockCiphersComponent,
     TripleDesCipherComponent,
+    AesCipherComponent,
   ],
   exports: [
     IndexComponent,
