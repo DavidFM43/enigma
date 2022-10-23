@@ -1,6 +1,11 @@
 
+from ast import List, Tuple
 import plotly.graph_objects as go
-from string import ascii_lowercase
+
+import json
+import plotly
+import plotly.express as px
+
 
 TYPE = ["Type I", "Type II", "Type III"]
 COLORS = ["red", "green", "blue"]
@@ -90,7 +95,7 @@ def graphing(x_0:int, y_0:int, permutation:str) -> tuple[go.Figure, list[list]]:
     return fig, k
 
 
-def encrypt_gammaP(plain_text:str, matrix:list[list[int]]) -> list[tuple[int,int]]:
+def encrypt_gammaP(plain_text:str, matrix:list[List(str)]) -> tuple[list[Tuple(int,int)], float]:
     """
     Cipher text in coordinates of the coding in the plane
     """
@@ -107,7 +112,7 @@ def encrypt_gammaP(plain_text:str, matrix:list[list[int]]) -> list[tuple[int,int
         initial +=1
     return encrypt ,(percentage*100)/len(plain_text)
 
-def decrypt_gammaP(cipher_text:list[tuple[int]], matrix:list[list[int]]) -> str:
+def decrypt_gammaP(cipher_text:list[Tuple(int, int)], matrix:list[List(str)]) -> str:
     """
     Plaintext encrypted in plane coordinates
     """
@@ -118,15 +123,17 @@ def decrypt_gammaP(cipher_text:list[tuple[int]], matrix:list[list[int]]) -> str:
 
 if __name__ == "__main__":
     fig, matrix = graphing(0, 0, '0235814697')
+    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    print(graphJSON)
     #fig.show()
     #print(matrix)
-
     #test encrypt
-    print(encrypt_gammaP("abcd", matrix))
+    #cipher_text, percentage = encrypt_gammaP("abcd", matrix)
+    #print(cipher_text, percentage)
     #print(encrypt_gammaP("Inceptos neque.", matrix))
 
     #test decrypt
-    print(decrypt_gammaP([(0, 0), (4, 13), (2, 17), (3, 16)], matrix))
-    print(decrypt_gammaP([(0, 6), (1, 6), (2, 17), (3, 19), (5, 10), (5, 12), (7, 3), (7, 8), (8, 1), (1, 1), (1, 9), (1, 14), (2, 0)], matrix))
+    #print(decrypt_gammaP([(0, 0), (4, 13), (2, 17), (3, 16)], matrix))
+    #print(decrypt_gammaP([(0, 6), (1, 6), (2, 17), (3, 19), (5, 10), (5, 12), (7, 3), (7, 8), (8, 1), (1, 1), (1, 9), (1, 14), (2, 0)], matrix))
     
 
