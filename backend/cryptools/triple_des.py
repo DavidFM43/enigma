@@ -6,11 +6,11 @@ import numpy as np
 def encrypt_image(plain_img_arr, *args, **kwargs):
 
     modes = {
-        "ecb": DES3.MODE_ECB,
-        "cbc": DES3.MODE_CBC,
-        "ofb": DES3.MODE_OFB,
-        "cfb": DES3.MODE_CFB,
-        "ctr": DES3.MODE_CTR,
+        "ECB": DES3.MODE_ECB,
+        "CBC": DES3.MODE_CBC,
+        "OFB": DES3.MODE_OFB,
+        "CFB": DES3.MODE_CFB,
+        "CTR": DES3.MODE_CTR,
     }
 
     args = (DES3.adjust_key_parity(args[0]), modes[args[1]])
@@ -32,11 +32,11 @@ def encrypt_image(plain_img_arr, *args, **kwargs):
 def decrypt_image(cipher_img_arr, *args, **kwargs):
 
     modes = {
-        "ecb": DES3.MODE_ECB,
-        "cbc": DES3.MODE_CBC,
-        "ofb": DES3.MODE_OFB,
-        "cfb": DES3.MODE_CFB,
-        "ctr": DES3.MODE_CTR,
+        "ECB": DES3.MODE_ECB,
+        "CBC": DES3.MODE_CBC,
+        "OFB": DES3.MODE_OFB,
+        "CFB": DES3.MODE_CFB,
+        "CTR": DES3.MODE_CTR,
     }
 
     args = (args[0], modes[args[1]])

@@ -13,7 +13,7 @@ bp = Blueprint("triple_des", __name__, url_prefix="/triple_des")
 @bp.route("/encrypt", methods=["POST"])
 def encrypt_r():
 
-    if "key" in request.form and "file" in request.files:
+    if "key" in request.form and "mode" in request.form and "file" in request.files:
 
         key = request.form["key"]
         mode = request.form["mode"]
@@ -34,11 +34,11 @@ def encrypt_r():
         plain_img_arr = np.array(Image.open(img_path))
         kwargs = dict()
 
-        if mode not in {"ecb", "ctr"}:
+        if mode in ["CBC", "OFB", "CFB"]:
             init_vector = request.form["initialVector"]
             init_vector = bytes.fromhex(init_vector)
             kwargs["iv"] = init_vector
-        elif mode == "ctr":
+        elif mode == "CTR":
             ctr = request.form["Counter"]
             ctr = bytes.fromhex(ctr)
             kwargs["initial_value"] = ctr
@@ -80,11 +80,11 @@ def decrypt_r():
         cipher_img_arr = np.array(Image.open(img_path))
         kwargs = dict()
 
-        if mode not in {"ecb", "ctr"}:
+        if mode in ["CBC", "OFB", "CFB"]:
             init_vector = request.form["initialVector"]
             init_vector = bytes.fromhex(init_vector)
             kwargs["iv"] = init_vector
-        elif mode == "ctr":
+        elif mode == "CTR":
             ctr = request.form["Counter"]
             ctr = bytes.fromhex(ctr)
             kwargs["initial_value"] = ctr
