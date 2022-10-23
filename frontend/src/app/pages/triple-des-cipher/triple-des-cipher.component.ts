@@ -35,17 +35,17 @@ export class TripleDesCipherComponent implements OnInit {
       ]),
       mode: new FormControl("ECB", Validators.required),
       initializationVector: new FormControl(
-        "C0 93 86 36 11 F7 41 A7 E2 4B 15 66 B8 A5 CD 9B",
+        "C0 93 86 36 11 F7 41 A7",
         [
           Validators.required,
-          Validators.pattern("([0-9A-F]{2} ){15}[0-9A-F]{2}"),
+          Validators.pattern("([0-9A-F]{2} ){7}[0-9A-F]{2}"),
         ]
       ),
       counter: new FormControl(
-        "D4 68 48 C7 A1 44 32 D9 B7 B4 EF 13 D5 D0 92 52",
+        "D4 68 48 C7 A1 44 32 D9",
         [
           Validators.required,
-          Validators.pattern("([0-9A-F]{2} ){15}[0-9A-F]{2}"),
+          Validators.pattern("([0-9A-F]{2} ){7}[0-9A-F]{2}"),
         ]
       ),
     });

@@ -35,11 +35,11 @@ def encrypt_r():
         kwargs = dict()
 
         if mode in ["CBC", "OFB", "CFB"]:
-            init_vector = request.form["initialVector"]
+            init_vector = request.form["initializationVector"]
             init_vector = bytes.fromhex(init_vector)
             kwargs["iv"] = init_vector
         elif mode == "CTR":
-            ctr = request.form["Counter"]
+            ctr = request.form["counter"]
             ctr = bytes.fromhex(ctr)
             kwargs["initial_value"] = ctr
 
@@ -81,11 +81,11 @@ def decrypt_r():
         kwargs = dict()
 
         if mode in ["CBC", "OFB", "CFB"]:
-            init_vector = request.form["initialVector"]
+            init_vector = request.form["initializationVector"]
             init_vector = bytes.fromhex(init_vector)
             kwargs["iv"] = init_vector
         elif mode == "CTR":
-            ctr = request.form["Counter"]
+            ctr = request.form["counter"]
             ctr = bytes.fromhex(ctr)
             kwargs["initial_value"] = ctr
 
