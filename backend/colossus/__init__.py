@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_cors import CORS
-from . import shift, substitution, affine, vigenere, hill, permutation, triple_des
+from . import shift, substitution, affine, vigenere, hill, permutation, triple_des, gammap
 
 
 def create_app(test_config=None):
@@ -16,5 +16,6 @@ def create_app(test_config=None):
     app.register_blueprint(hill.bp)
     app.register_blueprint(permutation.bp)
     app.register_blueprint(triple_des.bp)
+    app.register_blueprint(gammap.bp)
 
     return app

@@ -9,20 +9,21 @@ import plotly.express as px
 
 
 
-bp = Blueprint("GammaP", __name__, url_prefix="/GammaP")
+bp = Blueprint("gammap", __name__, url_prefix="/gammap")
 
 
 @bp.route("/encrypt", methods=["POST"])
 def encrypt_r():
     """
     GammaP cipher encryption route.
-    Receives plain text, permutation y coordinates x,y as request arguments
+    Receives plain text, permutation and coordinates x,y as request arguments
     Returns JSON with cipher text and if needed error information.
     """
-    plain_text: str = request.args["plainText"]
-    permutation: str = request.args["permutation"]
-    x_0: int =  request.args["x_0"]
-    y_0: int =  request.args["y_0"]
+    request_data = request.get_json()
+    plain_text: str = request_data["plainText"]
+    permutation: str = request_data["permutation"]
+    x_0: int =  request_data["x_0"]
+    y_0: int =  request_data["y_0"]
 
     fig, matrix = graphing(x_0, y_0, permutation)
     cipher_text, percentage = encrypt_gammaP(plain_text, matrix) 
@@ -39,13 +40,14 @@ def encrypt_r():
 def decrypt_r():
     """
     GammaP cipher decryption route.
-    Receives cipher text and key as request arguments
+    Receives cipher text, permutation and coordinates x,y  as request arguments
     Returns JSON with clear text and, if needed, error information.
     """
-    cipher_text: list[Tuple] = request.args["cipherText"]
-    permutation: str = request.args["permutation"]
-    x_0: int =  request.args["x_0"]
-    y_0: int =  request.args["y_0"]
+    request_data = request.get_json()
+    cipher_text: list[Tuple] = request_data["cipherText"]
+    permutation: str = request_data["permutation"]
+    x_0: int =  request_data["x_0"]
+    y_0: int =  request_data["y_0"]
     fig, matrix = graphing(x_0, y_0, permutation)
 
     plain_text = decrypt_gammaP(cipher_text, matrix)
@@ -53,8 +55,6 @@ def decrypt_r():
     typeError = ""
 
     response_dict = {"decipherText": plain_text, "error": error, "typeError": typeError}
-
     return dumps(response_dict)
 
-if __name__ == "__main__":
-    encrypt_r()
+
