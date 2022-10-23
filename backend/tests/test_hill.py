@@ -8,8 +8,8 @@ from cryptools.hill import (
 import numpy as np
 from PIL import Image
 
-plain_img = np.asarray(Image.open("tests/imgs/plain_image.png"))
-cipher_img = np.asarray(Image.open("tests/imgs/cipher_image.png"))
+plain_img = np.asarray(Image.open("tests/imgs/hill/plain_image.png"))
+cipher_img = np.asarray(Image.open("tests/imgs/hill/cipher_image.png"))
 
 
 def test_encrypt_text():

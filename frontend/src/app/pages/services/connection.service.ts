@@ -159,4 +159,23 @@ export class ConnectionService {
       })
       .pipe(catchError(this.handleError));
   }
+  // triple des
+  tripleDesEncrypt(value: any) {
+    return this.http
+      .post(this.baseUrl + "/triple_des/encrypt", value, {
+        reportProgress: true,
+        observe: "events",
+        responseType: "blob",
+      })
+      .pipe(catchError(this.handleError));
+  }
+  tripleDesDecrypt(value: any) {
+    return this.http
+      .post(this.baseUrl + "/triple_des/decrypt", value, {
+        reportProgress: true,
+        observe: "events",
+        responseType: "blob",
+      })
+      .pipe(catchError(this.handleError));
+  }
 }

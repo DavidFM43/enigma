@@ -39,6 +39,9 @@ import { VigenereAttackComponent } from "./attacks/vigenere-attack/vigenere-atta
 import { HillAttackComponent } from "./attacks/hill-attack/hill-attack.component";
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { FooterComponent } from './footer/footer.component';
+import { SquaresPresentationComponent } from './squares-presentation/squares-presentation.component';
+import { BlockCiphersComponent } from './block-ciphers/block-ciphers.component';
+import { TripleDesCipherComponent } from './triple-des-cipher/triple-des-cipher.component';
 
 @NgModule({
   imports: [
@@ -81,6 +84,9 @@ import { FooterComponent } from './footer/footer.component';
     HillAttackComponent,
     TopBarComponent,
     FooterComponent,
+    SquaresPresentationComponent,
+    BlockCiphersComponent,
+    TripleDesCipherComponent,
   ],
   exports: [
     IndexComponent,

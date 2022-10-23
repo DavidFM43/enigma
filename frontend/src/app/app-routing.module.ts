@@ -10,6 +10,7 @@ import { LandingpageComponent } from "./pages/examples/landingpage/landingpage.c
 import { CryptoHomeComponent } from "./pages/crypto-home/crypto-home.component";
 import { CipherComponent } from "./pages/cipher/cipher.component";
 import { AttacksComponent } from "./pages/attacks/attacks/attacks.component";
+import { BlockCiphersComponent } from "./pages/block-ciphers/block-ciphers.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: "home", component: CryptoHomeComponent },
   { path: "cipher", component: CipherComponent },
   { path: "attack", component: AttacksComponent },
+  { path: "block", component: BlockCiphersComponent },
 ];
 
 @NgModule({
