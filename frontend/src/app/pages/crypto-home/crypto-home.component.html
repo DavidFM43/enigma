@@ -49,8 +49,10 @@
           </h1>
         </div>
       </div>
+
       <div class="row">
-        <div class="col-md-6">
+
+        <div class="col-md-4">
           <div class="card card-coin card-plain">
             <div class="card-header">
               <img class="img-center img-fluid" src="assets/img/bitcoin.png" />
@@ -80,7 +82,8 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6">
+
+        <div class="col-md-4">
           <div class="card card-coin card-plain">
             <div class="card-header">
               <img class="img-center img-fluid" src="assets/img/ripp.png" />
@@ -94,7 +97,7 @@
               </div>
               <div class="row">
                 <ul class="list-group">
-                  <li class="list-group-item">Attack a cipher</li>
+                  <li class="list-group-item">Perform cryptanalysis on classic ciphers</li>
                 </ul>
               </div>
             </div>
@@ -102,6 +105,35 @@
               <button
                 class="btn btn-info btn-simple"
                 [routerLink]="['/attack']"
+              >
+                Get started
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card card-coin card-plain">
+            <div class="card-header">
+              <img class="img-center img-fluid" src="assets/img/etherum.png" />
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <h4 class="text-uppercase">Block Ciphers</h4>
+                  <hr class="line-info" />
+                </div>
+              </div>
+              <div class="row">
+                <ul class="list-group">
+                  <li class="list-group-item">AES, DES3, SDES with their respective encryption modes</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card-footer text-center">
+              <button
+                class="btn btn-info btn-simple"
+                [routerLink]="['/block']"
               >
                 Get started
               </button>
