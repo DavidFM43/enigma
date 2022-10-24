@@ -43,6 +43,7 @@ import { SquaresPresentationComponent } from './squares-presentation/squares-pre
 import { BlockCiphersComponent } from './block-ciphers/block-ciphers.component';
 import { TripleDesCipherComponent } from './triple-des-cipher/triple-des-cipher.component';
 import { AesCipherComponent } from './aes-cipher/aes-cipher.component';
+import { SimplifiedDesCipherComponent } from './simplified-des-cipher/simplified-des-cipher.component';
 
 @NgModule({
   imports: [
@@ -89,6 +90,7 @@ import { AesCipherComponent } from './aes-cipher/aes-cipher.component';
     BlockCiphersComponent,
     TripleDesCipherComponent,
     AesCipherComponent,
+    SimplifiedDesCipherComponent,
   ],
   exports: [
     IndexComponent,

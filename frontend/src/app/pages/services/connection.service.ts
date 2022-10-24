@@ -197,4 +197,21 @@ export class ConnectionService {
       })
       .pipe(catchError(this.handleError));
   }
+  // simplified des
+  simplifiedDesEncrypt(key: string, plainText: string) {
+    return this.http
+      .post(this.baseUrl + "/simplified_des/encrypt", {
+        key: key,
+        plainText: plainText,
+      })
+      .pipe(catchError(this.handleError));
+  }
+  simplifiedDesDecrypt(key: string, cipherText: string) {
+    return this.http
+      .post(this.baseUrl + "/simplified_des/decrypt", {
+        key: key,
+        cipherText: cipherText,
+      })
+      .pipe(catchError(this.handleError));
+  }
 }
