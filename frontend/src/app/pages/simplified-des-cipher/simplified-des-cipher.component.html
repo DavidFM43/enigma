@@ -1,0 +1,114 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <form [formGroup]="cipherParams" #formDir="ngForm" class="col-sm-9">
+      <label for="key">Key</label>
+
+      <!-- key input and random btn -->
+      <div class="form-row">
+        <div class="col-sm-9 col-lg-9 mr-auto">
+          <div
+            class="form-group"
+            [class.has-success]="key.valid && key.touched"
+            [class.has-danger]="key.invalid && key.dirty"
+          >
+            <input
+              type="text"
+              class="form-control"
+              formControlName="key"
+              id="key"
+              required
+            />
+          </div>
+          <!-- key validation alerts -->
+          <div *ngIf="key.invalid && key.dirty" class="alert alert-danger">
+            <div *ngIf="key.errors?.required">Key can't be empty.</div>
+            <div *ngIf="key.errors?.pattern">Key must be 10 bits.</div>
+          </div>
+        </div>
+
+        <div class="col-sm-3 col-lg-3 mr-auto random-btn-cont">
+          <button class="btn mr-1 random-btn" (click)="random()">
+            Random Key
+          </button>
+        </div>
+      </div>
+
+      <!-- Plain text -->
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label for="plainText">Plain/Cipher Text</label>
+
+          <div
+            class="form-group"
+            [class.has-success]="plainText.valid && plainText.touched"
+            [class.has-danger]="plainText.invalid && plainText.dirty"
+          >
+            <textarea
+              class="form-control"
+              id="plainText"
+              formControlName="plainText"
+              rows="4"
+              style="max-height: 150px"
+              required
+            >
+            </textarea>
+          </div>
+
+          <!-- Plain text validation alerts -->
+          <div
+            *ngIf="plainText.invalid && plainText.dirty"
+            class="alert alert-danger"
+          >
+            <div *ngIf="plainText.errors?.required">
+              Plain/Cipher text can't be empty.
+            </div>
+            <div *ngIf="plainText.errors?.pattern">
+              Plain/Cipher text can only contain base64 characters.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Encrypt and Decrypt buttons -->
+      <div class="row">
+        <div class="col-sm-6 col-lg-5 mr-auto ml-auto submit">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="encrypt()"
+            [disabled]="cipherParams.invalid"
+          >
+            Encrypt
+          </button>
+        </div>
+        <div class="col-sm-6 col-lg-5 mr-auto ml-auto submit">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="decrypt()"
+            [disabled]="cipherParams.invalid"
+          >
+            Decrypt
+          </button>
+        </div>
+      </div>
+
+      <!-- Encrypted/decrypted text -->
+      <div class="row" *ngIf="submitted">
+        <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+          <div>
+            <h3 class="mb-3">{{ responseDymcMess }} text</h3>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+          <blockquote>
+            <p class="blockquote blockquote-danger">
+              {{ cipherText }}
+            </p>
+          </blockquote>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
