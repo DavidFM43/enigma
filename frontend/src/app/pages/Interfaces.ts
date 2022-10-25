@@ -62,3 +62,8 @@ export interface gammaEncyptersReponse {
   percentage: number,
   grapgJSON: string
 }
+export interface gammaDecyptersReponse {
+  decipherText: string;
+  error: boolean;
+  typeError: string;
+}

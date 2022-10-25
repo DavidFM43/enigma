@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import {
   AbstractControl,
-  FormControl,
-  FormGroup,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from "@angular/forms";
 import { textDecyptersReponse, textEncyptersReponse } from "../Interfaces";
@@ -16,7 +16,7 @@ import { isPermutationAbc } from "../shared/correct-key.directive";
   styleUrls: ["./substitution-cipher.component.scss"],
 })
 export class SubstitutionCipherComponent implements OnInit {
-  public arguments: FormGroup;
+  public arguments: UntypedFormGroup;
   public cipherText: string;
   public submitted: boolean;
   public resposeDymcMess: string;
@@ -25,13 +25,13 @@ export class SubstitutionCipherComponent implements OnInit {
     private connection: ConnectionService,
     private normalizer: NormalizerService
   ) {
-    this.arguments = new FormGroup({
-      key: new FormControl("", [
+    this.arguments = new UntypedFormGroup({
+      key: new UntypedFormControl("", [
         Validators.required,
         Validators.pattern("^[A-Z]*$"),
         isPermutationAbc(26),
       ]),
-      plainText: new FormControl("", [
+      plainText: new UntypedFormControl("", [
         Validators.required,
         Validators.pattern("^[a-zA-Z ]+[ ]*[a-zA-Z ]*$"),
       ]),

@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import {
   AbstractControl,
-  FormControl,
-  FormGroup,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from "@angular/forms";
 import {
@@ -19,7 +19,7 @@ import { NormalizerService } from "../../services/normalizer.service";
   styleUrls: ["./vigenere-attack.component.scss"],
 })
 export class VigenereAttackComponent implements OnInit {
-  public arguments: FormGroup;
+  public arguments: UntypedFormGroup;
   public submitted: boolean;
   public respNoKey: vigenereNoKeyAttackResponse;
   public respKey: vigenereKeyAttackResponse;
@@ -28,14 +28,14 @@ export class VigenereAttackComponent implements OnInit {
     private connection: ConnectionService,
     private normalizer: NormalizerService
   ) {
-    this.arguments = new FormGroup({
-      keySize: new FormControl("", [
+    this.arguments = new UntypedFormGroup({
+      keySize: new UntypedFormControl("", [
         Validators.required,
         Validators.pattern("^[1-9]*$"),
         Validators.min(1),
         Validators.max(7),
       ]),
-      plainText: new FormControl("", [
+      plainText: new UntypedFormControl("", [
         Validators.required,
         Validators.pattern("^[a-zA-Z ]+[ ]*[a-zA-Z ]*$"),
       ]),

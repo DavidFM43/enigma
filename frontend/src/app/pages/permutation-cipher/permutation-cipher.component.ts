@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import {
   AbstractControl,
-  FormControl,
-  FormGroup,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from "@angular/forms";
 import { textDecyptersReponse, textEncyptersReponse } from "../Interfaces";
@@ -16,7 +16,7 @@ import { correctKey, isPermutationNum } from "../shared/correct-key.directive";
   styleUrls: ["./permutation-cipher.component.scss"],
 })
 export class PermutationCipherComponent implements OnInit {
-  public arguments: FormGroup;
+  public arguments: UntypedFormGroup;
   public cipherText: string;
   public submitted: boolean;
   public resposeDymcMess: string;
@@ -25,8 +25,8 @@ export class PermutationCipherComponent implements OnInit {
     private connection: ConnectionService,
     private normalizer: NormalizerService
   ) {
-    this.arguments = new FormGroup({
-      key: new FormControl("", [
+    this.arguments = new UntypedFormGroup({
+      key: new UntypedFormControl("", [
         Validators.required,
         correctKey(
           Array.from({ length: 26 }, (_, i) => i + 1),
@@ -35,7 +35,7 @@ export class PermutationCipherComponent implements OnInit {
         ),
         isPermutationNum(),
       ]),
-      plainText: new FormControl("", [
+      plainText: new UntypedFormControl("", [
         Validators.required,
         Validators.pattern("^[a-zA-Z ]+[ ]*[a-zA-Z ]*$"),
       ]),

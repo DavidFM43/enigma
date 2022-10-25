@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import {
   AbstractControl,
-  FormControl,
-  FormGroup,
+  UntypedFormControl,
+  UntypedFormGroup,
   ValidationErrors,
   ValidatorFn,
   Validators,
@@ -17,7 +17,7 @@ import { NormalizerService } from "../services/normalizer.service";
   styleUrls: ["./vigenere-cipher.component.scss"],
 })
 export class VigenereCipherComponent implements OnInit {
-  public arguments: FormGroup;
+  public arguments: UntypedFormGroup;
   public cipherText: string;
   public submitted: boolean;
   public resposeDymcMess: string;
@@ -27,12 +27,12 @@ export class VigenereCipherComponent implements OnInit {
     private connection: ConnectionService,
     private normalizer: NormalizerService
   ) {
-    this.arguments = new FormGroup({
-      plainText: new FormControl("", [
+    this.arguments = new UntypedFormGroup({
+      plainText: new UntypedFormControl("", [
         Validators.required,
         Validators.pattern("^[a-zA-Z ]+[ ]*[a-zA-Z ]*$"),
       ]),
-      key: new FormControl("", [
+      key: new UntypedFormControl("", [
         Validators.required,
         Validators.pattern("^[A-Z]*$"),
         this.maxLength(),

@@ -225,11 +225,13 @@ export class ConnectionService {
       })
       .pipe(catchError(this.handleError));
   }
-  gammaDecrypt(key: string, cipherText: string) {
+  gammaDecrypt(permutation: string, x: number, y:number, cipherText: number[][]) {
     return this.http
-      .post(this.baseUrl + "/simplified_des/decrypt", {
-        key: key,
+      .post(this.baseUrl + "/gammap/decrypt", {
+        permutation: permutation,
         cipherText: cipherText,
+        x_0: x,
+        y_0: y
       })
       .pipe(catchError(this.handleError));
   }

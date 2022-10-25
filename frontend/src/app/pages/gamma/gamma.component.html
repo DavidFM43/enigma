@@ -101,22 +101,29 @@
         <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
           <blockquote>
             <p class="blockquote blockquote-danger">
-              <span *ngFor="let elm of cipherText;last as isLast">[{{elm}}]<span *ngIf="!isLast">,</span></span>
+
+              <ng-template [ngIf]="resposeDymcMess == 'Cipher'" [ngIfElse]="elseCipherGamma">
+                <span *ngFor="let elm of cipherText;last as isLast">[{{elm}}]<span *ngIf="!isLast">,</span></span>
+
+               </ng-template>
+               
+               <ng-template #elseCipherGamma>
+                {{decipherText}}
+               </ng-template>
               
             </p>
           </blockquote>
         </div>
-        <div class="row" *ngIf="submitted">
-                <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+                <div class="col-sm-12 col-lg-10 mr-auto ml-auto" *ngIf="resposeDymcMess == 'Cipher'">
                 <div>
                     <h3 class="mb-3">Percentage: {{percentage}}</h3>
                 </div>
                 </div>
-                <div #midiv></div>
-            </div>
-
+            
       </div>
-      
+      <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+        <div id="plot" [ngClass]="{ plot: resposeDymcMess != 'Cipher' }"></div>
+      </div>
     </div>
   </form>
   

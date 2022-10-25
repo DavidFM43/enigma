@@ -37,7 +37,7 @@
               "src/assets/scss/blk-design-system.scss",
               "src/assets/demo/demo.css"
             ],
-            "scripts": [],
+            "scripts": ["src/assets/plotly-2.14.0.min.js"],
             "aot": false,
             "vendorChunk": true,
             "extractLicenses": false,
@@ -129,7 +129,6 @@
       }
     }
   },
-  "defaultProject": "blk-design-system-angular",
   "cli": {
     "analytics": false
   }

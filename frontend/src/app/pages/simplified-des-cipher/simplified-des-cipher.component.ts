@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { UntypedFormControl, UntypedFormGroup, Validators } from "@angular/forms";
 import { ConnectionService } from "../services/connection.service";
 import { textDecyptersReponse, textEncyptersReponse } from "../Interfaces";
 
@@ -9,7 +9,7 @@ import { textDecyptersReponse, textEncyptersReponse } from "../Interfaces";
   styleUrls: ["./simplified-des-cipher.component.scss"],
 })
 export class SimplifiedDesCipherComponent implements OnInit {
-  cipherParams!: FormGroup;
+  cipherParams!: UntypedFormGroup;
   public submitted: boolean;
   public cipherText: string;
   public responseDymcMess: string;
@@ -21,12 +21,12 @@ export class SimplifiedDesCipherComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.cipherParams = new FormGroup({
-      key: new FormControl("0110010110", [
+    this.cipherParams = new UntypedFormGroup({
+      key: new UntypedFormControl("0110010110", [
         Validators.required,
         Validators.pattern("(0|1){10}"),
       ]),
-      plainText: new FormControl("attack at dawn", [
+      plainText: new UntypedFormControl("attack at dawn", [
         Validators.required,
         Validators.pattern("[+/=0-9a-zA-Z][ +/=0-9a-zA-Z]*"),
       ]),

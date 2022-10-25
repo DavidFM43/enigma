@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import {
   AbstractControl,
-  FormControl,
-  FormGroup,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from "@angular/forms";
 import { hillAttackerResponse, shiftAttackerResponse } from "../../Interfaces";
@@ -15,7 +15,7 @@ import { NormalizerService } from "../../services/normalizer.service";
   styleUrls: ["./hill-attack.component.scss"],
 })
 export class HillAttackComponent implements OnInit {
-  public arguments: FormGroup;
+  public arguments: UntypedFormGroup;
   // public options: hillAttackerResponse;
   public options: [number[]];
   public submitted: boolean;
@@ -25,16 +25,16 @@ export class HillAttackComponent implements OnInit {
     private connection: ConnectionService,
     private normalizer: NormalizerService
   ) {
-    this.arguments = new FormGroup({
-      plainText: new FormControl("", [
+    this.arguments = new UntypedFormGroup({
+      plainText: new UntypedFormControl("", [
         Validators.required,
         Validators.pattern("^[a-zA-Z ]+[ ]*[a-zA-Z ]*$"),
       ]),
-      cipherText: new FormControl("", [
+      cipherText: new UntypedFormControl("", [
         Validators.required,
         Validators.pattern("^[a-zA-Z ]+[ ]*[a-zA-Z ]*$"),
       ]),
-      keySize: new FormControl("", [
+      keySize: new UntypedFormControl("", [
         Validators.required,
         Validators.pattern("^[1-9]*$"),
         Validators.min(2),

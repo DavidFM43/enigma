@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import {
   AbstractControl,
-  FormControl,
-  FormGroup,
+  UntypedFormControl,
+  UntypedFormGroup,
   ValidationErrors,
   ValidatorFn,
   Validators,
@@ -21,7 +21,7 @@ import {
   styleUrls: ["./affine-cipher.component.scss"],
 })
 export class AffineCipherComponent implements OnInit {
-  public arguments: FormGroup;
+  public arguments: UntypedFormGroup;
   private fistKey: number[];
   public cipherText: string;
   public submitted: boolean;
@@ -32,13 +32,13 @@ export class AffineCipherComponent implements OnInit {
     private normalizer: NormalizerService
   ) {
     this.fistKey = [1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25];
-    this.arguments = new FormGroup({
-      key: new FormControl("", [
+    this.arguments = new UntypedFormGroup({
+      key: new UntypedFormControl("", [
         Validators.required,
         correctKey([2], 0, 25),
         correctFistKeyAffine(),
       ]),
-      plainText: new FormControl("", [
+      plainText: new UntypedFormControl("", [
         Validators.required,
         Validators.pattern("^[a-zA-Z ]+[ ]*[a-zA-Z ]*$"),
       ]),
