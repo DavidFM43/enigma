@@ -24,7 +24,7 @@
           <div *ngIf="key.invalid && key.dirty" class="alert alert-danger">
             <div *ngIf="key.errors?.required">Key can't be empty.</div>
             <div *ngIf="key.errors?.pattern">
-              Key must be 16 bytes in hexadecimal.
+              Key must be 16/24 bytes in hexadecimal.
             </div>
           </div>
         </div>
