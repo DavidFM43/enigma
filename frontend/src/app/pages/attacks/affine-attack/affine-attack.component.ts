@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import {
   AbstractControl,
-  FormControl,
-  FormGroup,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from "@angular/forms";
 import { affineAttackerResponse } from "../../Interfaces";
@@ -15,7 +15,7 @@ import { NormalizerService } from "../../services/normalizer.service";
   styleUrls: ["./affine-attack.component.scss"],
 })
 export class AffineAttackComponent implements OnInit {
-  public arguments: FormGroup;
+  public arguments: UntypedFormGroup;
   public plainText: string;
   public key: number[];
   public submitted: boolean;
@@ -24,8 +24,8 @@ export class AffineAttackComponent implements OnInit {
     private connection: ConnectionService,
     private normalizer: NormalizerService
   ) {
-    this.arguments = new FormGroup({
-      cipherText: new FormControl("", [
+    this.arguments = new UntypedFormGroup({
+      cipherText: new UntypedFormControl("", [
         Validators.required,
         Validators.pattern("[a-zA-Z][a-zA-Z ]*$"),
       ]),

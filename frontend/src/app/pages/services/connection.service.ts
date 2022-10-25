@@ -214,4 +214,25 @@ export class ConnectionService {
       })
       .pipe(catchError(this.handleError));
   }
+  // gamma
+  gammaEncrypt(permutation: string, x: number, y:number, plainText: string) {
+    return this.http
+      .post(this.baseUrl + "/gammap/encrypt", {
+        permutation: permutation,
+        plainText: plainText,
+        x_0: x,
+        y_0: y
+      })
+      .pipe(catchError(this.handleError));
+  }
+  gammaDecrypt(permutation: string, x: number, y:number, cipherText: number[][]) {
+    return this.http
+      .post(this.baseUrl + "/gammap/decrypt", {
+        permutation: permutation,
+        cipherText: cipherText,
+        x_0: x,
+        y_0: y
+      })
+      .pipe(catchError(this.handleError));
+  }
 }

@@ -1,6 +1,6 @@
 import { HttpEventType } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { UntypedFormControl, UntypedFormGroup, Validators } from "@angular/forms";
 import { DomSanitizer } from "@angular/platform-browser";
 import { ConnectionService } from "../services/connection.service";
 
@@ -10,7 +10,7 @@ import { ConnectionService } from "../services/connection.service";
   styleUrls: ["./triple-des-cipher.component.scss"],
 })
 export class TripleDesCipherComponent implements OnInit {
-  cipherParams!: FormGroup;
+  cipherParams!: UntypedFormGroup;
 
   public file: File;
   public fileUrl: any;
@@ -28,20 +28,20 @@ export class TripleDesCipherComponent implements OnInit {
   ivModes = ["CBC", "OFB", "CFB"];
 
   ngOnInit(): void {
-    this.cipherParams = new FormGroup({
-      key: new FormControl("AA 07 63 77 AE 1B 8E A6 B7 42 01 59 0B 2C B8 14", [
+    this.cipherParams = new UntypedFormGroup({
+      key: new UntypedFormControl("AA 07 63 77 AE 1B 8E A6 B7 42 01 59 0B 2C B8 14", [
         Validators.required,
         Validators.pattern("([0-9A-F]{2} ){15}[0-9A-F]{2}"),
       ]),
-      mode: new FormControl("ECB", Validators.required),
-      initializationVector: new FormControl(
+      mode: new UntypedFormControl("ECB", Validators.required),
+      initializationVector: new UntypedFormControl(
         "C0 93 86 36 11 F7 41 A7",
         [
           Validators.required,
           Validators.pattern("([0-9A-F]{2} ){7}[0-9A-F]{2}"),
         ]
       ),
-      counter: new FormControl(
+      counter: new UntypedFormControl(
         "D4 68 48 C7 A1 44 32 D9",
         [
           Validators.required,

@@ -1,0 +1,129 @@
+<form [formGroup]="arguments">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-sm-6 col-lg-6 ml-auto">
+          <div
+            [ngClass]="
+              key.invalid && key.dirty ? 'form-group has-danger' : 'input-group'
+            "
+          >
+            <textarea
+              placeholder="Key"
+              class="textkey form-control"
+              formControlName="key"
+              [ngClass]="{ plainTextError: key.invalid && key.dirty }"
+            ></textarea>
+          </div>
+
+          <div
+          [ngClass]="
+            x.invalid && x.dirty ? 'form-group has-danger' : 'input-group'
+          "
+        >
+          <input
+            class="form-control"
+            placeholder="X"
+            type="text"
+            formControlName="x"
+          />
+          <ng-template [ngIf]="!x.invalid || !x.dirty">
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="tim-icons icon-lock-circle"> </i>
+              </span>
+            </div>
+          </ng-template>
+        </div>
+
+        <div
+        [ngClass]="
+          y.invalid && y.dirty ? 'form-group has-danger' : 'input-group'
+        "
+      >
+        <input
+          class="form-control"
+          placeholder="Y"
+          type="text"
+          formControlName="y"
+        />
+        <ng-template [ngIf]="!y.invalid || !y.dirty">
+          <div class="input-group-append">
+            <span class="input-group-text">
+              <i class="tim-icons icon-lock-circle"> </i>
+            </span>
+          </div>
+        </ng-template>
+      </div>
+          
+        </div>
+        <div class="col-sm-3 col-lg-3 mr-auto random-btn-cont">
+          <button class="btn mr-1 random-btn" (click)="random()">Random</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+          <textarea
+            placeholder="Text to cipher"
+            class="texrtocr form-control"
+            formControlName="plainText"
+            [ngClass]="{ plainTextError: plainText.invalid && plainText.dirty }"
+          ></textarea>
+        </div>
+        <div class="col-sm-6 col-lg-5 mr-auto ml-auto submit">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="encrypt()"
+            [disabled]="!arguments.valid"
+          >
+            Encrypt
+          </button>
+        </div>
+        <div class="col-sm-6 col-lg-5 mr-auto ml-auto submit">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="decrypt()"
+            [disabled]="!arguments.valid"
+          >
+            Decrypt
+          </button>
+        </div>
+      </div>
+  
+      <div class="row" *ngIf="submitted">
+        <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+          <div>
+            <h3 class="mb-3">{{ resposeDymcMess }} text</h3>
+          </div>
+        </div>
+  
+        <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+          <blockquote>
+            <p class="blockquote blockquote-danger">
+
+              <ng-template [ngIf]="resposeDymcMess == 'Cipher'" [ngIfElse]="elseCipherGamma">
+                <span *ngFor="let elm of cipherText;last as isLast">[{{elm}}]<span *ngIf="!isLast">,</span></span>
+
+               </ng-template>
+               
+               <ng-template #elseCipherGamma>
+                {{decipherText}}
+               </ng-template>
+              
+            </p>
+          </blockquote>
+        </div>
+                <div class="col-sm-12 col-lg-10 mr-auto ml-auto" *ngIf="resposeDymcMess == 'Cipher'">
+                <div>
+                    <h3 class="mb-3">Percentage: {{percentage}}</h3>
+                </div>
+                </div>
+            
+      </div>
+      <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+        <div id="plot" [ngClass]="{ plot: resposeDymcMess != 'Cipher' }"></div>
+      </div>
+    </div>
+  </form>
+  

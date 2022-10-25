@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import {
   AbstractControl,
-  FormControl,
-  FormGroup,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from "@angular/forms";
 import {
@@ -18,7 +18,7 @@ import { NormalizerService } from "../../services/normalizer.service";
   styleUrls: ["./substitution-attack.component.scss"],
 })
 export class SubstitutionAttackComponent implements OnInit {
-  public arguments: FormGroup;
+  public arguments: UntypedFormGroup;
   public submitted: boolean;
   public resp: substitutionAttackerResponse;
 
@@ -26,8 +26,8 @@ export class SubstitutionAttackComponent implements OnInit {
     private connection: ConnectionService,
     private normalizer: NormalizerService
   ) {
-    this.arguments = new FormGroup({
-      plainText: new FormControl("", [
+    this.arguments = new UntypedFormGroup({
+      plainText: new UntypedFormControl("", [
         Validators.required,
         Validators.pattern("^[a-zA-Z ]+[ ]*[a-zA-Z ]*$"),
       ]),

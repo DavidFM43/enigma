@@ -2,8 +2,8 @@ import { HttpEventType } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import {
   AbstractControl,
-  FormControl,
-  FormGroup,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from "@angular/forms";
 import { DomSanitizer } from "@angular/platform-browser";
@@ -16,7 +16,7 @@ import { correctKey, correctKeyHill } from "../shared/correct-key.directive";
   styleUrls: ["./hill-cipher.component.scss"],
 })
 export class HillCipherComponent implements OnInit {
-  public arguments: FormGroup;
+  public arguments: UntypedFormGroup;
   public file: File;
   public fileUrl: any;
   public notAdmit: boolean;
@@ -33,8 +33,8 @@ export class HillCipherComponent implements OnInit {
     private connection: ConnectionService,
     public domS: DomSanitizer
   ) {
-    this.arguments = new FormGroup({
-      key: new FormControl("", [
+    this.arguments = new UntypedFormGroup({
+      key: new UntypedFormControl("", [
         Validators.required,
         correctKey([4, 9, 16], 0, 255),
         correctKeyHill(),

@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import {
   AbstractControl,
-  FormControl,
-  FormGroup,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from "@angular/forms";
 import { shiftAttackerResponse } from "../../Interfaces";
@@ -14,7 +14,7 @@ import { NormalizerService } from "../../services/normalizer.service";
   styleUrls: ["./shift-attack.component.scss"],
 })
 export class ShiftAttackComponent implements OnInit {
-  public arguments: FormGroup;
+  public arguments: UntypedFormGroup;
   public options: string[];
   public submitted: boolean;
 
@@ -22,8 +22,8 @@ export class ShiftAttackComponent implements OnInit {
     private connection: ConnectionService,
     private normalizer: NormalizerService
   ) {
-    this.arguments = new FormGroup({
-      plainText: new FormControl("", [
+    this.arguments = new UntypedFormGroup({
+      plainText: new UntypedFormControl("", [
         Validators.required,
         Validators.pattern("^[a-zA-Z ]+[ ]*[a-zA-Z ]*$"),
       ]),
