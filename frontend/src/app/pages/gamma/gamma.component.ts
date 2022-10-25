@@ -81,8 +81,8 @@ export class GammaComponent implements OnInit {
       this.arguments.get("plainText").value
     );
     let keys: string = this.key.value.replaceAll(",","")
-    let  x: number = this.x.value;
-    let  y: number = this.y.value;
+    let  x: number = parseInt(this.x.value);
+    let  y: number = parseInt(this.y.value);
     this.connection
       .gammaEncrypt(keys, x, y, normalizedText)
       .subscribe((ans: gammaEncyptersReponse) => {
@@ -106,8 +106,8 @@ export class GammaComponent implements OnInit {
       this.arguments.get("plainText").value
     );
     let keys: string = this.key.value.replaceAll(",","")
-    let  x: number = this.x.value;
-    let  y: number = this.y.value;
+    let  x: number = parseInt(this.x.value);
+    let  y: number = parseInt(this.y.value);
     normalizedText = normalizedText.slice(1)
     normalizedText = normalizedText.slice(0, normalizedText.length - 1)
     let arr1: string[] = normalizedText.split("],[")
