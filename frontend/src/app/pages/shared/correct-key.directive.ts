@@ -73,8 +73,21 @@ export function isPermutationNum(): ValidatorFn {
       control.value.split(",").length,
       setNum.has(control.value.split(",").length.toString())
     );
-    return setNum.size != control.value.split(",").length ||
-      !setNum.has(control.value.split(",").length.toString())
+    let flag: boolean = false;
+    let i = 1;
+    let top = setNum.size + 1;
+    if (setNum.has("0")){
+      i = 0
+      top -= 1;
+    }
+
+    for (i; i < top; i++) {
+      if (!setNum.has(i.toString())){
+        flag = true;
+        break;
+      }
+    }
+    return flag
       ? { incorrectKey: { value: control.value } }
       : null;
   };

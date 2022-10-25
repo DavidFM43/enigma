@@ -56,3 +56,9 @@ export interface substitutionAttackerResponse {
   error: boolean;
   typeError: string;
 }
+export interface gammaEncyptersReponse {
+  error?: boolean,
+  cipherText: string[],
+  percentage: number,
+  grapgJSON: string
+}
