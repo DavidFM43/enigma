@@ -37,9 +37,9 @@ export class GammaComponent implements OnInit {
       key: new UntypedFormControl("", [
         Validators.required,
         correctKey(
-          Array.from({ length: 26 }, (_, i) => i + 1),
+          [10],
           0,
-          25
+          9
         ),
         isPermutationNum(),
       ]),
@@ -60,7 +60,7 @@ export class GammaComponent implements OnInit {
   ngOnInit(): void {}
 
   random(): void {
-    let ranLen: number = Math.floor(Math.random() * 20 + 6);
+    let ranLen: number = 10
     let arrBase = Array.from({ length: ranLen }, (_, i) => i);
     let inx, aux;
     for (let i = 0; i < ranLen; i++) {
@@ -71,8 +71,8 @@ export class GammaComponent implements OnInit {
     }
     this.arguments.patchValue({
       key: arrBase.toString(),
-      x: Math.floor(Math.random() * 26),
-      y: Math.floor(Math.random() * 26)
+      x: Math.floor(Math.random() * 29 - 20),
+      y: Math.floor(Math.random() * 40 - 20)
     });
   }
 
@@ -90,6 +90,7 @@ export class GammaComponent implements OnInit {
           this.cipherText = ans.cipherText;
           this.percentage = round(ans.percentage,3);
           this.graph = JSON.parse(ans.grapgJSON);
+          Plotly.purge("plot");
           Plotly.newPlot("plot", this.graph.data, this.graph.layout);
  
           console.log(JSON.parse(ans.grapgJSON));
