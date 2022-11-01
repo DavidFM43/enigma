@@ -1,6 +1,8 @@
 # Colossus
 
-Proyecto para el curso de Introducción a la criptografia y a la teoria de la informacion.
+Proyecto para el curso de Introducción a la criptografia y a la teoria de la información.
+
+Puede probar la pagina en el siguiente [enlace](https://enigma-crypto.herokuapp.com/).
 
 ## Development setup
 
@@ -27,7 +29,7 @@ flask run
 
 # Frontend
 
-First install NodeJs and npm.
+First install NodeJS and npm.
 
 Go to the `frontend` directory:
 

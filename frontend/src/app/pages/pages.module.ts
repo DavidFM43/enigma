@@ -45,6 +45,7 @@ import { TripleDesCipherComponent } from './triple-des-cipher/triple-des-cipher.
 import { AesCipherComponent } from './aes-cipher/aes-cipher.component';
 import { SimplifiedDesCipherComponent } from './simplified-des-cipher/simplified-des-cipher.component';
 import { GammaComponent } from './gamma/gamma.component';
+import { GammaCipherComponent } from './gamma-cipher/gamma-cipher.component';
 
 @NgModule({
   imports: [
@@ -93,6 +94,7 @@ import { GammaComponent } from './gamma/gamma.component';
     AesCipherComponent,
     SimplifiedDesCipherComponent,
     GammaComponent,
+    GammaCipherComponent,
   ],
   exports: [
     IndexComponent,
