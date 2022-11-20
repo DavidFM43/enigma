@@ -11,6 +11,7 @@ import { CryptoHomeComponent } from "./pages/crypto-home/crypto-home.component";
 import { CipherComponent } from "./pages/cipher/cipher.component";
 import { AttacksComponent } from "./pages/attacks/attacks/attacks.component";
 import { BlockCiphersComponent } from "./pages/block-ciphers/block-ciphers.component";
+import { PublicKeyCiphersComponent } from './pages/public-key-ciphers/public-key-ciphers.component';
 import { GammaCipherComponent } from "./pages/gamma-cipher/gamma-cipher.component";
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: "cipher", component: CipherComponent },
   { path: "attack", component: AttacksComponent },
   { path: "block", component: BlockCiphersComponent },
+  { path: "public", component: PublicKeyCiphersComponent },
   { path: "gamma", component: GammaCipherComponent },
 ];
 

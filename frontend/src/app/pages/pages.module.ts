@@ -46,6 +46,8 @@ import { AesCipherComponent } from './aes-cipher/aes-cipher.component';
 import { SimplifiedDesCipherComponent } from './simplified-des-cipher/simplified-des-cipher.component';
 import { GammaComponent } from './gamma/gamma.component';
 import { GammaCipherComponent } from './gamma-cipher/gamma-cipher.component';
+import { PublicKeyCiphersComponent } from './public-key-ciphers/public-key-ciphers.component';
+import { RabinCipherComponent } from './rabin-cipher/rabin-cipher.component';
 
 @NgModule({
   imports: [
@@ -95,6 +97,8 @@ import { GammaCipherComponent } from './gamma-cipher/gamma-cipher.component';
     SimplifiedDesCipherComponent,
     GammaComponent,
     GammaCipherComponent,
+    PublicKeyCiphersComponent,
+    RabinCipherComponent,
   ],
   exports: [
     IndexComponent,
