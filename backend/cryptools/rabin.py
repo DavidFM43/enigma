@@ -1,10 +1,10 @@
 import base64
 from Crypto.Util import number
-
+from pprint import pprint
 
 def prime_3mod4():
     while True:
-        p, q = number.getPrime(1024), number.getPrime(1024)
+        p, q = number.getPrime(1524), number.getPrime(1524)
         if p % 4 == 3 and q % 4 == 3:
             return p, q
 
@@ -57,12 +57,13 @@ def str2bytes(x):
 
 
 if __name__ == "__main__":
-    p, q = 864949991103707, 889118520858859
+    p, q = prime_3mod4()
     n = p * q
 
-    pt = "hola me llamo david"
+    pt = " assddhbvfyufbubfvubfsyuvbudfsbvusdfuvbsadiubiusdabkjv vdvndsiubvusbdaiuvbfsyuabvyudfyu vfdu vuysdbvyubsyudavbisdbavbsduvbuyfbvdabvjbdfavbfudvbjabvuyf hubdfuvbaubvdsuybsduabvdf hd fubdv dfah vusduvsdbubvsabdvifjsbvbidsabviusbad dsu vsd vsbdisdbviubsdj sduv disiv ud usdbiusbadyubdaivbiudsbiuvdbsivaaaaaafdmvomdfspvfpdsomvpmdfmmdfosvjdfnvbdnsnvfnlk fslkv ldf vklsdfd sklncsnlasnascl aaaaaaaaak rpvpereosmavpomvav apmvpoerpvnavpa erpoverpvnavrp v vep pav io rvo erpv   vj vra vjre vkja jv rj vhav rvkf djkd fj j fd iurfniovnbfkjdbkjsddnklnasvlnrlvnl "
     pt = pt.replace(" ", "").lower()
 
+    while len(pt) %4 !=0: pt = pt+"w"
     # encryption
 
     # decode to base64
@@ -82,5 +83,6 @@ if __name__ == "__main__":
     ct_i = bytes2int(ct_enc)
     pt_ops = decrypt(ct_i, p, q)
     ct_ops = [bytes2str(int2bytes(op)) for op in pt_ops]
-    print("Opciones de texto claro")
+    pprint("Opciones de texto claro")
     print(ct_ops)
+    print(n> enc_i)
