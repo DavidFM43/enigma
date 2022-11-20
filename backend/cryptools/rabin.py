@@ -1,12 +1,47 @@
 import base64
 from Crypto.Util import number
-from pprint import pprint
 
-def prime_3mod4():
-    while True:
-        p, q = number.getPrime(1524), number.getPrime(1524)
-        if p % 4 == 3 and q % 4 == 3:
-            return p, q
+
+def pad_text(text: str) -> str:
+    """
+    Pads the text to get a size that is multiple of 4
+    """
+    pad_len = 4 - (len(text) % 4)
+    text += str(pad_len) * pad_len
+    return text
+
+
+def encrypt_text(plain_text: str, n: int):
+    plain_text = pad_text(plain_text)
+
+    # decode to base64
+    enc = base64.b64decode(plain_text)
+    # cast bytes to int
+    enc_i = bytes2int(enc)
+    # enctypt int
+    ct_int = encrypt(enc_i, n)
+    # cast int to bytes
+    ct_bytes = int2bytes(ct_int)
+    # cast bytes to string with base64 encoding
+    ct = bytes2str(ct_bytes)
+
+    return ct.decode()
+
+
+def decrypt_text(cipher_text, p, q):
+
+    # decode from base64
+    ct_enc = str2bytes(cipher_text)
+    # cast bytes to int
+    ct_i = bytes2int(ct_enc)
+    # get 4 roots
+    pt_ops = decrypt(ct_i, p, q)
+    # int to bytes to string
+    ct_ops = [bytes2str(int2bytes(op)).decode() for op in pt_ops]
+    # unpad options
+    ct_ops = [op[: -int(op[-1])] if op[-1].isdigit() else op for op in ct_ops]
+
+    return ct_ops
 
 
 def encrypt(plain_text: int, n: int) -> int:
@@ -56,6 +91,13 @@ def str2bytes(x):
     return base64.b64decode(x)
 
 
+def prime_3mod4():
+    while True:
+        p, q = number.getPrime(1524), number.getPrime(1524)
+        if p % 4 == 3 and q % 4 == 3:
+            return p, q
+
+
 if __name__ == "__main__":
     p, q = prime_3mod4()
     n = p * q
@@ -63,26 +105,8 @@ if __name__ == "__main__":
     pt = " assddhbvfyufbubfvubfsyuvbudfsbvusdfuvbsadiubiusdabkjv vdvndsiubvusbdaiuvbfsyuabvyudfyu vfdu vuysdbvyubsyudavbisdbavbsduvbuyfbvdabvjbdfavbfudvbjabvuyf hubdfuvbaubvdsuybsduabvdf hd fubdv dfah vusduvsdbubvsabdvifjsbvbidsabviusbad dsu vsd vsbdisdbviubsdj sduv disiv ud usdbiusbadyubdaivbiudsbiuvdbsivaaaaaafdmvomdfspvfpdsomvpmdfmmdfosvjdfnvbdnsnvfnlk fslkv ldf vklsdfd sklncsnlasnascl aaaaaaaaak rpvpereosmavpomvav apmvpoerpvnavpa erpoverpvnavrp v vep pav io rvo erpv   vj vra vjre vkja jv rj vhav rvkf djkd fj j fd iurfniovnbfkjdbkjsddnklnasvlnrlvnl "
     pt = pt.replace(" ", "").lower()
 
-    while len(pt) %4 !=0: pt = pt+"w"
-    # encryption
+    ct = encrypt_text(pt, n)
+    dt = decrypt_text(ct, p, q)
 
-    # decode to base64
-    enc = base64.b64decode(pt)
-    # cast bytes to int
-    enc_i = bytes2int(enc)
-    # enctypt int
-    ct_int = encrypt(enc_i, n)
-    # cast int to bytes
-    ct_bytes = int2bytes(ct_int)
-    # cast bytes to string with base64 encoding
-    ct = bytes2str(ct_bytes)
-    print(f"Texto encriptado: {ct}")
-
-    # decryption
-    ct_enc = str2bytes(ct)
-    ct_i = bytes2int(ct_enc)
-    pt_ops = decrypt(ct_i, p, q)
-    ct_ops = [bytes2str(int2bytes(op)) for op in pt_ops]
-    pprint("Opciones de texto claro")
-    print(ct_ops)
-    print(n> enc_i)
+    print(ct)
+    print(dt)
