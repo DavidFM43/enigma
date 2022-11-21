@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
+import { RSAPrivateKey, RSAPublicKey } from "../Interfaces";
 
 @Injectable({
   providedIn: "root",
@@ -233,6 +234,35 @@ export class ConnectionService {
         x_0: x,
         y_0: y
       })
+      .pipe(catchError(this.handleError));
+  }
+  //RSA
+  RSAEncrypt(key: RSAPublicKey, plainText: string) {
+    return this.http
+    .post(this.baseUrl + "/rsa/encrypt", {
+      plainText: plainText,
+      N: key.N,
+      E: key.E
+    })
+    .pipe(catchError(this.handleError));
+  }
+  RSADecrypt(key: RSAPrivateKey, cipherText: string) {
+    return  this.http
+    .post(this.baseUrl + "/rsa/decrypt", {
+      cipherText: cipherText,
+      N: key.N,
+      D: key.D
+    })
+    .pipe(catchError(this.handleError));
+  }
+  RSAGetKeys() {
+    return this.http
+      .get(this.baseUrl + '/rsa/getKeys')
+      .pipe(catchError(this.handleError));
+  }
+  RSAGetND(P: number, Q: number, E: number) {
+    return this.http
+      .get(this.baseUrl + `/rsa/getND?P=${P}&Q=${Q}&E=${E}`)
       .pipe(catchError(this.handleError));
   }
 }

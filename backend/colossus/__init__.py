@@ -12,6 +12,7 @@ from . import (
     gammap,
     simplified_des,
     rabin,
+    RSA,
 )
 
 
@@ -32,5 +33,6 @@ def create_app(test_config=None):
     app.register_blueprint(gammap.bp)
     app.register_blueprint(simplified_des.bp)
     app.register_blueprint(rabin.bp)
+    app.register_blueprint(RSA.bp)
 
     return app
