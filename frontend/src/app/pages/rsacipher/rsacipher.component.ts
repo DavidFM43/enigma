@@ -88,12 +88,8 @@ export class RSACipherComponent implements OnInit {
   decrypt(): void {
     let privateKey: RSAPrivateKey = {
       N: this.N.value,
-      E: 1,
       D: this.D.value,
-      P: 1,
-      Q: 1
     }
-    console.log(this.arguments.get("plainText").value);
     this.connection
       .RSADecrypt(privateKey, this.arguments.get("plainText").value)
       .subscribe((ans: textEncyptersReponse) => {

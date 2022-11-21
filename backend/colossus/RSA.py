@@ -6,11 +6,12 @@ import urllib.parse
 bp = Blueprint("rsa", __name__, url_prefix="/rsa")
 
 
-@bp.route("/encrypt", methods=["GET"])
+@bp.route("/encrypt", methods=["POST"])
 def encrypt_r():
-    if "N" in request.args and "E" in request.args and "plainText" in request.args:
-        publicKey = rsa.PublicKey(int(request.args["N"]), int(request.args["E"]))
-        plainText = request.args["plainText"]
+    request_data = request.get_json()
+    if "N" in request_data and "E" in request_data and "plainText" in request_data:
+        publicKey = rsa.PublicKey(int(request_data["N"]), int(request_data["E"]))
+        plainText = request_data["plainText"]
         
         cipher_text = encrypt(plainText, publicKey)#returns bytes
 

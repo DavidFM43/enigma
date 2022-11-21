@@ -73,10 +73,10 @@ export interface RSAPublicKey{
 }
 export interface RSAPrivateKey{
   N: string,
-  E: number,
+  E?: number,
   D: string,
-  P: number,
-  Q: number,
+  P?: number,
+  Q?: number,
 
 }
 export interface RSAND{

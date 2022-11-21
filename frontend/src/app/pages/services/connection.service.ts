@@ -239,8 +239,12 @@ export class ConnectionService {
   //RSA
   RSAEncrypt(key: RSAPublicKey, plainText: string) {
     return this.http
-      .get(this.baseUrl + `/rsa/encrypt?E=${key.E}&N=${key.N}&plainText=${plainText}`)
-      .pipe(catchError(this.handleError));
+    .post(this.baseUrl + "/rsa/encrypt", {
+      plainText: plainText,
+      N: key.N,
+      E: key.E
+    })
+    .pipe(catchError(this.handleError));
   }
   RSADecrypt(key: RSAPrivateKey, cipherText: string) {
     return  this.http
