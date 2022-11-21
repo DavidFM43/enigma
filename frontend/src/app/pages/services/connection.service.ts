@@ -235,4 +235,20 @@ export class ConnectionService {
       })
       .pipe(catchError(this.handleError));
   }
+  //RSA
+  RSAEncrypt(key: number, plainText: string) {
+    return this.http
+      .get(this.baseUrl + `/shift/encrypt?key=${key}&plainText=${plainText}`)
+      .pipe(catchError(this.handleError));
+  }
+  RSADecrypt(key: number, cipherText: string) {
+    return this.http
+      .get(this.baseUrl + `/shift/decrypt?key=${key}&cipherText=${cipherText}`)
+      .pipe(catchError(this.handleError));
+  }
+  RSAGetKeys() {
+    return this.http
+      .get(this.baseUrl + '/rsa/getKeys')
+      .pipe(catchError(this.handleError));
+  }
 }

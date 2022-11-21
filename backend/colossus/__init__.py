@@ -11,6 +11,7 @@ from . import (
     aes,
     gammap,
     simplified_des,
+    RSA,
 )
 
 
@@ -30,5 +31,6 @@ def create_app(test_config=None):
     app.register_blueprint(aes.bp)
     app.register_blueprint(gammap.bp)
     app.register_blueprint(simplified_des.bp)
+    app.register_blueprint(RSA.bp)
 
     return app
