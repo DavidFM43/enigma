@@ -128,7 +128,7 @@ function checkDiv(det: number): boolean {
 export function isPrimeVal(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
 
-    return !isPrime(control.value, 4)  
+    return !isPrime(control.value, 4) || control.value.length == 0
       ? { incorrectKey: { value: control.value } }
       : null;
   };

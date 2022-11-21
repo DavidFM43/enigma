@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import { RSAKeys, textDecyptersReponse, textEncyptersReponse } from '../Interfaces';
+import { RSAKeys, RSAND, RSAPrivateKey, RSAPublicKey, textDecyptersReponse, textEncyptersReponse } from '../Interfaces';
 import { ConnectionService } from '../services/connection.service';
 import { NormalizerService } from '../services/normalizer.service';
 import {
@@ -19,28 +19,25 @@ export class RSACipherComponent implements OnInit {
   public submitted: boolean;
   public resposeDymcMess: string;
   public isRandomKey: boolean;
-  public N: BigInt;
-  public D: BigInt;
 
   constructor(
     private connection: ConnectionService,
     private normalizer: NormalizerService
   ) {
     this.arguments = new UntypedFormGroup({
-      P: new UntypedFormControl("", [Validators.required, isPrimeVal()]),
-      Q: new UntypedFormControl("", [Validators.required]),
+      P: new UntypedFormControl("", [isPrimeVal()]),
+      Q: new UntypedFormControl("", [isPrimeVal()]),
       E: new UntypedFormControl("", [Validators.required]),
+      D: new UntypedFormControl("", [Validators.required]),
+      N: new UntypedFormControl("", [Validators.required]),
       plainText: new UntypedFormControl("", [
-        Validators.required,
-        Validators.pattern("^[a-zA-Z ]+[ ]*[a-zA-Z ]*$"),
+        Validators.required
       ]),
     });
     this.cipherText = "";
     this.submitted = false;
     this.resposeDymcMess = "";
     this.isRandomKey = false;
-    this.N = null;
-    this.D = null;
   }
 
   ngOnInit(): void {}
@@ -52,31 +49,33 @@ export class RSACipherComponent implements OnInit {
         this.arguments.patchValue({
           P: ansKeys.privateKey.P,
           Q: ansKeys.privateKey.Q,
-          E: ansKeys.privateKey.E
+          E: ansKeys.privateKey.E,
+          D: ansKeys.privateKey.D,
+          N: ansKeys.privateKey.N
         });
         this.isRandomKey = true;
-        this.N = ansKeys.privateKey.N;
-        this.D = ansKeys.privateKey.D;
       });
   }
 
   calculeND() {
     if(!this.P.invalid && !this.Q.invalid  && !this.E.invalid) {
-      this.N = BigInt(this.P.value * this.Q.value);
-      let ctf = math.lcm(this.P.value - 1, this.Q.value - 1);
-      console.log(math.xgcd(this.E.value, ctf)["_data"][1], ctf);
-      this.D = math.mod(math.xgcd(this.E.value, ctf)["_data"][1], ctf);
+      this.connection
+      .RSAGetND(this.P.value, this.Q.value, this.E.value).subscribe((ans: RSAND) => {
+        this.arguments.patchValue({
+          D: ans.D,
+          N: ans.N
+        });
+      });
     }
 
   }
-
-
   encrypt(): void {
-    let normalizedText: string = this.normalizer.setplainText(
-      this.arguments.get("plainText").value
-    );
+    let publicKey: RSAPublicKey = {
+      N: this.N.value,
+      E: this.E.value
+    }
     this.connection
-      .shiftEncrypt(this.arguments.get("key").value, normalizedText)
+      .RSAEncrypt(publicKey, this.arguments.get("plainText").value)
       .subscribe((ans: textEncyptersReponse) => {
         if (!ans.error) {
           this.cipherText = ans.cipherText;
@@ -87,14 +86,19 @@ export class RSACipherComponent implements OnInit {
   }
 
   decrypt(): void {
-    let normalizedText: string = this.normalizer.setplainText(
-      this.arguments.get("plainText").value
-    );
+    let privateKey: RSAPrivateKey = {
+      N: this.N.value,
+      E: 1,
+      D: this.D.value,
+      P: 1,
+      Q: 1
+    }
+    console.log(this.arguments.get("plainText").value);
     this.connection
-      .shiftDecrypt(this.arguments.get("key").value, normalizedText)
-      .subscribe((ans: textDecyptersReponse) => {
+      .RSADecrypt(privateKey, this.arguments.get("plainText").value)
+      .subscribe((ans: textEncyptersReponse) => {
         if (!ans.error) {
-          this.cipherText = ans.decipherText;
+          this.cipherText = ans.cipherText;
           this.resposeDymcMess = "Decipher";
         }
         this.submitted = true;
@@ -109,6 +113,12 @@ export class RSACipherComponent implements OnInit {
   }
   get E(): AbstractControl {
     return this.arguments.get("E");
+  }
+  get D(): AbstractControl {
+    return this.arguments.get("D");
+  }
+  get N(): AbstractControl {
+    return this.arguments.get("N");
   }
   get plainText(): AbstractControl {
     return this.arguments.get("plainText");

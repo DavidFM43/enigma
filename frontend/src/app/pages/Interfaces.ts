@@ -68,16 +68,20 @@ export interface gammaDecyptersReponse {
   typeError: string;
 }
 export interface RSAPublicKey{
-  N: BigInt,
+  N: string,
   E: number
 }
 export interface RSAPrivateKey{
-  N: BigInt,
+  N: string,
   E: number,
-  D: BigInt,
+  D: string,
   P: number,
   Q: number,
 
+}
+export interface RSAND{
+  N: string,
+  D: string
 }
 export interface RSAKeys{
   publicKey: RSAPublicKey,

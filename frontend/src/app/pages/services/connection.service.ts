@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
+import { RSAPrivateKey, RSAPublicKey } from "../Interfaces";
 
 @Injectable({
   providedIn: "root",
@@ -236,19 +237,28 @@ export class ConnectionService {
       .pipe(catchError(this.handleError));
   }
   //RSA
-  RSAEncrypt(key: number, plainText: string) {
+  RSAEncrypt(key: RSAPublicKey, plainText: string) {
     return this.http
-      .get(this.baseUrl + `/shift/encrypt?key=${key}&plainText=${plainText}`)
+      .get(this.baseUrl + `/rsa/encrypt?E=${key.E}&N=${key.N}&plainText=${plainText}`)
       .pipe(catchError(this.handleError));
   }
-  RSADecrypt(key: number, cipherText: string) {
-    return this.http
-      .get(this.baseUrl + `/shift/decrypt?key=${key}&cipherText=${cipherText}`)
-      .pipe(catchError(this.handleError));
+  RSADecrypt(key: RSAPrivateKey, cipherText: string) {
+    return  this.http
+    .post(this.baseUrl + "/rsa/decrypt", {
+      cipherText: cipherText,
+      N: key.N,
+      D: key.D
+    })
+    .pipe(catchError(this.handleError));
   }
   RSAGetKeys() {
     return this.http
       .get(this.baseUrl + '/rsa/getKeys')
+      .pipe(catchError(this.handleError));
+  }
+  RSAGetND(P: number, Q: number, E: number) {
+    return this.http
+      .get(this.baseUrl + `/rsa/getND?P=${P}&Q=${Q}&E=${E}`)
       .pipe(catchError(this.handleError));
   }
 }
