@@ -128,7 +128,7 @@ function checkDiv(det: number): boolean {
 export function isPrimeVal(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
 
-    return !isPrime(control.value, 4) || control.value.length == 0
+    return !isPrime(control.value, 4)
       ? { incorrectKey: { value: control.value } }
       : null;
   };
@@ -154,7 +154,7 @@ function powerModP(x, y, p) {
 	return res;
 }
 function miillerTest(d, n){
-  let a = 12525794113
+  let a = 2n + BigInt((Math.floor(Math.random()*Number(n-2n))))
  
   let x = powerModP(a, d, n);
 
@@ -190,4 +190,3 @@ function isPrime(n, k){
     }
   return true;
 }
-console.log(isPrime(13348417021,4))
