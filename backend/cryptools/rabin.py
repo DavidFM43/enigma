@@ -1,6 +1,6 @@
 import base64
 from Crypto.Util import number
-
+from pprint import pprint
 
 def pad_text(text: str) -> str:
     """
@@ -11,7 +11,7 @@ def pad_text(text: str) -> str:
     return text
 
 
-def encrypt_text(plain_text: str, n: int):
+def encrypt_rabin(plain_text: str, n: int):
     plain_text = pad_text(plain_text)
 
     # decode to base64
@@ -20,7 +20,7 @@ def encrypt_text(plain_text: str, n: int):
     enc_i = bytes2int(enc)
     # enctypt int
     ct_int = encrypt(enc_i, n)
-    # cast int to bytes
+    # cast int to bytes 
     ct_bytes = int2bytes(ct_int)
     # cast bytes to string with base64 encoding
     ct = bytes2str(ct_bytes)
@@ -28,7 +28,7 @@ def encrypt_text(plain_text: str, n: int):
     return ct.decode()
 
 
-def decrypt_text(cipher_text, p, q):
+def decrypt_rabin(cipher_text, p, q):
 
     # decode from base64
     ct_enc = str2bytes(cipher_text)
@@ -102,11 +102,11 @@ if __name__ == "__main__":
     p, q = prime_3mod4()
     n = p * q
 
-    pt = " assddhbvfyufbubfvubfsyuvbudfsbvusdfuvbsadiubiusdabkjv vdvndsiubvusbdaiuvbfsyuabvyudfyu vfdu vuysdbvyubsyudavbisdbavbsduvbuyfbvdabvjbdfavbfudvbjabvuyf hubdfuvbaubvdsuybsduabvdf hd fubdv dfah vusduvsdbubvsabdvifjsbvbidsabviusbad dsu vsd vsbdisdbviubsdj sduv disiv ud usdbiusbadyubdaivbiudsbiuvdbsivaaaaaafdmvomdfspvfpdsomvpmdfmmdfosvjdfnvbdnsnvfnlk fslkv ldf vklsdfd sklncsnlasnascl aaaaaaaaak rpvpereosmavpomvav apmvpoerpvnavpa erpoverpvnavrp v vep pav io rvo erpv   vj vra vjre vkja jv rj vhav rvkf djkd fj j fd iurfniovnbfkjdbkjsddnklnasvlnrlvnl "
-    pt = pt.replace(" ", "").lower()
+    plane_text = " assddhbvfyufbubfvubfsyuvbudfsbvusdfuvbsadiubiusdabkjv vdvndsiubvusbdaiuvbfsyuabvyudfyu vfdu vuysdbvyubsyudavbisdbavbsduvbuyfbvdabvjbdfavbfudvbjabvuyf hubdfuvbaubvdsuybsduabvdf hd fubdv dfah vusduvsdbubvsabdvifjsbvbidsabviusbad dsu vsd vsbdisdbviubsdj sduv disiv ud usdbiusbadyubdaivbiudsbiuvdbsivaaaaaafdmvomdfspvfpdsomvpmdfmmdfosvjdfnvbdnsnvfnlk fslkv ldf vklsdfd sklncsnlasnascl aaaaaaaaak rpvpereosmavpomvav apmvpoerpvnavpa erpoverpvnavrp v vep pav io rvo erpv   vj vra vjre vkja jv rj vhav rvkf djkd fj j fd iurfniovnbfkjdbkjsddnklnasvlnrlvnl "
+    plane_text = plane_text.replace(" ", "").lower()
 
-    ct = encrypt_text(pt, n)
-    dt = decrypt_text(ct, p, q)
+    cipher_text = encrypt_rabin(plane_text, n)
+    plane_text = decrypt_rabin(cipher_text, p, q)
 
-    print(ct)
-    print(dt)
+    print(cipher_text)
+    pprint(plane_text)
