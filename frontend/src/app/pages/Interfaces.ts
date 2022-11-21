@@ -67,3 +67,23 @@ export interface gammaDecyptersReponse {
   error: boolean;
   typeError: string;
 }
+export interface RSAPublicKey{
+  N: string,
+  E: number
+}
+export interface RSAPrivateKey{
+  N: string,
+  E?: number,
+  D: string,
+  P?: number,
+  Q?: number,
+
+}
+export interface RSAND{
+  N: string,
+  D: string
+}
+export interface RSAKeys{
+  publicKey: RSAPublicKey,
+  privateKey: RSAPrivateKey
+}
