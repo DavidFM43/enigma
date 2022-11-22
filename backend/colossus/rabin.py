@@ -1,32 +1,22 @@
-from typing import Tuple
 from flask import Blueprint, request
 from json import dumps
 from cryptools.rabin import encrypt_rabin, decrypt_rabin, prime_3mod4
 
-import json
-import plotly
-import plotly.express as px
-
-
 
 bp = Blueprint("rabin", __name__, url_prefix="/rabin")
 
-@bp.route("/getKeys", methods =["GET"])
+
+@bp.route("/getKeys", methods=["GET"])
 def getKeyPair_r():
     """
     Generate of publicKey and privateKey
     """
-    p,q = prime_3mod4()
-    n = p*q
-    return dumps({
-        "publicKey": {
-            "N": n
-        },
-        "privateKey": {
-            "p": p,
-            "q": q
-        }
-    })
+    p, q = prime_3mod4()
+    n = p * q
+    print(n, p, q)
+
+    return dumps({"publicKey": {"N": str(n)}, "privateKey": {"P": str(p), "Q": str(q)}})
+
 
 @bp.route("/encrypt", methods=["POST"])
 def encrypt_r():
@@ -36,17 +26,29 @@ def encrypt_r():
     Returns JSON with cipher text and if needed error information.
     """
     request_data = request.get_json()
-    plain_text: str = request_data["plainText"]
-    n: int = request_data["n"]
-    
-    cipher_text = encrypt_rabin(plain_text, n) 
-    error = False
-    typeError = ""
-    # lo que vamos enviar: 
-   
-    response_dict = {"cipherText": cipher_text,  "error": error, "typeError": typeError}
-    
-    return dumps(response_dict)
+
+    if (
+        request_data
+        and "n" in request_data.keys()
+        and "plainText" in request_data.keys()
+    ):
+
+        plain_text: str = request_data["plainText"]
+        n: int = int(request_data["n"])
+
+        cipher_text = encrypt_rabin(plain_text, n)
+        error = False
+        typeError = ""
+
+        response_dict = {
+            "cipherText": cipher_text,
+            "error": error,
+            "typeError": typeError,
+        }
+
+        return dumps(response_dict)
+
+    return dumps({"error": False}), 400
 
 
 @bp.route("/decrypt", methods=["POST"])
@@ -57,14 +59,28 @@ def decrypt_r():
     Returns JSON with clear text and, if needed, error information.
     """
     request_data = request.get_json()
-    cipher_text: str = request_data["cipherText"]
-    p: int = request_data["p"]
-    q: int = request_data["q"]
-    plain_text = decrypt_rabin(cipher_text, p,q)
-    error = False
-    typeError = ""
 
-    response_dict = {"decipherText": plain_text, "error": error, "typeError": typeError}
-    return dumps(response_dict)
+    if (
+        request_data
+        and "p" in request_data.keys()
+        and "q" in request_data.keys()
+        and "cipherText" in request_data.keys()
+    ):
+        cipher_text: str = request_data["cipherText"]
+        p: int = int(request_data["p"])
+        q: int = int(request_data["q"])
 
+        plain_text_ops = decrypt_rabin(cipher_text, p, q)
+        
+        error = False
+        typeError = ""
 
+        response_dict = {
+            "decipherTextOps": plain_text_ops,
+            "error": error,
+            "typeError": typeError,
+        }
+
+        return dumps(response_dict)
+
+    return dumps({"error": False}), 400

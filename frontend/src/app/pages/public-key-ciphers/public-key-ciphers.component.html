@@ -1,36 +1,23 @@
 <app-top-bar></app-top-bar>
 
-<div class="index-page wrapper">
-  <!-- Index page wrapper -->
-  <div class="page-header header-filter">
-    <div class="squares square1"></div>
-    <div class="squares square2"></div>
-    <div class="squares square3"></div>
-    <div class="squares square4"></div>
-    <div class="squares square5"></div>
-    <div class="squares square6"></div>
-    <div class="squares square7"></div>
-    <div class="container">
-      <div class="content-center brand">
-        <h1 class="h1-seo">∃nigma•</h1>
-        <h3>Select a cipher</h3>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-10 ml-auto col-xl-8 mr-auto">
-    <div class="mb-3"></div>
-    <div class="card">
-      <div class="card-header">
-        <!-- Ciphers nav tabs -->
-        <tabset class="nav-tabs-danger">
-          <tab heading="RSA Cipher">
-            <app-rsacipher></app-rsacipher>
-          </tab>
-          <tab heading="ElGamal">
-            <app-el-gamal-cipher></app-el-gamal-cipher>
-          </tab>
-        </tabset>
-      </div>
+<app-squares-presentation></app-squares-presentation>
+
+<div class="col-md-10 ml-auto col-xl-8 mr-auto">
+  <div class="mb-3"></div>
+  <div class="card">
+    <div class="card-header">
+      <!-- Ciphers nav tabs -->
+      <tabset class="nav-tabs-danger justify-content-center">
+        <tab heading="RSA">
+          <app-rsacipher></app-rsacipher>
+        </tab>
+        <tab heading="Rabin">
+          <app-rabin-cipher></app-rabin-cipher>
+        </tab>
+        <tab heading="ElGamal">
+          <app-el-gamal-cipher></app-el-gamal-cipher>
+        </tab>
+      </tabset>
     </div>
   </div>
 </div>

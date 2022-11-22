@@ -216,23 +216,28 @@ export class ConnectionService {
       .pipe(catchError(this.handleError));
   }
   // gamma
-  gammaEncrypt(permutation: string, x: number, y:number, plainText: string) {
+  gammaEncrypt(permutation: string, x: number, y: number, plainText: string) {
     return this.http
       .post(this.baseUrl + "/gammap/encrypt", {
         permutation: permutation,
         plainText: plainText,
         x_0: x,
-        y_0: y
+        y_0: y,
       })
       .pipe(catchError(this.handleError));
   }
-  gammaDecrypt(permutation: string, x: number, y:number, cipherText: number[][]) {
+  gammaDecrypt(
+    permutation: string,
+    x: number,
+    y: number,
+    cipherText: number[][]
+  ) {
     return this.http
       .post(this.baseUrl + "/gammap/decrypt", {
         permutation: permutation,
         cipherText: cipherText,
         x_0: x,
-        y_0: y
+        y_0: y,
       })
       .pipe(catchError(this.handleError));
   }
@@ -257,7 +262,31 @@ export class ConnectionService {
   }
   RSAGetKeys() {
     return this.http
-      .get(this.baseUrl + '/rsa/getKeys')
+      .get(this.baseUrl + "/rsa/getKeys")
+      .pipe(catchError(this.handleError));
+  }
+
+  // Rabin
+  rabinEncrypt(n: number, plainText: string) {
+    return this.http
+      .post(this.baseUrl + "/rabin/encrypt", {
+        n: n,
+        plainText: plainText,
+      })
+      .pipe(catchError(this.handleError));
+  }
+  rabinDecrypt(p: number, q: number, cipherText: string) {
+    return this.http
+      .post(this.baseUrl + "/rabin/decrypt", {
+        p: p,
+        q: q,
+        cipherText: cipherText,
+      })
+      .pipe(catchError(this.handleError));
+  }
+  rabinGetKeys() {
+    return this.http
+      .get(this.baseUrl + "/rabin/getKeys")
       .pipe(catchError(this.handleError));
   }
   RSAGetND(P: number, Q: number, E: number) {
