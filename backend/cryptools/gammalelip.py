@@ -57,3 +57,6 @@ if __name__ == "__main__":
 
     decryptedMsg = decrypt_ECC(encryptedMsg, privKey)
     print("decrypted msg:", decryptedMsg)
+
+
+    

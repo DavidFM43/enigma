@@ -23,16 +23,13 @@ def getKeyPair_r():
     Para desencriptar, el usuario provee el texto encriptado hexadecimal y la llave privada int, y devuelve un mensaje en byte (con la b’’)
     """
     
-    privKey:int = secrets.randbelow(curve.field.n)
+    privKey:str = str(secrets.randbelow(curve.field.n))
     pubKey = privKey * curve.g
 
     pubKey = str(pubKey).split()
 
-    coordenada = (pubKey[0].replace("(","").replace(",",""),  pubKey[1].replace(")",""))
+    coordenada: list = [pubKey[0].replace("(","").replace(",",""),  pubKey[1].replace(")","")]
      
-
-    #ese tipo de dato a donde es que se pasa?
-    # que significa el pivkey, porque resulta un entero y que me dice ese entero    
     return dumps({
         "publicKey": {
             "Cooordenada": coordenada, 
@@ -55,22 +52,18 @@ def encrypt_r():
     request_data = request.get_json()
     plain_text: str = request_data["plainText"]
     plain_text:bytes = (plain_text, 'utf-8')
-    
+
     privKey: int = request_data["p"]
     pubKey = privKey * curve.g
 
     encryptedMsg = encrypt_ECC(plain_text, pubKey)
-    encryptedMsgObj = {
-    'ciphertext': binascii.hexlify(encryptedMsg[0]),
-    'nonce': binascii.hexlify(encryptedMsg[1]),
-    'authTag': binascii.hexlify(encryptedMsg[2]),
-    'ciphertextPubKey': hex(encryptedMsg[3].x) + hex(encryptedMsg[3].y % 2)[2:]}
+    ciphertext= str(binascii.hexlify(encryptedMsg[0]))
     
     error = False
     typeError = ""
     # lo que vamos enviar: 
    
-    response_dict = {"encryptedMsgObj": encryptedMsgObj,  "error": error, "typeError": typeError}
+    response_dict = {"ciphertext": ciphertext, "error": error, "typeError": typeError}
     
     return dumps(response_dict)
 
@@ -83,7 +76,13 @@ def decrypt_r():
     Returns JSON with clear text and, if needed, error information.
     """
     request_data = request.get_json()
+
     cipher_text: str = request_data["cipherText"]
+    privKey: int = request_data["p"]
+
+    pubKey = privKey * curve.g
+
+    decryptedMsg = decrypt_ECC(encryptedMsg, privKey)
     P: int = request_data["p"]
     G: int = request_data["g"]
     X: int = request_data["x"]
