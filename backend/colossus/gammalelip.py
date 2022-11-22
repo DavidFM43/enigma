@@ -2,7 +2,7 @@ from typing import Tuple
 from flask import Blueprint, request
 from json import dumps
 import json
-from cryptools.gammalelip import encrypt_ECC, get_obj, decrypt_ECC
+#from cryptools.gammalelip import encrypt_ECC, get_obj, decrypt_ECC
 
 from tinyec import registry
 import hashlib, secrets, binascii
@@ -17,7 +17,7 @@ def getKeyPair_r():
     Generate of publicKey and privateKey
     """
     
-    privKey:str = str(secrets.randbelow(curve.field.n))
+    privKey:int = secrets.randbelow(curve.field.n)
     pubKey = privKey * curve.g
 
     pubKey = str(pubKey).split()
@@ -84,7 +84,7 @@ def decrypt_r():
 
     decryptedMsg = decrypt_ECC(str(list(dict_.values())), str(privKey))
 
-    plain_text = decryptedMsg.decode("utf-16")
+    plain_text:str = decryptedMsg.decode("utf-16")
     error = False
     typeError = ""
 
@@ -92,3 +92,5 @@ def decrypt_r():
     return dumps(response_dict)
 
 
+if __name__ == "__main__":
+    getKeyPair_r()
