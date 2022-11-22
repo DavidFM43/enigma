@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_cors import CORS
 from . import (
     shift,
@@ -37,5 +37,9 @@ def create_app(test_config=None):
     app.register_blueprint(rabin.bp)
     app.register_blueprint(RSA.bp)
     app.register_blueprint(gammal.bp)
+
+    @app.route('/', methods=['GET'])
+    def root():
+        return render_template('index.html')
 
     return app
