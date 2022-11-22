@@ -1,15 +1,6 @@
 <form [formGroup]="arguments">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-sm-11 col-lg-11 mr-auto ml-auto">
-
-        </div>
-        <div class="col-sm-1 col-lg-1 mr-auto ml-auto">
-
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        
         <div class="col-sm-6 col-lg-6 ml-auto">
           <div
             [ngClass]="
@@ -21,7 +12,7 @@
               placeholder="P"
               type="text"
               autofocus
-              formControlName="P" (input)="calculeND()"
+              formControlName="P"
             />
             <ng-template [ngIf]="!P.invalid || !P.dirty">
               <div class="input-group-append">
@@ -35,17 +26,17 @@
         <div class="col-sm-6 col-lg-6 ml-auto">
           <div
           [ngClass]="
-          Q.invalid && Q.dirty ? 'form-group has-danger' : 'input-group'
+          G.invalid && G.dirty ? 'form-group has-danger' : 'input-group'
           "
         >
           <input
             class="form-control"
-            placeholder="Q"
+            placeholder="G"
             type="text"
             autofocus
-            formControlName="Q" (input)="calculeND()"
+            formControlName="G"
           />
-          <ng-template [ngIf]="!Q.invalid || !Q.dirty">
+          <ng-template [ngIf]="!G.invalid || !G.dirty">
             <div class="input-group-append">
               <span class="input-group-text">
                 <i class="tim-icons icon-lock-circle"> </i>
@@ -55,22 +46,22 @@
         </div>
         </div>
       </div>
-      <div class="row justify-content-center ND-box">
-        <div class="row">
-          <div class="col-sm-12 col-lg-12 ml-auto" style="margin-bottom: 5px;">
-            <div
+      <div class="row justify-content-center">
+        
+        <div class="col-sm-6 col-lg-6 ml-auto">
+          <div
             [ngClass]="
-            E.invalid && E.dirty ? 'form-group has-danger' : 'input-group'
+            H.invalid && H.dirty ? 'form-group has-danger' : 'input-group'
             "
           >
             <input
               class="form-control"
-              placeholder="E"
+              placeholder="H"
               type="text"
               autofocus
-              formControlName="E" (input)="calculeND()"
+              formControlName="H"
             />
-            <ng-template [ngIf]="!E.invalid || !E.dirty">
+            <ng-template [ngIf]="!H.invalid || !H.dirty">
               <div class="input-group-append">
                 <span class="input-group-text">
                   <i class="tim-icons icon-lock-circle"> </i>
@@ -78,60 +69,36 @@
               </div>
             </ng-template>
           </div>
+        </div>
+        <div class="col-sm-6 col-lg-6 ml-auto">
+          <div
+            [ngClass]="
+            X.invalid && X.dirty ? 'form-group has-danger' : 'input-group'
+            "
+          >
+            <input
+              class="form-control"
+              placeholder="X"
+              type="text"
+              autofocus
+              formControlName="X"
+            />
+            <ng-template [ngIf]="!X.invalid || !X.dirty">
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="tim-icons icon-lock-circle"> </i>
+                </span>
+              </div>
+            </ng-template>
           </div>
         </div>
-        <div class="row">
-          <div class="col-sm-6 col-lg-6 ml-auto">
-            <div
-              [ngClass]="
-              N.invalid && N.dirty ? 'form-group has-danger' : 'input-group'
-              "
-            >
-              <input
-                class="form-control"
-                placeholder="N"
-                type="text"
-                autofocus
-                formControlName="N"
-              />
-              <ng-template [ngIf]="!N.invalid || !N.dirty">
-                <div class="input-group-append">
-                  <span class="input-group-text">
-                    <i class="tim-icons icon-lock-circle"> </i>
-                  </span>
-                </div>
-              </ng-template>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-6 ml-auto">
-            <div
-              [ngClass]="
-              D.invalid && D.dirty ? 'form-group has-danger' : 'input-group'
-              "
-            >
-              <input
-                class="form-control"
-                placeholder="D"
-                type="text"
-                autofocus
-                formControlName="D"
-              />
-              <ng-template [ngIf]="!D.invalid || !D.dirty">
-                <div class="input-group-append">
-                  <span class="input-group-text">
-                    <i class="tim-icons icon-lock-circle"> </i>
-                  </span>
-                </div>
-              </ng-template>
-            </div>
-          </div>
-        </div>
-      </div>
+    </div>
+
       <div class="row">
         <div class="col-md-6">
-          <h4>Public Key (n,e): 
-            <div *ngIf="N.value.length != 0 && E.value.length != 0; else elsePubK">
-              ({{N.value}}, {{E.value}})
+          <h4>Public Key (p, g, h): 
+            <div *ngIf="P.value.length != 0 && G.value.length != 0 && H.value.length != 0; else elsePubK">
+              ({{P.value}}, {{G.value}}, {{H.value}})
             </div>
             <ng-template #elsePubK>
               Not set.
@@ -139,9 +106,9 @@
           </h4>
         </div>
         <div class="col-md-6">
-          <h4>Private Key (n,d): 
-            <div *ngIf="N.value.length != 0 && D.value.length != 0; else elsePrvK">
-              ({{N.value}}, {{D.value}})
+          <h4>Private Key X:
+            <div *ngIf="P.value.length != 0 && G.value.length != 0 && X.value.length != 0; else elsePrvK">
+              {{X.value}}
             </div>
             <ng-template #elsePrvK>
               Not set.
@@ -154,7 +121,7 @@
       </div>
       <div class="row">
         <div class="col-sm-12 col-lg-12 mr-auto random-btn-cont">
-          <button class="btn mr-1 random-btn" (click)="random()">Random</button>
+          <button class="btn mr-1 random-btn" (click)="random()" [disabled]="isRandomKey">Random</button>
         </div>
       </div>
 

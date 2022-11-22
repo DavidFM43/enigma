@@ -87,3 +87,9 @@ export interface RSAKeys{
   publicKey: RSAPublicKey,
   privateKey: RSAPrivateKey
 }
+export interface ElGamalKeys{
+  P: string,
+  G: string,
+  H?: string,
+  X?: string
+}
