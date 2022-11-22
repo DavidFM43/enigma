@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_cors import CORS
 from . import (
     shift,
@@ -39,4 +39,9 @@ def create_app(test_config=None):
     app.register_blueprint(elgamal.bp)
     app.register_blueprint(gammalelip.bp)
     
+
+    @app.route('/', methods=['GET'])
+    def root():
+        return render_template('index.html')
+
     return app

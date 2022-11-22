@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { throwError } from "rxjs";
+import { environment } from "src/environments/environment";
 import { catchError } from "rxjs/operators";
 import { ElGamalKeys, RSAPrivateKey, RSAPublicKey } from "../Interfaces";
 
@@ -12,7 +13,7 @@ export class ConnectionService {
   public baseUrl: string;
   constructor(private http: HttpClient) {
     this.type = null;
-    this.baseUrl = "http://127.0.0.1:5000/";
+    this.baseUrl = environment.endpoint;
   }
 
   private handleError(error: HttpErrorResponse) {
