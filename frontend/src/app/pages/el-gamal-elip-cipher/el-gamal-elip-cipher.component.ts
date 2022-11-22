@@ -29,7 +29,9 @@ export class ElGamalElipCipherComponent implements OnInit {
   public arguments: UntypedFormGroup;
   public argumentsDecrypt: UntypedFormGroup;
   public cipherText: string;
+  public DecipherTextED: string;
   public submitted: boolean;
+  public submittedDE: boolean;
   public resposeDymcMess: string;
   public isRandomKey: boolean;
 
@@ -50,6 +52,7 @@ export class ElGamalElipCipherComponent implements OnInit {
       plainText: new UntypedFormControl("", [Validators.required]),
     });
     this.argumentsDecrypt = new UntypedFormGroup({
+      cipherTextDE: new UntypedFormControl("", [Validators.required]),
       nonce: new UntypedFormControl("", [
         Validators.required,
       ]),
@@ -64,7 +67,9 @@ export class ElGamalElipCipherComponent implements OnInit {
       ]),
     });
     this.cipherText = "";
+    this.DecipherTextED = "";
     this.submitted = false;
+    this.submittedDE = false;
     this.resposeDymcMess = "";
     this.isRandomKey = false;
   }
@@ -93,9 +98,10 @@ export class ElGamalElipCipherComponent implements OnInit {
     this.connection
       .ElGamalElipEncrypt(publicKey, this.arguments.get("plainText").value.replace(/ /g, ""))
       .subscribe((ans: ElGamalElipResponse) => {
+        this.cipherText = ans.cipherText.ciphertext;
         if (!ans.error) {
-          this.cipherText = ans.cipherText.ciphertext;
           this.argumentsDecrypt.patchValue({
+            cipherTextDE: ans.cipherText.ciphertext, 
             nonce: ans.cipherText.nonce,
             authTag: ans.cipherText.authTag,
             ciphertextPubKey_x: ans.cipherText.ciphertextPubKey_x,
@@ -114,7 +120,7 @@ export class ElGamalElipCipherComponent implements OnInit {
       Pk: this.Pk.value,
     };
     let cipherTxt: cipherTextElGamal = {
-      ciphertext: this.cipherText,
+      ciphertext: this.cipherTextDE.value,
       nonce: this.nonce.value,
       authTag: this.authTag.value,
       ciphertextPubKey_x: this.ciphertextPubKey_x.value,
@@ -125,10 +131,10 @@ export class ElGamalElipCipherComponent implements OnInit {
       .ElGamalElipDecrypt(privateKey, cipherTxt)
       .subscribe((ans: textDecyptersReponse) => {
         if (!ans.error) {
-          this.cipherText = ans.decipherText;
+          this.DecipherTextED = ans.decipherText;
           this.resposeDymcMess = "Decipher";
         }
-        this.submitted = true;
+        this.submittedDE = true;
       });
     return true;
   }
@@ -157,5 +163,8 @@ export class ElGamalElipCipherComponent implements OnInit {
   }
   get ciphertextPubKey_y(): AbstractControl {
     return this.argumentsDecrypt.get("ciphertextPubKey_y");
+  }
+  get cipherTextDE(): AbstractControl {
+    return this.argumentsDecrypt.get("cipherTextDE");
   }
 }

@@ -125,128 +125,147 @@
       </div>
 </form>
 <form [formGroup]="argumentsDecrypt">
-      <div class="row" >
-        <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
-          <div>
-            <h3 class="mb-3">{{ resposeDymcMess }} text</h3>
+      <div class="container">
+        <div class="row" >
+          <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+            <div>
+              <h3 class="mb-3">Decipher text</h3>
+            </div>
           </div>
         </div>
-
-        <div class="row justify-content-center">
-            <div class="col-sm-6 col-lg-6 ml-auto">
-              <div
-                [ngClass]="
-                nonce.invalid && nonce.dirty ? 'form-group has-danger' : 'input-group'
-                "
-              >
-                <input
-                  class="form-control"
-                  placeholder="nonce"
-                  type="text"
-                  autofocus
-                  formControlName="nonce"
-                />
-                <ng-template [ngIf]="!nonce.invalid || !nonce.dirty">
-                  <div class="input-group-append">
-                    <span class="input-group-text">
-                      <i class="tim-icons icon-lock-circle"> </i>
-                    </span>
-                  </div>
-                </ng-template>
-              </div>
-            </div>
-            <div class="col-sm-6 col-lg-6 ml-auto">
-              <div
-              [ngClass]="
-              authTag.invalid && authTag.dirty ? 'form-group has-danger' : 'input-group'
-              "
-            >
-              <input
-                class="form-control"
-                placeholder="authTag"
-                type="text"
-                autofocus
-                formControlName="authTag"
-              />
-              <ng-template [ngIf]="!authTag.invalid || !authTag.dirty">
-                <div class="input-group-append">
-                  <span class="input-group-text">
-                    <i class="tim-icons icon-lock-circle"> </i>
-                  </span>
-                </div>
-              </ng-template>
-            </div>
-            </div>
-          </div>
-
-          <div class="row justify-content-center">
-            <div class="col-sm-6 col-lg-6 ml-auto">
-              <div
-                [ngClass]="
-                ciphertextPubKey_x.invalid && ciphertextPubKey_x.dirty ? 'form-group has-danger' : 'input-group'
-                "
-              >
-                <input
-                  class="form-control"
-                  placeholder="ciphertextPubKey_x"
-                  type="text"
-                  autofocus
-                  formControlName="ciphertextPubKey_x"
-                />
-                <ng-template [ngIf]="!ciphertextPubKey_x.invalid || !ciphertextPubKey_x.dirty">
-                  <div class="input-group-append">
-                    <span class="input-group-text">
-                      <i class="tim-icons icon-lock-circle"> </i>
-                    </span>
-                  </div>
-                </ng-template>
-              </div>
-            </div>
-            <div class="col-sm-6 col-lg-6 ml-auto">
-              <div
-              [ngClass]="
-              ciphertextPubKey_y.invalid && ciphertextPubKey_y.dirty ? 'form-group has-danger' : 'input-group'
-              "
-            >
-              <input
-                class="form-control"
-                placeholder="ciphertextPubKey_y"
-                type="text"
-                autofocus
-                formControlName="ciphertextPubKey_y"
-              />
-              <ng-template [ngIf]="!ciphertextPubKey_y.invalid || !ciphertextPubKey_y.dirty">
-                <div class="input-group-append">
-                  <span class="input-group-text">
-                    <i class="tim-icons icon-lock-circle"> </i>
-                  </span>
-                </div>
-              </ng-template>
-            </div>
-            </div>
-          </div>
   
-        <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
-          <blockquote>
-            <p class="blockquote blockquote-danger">
-              {{ cipherText }}
-            </p>
-          </blockquote>
-        </div>
-        <div class="container">
-            <div class="row justify-content-center submit">
-                <div class="col-sm-12 col-lg-12 mr-auto ml-auto">
-                            <button
-                              type="button"
-                              class="btn btn-primary"
-                              (click)="decrypt()"
-                              [disabled]="!arguments.valid"
-                            >
-                              Decrypt
-                            </button>
+          <div class="row justify-content-center">
+              <div class="col-sm-6 col-lg-6 ml-auto">
+                <div
+                  [ngClass]="
+                  nonce.invalid && nonce.dirty ? 'form-group has-danger' : 'input-group'
+                  "
+                >
+                  <input
+                    class="form-control"
+                    placeholder="nonce"
+                    type="text"
+                    autofocus
+                    formControlName="nonce"
+                  />
+                  <ng-template [ngIf]="!nonce.invalid || !nonce.dirty">
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        <i class="tim-icons icon-lock-circle"> </i>
+                      </span>
+                    </div>
+                  </ng-template>
+                </div>
+              </div>
+              <div class="col-sm-6 col-lg-6 ml-auto">
+                <div
+                [ngClass]="
+                authTag.invalid && authTag.dirty ? 'form-group has-danger' : 'input-group'
+                "
+              >
+                <input
+                  class="form-control"
+                  placeholder="authTag"
+                  type="text"
+                  autofocus
+                  formControlName="authTag"
+                />
+                <ng-template [ngIf]="!authTag.invalid || !authTag.dirty">
+                  <div class="input-group-append">
+                    <span class="input-group-text">
+                      <i class="tim-icons icon-lock-circle"> </i>
+                    </span>
+                  </div>
+                </ng-template>
+              </div>
+              </div>
+            </div>
+  
+            <div class="row justify-content-center">
+              <div class="col-sm-6 col-lg-6 ml-auto">
+                <div
+                  [ngClass]="
+                  ciphertextPubKey_x.invalid && ciphertextPubKey_x.dirty ? 'form-group has-danger' : 'input-group'
+                  "
+                >
+                  <input
+                    class="form-control"
+                    placeholder="ciphertextPubKey_x"
+                    type="text"
+                    autofocus
+                    formControlName="ciphertextPubKey_x"
+                  />
+                  <ng-template [ngIf]="!ciphertextPubKey_x.invalid || !ciphertextPubKey_x.dirty">
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        <i class="tim-icons icon-lock-circle"> </i>
+                      </span>
+                    </div>
+                  </ng-template>
+                </div>
+              </div>
+              <div class="col-sm-6 col-lg-6 ml-auto">
+                <div
+                [ngClass]="
+                ciphertextPubKey_y.invalid && ciphertextPubKey_y.dirty ? 'form-group has-danger' : 'input-group'
+                "
+              >
+                <input
+                  class="form-control"
+                  placeholder="ciphertextPubKey_y"
+                  type="text"
+                  autofocus
+                  formControlName="ciphertextPubKey_y"
+                />
+                <ng-template [ngIf]="!ciphertextPubKey_y.invalid || !ciphertextPubKey_y.dirty">
+                  <div class="input-group-append">
+                    <span class="input-group-text">
+                      <i class="tim-icons icon-lock-circle"> </i>
+                    </span>
+                  </div>
+                </ng-template>
+              </div>
+              </div>
+            </div>
+    
+          <div class="col-sm-12 col-lg-10 mr-auto ml-auto" *ngIf="submitted">
+            <blockquote>
+              <p class="blockquote blockquote-danger">
+                {{ cipherText }}
+              </p>
+            </blockquote>
+          </div>
+
+          <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+            <textarea
+              placeholder="Text to decrypt"
+              class="texrtocr form-control"
+              formControlName="cipherTextDE"
+              [ngClass]="{ plainTextError: cipherTextDE.invalid && cipherTextDE.dirty }"
+            ></textarea>
+          </div>
+          <div class="container">
+              <div class="row justify-content-center submit">
+                  <div class="col-sm-12 col-lg-12 mr-auto ml-auto">
+                              <button
+                                type="button"
+                                class="btn btn-primary"
+                                (click)="decrypt()"
+                                [disabled]="!arguments.valid"
+                              >
+                                Decrypt
+                              </button>
+                            </div>
                           </div>
-                        </div>
-        </div>
+          </div>
+          <div class="col-sm-12 col-lg-10 mr-auto ml-auto" *ngIf="submittedDE">
+            <blockquote>
+              <p class="blockquote blockquote-danger">
+                {{ DecipherTextED }}
+              </p>
+            </blockquote>
+          </div>
+          
         
       </div>
 
