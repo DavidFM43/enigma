@@ -30,12 +30,12 @@ def decrypt_r():
         privateKey = rsa.PrivateKey(int(request_data["N"]), 2, int(request_data["D"]), 2, 3)
         cipherText = urllib.parse.unquote(request_data["cipherText"])
         
-        cipher_text = decrypt(cipherText, privateKey)#returns bytes
+        decipherText = decrypt(cipherText, privateKey)#returns bytes
 
-        if not cipher_text:
+        if not decipherText:
             return dumps({"error": True, "typeError": "Encryption error"})
 
-        return dumps({"cipherText": cipher_text, "error": False})
+        return dumps({"decipherText": decipherText, "error": False})
     # bad request
     return 'bad request' , 400
 @bp.route("/getKeys", methods=["GET"])

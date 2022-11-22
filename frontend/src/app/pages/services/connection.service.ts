@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
-import { RSAPrivateKey, RSAPublicKey } from "../Interfaces";
+import { ElGamalKeys, RSAPrivateKey, RSAPublicKey } from "../Interfaces";
 
 @Injectable({
   providedIn: "root",
@@ -241,7 +241,7 @@ export class ConnectionService {
       })
       .pipe(catchError(this.handleError));
   }
-  //RSA
+  ElGamal
   RSAEncrypt(key: RSAPublicKey, plainText: string) {
     return this.http
     .post(this.baseUrl + "/rsa/encrypt", {
@@ -292,6 +292,32 @@ export class ConnectionService {
   RSAGetND(P: number, Q: number, E: number) {
     return this.http
       .get(this.baseUrl + `/rsa/getND?P=${P}&Q=${Q}&E=${E}`)
+      .pipe(catchError(this.handleError));
+  }
+  //ELGamal
+  ElGamalEncrypt(key: ElGamalKeys, plainText: string) {
+    return this.http
+    .post(this.baseUrl + "/elgamal/encrypt", {
+      plainText: plainText,
+      P: key.P,
+      G: key.G,
+      H: key.H
+    })
+    .pipe(catchError(this.handleError));
+  }
+  ElGamalDecrypt(key: ElGamalKeys, cipherText: number[][]) {
+    return  this.http
+    .post(this.baseUrl + "/elgamal/decrypt", {
+      cipherText: cipherText,
+      P: key.P,
+      G: key.G,
+      X: key.X
+    })
+    .pipe(catchError(this.handleError));
+  }
+  ElGamalGetKeys() {
+    return this.http
+      .get(this.baseUrl + '/elgamal/getKeys')
       .pipe(catchError(this.handleError));
   }
 }

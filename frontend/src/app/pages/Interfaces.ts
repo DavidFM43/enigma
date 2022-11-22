@@ -103,3 +103,9 @@ export interface rabinDecryptersResponse {
   error: boolean;
   typeError: string;
 }
+export interface ElGamalKeys{
+  P: string,
+  G: string,
+  H?: string,
+  X?: string
+}
