@@ -37,9 +37,13 @@ def decrypt_ECC(encryptedMsg, privKey):
     return plaintext
 
 if __name__ == "__main__":
+
+    
     msg = b'Text to be encrypted by ECC public key and decrypted by its corresponding ECC private key'
     print("original msg:", msg)
+
     privKey = secrets.randbelow(curve.field.n)
+    
     pubKey = privKey * curve.g
 
     encryptedMsg = encrypt_ECC(msg, pubKey)
@@ -53,3 +57,6 @@ if __name__ == "__main__":
 
     decryptedMsg = decrypt_ECC(encryptedMsg, privKey)
     print("decrypted msg:", decryptedMsg)
+
+
+    
