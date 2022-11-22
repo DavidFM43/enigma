@@ -37,6 +37,7 @@ rsa==4.9
 six==1.16.0
 sympy==1.11.1
 tenacity==8.1.0
+tinyec==0.4.0
 tomli==2.0.1
 tqdm==4.64.1
 Werkzeug==2.2.2
