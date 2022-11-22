@@ -51,7 +51,7 @@ def encrypt_r():
     pubKey = privKey * curve.g
 
     encryptedMsg = encrypt_ECC(plain_text, pubKey)
-    encryptedMsgObj = get_obj(encryptedMsg)
+    encryptedMsgObj:dict = get_obj(encryptedMsg)
     
     error = False
     typeError = ""
