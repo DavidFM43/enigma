@@ -13,8 +13,8 @@ from . import (
     simplified_des,
     rabin,
     RSA,
-    rabin,
-    gammal
+    elgamal,
+    gammalelip,
 )
 
 
@@ -36,7 +36,13 @@ def create_app(test_config=None):
     app.register_blueprint(simplified_des.bp)
     app.register_blueprint(rabin.bp)
     app.register_blueprint(RSA.bp)
-    app.register_blueprint(gammal.bp)
+    app.register_blueprint(elgamal.bp)
+    app.register_blueprint(gammalelip.bp)
+    
+
+    @app.route('/', methods=['GET'])
+    def root():
+        return render_template('index.html')
 
     @app.route('/', methods=['GET'])
     def root():

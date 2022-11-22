@@ -1,31 +1,27 @@
-from typing import Tuple
 from flask import Blueprint, request
 from json import dumps
-from cryptools.gammal import generate_keys, encrypt,decrypt
-
-import json
-import plotly
-import plotly.express as px
-
+from cryptools.elgamal import generate_keys, encrypt, decrypt
 
 
 bp = Blueprint("elgamal", __name__, url_prefix="/elgamal")
 
-@bp.route("/getKeys", methods =["GET"])
+
+@bp.route("/getKeys", methods=["GET"])
 def getKeyPair_r():
     """
     Generate of publicKey and privateKey
     """
     pub_key, priv_key = generate_keys()
-    
-    return dumps({
-        "P": pub_key[0],
-        "G":pub_key[1],
-        "H":pub_key[2],
-        "X": priv_key[2],
-    })
 
+    return dumps(
+        {
+            "P": pub_key[0],
+            "G": pub_key[1],
+            "H": pub_key[2],
 
+            "X": priv_key[2],
+        }
+    )
 
 
 @bp.route("/encrypt", methods=["POST"])
@@ -36,21 +32,22 @@ def encrypt_r():
     Returns JSON with cipher text and if needed error information.
     """
     request_data = request.get_json()
+
     plain_text: str = request_data["plainText"]
-    p: int = request_data["P"]
-    g: int = request_data["G"]
-    h: int = request_data["H"]
 
-    pub_key= (p,g,h)
+    p: int = int(request_data["P"])
+    g: int = int(request_data["G"])
+    h: int = int(request_data["H"])
 
+    pub_key = (p, g, h)
+
+    cipher_text = encrypt(pub_key, plain_text)
     
-    cipher_text = encrypt(pub_key, plain_text) 
     error = False
     typeError = ""
-    # lo que vamos enviar: 
-   
-    response_dict = {"cipherText": cipher_text,  "error": error, "typeError": typeError}
-    
+
+    response_dict = {"cipherText": cipher_text, "error": error, "typeError": typeError}
+
     return dumps(response_dict)
 
 
@@ -63,12 +60,13 @@ def decrypt_r():
     """
     request_data = request.get_json()
     cipher_text: str = request_data["cipherText"]
-    P: int = request_data["P"]
-    G: int = request_data["G"]
-    X: int = request_data["X"]
+    P: int = int(request_data["P"])
+    G: int = int(request_data["G"])
+    X: int = int(request_data["X"])
 
-    priv_key = (P,G,X)
+    print(cipher_text)
 
+    priv_key = (P, G, X)
 
     plain_text = decrypt(priv_key, cipher_text)
     error = False
@@ -76,5 +74,3 @@ def decrypt_r():
 
     response_dict = {"decipherText": plain_text, "error": error, "typeError": typeError}
     return dumps(response_dict)
-
-
