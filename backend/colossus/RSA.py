@@ -48,10 +48,10 @@ def getKeyPair_r():
         }, 
         "privateKey": {
             "N": str(keyPair[1].n),
-            "E": keyPair[1].e,
+            "E": str(keyPair[1].e),
             "D": str(keyPair[1].d),
-            "P": keyPair[1].p,
-            "Q": keyPair[1].q
+            "P": str(keyPair[1].p),
+            "Q": str(keyPair[1].q)
         }
     })
 @bp.route("/getND", methods=["GET"])
