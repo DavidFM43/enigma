@@ -2836,24 +2836,24 @@ __webpack_require__.r(__webpack_exports__);
 
 function ElGamalElipCipherComponent_ng_template_6_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 29)(1, "span", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "i", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 30)(1, "span", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "i", 32);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
   }
 }
 
 function ElGamalElipCipherComponent_ng_template_10_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 29)(1, "span", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "i", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 30)(1, "span", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "i", 32);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
   }
 }
 
 function ElGamalElipCipherComponent_ng_template_15_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 29)(1, "span", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "i", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 30)(1, "span", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "i", 32);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
   }
 }
@@ -2898,35 +2898,63 @@ function ElGamalElipCipherComponent_ng_template_27_Template(rf, ctx) {
   }
 }
 
-function ElGamalElipCipherComponent_ng_template_49_Template(rf, ctx) {
+function ElGamalElipCipherComponent_ng_template_50_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 29)(1, "span", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "i", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 30)(1, "span", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "i", 32);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
   }
 }
 
-function ElGamalElipCipherComponent_ng_template_53_Template(rf, ctx) {
+function ElGamalElipCipherComponent_ng_template_54_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 29)(1, "span", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "i", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 30)(1, "span", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "i", 32);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
   }
 }
 
-function ElGamalElipCipherComponent_ng_template_58_Template(rf, ctx) {
+function ElGamalElipCipherComponent_ng_template_59_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 29)(1, "span", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "i", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 30)(1, "span", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "i", 32);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
   }
 }
 
-function ElGamalElipCipherComponent_ng_template_62_Template(rf, ctx) {
+function ElGamalElipCipherComponent_ng_template_63_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 29)(1, "span", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "i", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 30)(1, "span", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "i", 32);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
+  }
+}
+
+function ElGamalElipCipherComponent_div_64_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 17)(1, "blockquote")(2, "p", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()();
+  }
+
+  if (rf & 2) {
+    const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx_r13.cipherText, " ");
+  }
+}
+
+function ElGamalElipCipherComponent_div_72_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 17)(1, "blockquote")(2, "p", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()();
+  }
+
+  if (rf & 2) {
+    const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx_r14.DecipherTextED, " ");
   }
 }
 
@@ -2947,13 +2975,16 @@ let ElGamalElipCipherComponent = /*#__PURE__*/(() => {
         plainText: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.UntypedFormControl("", [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required])
       });
       this.argumentsDecrypt = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.UntypedFormGroup({
+        cipherTextDE: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.UntypedFormControl("", [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required]),
         nonce: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.UntypedFormControl("", [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required]),
         authTag: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.UntypedFormControl("", [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required]),
         ciphertextPubKey_x: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.UntypedFormControl("", [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required]),
         ciphertextPubKey_y: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.UntypedFormControl("", [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required])
       });
       this.cipherText = "";
+      this.DecipherTextED = "";
       this.submitted = false;
+      this.submittedDE = false;
       this.resposeDymcMess = "";
       this.isRandomKey = false;
     }
@@ -2980,9 +3011,11 @@ let ElGamalElipCipherComponent = /*#__PURE__*/(() => {
         Pk: this.Pk.value
       };
       this.connection.ElGamalElipEncrypt(publicKey, this.arguments.get("plainText").value.replace(/ /g, "")).subscribe(ans => {
+        this.cipherText = ans.cipherText.ciphertext;
+
         if (!ans.error) {
-          this.cipherText = ans.cipherText.ciphertext;
           this.argumentsDecrypt.patchValue({
+            cipherTextDE: ans.cipherText.ciphertext,
             nonce: ans.cipherText.nonce,
             authTag: ans.cipherText.authTag,
             ciphertextPubKey_x: ans.cipherText.ciphertextPubKey_x,
@@ -3002,7 +3035,7 @@ let ElGamalElipCipherComponent = /*#__PURE__*/(() => {
         Pk: this.Pk.value
       };
       let cipherTxt = {
-        ciphertext: this.cipherText,
+        ciphertext: this.cipherTextDE.value,
         nonce: this.nonce.value,
         authTag: this.authTag.value,
         ciphertextPubKey_x: this.ciphertextPubKey_x.value,
@@ -3010,11 +3043,11 @@ let ElGamalElipCipherComponent = /*#__PURE__*/(() => {
       };
       this.connection.ElGamalElipDecrypt(privateKey, cipherTxt).subscribe(ans => {
         if (!ans.error) {
-          this.cipherText = ans.decipherText;
+          this.DecipherTextED = ans.decipherText;
           this.resposeDymcMess = "Decipher";
         }
 
-        this.submitted = true;
+        this.submittedDE = true;
       });
       return true;
     }
@@ -3051,6 +3084,10 @@ let ElGamalElipCipherComponent = /*#__PURE__*/(() => {
       return this.argumentsDecrypt.get("ciphertextPubKey_y");
     }
 
+    get cipherTextDE() {
+      return this.argumentsDecrypt.get("cipherTextDE");
+    }
+
   }
 
   ElGamalElipCipherComponent.ɵfac = function ElGamalElipCipherComponent_Factory(t) {
@@ -3060,9 +3097,9 @@ let ElGamalElipCipherComponent = /*#__PURE__*/(() => {
   ElGamalElipCipherComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({
     type: ElGamalElipCipherComponent,
     selectors: [["app-el-gamal-elip-cipher"]],
-    decls: 72,
-    vars: 28,
-    consts: [[3, "formGroup"], [1, "container"], [1, "row", "justify-content-center"], [1, "col-sm-6", "col-lg-6", "ml-auto"], [3, "ngClass"], ["placeholder", "X", "type", "text", "autofocus", "", "formControlName", "X", 1, "form-control"], [3, "ngIf"], ["placeholder", "Y", "type", "text", "autofocus", "", "formControlName", "Y", 1, "form-control"], [1, "col-sm-12", "col-lg-12", "ml-auto"], ["placeholder", "Pk", "type", "text", "autofocus", "", "formControlName", "Pk", 1, "form-control"], [1, "row"], [1, "col-md-6"], [4, "ngIf", "ngIfElse"], ["elsePubK", ""], ["elsePrvK", ""], [1, "col-sm-12", "col-lg-12", "mr-auto", "random-btn-cont"], [1, "btn", "mr-1", "random-btn", 3, "disabled", "click"], [1, "col-sm-12", "col-lg-10", "mr-auto", "ml-auto"], ["placeholder", "Text to cipher", "formControlName", "plainText", 1, "texrtocr", "form-control", 3, "ngClass"], [1, "col-sm-12", "col-lg-12", "mr-auto", "ml-auto", "submit"], ["type", "button", 1, "btn", "btn-primary", 3, "disabled", "click"], [1, "mb-3"], ["placeholder", "nonce", "type", "text", "autofocus", "", "formControlName", "nonce", 1, "form-control"], ["placeholder", "authTag", "type", "text", "autofocus", "", "formControlName", "authTag", 1, "form-control"], ["placeholder", "ciphertextPubKey_x", "type", "text", "autofocus", "", "formControlName", "ciphertextPubKey_x", 1, "form-control"], ["placeholder", "ciphertextPubKey_y", "type", "text", "autofocus", "", "formControlName", "ciphertextPubKey_y", 1, "form-control"], [1, "blockquote", "blockquote-danger"], [1, "row", "justify-content-center", "submit"], [1, "col-sm-12", "col-lg-12", "mr-auto", "ml-auto"], [1, "input-group-append"], [1, "input-group-text"], [1, "tim-icons", "icon-lock-circle"]],
+    decls: 73,
+    vars: 31,
+    consts: [[3, "formGroup"], [1, "container"], [1, "row", "justify-content-center"], [1, "col-sm-6", "col-lg-6", "ml-auto"], [3, "ngClass"], ["placeholder", "X", "type", "text", "autofocus", "", "formControlName", "X", 1, "form-control"], [3, "ngIf"], ["placeholder", "Y", "type", "text", "autofocus", "", "formControlName", "Y", 1, "form-control"], [1, "col-sm-12", "col-lg-12", "ml-auto"], ["placeholder", "Pk", "type", "text", "autofocus", "", "formControlName", "Pk", 1, "form-control"], [1, "row"], [1, "col-md-6"], [4, "ngIf", "ngIfElse"], ["elsePubK", ""], ["elsePrvK", ""], [1, "col-sm-12", "col-lg-12", "mr-auto", "random-btn-cont"], [1, "btn", "mr-1", "random-btn", 3, "disabled", "click"], [1, "col-sm-12", "col-lg-10", "mr-auto", "ml-auto"], ["placeholder", "Text to cipher", "formControlName", "plainText", 1, "texrtocr", "form-control", 3, "ngClass"], [1, "col-sm-12", "col-lg-12", "mr-auto", "ml-auto", "submit"], ["type", "button", 1, "btn", "btn-primary", 3, "disabled", "click"], [1, "mb-3"], ["placeholder", "nonce", "type", "text", "autofocus", "", "formControlName", "nonce", 1, "form-control"], ["placeholder", "authTag", "type", "text", "autofocus", "", "formControlName", "authTag", 1, "form-control"], ["placeholder", "ciphertextPubKey_x", "type", "text", "autofocus", "", "formControlName", "ciphertextPubKey_x", 1, "form-control"], ["placeholder", "ciphertextPubKey_y", "type", "text", "autofocus", "", "formControlName", "ciphertextPubKey_y", 1, "form-control"], ["class", "col-sm-12 col-lg-10 mr-auto ml-auto", 4, "ngIf"], ["placeholder", "Text to decrypt", "formControlName", "cipherTextDE", 1, "texrtocr", "form-control", 3, "ngClass"], [1, "row", "justify-content-center", "submit"], [1, "col-sm-12", "col-lg-12", "mr-auto", "ml-auto"], [1, "input-group-append"], [1, "input-group-text"], [1, "tim-icons", "icon-lock-circle"], [1, "blockquote", "blockquote-danger"]],
     template: function ElGamalElipCipherComponent_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "form", 0)(1, "div", 1)(2, "div", 2)(3, "div", 3)(4, "div", 4);
@@ -3102,34 +3139,37 @@ let ElGamalElipCipherComponent = /*#__PURE__*/(() => {
         });
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](38, " Encrypt ");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()()();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](39, "form", 0)(40, "div", 10)(41, "div", 17)(42, "div")(43, "h3", 21);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](44);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](45, "div", 2)(46, "div", 3)(47, "div", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](48, "input", 22);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](49, ElGamalElipCipherComponent_ng_template_49_Template, 3, 0, "ng-template", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](39, "form", 0)(40, "div", 1)(41, "div", 10)(42, "div", 17)(43, "div")(44, "h3", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](45, "Decipher text");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](46, "div", 2)(47, "div", 3)(48, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](49, "input", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](50, ElGamalElipCipherComponent_ng_template_50_Template, 3, 0, "ng-template", 6);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](50, "div", 3)(51, "div", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](52, "input", 23);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](53, ElGamalElipCipherComponent_ng_template_53_Template, 3, 0, "ng-template", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](51, "div", 3)(52, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](53, "input", 23);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](54, ElGamalElipCipherComponent_ng_template_54_Template, 3, 0, "ng-template", 6);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](54, "div", 2)(55, "div", 3)(56, "div", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](57, "input", 24);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](58, ElGamalElipCipherComponent_ng_template_58_Template, 3, 0, "ng-template", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](55, "div", 2)(56, "div", 3)(57, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](58, "input", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](59, ElGamalElipCipherComponent_ng_template_59_Template, 3, 0, "ng-template", 6);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](59, "div", 3)(60, "div", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](61, "input", 25);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](62, ElGamalElipCipherComponent_ng_template_62_Template, 3, 0, "ng-template", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](60, "div", 3)(61, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](62, "input", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](63, ElGamalElipCipherComponent_ng_template_63_Template, 3, 0, "ng-template", 6);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](63, "div", 17)(64, "blockquote")(65, "p", 26);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](66);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](67, "div", 1)(68, "div", 27)(69, "div", 28)(70, "button", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](64, ElGamalElipCipherComponent_div_64_Template, 4, 1, "div", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](65, "div", 17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](66, "textarea", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](67, "div", 1)(68, "div", 28)(69, "div", 29)(70, "button", 20);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function ElGamalElipCipherComponent_Template_button_click_70_listener() {
           return ctx.decrypt();
         });
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](71, " Decrypt ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()()()()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](72, ElGamalElipCipherComponent_div_72_Template, 4, 1, "div", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
       }
 
       if (rf & 2) {
@@ -3157,14 +3197,12 @@ let ElGamalElipCipherComponent = /*#__PURE__*/(() => {
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("disabled", ctx.isRandomKey);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵpureFunction1"](26, _c0, ctx.plainText.invalid && ctx.plainText.dirty));
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵpureFunction1"](27, _c0, ctx.plainText.invalid && ctx.plainText.dirty));
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("disabled", !ctx.arguments.valid);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("formGroup", ctx.argumentsDecrypt);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"]("", ctx.resposeDymcMess, " text");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](9);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngClass", ctx.nonce.invalid && ctx.nonce.dirty ? "form-group has-danger" : "input-group");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", !ctx.nonce.invalid || !ctx.nonce.dirty);
@@ -3180,10 +3218,14 @@ let ElGamalElipCipherComponent = /*#__PURE__*/(() => {
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngClass", ctx.ciphertextPubKey_y.invalid && ctx.ciphertextPubKey_y.dirty ? "form-group has-danger" : "input-group");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", !ctx.ciphertextPubKey_y.invalid || !ctx.ciphertextPubKey_y.dirty);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx.cipherText, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx.submitted);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵpureFunction1"](29, _c0, ctx.cipherTextDE.invalid && ctx.cipherTextDE.dirty));
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("disabled", !ctx.arguments.valid);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx.submittedDE);
       }
     },
     dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_4__.NgClass, _angular_common__WEBPACK_IMPORTED_MODULE_4__.NgIf, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵNgNoValidate"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__.DefaultValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.NgControlStatusGroup, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormGroupDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControlName],
