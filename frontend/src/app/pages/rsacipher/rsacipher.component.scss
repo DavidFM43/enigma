@@ -21,4 +21,12 @@
     border: 0.09rem solid #f33620 !important;
     color: #ec250d;
   }
-  
+.ND-box{
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #fd5d93;
+  margin-bottom: 10px;
+  .input-group, .form-grou{
+    margin-bottom: 0px;
+  }
+}

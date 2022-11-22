@@ -10,7 +10,7 @@
       </div>
       <div class="row justify-content-center">
         
-        <div class="col-sm-4 col-lg-4 ml-auto">
+        <div class="col-sm-6 col-lg-6 ml-auto">
           <div
             [ngClass]="
             P.invalid && P.dirty ? 'form-group has-danger' : 'input-group'
@@ -32,7 +32,7 @@
             </ng-template>
           </div>
         </div>
-        <div class="col-sm-4 col-lg-4 ml-auto">
+        <div class="col-sm-6 col-lg-6 ml-auto">
           <div
           [ngClass]="
           Q.invalid && Q.dirty ? 'form-group has-danger' : 'input-group'
@@ -54,43 +54,99 @@
           </ng-template>
         </div>
         </div>
-        <div class="col-sm-4 col-lg-4 ml-auto">
-          <div
-          [ngClass]="
-          E.invalid && E.dirty ? 'form-group has-danger' : 'input-group'
-          "
-        >
-          <input
-            class="form-control"
-            placeholder="E"
-            type="text"
-            autofocus
-            formControlName="E"
-          />
-          <ng-template [ngIf]="!E.invalid || !E.dirty">
-            <div class="input-group-append">
-              <span class="input-group-text">
-                <i class="tim-icons icon-lock-circle"> </i>
-              </span>
+      </div>
+      <div class="row justify-content-center ND-box">
+        <div class="row">
+          <div class="col-sm-12 col-lg-12 ml-auto" style="margin-bottom: 5px;">
+            <div
+            [ngClass]="
+            E.invalid && E.dirty ? 'form-group has-danger' : 'input-group'
+            "
+          >
+            <input
+              class="form-control"
+              placeholder="E"
+              type="text"
+              autofocus
+              formControlName="E"
+            />
+            <ng-template [ngIf]="!E.invalid || !E.dirty">
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="tim-icons icon-lock-circle"> </i>
+                </span>
+              </div>
+            </ng-template>
+          </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-lg-6 ml-auto">
+            <div
+              [ngClass]="
+              N.invalid && N.dirty ? 'form-group has-danger' : 'input-group'
+              "
+            >
+              <input
+                class="form-control"
+                placeholder="N"
+                type="text"
+                autofocus
+                formControlName="N"
+              />
+              <ng-template [ngIf]="!N.invalid || !N.dirty">
+                <div class="input-group-append">
+                  <span class="input-group-text">
+                    <i class="tim-icons icon-lock-circle"> </i>
+                  </span>
+                </div>
+              </ng-template>
             </div>
-          </ng-template>
-        </div>
+          </div>
+          <div class="col-sm-6 col-lg-6 ml-auto">
+            <div
+              [ngClass]="
+              D.invalid && D.dirty ? 'form-group has-danger' : 'input-group'
+              "
+            >
+              <input
+                class="form-control"
+                placeholder="D"
+                type="text"
+                autofocus
+                formControlName="D"
+              />
+              <ng-template [ngIf]="!D.invalid || !D.dirty">
+                <div class="input-group-append">
+                  <span class="input-group-text">
+                    <i class="tim-icons icon-lock-circle"> </i>
+                  </span>
+                </div>
+              </ng-template>
+            </div>
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6">
-          <h4>D: {{D}}</h4>
+          <h4>Public Key (n,e): 
+            <div *ngIf="N.value.length != 0 && E.value.length != 0; else elsePubK">
+              ({{N.value}}, {{E.value}})
+            </div>
+            <ng-template #elsePubK>
+              Not set.
+            </ng-template>
+          </h4>
         </div>
         <div class="col-md-6">
-          <h4>N: {{N}}</h4>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <h4>Public Key (n,e): ({{N}}, {{E.value}})</h4>
-        </div>
-        <div class="col-md-6">
-          <h4>Private Key (n,d): ({{N}}, {{D}})</h4>
+          <h4>Private Key (n,d): 
+            <div *ngIf="N.value.length != 0 && D.value.length != 0; else elsePrvK">
+              ({{N.value}}, {{D.value}})
+            </div>
+            <ng-template #elsePrvK>
+              Not set.
+            </ng-template>
+          </h4>
         </div>
       </div>
       
