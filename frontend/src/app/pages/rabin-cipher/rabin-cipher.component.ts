@@ -46,7 +46,7 @@ export class RabinCipherComponent implements OnInit {
       ),
       plainText: new UntypedFormControl("attack at dawn", [
         Validators.required,
-        Validators.pattern("[+/=0-9a-zA-Z][ +/=0-9a-zA-Z]*"),
+        Validators.pattern("[+/=0-9a-zA-Z ]{0,350}"),
       ]),
     });
   }
