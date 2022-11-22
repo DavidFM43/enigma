@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row justify-content-center">
     <form [formGroup]="cipherParams" #formDir="ngForm" class="col-sm-9">
-
       <div class="form-row">
         <small class="text-muted"><u>Public Key</u></small>
       </div>
@@ -127,7 +126,7 @@
             type="button"
             class="btn btn-primary"
             (click)="encrypt()"
-            [disabled]="cipherParams.invalid"
+            [disabled]="key.invalid"
           >
             Encrypt
           </button>
@@ -137,7 +136,7 @@
             type="button"
             class="btn btn-primary"
             (click)="decrypt()"
-            [disabled]="cipherParams.invalid"
+            [disabled]="primeQ.invalid || primeP.invalid"
           >
             Decrypt
           </button>
@@ -153,11 +152,11 @@
         </div>
 
         <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
-          <blockquote>
-            <p class="blockquote blockquote-danger">
-              {{ cipherText }}
-            </p>
-          </blockquote>
+          <ul>
+            <li *ngFor="let op of cipherText">
+              <p class="blockquote blockquote-danger">{{ op }}</p>
+            </li>
+          </ul>
         </div>
       </div>
     </form>
