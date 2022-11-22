@@ -175,6 +175,8 @@ function miillerTest(d, n){
 }
  
 function isPrime(n, k){
+  if(!isInt(n))
+    return false;
   n = BigInt(n);
   if(n <= 1 || n == 4)
     return false;

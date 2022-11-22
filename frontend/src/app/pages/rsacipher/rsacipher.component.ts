@@ -6,7 +6,6 @@ import { NormalizerService } from '../services/normalizer.service';
 import {
   isPrimeVal
 } from "../shared/correct-key.directive";
-import * as math from "mathjs";
 @Component({
   selector: 'app-rsacipher',
   templateUrl: './rsacipher.component.html',
@@ -25,11 +24,11 @@ export class RSACipherComponent implements OnInit {
     private normalizer: NormalizerService
   ) {
     this.arguments = new UntypedFormGroup({
-      P: new UntypedFormControl("", [isPrimeVal()]),
-      Q: new UntypedFormControl("", [isPrimeVal()]),
-      E: new UntypedFormControl("", [Validators.required]),
-      D: new UntypedFormControl("", [Validators.required]),
-      N: new UntypedFormControl("", [Validators.required]),
+      P: new UntypedFormControl("", [Validators.pattern(/^[0-9]\d*$/), isPrimeVal()]),
+      Q: new UntypedFormControl("", [Validators.pattern(/^[0-9]\d*$/), isPrimeVal()]),
+      E: new UntypedFormControl("", [Validators.pattern(/^[0-9]\d*$/), Validators.required]),
+      D: new UntypedFormControl("", [Validators.pattern(/^[0-9]\d*$/), Validators.required]),
+      N: new UntypedFormControl("", [Validators.pattern(/^[0-9]\d*$/), Validators.required]),
       plainText: new UntypedFormControl("", [
         Validators.required
       ]),
@@ -92,9 +91,9 @@ export class RSACipherComponent implements OnInit {
     }
     this.connection
       .RSADecrypt(privateKey, this.arguments.get("plainText").value)
-      .subscribe((ans: textEncyptersReponse) => {
+      .subscribe((ans: textDecyptersReponse) => {
         if (!ans.error) {
-          this.cipherText = ans.cipherText;
+          this.cipherText = ans.decipherText;
           this.resposeDymcMess = "Decipher";
         }
         this.submitted = true;
