@@ -7722,10 +7722,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ConnectionService": () => (/* binding */ ConnectionService)
 /* harmony export */ });
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ 66587);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ 47418);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 22560);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ 58987);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ 66587);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/environments/environment */ 92340);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ 47418);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ 58987);
+
 
 
 
@@ -7735,25 +7737,25 @@ let ConnectionService = /*#__PURE__*/(() => {
     constructor(http) {
       this.http = http;
       this.type = null;
-      this.baseUrl = "http://127.0.0.1:5000/";
+      this.baseUrl = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.endpoint;
     }
 
     handleError(error) {
       console.log(error);
-      return (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.throwError)("Error! something went wrong. >:v");
+      return (0,rxjs__WEBPACK_IMPORTED_MODULE_1__.throwError)("Error! something went wrong. >:v");
     } //shift
 
 
     shiftEncrypt(key, plainText) {
-      return this.http.get(this.baseUrl + `/shift/encrypt?key=${key}&plainText=${plainText}`).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      return this.http.get(this.baseUrl + `/shift/encrypt?key=${key}&plainText=${plainText}`).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
     shiftDecrypt(key, cipherText) {
-      return this.http.get(this.baseUrl + `/shift/decrypt?key=${key}&cipherText=${cipherText}`).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      return this.http.get(this.baseUrl + `/shift/decrypt?key=${key}&cipherText=${cipherText}`).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
     shiftAttack(cipherText) {
-      return this.http.get(this.baseUrl + `/shift/attack?cipherText=${cipherText}`).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      return this.http.get(this.baseUrl + `/shift/attack?cipherText=${cipherText}`).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     } //affine
 
 
@@ -7761,20 +7763,20 @@ let ConnectionService = /*#__PURE__*/(() => {
       return this.http.post(this.baseUrl + "/affine/encrypt", {
         key: keys,
         plainText: plainText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
     affineDecrypt(keys, cipherText) {
       return this.http.post(this.baseUrl + "/affine/decrypt", {
         key: keys,
         cipherText: cipherText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
     affineAttack(cipherText) {
       return this.http.post(this.baseUrl + "/affine/attack", {
         cipherText: cipherText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     } //substitution
 
 
@@ -7782,20 +7784,20 @@ let ConnectionService = /*#__PURE__*/(() => {
       return this.http.post(this.baseUrl + "/substitution/encrypt", {
         key: key,
         plainText: plainText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
     substitutionDecrypt(key, cipherText) {
       return this.http.post(this.baseUrl + "/substitution/decrypt", {
         key: key,
         cipherText: cipherText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
     substitutionAttack(cipherText) {
       return this.http.post(this.baseUrl + "/substitution/attack", {
         cipherText: cipherText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     } //vigenere
 
 
@@ -7803,27 +7805,27 @@ let ConnectionService = /*#__PURE__*/(() => {
       return this.http.post(this.baseUrl + "/vigenere/encrypt", {
         key: key,
         plainText: plainText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
     vigenereDecrypt(key, cipherText) {
       return this.http.post(this.baseUrl + "/vigenere/decrypt", {
         key: key,
         cipherText: cipherText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
     vigenereKeyAttack(keySize, cipherText) {
       return this.http.post(this.baseUrl + "/vigenere/attack/key", {
         keySize: keySize,
         cipherText: cipherText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
     vigenereNoKeyAttack(cipherText) {
       return this.http.post(this.baseUrl + "/vigenere/attack/nokey", {
         cipherText: cipherText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     } // permutation
 
 
@@ -7831,14 +7833,14 @@ let ConnectionService = /*#__PURE__*/(() => {
       return this.http.post(this.baseUrl + "/permutation/encrypt", {
         key: key,
         plainText: plainText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
     permutationDecrypt(key, cipherText) {
       return this.http.post(this.baseUrl + "/permutation/decrypt", {
         key: key,
         cipherText: cipherText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     } // hill
 
 
@@ -7847,7 +7849,7 @@ let ConnectionService = /*#__PURE__*/(() => {
         reportProgress: true,
         observe: "events",
         responseType: "blob"
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
     hillDecrypt(value) {
@@ -7855,7 +7857,7 @@ let ConnectionService = /*#__PURE__*/(() => {
         reportProgress: true,
         observe: "events",
         responseType: "blob"
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
     hillAttack(cipherText, plainText, matrixSize) {
@@ -7863,7 +7865,7 @@ let ConnectionService = /*#__PURE__*/(() => {
         matrixSize: matrixSize,
         plainText: plainText,
         cipherText: cipherText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     } // triple des
 
 
@@ -7872,7 +7874,7 @@ let ConnectionService = /*#__PURE__*/(() => {
         reportProgress: true,
         observe: "events",
         responseType: "blob"
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
     tripleDesDecrypt(value) {
@@ -7880,7 +7882,7 @@ let ConnectionService = /*#__PURE__*/(() => {
         reportProgress: true,
         observe: "events",
         responseType: "blob"
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     } // aes
 
 
@@ -7889,7 +7891,7 @@ let ConnectionService = /*#__PURE__*/(() => {
         reportProgress: true,
         observe: "events",
         responseType: "blob"
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
     aesDecrypt(value) {
@@ -7897,7 +7899,7 @@ let ConnectionService = /*#__PURE__*/(() => {
         reportProgress: true,
         observe: "events",
         responseType: "blob"
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     } // simplified des
 
 
@@ -7905,14 +7907,14 @@ let ConnectionService = /*#__PURE__*/(() => {
       return this.http.post(this.baseUrl + "/simplified_des/encrypt", {
         key: key,
         plainText: plainText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
     simplifiedDesDecrypt(key, cipherText) {
       return this.http.post(this.baseUrl + "/simplified_des/decrypt", {
         key: key,
         cipherText: cipherText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     } // gamma
 
 
@@ -7922,7 +7924,7 @@ let ConnectionService = /*#__PURE__*/(() => {
         plainText: plainText,
         x_0: x,
         y_0: y
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
     gammaDecrypt(permutation, x, y, cipherText) {
@@ -7931,7 +7933,7 @@ let ConnectionService = /*#__PURE__*/(() => {
         cipherText: cipherText,
         x_0: x,
         y_0: y
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     } //RSA
 
 
@@ -7940,7 +7942,7 @@ let ConnectionService = /*#__PURE__*/(() => {
         plainText: plainText,
         N: key.N,
         E: key.E
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
     RSADecrypt(key, cipherText) {
@@ -7948,11 +7950,11 @@ let ConnectionService = /*#__PURE__*/(() => {
         cipherText: cipherText,
         N: key.N,
         D: key.D
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
     RSAGetKeys() {
-      return this.http.get(this.baseUrl + "/rsa/getKeys").pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      return this.http.get(this.baseUrl + "/rsa/getKeys").pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     } // Rabin
 
 
@@ -7960,7 +7962,7 @@ let ConnectionService = /*#__PURE__*/(() => {
       return this.http.post(this.baseUrl + "/rabin/encrypt", {
         n: n,
         plainText: plainText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
     rabinDecrypt(p, q, cipherText) {
@@ -7968,15 +7970,15 @@ let ConnectionService = /*#__PURE__*/(() => {
         p: p,
         q: q,
         cipherText: cipherText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
     rabinGetKeys() {
-      return this.http.get(this.baseUrl + "/rabin/getKeys").pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      return this.http.get(this.baseUrl + "/rabin/getKeys").pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
     RSAGetND(P, Q, E) {
-      return this.http.get(this.baseUrl + `/rsa/getND?P=${P}&Q=${Q}&E=${E}`).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      return this.http.get(this.baseUrl + `/rsa/getND?P=${P}&Q=${Q}&E=${E}`).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     } //ELGamal
 
 
@@ -7986,7 +7988,7 @@ let ConnectionService = /*#__PURE__*/(() => {
         P: key.P,
         G: key.G,
         H: key.H
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
     ElGamalDecrypt(key, cipherText) {
@@ -7995,11 +7997,11 @@ let ConnectionService = /*#__PURE__*/(() => {
         P: key.P,
         G: key.G,
         X: key.X
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
     ElGamalGetKeys() {
-      return this.http.get(this.baseUrl + '/elgamal/getKeys').pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      return this.http.get(this.baseUrl + '/elgamal/getKeys').pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     } //ELGamalElip
 
 
@@ -8007,7 +8009,7 @@ let ConnectionService = /*#__PURE__*/(() => {
       return this.http.post(this.baseUrl + "/gammaleip/encrypt", {
         plainText: plainText,
         Pk: key.Pk
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
     ElGamalElipDecrypt(key, cipherText) {
@@ -8016,20 +8018,20 @@ let ConnectionService = /*#__PURE__*/(() => {
         X: key.X,
         Y: key.Y,
         Pk: key.Pk
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
     ElGamalElipGetKeys() {
-      return this.http.get(this.baseUrl + '/gammaleip/getKeys').pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+      return this.http.get(this.baseUrl + '/gammaleip/getKeys').pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
     }
 
   }
 
   ConnectionService.ɵfac = function ConnectionService_Factory(t) {
-    return new (t || ConnectionService)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_3__.HttpClient));
+    return new (t || ConnectionService)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpClient));
   };
 
-  ConnectionService.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({
+  ConnectionService.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjectable"]({
     token: ConnectionService,
     factory: ConnectionService.ɵfac,
     providedIn: "root"
