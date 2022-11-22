@@ -2811,6 +2811,389 @@ let ElGamalCipherComponent = /*#__PURE__*/(() => {
 
 /***/ }),
 
+/***/ 15522:
+/*!******************************************************************************!*\
+  !*** ./src/app/pages/el-gamal-elip-cipher/el-gamal-elip-cipher.component.ts ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ElGamalElipCipherComponent": () => (/* binding */ ElGamalElipCipherComponent)
+/* harmony export */ });
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ 2508);
+/* harmony import */ var _Interfaces__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Interfaces */ 26119);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _services_connection_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/connection.service */ 77669);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 94666);
+
+
+
+
+
+
+
+function ElGamalElipCipherComponent_ng_template_6_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 29)(1, "span", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "i", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
+  }
+}
+
+function ElGamalElipCipherComponent_ng_template_10_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 29)(1, "span", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "i", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
+  }
+}
+
+function ElGamalElipCipherComponent_ng_template_15_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 29)(1, "span", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "i", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
+  }
+}
+
+function ElGamalElipCipherComponent_div_20_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+  }
+
+  if (rf & 2) {
+    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate2"](" (", ctx_r3.X.value, ", ", ctx_r3.Y.value, ") ");
+  }
+}
+
+function ElGamalElipCipherComponent_ng_template_21_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](0, " Not set. ");
+  }
+}
+
+function ElGamalElipCipherComponent_div_26_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+  }
+
+  if (rf & 2) {
+    const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx_r6.Pk.value, " ");
+  }
+}
+
+function ElGamalElipCipherComponent_ng_template_27_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](0, " Not set. ");
+  }
+}
+
+function ElGamalElipCipherComponent_ng_template_49_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 29)(1, "span", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "i", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
+  }
+}
+
+function ElGamalElipCipherComponent_ng_template_53_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 29)(1, "span", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "i", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
+  }
+}
+
+function ElGamalElipCipherComponent_ng_template_58_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 29)(1, "span", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "i", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
+  }
+}
+
+function ElGamalElipCipherComponent_ng_template_62_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 29)(1, "span", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "i", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
+  }
+}
+
+const _c0 = function (a0) {
+  return {
+    plainTextError: a0
+  };
+};
+
+let ElGamalElipCipherComponent = /*#__PURE__*/(() => {
+  class ElGamalElipCipherComponent {
+    constructor(connection) {
+      this.connection = connection;
+      this.arguments = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.UntypedFormGroup({
+        X: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.UntypedFormControl("", [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.pattern(/^[0-9]\d*$/), _angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required]),
+        Y: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.UntypedFormControl("", [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.pattern(/^[0-9]\d*$/), _angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required]),
+        Pk: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.UntypedFormControl("", [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.pattern(/^[0-9]\d*$/), _angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required]),
+        plainText: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.UntypedFormControl("", [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required])
+      });
+      this.argumentsDecrypt = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.UntypedFormGroup({
+        nonce: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.UntypedFormControl("", [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required]),
+        authTag: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.UntypedFormControl("", [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required]),
+        ciphertextPubKey_x: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.UntypedFormControl("", [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required]),
+        ciphertextPubKey_y: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.UntypedFormControl("", [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required])
+      });
+      this.cipherText = "";
+      this.submitted = false;
+      this.resposeDymcMess = "";
+      this.isRandomKey = false;
+    }
+
+    ngOnInit() {}
+
+    random() {
+      this.isRandomKey = true;
+      this.connection.ElGamalElipGetKeys().subscribe(ansKeys => {
+        console.log(ansKeys);
+        this.arguments.patchValue({
+          X: ansKeys.X,
+          Y: ansKeys.Y,
+          Pk: ansKeys.Pk
+        });
+        this.isRandomKey = false;
+      });
+    }
+
+    encrypt() {
+      let publicKey = {
+        X: this.X.value,
+        Y: this.Y.value,
+        Pk: this.Pk.value
+      };
+      this.connection.ElGamalElipEncrypt(publicKey, this.arguments.get("plainText").value.replace(/ /g, "")).subscribe(ans => {
+        if (!ans.error) {
+          this.cipherText = ans.cipherText.ciphertext;
+          this.argumentsDecrypt.patchValue({
+            nonce: ans.cipherText.nonce,
+            authTag: ans.cipherText.authTag,
+            ciphertextPubKey_x: ans.cipherText.ciphertextPubKey_x,
+            ciphertextPubKey_y: ans.cipherText.ciphertextPubKey_y
+          });
+          this.resposeDymcMess = "Cipher";
+        }
+
+        this.submitted = true;
+      });
+    }
+
+    decrypt() {
+      let privateKey = {
+        X: this.X.value,
+        Y: this.Y.value,
+        Pk: this.Pk.value
+      };
+      let cipherTxt = {
+        ciphertext: this.cipherText,
+        nonce: this.nonce.value,
+        authTag: this.authTag.value,
+        ciphertextPubKey_x: this.ciphertextPubKey_x.value,
+        ciphertextPubKey_y: this.ciphertextPubKey_y.value
+      };
+      this.connection.ElGamalElipDecrypt(privateKey, cipherTxt).subscribe(ans => {
+        if (!ans.error) {
+          this.cipherText = ans.decipherText;
+          this.resposeDymcMess = "Decipher";
+        }
+
+        this.submitted = true;
+      });
+      return true;
+    }
+
+    get X() {
+      return this.arguments.get("X");
+    }
+
+    get Y() {
+      return this.arguments.get("Y");
+    }
+
+    get Pk() {
+      return this.arguments.get("Pk");
+    }
+
+    get plainText() {
+      return this.arguments.get("plainText");
+    }
+
+    get nonce() {
+      return this.argumentsDecrypt.get("nonce");
+    }
+
+    get authTag() {
+      return this.argumentsDecrypt.get("authTag");
+    }
+
+    get ciphertextPubKey_x() {
+      return this.argumentsDecrypt.get("ciphertextPubKey_x");
+    }
+
+    get ciphertextPubKey_y() {
+      return this.argumentsDecrypt.get("ciphertextPubKey_y");
+    }
+
+  }
+
+  ElGamalElipCipherComponent.ɵfac = function ElGamalElipCipherComponent_Factory(t) {
+    return new (t || ElGamalElipCipherComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_services_connection_service__WEBPACK_IMPORTED_MODULE_1__.ConnectionService));
+  };
+
+  ElGamalElipCipherComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({
+    type: ElGamalElipCipherComponent,
+    selectors: [["app-el-gamal-elip-cipher"]],
+    decls: 72,
+    vars: 28,
+    consts: [[3, "formGroup"], [1, "container"], [1, "row", "justify-content-center"], [1, "col-sm-6", "col-lg-6", "ml-auto"], [3, "ngClass"], ["placeholder", "X", "type", "text", "autofocus", "", "formControlName", "X", 1, "form-control"], [3, "ngIf"], ["placeholder", "Y", "type", "text", "autofocus", "", "formControlName", "Y", 1, "form-control"], [1, "col-sm-12", "col-lg-12", "ml-auto"], ["placeholder", "Pk", "type", "text", "autofocus", "", "formControlName", "Pk", 1, "form-control"], [1, "row"], [1, "col-md-6"], [4, "ngIf", "ngIfElse"], ["elsePubK", ""], ["elsePrvK", ""], [1, "col-sm-12", "col-lg-12", "mr-auto", "random-btn-cont"], [1, "btn", "mr-1", "random-btn", 3, "disabled", "click"], [1, "col-sm-12", "col-lg-10", "mr-auto", "ml-auto"], ["placeholder", "Text to cipher", "formControlName", "plainText", 1, "texrtocr", "form-control", 3, "ngClass"], [1, "col-sm-12", "col-lg-12", "mr-auto", "ml-auto", "submit"], ["type", "button", 1, "btn", "btn-primary", 3, "disabled", "click"], [1, "mb-3"], ["placeholder", "nonce", "type", "text", "autofocus", "", "formControlName", "nonce", 1, "form-control"], ["placeholder", "authTag", "type", "text", "autofocus", "", "formControlName", "authTag", 1, "form-control"], ["placeholder", "ciphertextPubKey_x", "type", "text", "autofocus", "", "formControlName", "ciphertextPubKey_x", 1, "form-control"], ["placeholder", "ciphertextPubKey_y", "type", "text", "autofocus", "", "formControlName", "ciphertextPubKey_y", 1, "form-control"], [1, "blockquote", "blockquote-danger"], [1, "row", "justify-content-center", "submit"], [1, "col-sm-12", "col-lg-12", "mr-auto", "ml-auto"], [1, "input-group-append"], [1, "input-group-text"], [1, "tim-icons", "icon-lock-circle"]],
+    template: function ElGamalElipCipherComponent_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "form", 0)(1, "div", 1)(2, "div", 2)(3, "div", 3)(4, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](5, "input", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](6, ElGamalElipCipherComponent_ng_template_6_Template, 3, 0, "ng-template", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](7, "div", 3)(8, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](9, "input", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](10, ElGamalElipCipherComponent_ng_template_10_Template, 3, 0, "ng-template", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](11, "div", 2)(12, "div", 8)(13, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](14, "input", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](15, ElGamalElipCipherComponent_ng_template_15_Template, 3, 0, "ng-template", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](16, "div", 10)(17, "div", 11)(18, "h4");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](19, "Public Key (x, y): ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](20, ElGamalElipCipherComponent_div_20_Template, 2, 2, "div", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](21, ElGamalElipCipherComponent_ng_template_21_Template, 1, 0, "ng-template", null, 13, _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplateRefExtractor"]);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](23, "div", 11)(24, "h4");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](25, "Private Key: ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](26, ElGamalElipCipherComponent_div_26_Template, 2, 1, "div", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](27, ElGamalElipCipherComponent_ng_template_27_Template, 1, 0, "ng-template", null, 14, _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplateRefExtractor"]);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](29, "div", 10)(30, "div", 15)(31, "button", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function ElGamalElipCipherComponent_Template_button_click_31_listener() {
+          return ctx.random();
+        });
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](32, "Random");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](33, "div", 10)(34, "div", 17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](35, "textarea", 18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](36, "div", 19)(37, "button", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function ElGamalElipCipherComponent_Template_button_click_37_listener() {
+          return ctx.encrypt();
+        });
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](38, " Encrypt ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](39, "form", 0)(40, "div", 10)(41, "div", 17)(42, "div")(43, "h3", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](44);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](45, "div", 2)(46, "div", 3)(47, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](48, "input", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](49, ElGamalElipCipherComponent_ng_template_49_Template, 3, 0, "ng-template", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](50, "div", 3)(51, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](52, "input", 23);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](53, ElGamalElipCipherComponent_ng_template_53_Template, 3, 0, "ng-template", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](54, "div", 2)(55, "div", 3)(56, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](57, "input", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](58, ElGamalElipCipherComponent_ng_template_58_Template, 3, 0, "ng-template", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](59, "div", 3)(60, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](61, "input", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](62, ElGamalElipCipherComponent_ng_template_62_Template, 3, 0, "ng-template", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](63, "div", 17)(64, "blockquote")(65, "p", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](66);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](67, "div", 1)(68, "div", 27)(69, "div", 28)(70, "button", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function ElGamalElipCipherComponent_Template_button_click_70_listener() {
+          return ctx.decrypt();
+        });
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](71, " Decrypt ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()()()()();
+      }
+
+      if (rf & 2) {
+        const _r4 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵreference"](22);
+
+        const _r7 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵreference"](28);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("formGroup", ctx.arguments);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngClass", ctx.X.invalid && ctx.X.dirty ? "form-group has-danger" : "input-group");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", !ctx.X.invalid || !ctx.X.dirty);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngClass", ctx.Y.invalid && ctx.Y.dirty ? "form-group has-danger" : "input-group");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", !ctx.Y.invalid || !ctx.Y.dirty);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngClass", ctx.Pk.invalid && ctx.Pk.dirty ? "form-group has-danger" : "input-group");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", !ctx.Pk.invalid || !ctx.Pk.dirty);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx.X.value.length != 0 && ctx.Y.value.length != 0)("ngIfElse", _r4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx.Pk.value.length != 0)("ngIfElse", _r7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("disabled", ctx.isRandomKey);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵpureFunction1"](26, _c0, ctx.plainText.invalid && ctx.plainText.dirty));
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("disabled", !ctx.arguments.valid);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("formGroup", ctx.argumentsDecrypt);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"]("", ctx.resposeDymcMess, " text");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngClass", ctx.nonce.invalid && ctx.nonce.dirty ? "form-group has-danger" : "input-group");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", !ctx.nonce.invalid || !ctx.nonce.dirty);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngClass", ctx.authTag.invalid && ctx.authTag.dirty ? "form-group has-danger" : "input-group");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", !ctx.authTag.invalid || !ctx.authTag.dirty);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngClass", ctx.ciphertextPubKey_x.invalid && ctx.ciphertextPubKey_x.dirty ? "form-group has-danger" : "input-group");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", !ctx.ciphertextPubKey_x.invalid || !ctx.ciphertextPubKey_x.dirty);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngClass", ctx.ciphertextPubKey_y.invalid && ctx.ciphertextPubKey_y.dirty ? "form-group has-danger" : "input-group");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", !ctx.ciphertextPubKey_y.invalid || !ctx.ciphertextPubKey_y.dirty);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx.cipherText, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("disabled", !ctx.arguments.valid);
+      }
+    },
+    dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_4__.NgClass, _angular_common__WEBPACK_IMPORTED_MODULE_4__.NgIf, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵNgNoValidate"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__.DefaultValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.NgControlStatusGroup, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormGroupDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControlName],
+    styles: [".random-btn-cont[_ngcontent-%COMP%] {\n  text-align: center;\n}\n\n.random-btn[_ngcontent-%COMP%] {\n  margin: 0%;\n}\n\n.texrtocr[_ngcontent-%COMP%] {\n  border: 1em !important;\n  border: 1px solid #171941;\n  background-color: #171941;\n  border-radius: 0.4285rem;\n  padding: 10px;\n  margin-top: 1rem;\n  margin-bottom: 1rem;\n  min-height: 10rem;\n}\n\n.submit[_ngcontent-%COMP%] {\n  text-align: center;\n}\n\n.plainTextError[_ngcontent-%COMP%] {\n  border: 0.09rem solid #f33620 !important;\n  color: #ec250d;\n}\n\n.ND-box[_ngcontent-%COMP%] {\n  padding: 10px;\n  border-radius: 10px;\n  border: 1px solid #fd5d93;\n  margin-bottom: 10px;\n}\n\n.ND-box[_ngcontent-%COMP%]   .input-group[_ngcontent-%COMP%], .ND-box[_ngcontent-%COMP%]   .form-grou[_ngcontent-%COMP%] {\n  margin-bottom: 0px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImVsLWdhbWFsLWVsaXAtY2lwaGVyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksa0JBQUE7QUFDSjs7QUFDRTtFQUNFLFVBQUE7QUFFSjs7QUFBRTtFQUNFLHNCQUFBO0VBQ0EseUJBQUE7RUFDQSx5QkFBQTtFQUNBLHdCQUFBO0VBQ0EsYUFBQTtFQUNBLGdCQUFBO0VBQ0EsbUJBQUE7RUFDQSxpQkFBQTtBQUdKOztBQURFO0VBQ0Usa0JBQUE7QUFJSjs7QUFGRTtFQUNFLHdDQUFBO0VBQ0EsY0FBQTtBQUtKOztBQUhBO0VBQ0UsYUFBQTtFQUNBLG1CQUFBO0VBQ0EseUJBQUE7RUFDQSxtQkFBQTtBQU1GOztBQUxFO0VBQ0Usa0JBQUE7QUFPSiIsImZpbGUiOiJlbC1nYW1hbC1lbGlwLWNpcGhlci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5yYW5kb20tYnRuLWNvbnQge1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgfVxuICAucmFuZG9tLWJ0biB7XG4gICAgbWFyZ2luOiAwJTtcbiAgfVxuICAudGV4cnRvY3Ige1xuICAgIGJvcmRlcjogMWVtICFpbXBvcnRhbnQ7XG4gICAgYm9yZGVyOiAxcHggc29saWQgIzE3MTk0MTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMTcxOTQxO1xuICAgIGJvcmRlci1yYWRpdXM6IDAuNDI4NXJlbTtcbiAgICBwYWRkaW5nOiAxMHB4O1xuICAgIG1hcmdpbi10b3A6IDFyZW07XG4gICAgbWFyZ2luLWJvdHRvbTogMXJlbTtcbiAgICBtaW4taGVpZ2h0OiAxMHJlbTtcbiAgfVxuICAuc3VibWl0IHtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIH1cbiAgLnBsYWluVGV4dEVycm9yIHtcbiAgICBib3JkZXI6IDAuMDlyZW0gc29saWQgI2YzMzYyMCAhaW1wb3J0YW50O1xuICAgIGNvbG9yOiAjZWMyNTBkO1xuICB9XG4uTkQtYm94e1xuICBwYWRkaW5nOiAxMHB4O1xuICBib3JkZXItcmFkaXVzOiAxMHB4O1xuICBib3JkZXI6IDFweCBzb2xpZCAjZmQ1ZDkzO1xuICBtYXJnaW4tYm90dG9tOiAxMHB4O1xuICAuaW5wdXQtZ3JvdXAsIC5mb3JtLWdyb3V7XG4gICAgbWFyZ2luLWJvdHRvbTogMHB4O1xuICB9XG59Il19 */"]
+  });
+  return ElGamalElipCipherComponent;
+})();
+
+/***/ }),
+
 /***/ 31073:
 /*!*********************************************************************!*\
   !*** ./src/app/pages/examples/landingpage/landingpage.component.ts ***!
@@ -6204,10 +6587,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "PagesModule": () => (/* binding */ PagesModule)
 /* harmony export */ });
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! @angular/platform-browser */ 34497);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! @angular/common */ 94666);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! @angular/forms */ 2508);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! @angular/platform-browser */ 34497);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! @angular/common */ 94666);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! @angular/forms */ 2508);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! @angular/router */ 60124);
 /* harmony import */ var ngx_bootstrap_dropdown__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ngx-bootstrap/dropdown */ 15896);
 /* harmony import */ var ngx_bootstrap_progressbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-bootstrap/progressbar */ 9115);
 /* harmony import */ var ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ngx-bootstrap/tooltip */ 78539);
@@ -6218,7 +6601,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ngx_bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-bootstrap/datepicker */ 38495);
 /* harmony import */ var ngx_bootstrap_carousel__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ngx-bootstrap/carousel */ 15215);
 /* harmony import */ var ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ngx-bootstrap/modal */ 26528);
-/* harmony import */ var jw_bootstrap_switch_ng2__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! jw-bootstrap-switch-ng2 */ 34307);
+/* harmony import */ var jw_bootstrap_switch_ng2__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! jw-bootstrap-switch-ng2 */ 34307);
 /* harmony import */ var ngx_bootstrap_popover__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ngx-bootstrap/popover */ 22367);
 /* harmony import */ var _index_index_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./index/index.component */ 67479);
 /* harmony import */ var _examples_profilepage_profilepage_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./examples/profilepage/profilepage.component */ 48282);
@@ -6251,7 +6634,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _rsacipher_rsacipher_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./rsacipher/rsacipher.component */ 20908);
 /* harmony import */ var _public_key_ciphers_public_key_ciphers_component__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./public-key-ciphers/public-key-ciphers.component */ 17016);
 /* harmony import */ var _el_gamal_cipher_el_gamal_cipher_component__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./el-gamal-cipher/el-gamal-cipher.component */ 40210);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _el_gamal_elip_cipher_el_gamal_elip_cipher_component__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./el-gamal-elip-cipher/el-gamal-elip-cipher.component */ 15522);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! @angular/core */ 22560);
+
 
 
 
@@ -6318,19 +6703,19 @@ let PagesModule = /*#__PURE__*/(() => {
     return new (t || PagesModule)();
   };
 
-  PagesModule.ɵmod = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_42__["ɵɵdefineNgModule"]({
+  PagesModule.ɵmod = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_43__["ɵɵdefineNgModule"]({
     type: PagesModule
   });
-  PagesModule.ɵinj = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_42__["ɵɵdefineInjector"]({
-    imports: [_angular_common__WEBPACK_IMPORTED_MODULE_43__.CommonModule, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_44__.BrowserModule, _angular_forms__WEBPACK_IMPORTED_MODULE_45__.FormsModule, _angular_router__WEBPACK_IMPORTED_MODULE_46__.RouterModule, ngx_bootstrap_dropdown__WEBPACK_IMPORTED_MODULE_0__.BsDropdownModule.forRoot(), ngx_bootstrap_progressbar__WEBPACK_IMPORTED_MODULE_1__.ProgressbarModule.forRoot(), ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_2__.TooltipModule.forRoot(), ngx_bootstrap_popover__WEBPACK_IMPORTED_MODULE_10__.PopoverModule.forRoot(), ngx_bootstrap_collapse__WEBPACK_IMPORTED_MODULE_3__.CollapseModule.forRoot(), jw_bootstrap_switch_ng2__WEBPACK_IMPORTED_MODULE_47__.JwBootstrapSwitchNg2Module, ngx_bootstrap_tabs__WEBPACK_IMPORTED_MODULE_4__.TabsModule.forRoot(), ngx_bootstrap_pagination__WEBPACK_IMPORTED_MODULE_5__.PaginationModule.forRoot(), ngx_bootstrap_alert__WEBPACK_IMPORTED_MODULE_6__.AlertModule.forRoot(), ngx_bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_7__.BsDatepickerModule.forRoot(), ngx_bootstrap_carousel__WEBPACK_IMPORTED_MODULE_8__.CarouselModule.forRoot(), ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_9__.ModalModule.forRoot(), _angular_forms__WEBPACK_IMPORTED_MODULE_45__.ReactiveFormsModule]
+  PagesModule.ɵinj = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_43__["ɵɵdefineInjector"]({
+    imports: [_angular_common__WEBPACK_IMPORTED_MODULE_44__.CommonModule, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_45__.BrowserModule, _angular_forms__WEBPACK_IMPORTED_MODULE_46__.FormsModule, _angular_router__WEBPACK_IMPORTED_MODULE_47__.RouterModule, ngx_bootstrap_dropdown__WEBPACK_IMPORTED_MODULE_0__.BsDropdownModule.forRoot(), ngx_bootstrap_progressbar__WEBPACK_IMPORTED_MODULE_1__.ProgressbarModule.forRoot(), ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_2__.TooltipModule.forRoot(), ngx_bootstrap_popover__WEBPACK_IMPORTED_MODULE_10__.PopoverModule.forRoot(), ngx_bootstrap_collapse__WEBPACK_IMPORTED_MODULE_3__.CollapseModule.forRoot(), jw_bootstrap_switch_ng2__WEBPACK_IMPORTED_MODULE_48__.JwBootstrapSwitchNg2Module, ngx_bootstrap_tabs__WEBPACK_IMPORTED_MODULE_4__.TabsModule.forRoot(), ngx_bootstrap_pagination__WEBPACK_IMPORTED_MODULE_5__.PaginationModule.forRoot(), ngx_bootstrap_alert__WEBPACK_IMPORTED_MODULE_6__.AlertModule.forRoot(), ngx_bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_7__.BsDatepickerModule.forRoot(), ngx_bootstrap_carousel__WEBPACK_IMPORTED_MODULE_8__.CarouselModule.forRoot(), ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_9__.ModalModule.forRoot(), _angular_forms__WEBPACK_IMPORTED_MODULE_46__.ReactiveFormsModule]
   });
   return PagesModule;
 })();
 
 (function () {
-  (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_42__["ɵɵsetNgModuleScope"](PagesModule, {
-    declarations: [_index_index_component__WEBPACK_IMPORTED_MODULE_11__.IndexComponent, _examples_profilepage_profilepage_component__WEBPACK_IMPORTED_MODULE_12__.ProfilepageComponent, _examples_registerpage_registerpage_component__WEBPACK_IMPORTED_MODULE_13__.RegisterpageComponent, _examples_landingpage_landingpage_component__WEBPACK_IMPORTED_MODULE_14__.LandingpageComponent, _crypto_home_crypto_home_component__WEBPACK_IMPORTED_MODULE_15__.CryptoHomeComponent, _cipher_cipher_component__WEBPACK_IMPORTED_MODULE_16__.CipherComponent, _shift_cipher_shift_cipher_component__WEBPACK_IMPORTED_MODULE_17__.ShiftCipherComponent, _affine_cipher_affine_cipher_component__WEBPACK_IMPORTED_MODULE_18__.AffineCipherComponent, _substitution_cipher_substitution_cipher_component__WEBPACK_IMPORTED_MODULE_19__.SubstitutionCipherComponent, _hill_cipher_hill_cipher_component__WEBPACK_IMPORTED_MODULE_20__.HillCipherComponent, _permutation_cipher_permutation_cipher_component__WEBPACK_IMPORTED_MODULE_21__.PermutationCipherComponent, _vigenere_cipher_vigenere_cipher_component__WEBPACK_IMPORTED_MODULE_22__.VigenereCipherComponent, _attacks_attacks_attacks_component__WEBPACK_IMPORTED_MODULE_23__.AttacksComponent, _attacks_shift_attack_shift_attack_component__WEBPACK_IMPORTED_MODULE_24__.ShiftAttackComponent, _attacks_affine_attack_affine_attack_component__WEBPACK_IMPORTED_MODULE_25__.AffineAttackComponent, _attacks_substitution_attack_substitution_attack_component__WEBPACK_IMPORTED_MODULE_26__.SubstitutionAttackComponent, _attacks_vigenere_attack_vigenere_attack_component__WEBPACK_IMPORTED_MODULE_27__.VigenereAttackComponent, _attacks_hill_attack_hill_attack_component__WEBPACK_IMPORTED_MODULE_28__.HillAttackComponent, _top_bar_top_bar_component__WEBPACK_IMPORTED_MODULE_29__.TopBarComponent, _footer_footer_component__WEBPACK_IMPORTED_MODULE_30__.FooterComponent, _squares_presentation_squares_presentation_component__WEBPACK_IMPORTED_MODULE_31__.SquaresPresentationComponent, _block_ciphers_block_ciphers_component__WEBPACK_IMPORTED_MODULE_32__.BlockCiphersComponent, _triple_des_cipher_triple_des_cipher_component__WEBPACK_IMPORTED_MODULE_33__.TripleDesCipherComponent, _aes_cipher_aes_cipher_component__WEBPACK_IMPORTED_MODULE_34__.AesCipherComponent, _simplified_des_cipher_simplified_des_cipher_component__WEBPACK_IMPORTED_MODULE_35__.SimplifiedDesCipherComponent, _gamma_gamma_component__WEBPACK_IMPORTED_MODULE_36__.GammaComponent, _gamma_cipher_gamma_cipher_component__WEBPACK_IMPORTED_MODULE_37__.GammaCipherComponent, _rabin_cipher_rabin_cipher_component__WEBPACK_IMPORTED_MODULE_38__.RabinCipherComponent, _rsacipher_rsacipher_component__WEBPACK_IMPORTED_MODULE_39__.RSACipherComponent, _public_key_ciphers_public_key_ciphers_component__WEBPACK_IMPORTED_MODULE_40__.PublicKeyCiphersComponent, _el_gamal_cipher_el_gamal_cipher_component__WEBPACK_IMPORTED_MODULE_41__.ElGamalCipherComponent],
-    imports: [_angular_common__WEBPACK_IMPORTED_MODULE_43__.CommonModule, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_44__.BrowserModule, _angular_forms__WEBPACK_IMPORTED_MODULE_45__.FormsModule, _angular_router__WEBPACK_IMPORTED_MODULE_46__.RouterModule, ngx_bootstrap_dropdown__WEBPACK_IMPORTED_MODULE_0__.BsDropdownModule, ngx_bootstrap_progressbar__WEBPACK_IMPORTED_MODULE_1__.ProgressbarModule, ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_2__.TooltipModule, ngx_bootstrap_popover__WEBPACK_IMPORTED_MODULE_10__.PopoverModule, ngx_bootstrap_collapse__WEBPACK_IMPORTED_MODULE_3__.CollapseModule, jw_bootstrap_switch_ng2__WEBPACK_IMPORTED_MODULE_47__.JwBootstrapSwitchNg2Module, ngx_bootstrap_tabs__WEBPACK_IMPORTED_MODULE_4__.TabsModule, ngx_bootstrap_pagination__WEBPACK_IMPORTED_MODULE_5__.PaginationModule, ngx_bootstrap_alert__WEBPACK_IMPORTED_MODULE_6__.AlertModule, ngx_bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_7__.BsDatepickerModule, ngx_bootstrap_carousel__WEBPACK_IMPORTED_MODULE_8__.CarouselModule, ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_9__.ModalModule, _angular_forms__WEBPACK_IMPORTED_MODULE_45__.ReactiveFormsModule],
+  (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_43__["ɵɵsetNgModuleScope"](PagesModule, {
+    declarations: [_index_index_component__WEBPACK_IMPORTED_MODULE_11__.IndexComponent, _examples_profilepage_profilepage_component__WEBPACK_IMPORTED_MODULE_12__.ProfilepageComponent, _examples_registerpage_registerpage_component__WEBPACK_IMPORTED_MODULE_13__.RegisterpageComponent, _examples_landingpage_landingpage_component__WEBPACK_IMPORTED_MODULE_14__.LandingpageComponent, _crypto_home_crypto_home_component__WEBPACK_IMPORTED_MODULE_15__.CryptoHomeComponent, _cipher_cipher_component__WEBPACK_IMPORTED_MODULE_16__.CipherComponent, _shift_cipher_shift_cipher_component__WEBPACK_IMPORTED_MODULE_17__.ShiftCipherComponent, _affine_cipher_affine_cipher_component__WEBPACK_IMPORTED_MODULE_18__.AffineCipherComponent, _substitution_cipher_substitution_cipher_component__WEBPACK_IMPORTED_MODULE_19__.SubstitutionCipherComponent, _hill_cipher_hill_cipher_component__WEBPACK_IMPORTED_MODULE_20__.HillCipherComponent, _permutation_cipher_permutation_cipher_component__WEBPACK_IMPORTED_MODULE_21__.PermutationCipherComponent, _vigenere_cipher_vigenere_cipher_component__WEBPACK_IMPORTED_MODULE_22__.VigenereCipherComponent, _attacks_attacks_attacks_component__WEBPACK_IMPORTED_MODULE_23__.AttacksComponent, _attacks_shift_attack_shift_attack_component__WEBPACK_IMPORTED_MODULE_24__.ShiftAttackComponent, _attacks_affine_attack_affine_attack_component__WEBPACK_IMPORTED_MODULE_25__.AffineAttackComponent, _attacks_substitution_attack_substitution_attack_component__WEBPACK_IMPORTED_MODULE_26__.SubstitutionAttackComponent, _attacks_vigenere_attack_vigenere_attack_component__WEBPACK_IMPORTED_MODULE_27__.VigenereAttackComponent, _attacks_hill_attack_hill_attack_component__WEBPACK_IMPORTED_MODULE_28__.HillAttackComponent, _top_bar_top_bar_component__WEBPACK_IMPORTED_MODULE_29__.TopBarComponent, _footer_footer_component__WEBPACK_IMPORTED_MODULE_30__.FooterComponent, _squares_presentation_squares_presentation_component__WEBPACK_IMPORTED_MODULE_31__.SquaresPresentationComponent, _block_ciphers_block_ciphers_component__WEBPACK_IMPORTED_MODULE_32__.BlockCiphersComponent, _triple_des_cipher_triple_des_cipher_component__WEBPACK_IMPORTED_MODULE_33__.TripleDesCipherComponent, _aes_cipher_aes_cipher_component__WEBPACK_IMPORTED_MODULE_34__.AesCipherComponent, _simplified_des_cipher_simplified_des_cipher_component__WEBPACK_IMPORTED_MODULE_35__.SimplifiedDesCipherComponent, _gamma_gamma_component__WEBPACK_IMPORTED_MODULE_36__.GammaComponent, _gamma_cipher_gamma_cipher_component__WEBPACK_IMPORTED_MODULE_37__.GammaCipherComponent, _rabin_cipher_rabin_cipher_component__WEBPACK_IMPORTED_MODULE_38__.RabinCipherComponent, _rsacipher_rsacipher_component__WEBPACK_IMPORTED_MODULE_39__.RSACipherComponent, _public_key_ciphers_public_key_ciphers_component__WEBPACK_IMPORTED_MODULE_40__.PublicKeyCiphersComponent, _el_gamal_cipher_el_gamal_cipher_component__WEBPACK_IMPORTED_MODULE_41__.ElGamalCipherComponent, _el_gamal_elip_cipher_el_gamal_elip_cipher_component__WEBPACK_IMPORTED_MODULE_42__.ElGamalElipCipherComponent],
+    imports: [_angular_common__WEBPACK_IMPORTED_MODULE_44__.CommonModule, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_45__.BrowserModule, _angular_forms__WEBPACK_IMPORTED_MODULE_46__.FormsModule, _angular_router__WEBPACK_IMPORTED_MODULE_47__.RouterModule, ngx_bootstrap_dropdown__WEBPACK_IMPORTED_MODULE_0__.BsDropdownModule, ngx_bootstrap_progressbar__WEBPACK_IMPORTED_MODULE_1__.ProgressbarModule, ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_2__.TooltipModule, ngx_bootstrap_popover__WEBPACK_IMPORTED_MODULE_10__.PopoverModule, ngx_bootstrap_collapse__WEBPACK_IMPORTED_MODULE_3__.CollapseModule, jw_bootstrap_switch_ng2__WEBPACK_IMPORTED_MODULE_48__.JwBootstrapSwitchNg2Module, ngx_bootstrap_tabs__WEBPACK_IMPORTED_MODULE_4__.TabsModule, ngx_bootstrap_pagination__WEBPACK_IMPORTED_MODULE_5__.PaginationModule, ngx_bootstrap_alert__WEBPACK_IMPORTED_MODULE_6__.AlertModule, ngx_bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_7__.BsDatepickerModule, ngx_bootstrap_carousel__WEBPACK_IMPORTED_MODULE_8__.CarouselModule, ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_9__.ModalModule, _angular_forms__WEBPACK_IMPORTED_MODULE_46__.ReactiveFormsModule],
     exports: [_index_index_component__WEBPACK_IMPORTED_MODULE_11__.IndexComponent, _examples_profilepage_profilepage_component__WEBPACK_IMPORTED_MODULE_12__.ProfilepageComponent, _examples_registerpage_registerpage_component__WEBPACK_IMPORTED_MODULE_13__.RegisterpageComponent, _examples_landingpage_landingpage_component__WEBPACK_IMPORTED_MODULE_14__.LandingpageComponent]
   });
 })();
@@ -6541,7 +6926,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "PublicKeyCiphersComponent": () => (/* binding */ PublicKeyCiphersComponent)
 /* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 22560);
 /* harmony import */ var ngx_bootstrap_tabs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ngx-bootstrap/tabs */ 33445);
 /* harmony import */ var _top_bar_top_bar_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../top-bar/top-bar.component */ 82402);
 /* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../footer/footer.component */ 73024);
@@ -6549,6 +6934,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _rabin_cipher_rabin_cipher_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../rabin-cipher/rabin-cipher.component */ 44240);
 /* harmony import */ var _rsacipher_rsacipher_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../rsacipher/rsacipher.component */ 20908);
 /* harmony import */ var _el_gamal_cipher_el_gamal_cipher_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../el-gamal-cipher/el-gamal-cipher.component */ 40210);
+/* harmony import */ var _el_gamal_elip_cipher_el_gamal_elip_cipher_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../el-gamal-elip-cipher/el-gamal-elip-cipher.component */ 15522);
+
 
 
 
@@ -6569,30 +6956,33 @@ let PublicKeyCiphersComponent = /*#__PURE__*/(() => {
     return new (t || PublicKeyCiphersComponent)();
   };
 
-  PublicKeyCiphersComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵdefineComponent"]({
+  PublicKeyCiphersComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵdefineComponent"]({
     type: PublicKeyCiphersComponent,
     selectors: [["app-public-key-ciphers"]],
-    decls: 14,
+    decls: 16,
     vars: 0,
-    consts: [[1, "col-md-10", "ml-auto", "col-xl-8", "mr-auto"], [1, "mb-3"], [1, "card"], [1, "card-header"], [1, "nav-tabs-danger", "justify-content-center"], ["heading", "RSA"], ["heading", "Rabin"], ["heading", "ElGamal"]],
+    consts: [[1, "col-md-10", "ml-auto", "col-xl-8", "mr-auto"], [1, "mb-3"], [1, "card"], [1, "card-header"], [1, "nav-tabs-danger", "justify-content-center"], ["heading", "RSA"], ["heading", "Rabin"], ["heading", "ElGamal"], ["heading", "ElGamal Elliptic"]],
     template: function PublicKeyCiphersComponent_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵelement"](0, "app-top-bar")(1, "app-squares-presentation");
-        _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵelementStart"](2, "div", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵelement"](3, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵelementStart"](4, "div", 2)(5, "div", 3)(6, "tabset", 4)(7, "tab", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵelement"](8, "app-rsacipher");
-        _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵelementStart"](9, "tab", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵelement"](10, "app-rabin-cipher");
-        _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵelementStart"](11, "tab", 7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵelement"](12, "app-el-gamal-cipher");
-        _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵelementEnd"]()()()()();
-        _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵelement"](13, "app-footer");
+        _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelement"](0, "app-top-bar")(1, "app-squares-presentation");
+        _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementStart"](2, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelement"](3, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementStart"](4, "div", 2)(5, "div", 3)(6, "tabset", 4)(7, "tab", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelement"](8, "app-rsacipher");
+        _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementStart"](9, "tab", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelement"](10, "app-rabin-cipher");
+        _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementStart"](11, "tab", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelement"](12, "app-el-gamal-cipher");
+        _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementStart"](13, "tab", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelement"](14, "app-el-gamal-elip-cipher");
+        _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementEnd"]()()()()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelement"](15, "app-footer");
       }
     },
-    dependencies: [ngx_bootstrap_tabs__WEBPACK_IMPORTED_MODULE_0__.TabDirective, ngx_bootstrap_tabs__WEBPACK_IMPORTED_MODULE_0__.TabsetComponent, _top_bar_top_bar_component__WEBPACK_IMPORTED_MODULE_1__.TopBarComponent, _footer_footer_component__WEBPACK_IMPORTED_MODULE_2__.FooterComponent, _squares_presentation_squares_presentation_component__WEBPACK_IMPORTED_MODULE_3__.SquaresPresentationComponent, _rabin_cipher_rabin_cipher_component__WEBPACK_IMPORTED_MODULE_4__.RabinCipherComponent, _rsacipher_rsacipher_component__WEBPACK_IMPORTED_MODULE_5__.RSACipherComponent, _el_gamal_cipher_el_gamal_cipher_component__WEBPACK_IMPORTED_MODULE_6__.ElGamalCipherComponent],
+    dependencies: [ngx_bootstrap_tabs__WEBPACK_IMPORTED_MODULE_0__.TabDirective, ngx_bootstrap_tabs__WEBPACK_IMPORTED_MODULE_0__.TabsetComponent, _top_bar_top_bar_component__WEBPACK_IMPORTED_MODULE_1__.TopBarComponent, _footer_footer_component__WEBPACK_IMPORTED_MODULE_2__.FooterComponent, _squares_presentation_squares_presentation_component__WEBPACK_IMPORTED_MODULE_3__.SquaresPresentationComponent, _rabin_cipher_rabin_cipher_component__WEBPACK_IMPORTED_MODULE_4__.RabinCipherComponent, _rsacipher_rsacipher_component__WEBPACK_IMPORTED_MODULE_5__.RSACipherComponent, _el_gamal_cipher_el_gamal_cipher_component__WEBPACK_IMPORTED_MODULE_6__.ElGamalCipherComponent, _el_gamal_elip_cipher_el_gamal_elip_cipher_component__WEBPACK_IMPORTED_MODULE_7__.ElGamalElipCipherComponent],
     styles: [".info[_ngcontent-%COMP%] {\n  margin: 0 auto;\n  padding: 0;\n}\n\n.card-header[_ngcontent-%COMP%] {\n  padding-bottom: 15px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInB1YmxpYy1rZXktY2lwaGVycy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGNBQUE7RUFDQSxVQUFBO0FBQ0Y7O0FBQ0E7RUFDRSxvQkFBQTtBQUVGIiwiZmlsZSI6InB1YmxpYy1rZXktY2lwaGVycy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5pbmZvIHtcbiAgbWFyZ2luOiAwIGF1dG87XG4gIHBhZGRpbmc6IDA7XG59XG4uY2FyZC1oZWFkZXIge1xuICBwYWRkaW5nLWJvdHRvbTogMTVweDtcbn1cbiJdfQ== */"]
   });
   return PublicKeyCiphersComponent;
@@ -7332,12 +7722,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ConnectionService": () => (/* binding */ ConnectionService)
 /* harmony export */ });
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ 66587);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/environments/environment */ 92340);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ 47418);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 22560);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ 58987);
-
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ 66587);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ 47418);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ 58987);
 
 
 
@@ -7347,25 +7735,25 @@ let ConnectionService = /*#__PURE__*/(() => {
     constructor(http) {
       this.http = http;
       this.type = null;
-      this.baseUrl = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.endpoint;
+      this.baseUrl = "http://127.0.0.1:5000/";
     }
 
     handleError(error) {
       console.log(error);
-      return (0,rxjs__WEBPACK_IMPORTED_MODULE_1__.throwError)("Error! something went wrong. >:v");
+      return (0,rxjs__WEBPACK_IMPORTED_MODULE_0__.throwError)("Error! something went wrong. >:v");
     } //shift
 
 
     shiftEncrypt(key, plainText) {
-      return this.http.get(this.baseUrl + `/shift/encrypt?key=${key}&plainText=${plainText}`).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      return this.http.get(this.baseUrl + `/shift/encrypt?key=${key}&plainText=${plainText}`).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     }
 
     shiftDecrypt(key, cipherText) {
-      return this.http.get(this.baseUrl + `/shift/decrypt?key=${key}&cipherText=${cipherText}`).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      return this.http.get(this.baseUrl + `/shift/decrypt?key=${key}&cipherText=${cipherText}`).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     }
 
     shiftAttack(cipherText) {
-      return this.http.get(this.baseUrl + `/shift/attack?cipherText=${cipherText}`).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      return this.http.get(this.baseUrl + `/shift/attack?cipherText=${cipherText}`).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     } //affine
 
 
@@ -7373,20 +7761,20 @@ let ConnectionService = /*#__PURE__*/(() => {
       return this.http.post(this.baseUrl + "/affine/encrypt", {
         key: keys,
         plainText: plainText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     }
 
     affineDecrypt(keys, cipherText) {
       return this.http.post(this.baseUrl + "/affine/decrypt", {
         key: keys,
         cipherText: cipherText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     }
 
     affineAttack(cipherText) {
       return this.http.post(this.baseUrl + "/affine/attack", {
         cipherText: cipherText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     } //substitution
 
 
@@ -7394,20 +7782,20 @@ let ConnectionService = /*#__PURE__*/(() => {
       return this.http.post(this.baseUrl + "/substitution/encrypt", {
         key: key,
         plainText: plainText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     }
 
     substitutionDecrypt(key, cipherText) {
       return this.http.post(this.baseUrl + "/substitution/decrypt", {
         key: key,
         cipherText: cipherText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     }
 
     substitutionAttack(cipherText) {
       return this.http.post(this.baseUrl + "/substitution/attack", {
         cipherText: cipherText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     } //vigenere
 
 
@@ -7415,27 +7803,27 @@ let ConnectionService = /*#__PURE__*/(() => {
       return this.http.post(this.baseUrl + "/vigenere/encrypt", {
         key: key,
         plainText: plainText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     }
 
     vigenereDecrypt(key, cipherText) {
       return this.http.post(this.baseUrl + "/vigenere/decrypt", {
         key: key,
         cipherText: cipherText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     }
 
     vigenereKeyAttack(keySize, cipherText) {
       return this.http.post(this.baseUrl + "/vigenere/attack/key", {
         keySize: keySize,
         cipherText: cipherText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     }
 
     vigenereNoKeyAttack(cipherText) {
       return this.http.post(this.baseUrl + "/vigenere/attack/nokey", {
         cipherText: cipherText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     } // permutation
 
 
@@ -7443,14 +7831,14 @@ let ConnectionService = /*#__PURE__*/(() => {
       return this.http.post(this.baseUrl + "/permutation/encrypt", {
         key: key,
         plainText: plainText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     }
 
     permutationDecrypt(key, cipherText) {
       return this.http.post(this.baseUrl + "/permutation/decrypt", {
         key: key,
         cipherText: cipherText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     } // hill
 
 
@@ -7459,7 +7847,7 @@ let ConnectionService = /*#__PURE__*/(() => {
         reportProgress: true,
         observe: "events",
         responseType: "blob"
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     }
 
     hillDecrypt(value) {
@@ -7467,7 +7855,7 @@ let ConnectionService = /*#__PURE__*/(() => {
         reportProgress: true,
         observe: "events",
         responseType: "blob"
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     }
 
     hillAttack(cipherText, plainText, matrixSize) {
@@ -7475,7 +7863,7 @@ let ConnectionService = /*#__PURE__*/(() => {
         matrixSize: matrixSize,
         plainText: plainText,
         cipherText: cipherText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     } // triple des
 
 
@@ -7484,7 +7872,7 @@ let ConnectionService = /*#__PURE__*/(() => {
         reportProgress: true,
         observe: "events",
         responseType: "blob"
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     }
 
     tripleDesDecrypt(value) {
@@ -7492,7 +7880,7 @@ let ConnectionService = /*#__PURE__*/(() => {
         reportProgress: true,
         observe: "events",
         responseType: "blob"
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     } // aes
 
 
@@ -7501,7 +7889,7 @@ let ConnectionService = /*#__PURE__*/(() => {
         reportProgress: true,
         observe: "events",
         responseType: "blob"
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     }
 
     aesDecrypt(value) {
@@ -7509,7 +7897,7 @@ let ConnectionService = /*#__PURE__*/(() => {
         reportProgress: true,
         observe: "events",
         responseType: "blob"
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     } // simplified des
 
 
@@ -7517,14 +7905,14 @@ let ConnectionService = /*#__PURE__*/(() => {
       return this.http.post(this.baseUrl + "/simplified_des/encrypt", {
         key: key,
         plainText: plainText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     }
 
     simplifiedDesDecrypt(key, cipherText) {
       return this.http.post(this.baseUrl + "/simplified_des/decrypt", {
         key: key,
         cipherText: cipherText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     } // gamma
 
 
@@ -7534,7 +7922,7 @@ let ConnectionService = /*#__PURE__*/(() => {
         plainText: plainText,
         x_0: x,
         y_0: y
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     }
 
     gammaDecrypt(permutation, x, y, cipherText) {
@@ -7543,15 +7931,16 @@ let ConnectionService = /*#__PURE__*/(() => {
         cipherText: cipherText,
         x_0: x,
         y_0: y
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
-    }
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+    } //RSA
+
 
     RSAEncrypt(key, plainText) {
       return this.http.post(this.baseUrl + "/rsa/encrypt", {
         plainText: plainText,
         N: key.N,
         E: key.E
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     }
 
     RSADecrypt(key, cipherText) {
@@ -7559,11 +7948,11 @@ let ConnectionService = /*#__PURE__*/(() => {
         cipherText: cipherText,
         N: key.N,
         D: key.D
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     }
 
     RSAGetKeys() {
-      return this.http.get(this.baseUrl + "/rsa/getKeys").pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      return this.http.get(this.baseUrl + "/rsa/getKeys").pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     } // Rabin
 
 
@@ -7571,7 +7960,7 @@ let ConnectionService = /*#__PURE__*/(() => {
       return this.http.post(this.baseUrl + "/rabin/encrypt", {
         n: n,
         plainText: plainText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     }
 
     rabinDecrypt(p, q, cipherText) {
@@ -7579,15 +7968,15 @@ let ConnectionService = /*#__PURE__*/(() => {
         p: p,
         q: q,
         cipherText: cipherText
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     }
 
     rabinGetKeys() {
-      return this.http.get(this.baseUrl + "/rabin/getKeys").pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      return this.http.get(this.baseUrl + "/rabin/getKeys").pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     }
 
     RSAGetND(P, Q, E) {
-      return this.http.get(this.baseUrl + `/rsa/getND?P=${P}&Q=${Q}&E=${E}`).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      return this.http.get(this.baseUrl + `/rsa/getND?P=${P}&Q=${Q}&E=${E}`).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     } //ELGamal
 
 
@@ -7597,7 +7986,7 @@ let ConnectionService = /*#__PURE__*/(() => {
         P: key.P,
         G: key.G,
         H: key.H
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     }
 
     ElGamalDecrypt(key, cipherText) {
@@ -7606,20 +7995,41 @@ let ConnectionService = /*#__PURE__*/(() => {
         P: key.P,
         G: key.G,
         X: key.X
-      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     }
 
     ElGamalGetKeys() {
-      return this.http.get(this.baseUrl + '/elgamal/getKeys').pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.catchError)(this.handleError));
+      return this.http.get(this.baseUrl + '/elgamal/getKeys').pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+    } //ELGamalElip
+
+
+    ElGamalElipEncrypt(key, plainText) {
+      return this.http.post(this.baseUrl + "/gammaleip/encrypt", {
+        plainText: plainText,
+        Pk: key.Pk
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+    }
+
+    ElGamalElipDecrypt(key, cipherText) {
+      return this.http.post(this.baseUrl + "/gammaleip/decrypt", {
+        cipherText: cipherText,
+        X: key.X,
+        Y: key.Y,
+        Pk: key.Pk
+      }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
+    }
+
+    ElGamalElipGetKeys() {
+      return this.http.get(this.baseUrl + '/gammaleip/getKeys').pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.catchError)(this.handleError));
     }
 
   }
 
   ConnectionService.ɵfac = function ConnectionService_Factory(t) {
-    return new (t || ConnectionService)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpClient));
+    return new (t || ConnectionService)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_3__.HttpClient));
   };
 
-  ConnectionService.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjectable"]({
+  ConnectionService.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({
     token: ConnectionService,
     factory: ConnectionService.ɵfac,
     providedIn: "root"
