@@ -9,7 +9,7 @@ import hashlib, secrets, binascii
 
 curve = registry.get_curve('brainpoolP256r1')
 
-bp = Blueprint("rabin", __name__, url_prefix="/rabin")
+bp = Blueprint("gammalelip", __name__, url_prefix="/gammaleip")
 
 @bp.route("/getKeys", methods =["GET"])
 def getKeyPair_r():
