@@ -44,8 +44,4 @@ def create_app(test_config=None):
     def root():
         return render_template('index.html')
 
-    @app.route('/', methods=['GET'])
-    def root():
-        return render_template('index.html')
-
     return app

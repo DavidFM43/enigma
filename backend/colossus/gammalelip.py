@@ -2,7 +2,7 @@ from typing import Tuple
 from flask import Blueprint, request
 from json import dumps
 import json
-from gammalelip import encrypt_ECC
+from cryptools.gammalelip import encrypt_ECC
 
 from tinyec import registry
 import hashlib, secrets, binascii
