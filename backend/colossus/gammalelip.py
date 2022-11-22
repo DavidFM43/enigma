@@ -2,7 +2,7 @@ from typing import Tuple
 from flask import Blueprint, request
 from json import dumps
 import json
-#from cryptools.gammalelip import encrypt_ECC, get_obj, decrypt_ECC
+from cryptools.gammalelip import encrypt_ECC, get_obj, decrypt_ECC
 
 from tinyec import registry
 import hashlib, secrets, binascii
@@ -25,12 +25,9 @@ def getKeyPair_r():
     coordenada: list = [pubKey[0].replace("(","").replace(",",""),  pubKey[1].replace(")","")]
      
     return dumps({
-        "publicKey": {
-            "Cooordenada": coordenada, 
-        },
-        "privateKey": {
-            "integer": privKey,
-        }
+        "X": coordenada[0], 
+        "Y": coordenada[1],
+        "Pk": str(privKey),
     })
 
 
@@ -47,7 +44,7 @@ def encrypt_r():
     plain_text: str = request_data["plainText"]
     plain_text:bytes = bytes(plain_text, 'utf-16')
 
-    privKey: int = int(request_data["p"])
+    privKey: int = int(request_data["Pk"])
     pubKey = privKey * curve.g
 
     encryptedMsg = encrypt_ECC(plain_text, pubKey)
@@ -57,7 +54,7 @@ def encrypt_r():
     typeError = ""
     # lo que vamos enviar: 
    
-    response_dict = {"ciphertext": encryptedMsgObj, "error": error, "typeError": typeError}
+    response_dict = {"cipherText": encryptedMsgObj, "error": error, "typeError": typeError}
     
     return dumps(response_dict)
 
@@ -71,15 +68,15 @@ def decrypt_r():
     """
     request_data = request.get_json()
 
-    cipher_text: str = request_data["cipherText"]
-    nonce: str = request_data["nonce"]
-    authTag: str = request_data["authTag"]
-    ciphertextPubKey_x: str = request_data["ciphertextPubKey_x"]
-    ciphertextPubKey_y:str = request_data["ciphertextPubKey_y"]
+    cipher_text: str = request_data["cipherText"]["ciphertext"]
+    nonce: str = request_data["cipherText"]["nonce"]
+    authTag: str = request_data["cipherText"]["authTag"]
+    ciphertextPubKey_x: str = request_data["cipherText"]["ciphertextPubKey_x"]
+    ciphertextPubKey_y:str = request_data["cipherText"]["ciphertextPubKey_y"]
 
     dict_= {'ciphertext': cipher_text, 'nonce': nonce, 'authTag': authTag, 'ciphertextPubKey_x': ciphertextPubKey_x, 'ciphertextPubKey_y': ciphertextPubKey_y}
 
-    privKey: int = int(request_data["p"])
+    privKey: int = int(request_data["Pk"])
     pubKey = privKey * curve.g
 
     decryptedMsg = decrypt_ECC(str(list(dict_.values())), str(privKey))
@@ -90,7 +87,3 @@ def decrypt_r():
 
     response_dict = {"decipherText": plain_text, "error": error, "typeError": typeError}
     return dumps(response_dict)
-
-
-if __name__ == "__main__":
-    getKeyPair_r()
