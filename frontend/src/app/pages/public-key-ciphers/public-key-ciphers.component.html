@@ -1,0 +1,26 @@
+<app-top-bar></app-top-bar>
+
+<app-squares-presentation></app-squares-presentation>
+
+<div class="col-md-10 ml-auto col-xl-8 mr-auto">
+  <div class="mb-3"></div>
+  <div class="card">
+    <div class="card-header">
+      <!-- Ciphers nav tabs -->
+      <tabset class="nav-tabs-danger justify-content-center">
+        <tab heading="RSA">
+          <app-rsacipher></app-rsacipher>
+        </tab>
+        <tab heading="Rabin">
+          <app-rabin-cipher></app-rabin-cipher>
+        </tab>
+        <tab heading="ElGamal">
+          <app-simplified-des-cipher></app-simplified-des-cipher>
+        </tab>
+      </tabset>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<app-footer></app-footer>

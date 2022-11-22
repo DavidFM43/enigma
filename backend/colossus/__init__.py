@@ -11,6 +11,8 @@ from . import (
     aes,
     gammap,
     simplified_des,
+    RSA,
+    rabin,
 )
 
 
@@ -30,6 +32,8 @@ def create_app(test_config=None):
     app.register_blueprint(aes.bp)
     app.register_blueprint(gammap.bp)
     app.register_blueprint(simplified_des.bp)
+    app.register_blueprint(RSA.bp)
+    app.register_blueprint(rabin.bp)
 
     @app.route('/', methods=['GET'])
     def root():

@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { throwError } from "rxjs";
 import { environment } from "src/environments/environment";
 import { catchError } from "rxjs/operators";
+import { RSAPrivateKey, RSAPublicKey } from "../Interfaces";
 
 @Injectable({
   providedIn: "root",
@@ -216,24 +217,82 @@ export class ConnectionService {
       .pipe(catchError(this.handleError));
   }
   // gamma
-  gammaEncrypt(permutation: string, x: number, y:number, plainText: string) {
+  gammaEncrypt(permutation: string, x: number, y: number, plainText: string) {
     return this.http
       .post(this.baseUrl + "/gammap/encrypt", {
         permutation: permutation,
         plainText: plainText,
         x_0: x,
-        y_0: y
+        y_0: y,
       })
       .pipe(catchError(this.handleError));
   }
-  gammaDecrypt(permutation: string, x: number, y:number, cipherText: number[][]) {
+  gammaDecrypt(
+    permutation: string,
+    x: number,
+    y: number,
+    cipherText: number[][]
+  ) {
     return this.http
       .post(this.baseUrl + "/gammap/decrypt", {
         permutation: permutation,
         cipherText: cipherText,
         x_0: x,
-        y_0: y
+        y_0: y,
       })
+      .pipe(catchError(this.handleError));
+  }
+  //RSA
+  RSAEncrypt(key: RSAPublicKey, plainText: string) {
+    return this.http
+    .post(this.baseUrl + "/rsa/encrypt", {
+      plainText: plainText,
+      N: key.N,
+      E: key.E
+    })
+    .pipe(catchError(this.handleError));
+  }
+  RSADecrypt(key: RSAPrivateKey, cipherText: string) {
+    return  this.http
+    .post(this.baseUrl + "/rsa/decrypt", {
+      cipherText: cipherText,
+      N: key.N,
+      D: key.D
+    })
+    .pipe(catchError(this.handleError));
+  }
+  RSAGetKeys() {
+    return this.http
+      .get(this.baseUrl + "/rsa/getKeys")
+      .pipe(catchError(this.handleError));
+  }
+
+  // Rabin
+  rabinEncrypt(n: number, plainText: string) {
+    return this.http
+      .post(this.baseUrl + "/rabin/encrypt", {
+        n: n,
+        plainText: plainText,
+      })
+      .pipe(catchError(this.handleError));
+  }
+  rabinDecrypt(p: number, q: number, cipherText: string) {
+    return this.http
+      .post(this.baseUrl + "/rabin/decrypt", {
+        p: p,
+        q: q,
+        cipherText: cipherText,
+      })
+      .pipe(catchError(this.handleError));
+  }
+  rabinGetKeys() {
+    return this.http
+      .get(this.baseUrl + "/rabin/getKeys")
+      .pipe(catchError(this.handleError));
+  }
+  RSAGetND(P: number, Q: number, E: number) {
+    return this.http
+      .get(this.baseUrl + `/rsa/getND?P=${P}&Q=${Q}&E=${E}`)
       .pipe(catchError(this.handleError));
   }
 }
