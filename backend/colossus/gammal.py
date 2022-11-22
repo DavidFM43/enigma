@@ -9,7 +9,7 @@ import plotly.express as px
 
 
 
-bp = Blueprint("rabin", __name__, url_prefix="/rabin")
+bp = Blueprint("elgamal", __name__, url_prefix="/elgamal")
 
 @bp.route("/getKeys", methods =["GET"])
 def getKeyPair_r():
@@ -19,16 +19,10 @@ def getKeyPair_r():
     pub_key, priv_key = generate_keys()
     
     return dumps({
-        "publicKey": {
-            "P": pub_key[0],
-            "G":pub_key[1],
-            "H":pub_key[2]
-        },
-        "privateKey": {
-            "P": priv_key[0],
-            "G": priv_key[1],
-            "X": priv_key[2],
-        }
+        "P": pub_key[0],
+        "G":pub_key[1],
+        "H":pub_key[2],
+        "X": priv_key[2],
     })
 
 
@@ -43,9 +37,9 @@ def encrypt_r():
     """
     request_data = request.get_json()
     plain_text: str = request_data["plainText"]
-    p: int = request_data["p"]
-    g: int = request_data["g"]
-    h: int = request_data["h"]
+    p: int = request_data["P"]
+    g: int = request_data["G"]
+    h: int = request_data["H"]
 
     pub_key= (p,g,h)
 
@@ -69,9 +63,9 @@ def decrypt_r():
     """
     request_data = request.get_json()
     cipher_text: str = request_data["cipherText"]
-    P: int = request_data["p"]
-    G: int = request_data["g"]
-    X: int = request_data["x"]
+    P: int = request_data["P"]
+    G: int = request_data["G"]
+    X: int = request_data["X"]
 
     priv_key = (P,G,X)
 

@@ -76,13 +76,13 @@
     "chart.js": "2.9.4",
     "core-js": "3.8.2",
     "jw-bootstrap-switch-ng2": "2.0.5",
-    "mathjs": "^11.2.0",
+    "mathjs": "^11.4.0",
     "ngx-bootstrap": "6.2.0",
     "nouislider": "14.6.3",
     "plotly.js": "^1.44.4",
     "plotly.js-dist-min": "^2.16.1",
     "rxjs": "6.6.3",
-    "tslib": "2.0.3",
+    "tslib": "^2.4.1",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
@@ -102,6 +102,7 @@
     "karma-coverage-istanbul-reporter": "3.0.3",
     "karma-jasmine": "4.0.1",
     "karma-jasmine-html-reporter": "1.5.4",
+    "ng-packagr": "^14.2.0",
     "protractor": "7.0.0",
     "ts-node": "9.1.1",
     "tslint": "^6.1.3",

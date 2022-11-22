@@ -1,7 +1,5 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 import * as math from "mathjs";
-import { boolean } from "mathjs";
-
 
 export function correctKey(
   allowedLengths: number[],
@@ -125,4 +123,72 @@ function calDet(mtx: number[]): number {
 }
 function checkDiv(det: number): boolean {
   return det % 2 == 0 ? false : true;
+}
+
+export function isPrimeVal(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+
+    return !isPrime(control.value, 4)
+      ? { incorrectKey: { value: control.value } }
+      : null;
+  };
+}
+
+function powerModP(x, y, p) {
+  x = BigInt(x);
+  y = BigInt(y);
+  p = BigInt(p);
+	let res = 1n;
+	x = x % p;
+	while (y > 0) {
+		// If y is odd, multiply
+		// x with result
+		if (y & 1n){
+			res = (res * x) % p;
+		}
+		y = y>>1n; // y = y/2
+		x = (x * x) % p;
+		
+	}
+
+	return res;
+}
+function miillerTest(d, n){
+  let a = 2n + BigInt((Math.floor(Math.random()*Number(n-2n))))
+ 
+  let x = powerModP(a, d, n);
+
+  if (x == 1n || x == n-1n)
+    return true;
+  while (d != n-1n){
+    x = (x * x) % n;
+    d *= 2n;
+ 
+    if (x == 1n){  
+      console.log(d)
+      return false;
+      }
+    if (x == n-1n)
+      return true;
+  }
+  return false;
+}
+ 
+function isPrime(n, k){
+  if(!isInt(n))
+    return false;
+  n = BigInt(n);
+  if(n <= 1 || n == 4)
+    return false;
+  if (n <= 3) 
+    return true;
+  let d = n - 1n;
+  while (d % 2n == 0n)
+    d /= 2n;
+  for (let i = 0; i < k; i++)
+    if (!miillerTest(d, n)){
+      console.log("k: ",i);
+      return false;
+    }
+  return true;
 }

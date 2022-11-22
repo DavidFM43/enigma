@@ -1,0 +1,209 @@
+<form [formGroup]="arguments">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-sm-11 col-lg-11 mr-auto ml-auto">
+
+        </div>
+        <div class="col-sm-1 col-lg-1 mr-auto ml-auto">
+
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        
+        <div class="col-sm-6 col-lg-6 ml-auto">
+          <div
+            [ngClass]="
+            P.invalid && P.dirty ? 'form-group has-danger' : 'input-group'
+            "
+          >
+            <input
+              class="form-control"
+              placeholder="P"
+              type="text"
+              autofocus
+              formControlName="P" (input)="calculeND()"
+            />
+            <ng-template [ngIf]="!P.invalid || !P.dirty">
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="tim-icons icon-lock-circle"> </i>
+                </span>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-6 ml-auto">
+          <div
+          [ngClass]="
+          Q.invalid && Q.dirty ? 'form-group has-danger' : 'input-group'
+          "
+        >
+          <input
+            class="form-control"
+            placeholder="Q"
+            type="text"
+            autofocus
+            formControlName="Q" (input)="calculeND()"
+          />
+          <ng-template [ngIf]="!Q.invalid || !Q.dirty">
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="tim-icons icon-lock-circle"> </i>
+              </span>
+            </div>
+          </ng-template>
+        </div>
+        </div>
+      </div>
+      <div class="row justify-content-center ND-box">
+        <div class="row">
+          <div class="col-sm-12 col-lg-12 ml-auto" style="margin-bottom: 5px;">
+            <div
+            [ngClass]="
+            E.invalid && E.dirty ? 'form-group has-danger' : 'input-group'
+            "
+          >
+            <input
+              class="form-control"
+              placeholder="E"
+              type="text"
+              autofocus
+              formControlName="E" (input)="calculeND()"
+            />
+            <ng-template [ngIf]="!E.invalid || !E.dirty">
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="tim-icons icon-lock-circle"> </i>
+                </span>
+              </div>
+            </ng-template>
+          </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-lg-6 ml-auto">
+            <div
+              [ngClass]="
+              N.invalid && N.dirty ? 'form-group has-danger' : 'input-group'
+              "
+            >
+              <input
+                class="form-control"
+                placeholder="N"
+                type="text"
+                autofocus
+                formControlName="N"
+              />
+              <ng-template [ngIf]="!N.invalid || !N.dirty">
+                <div class="input-group-append">
+                  <span class="input-group-text">
+                    <i class="tim-icons icon-lock-circle"> </i>
+                  </span>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-6 ml-auto">
+            <div
+              [ngClass]="
+              D.invalid && D.dirty ? 'form-group has-danger' : 'input-group'
+              "
+            >
+              <input
+                class="form-control"
+                placeholder="D"
+                type="text"
+                autofocus
+                formControlName="D"
+              />
+              <ng-template [ngIf]="!D.invalid || !D.dirty">
+                <div class="input-group-append">
+                  <span class="input-group-text">
+                    <i class="tim-icons icon-lock-circle"> </i>
+                  </span>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <h4>Public Key (n,e): 
+            <div *ngIf="N.value.length != 0 && E.value.length != 0; else elsePubK">
+              ({{N.value}}, {{E.value}})
+            </div>
+            <ng-template #elsePubK>
+              Not set.
+            </ng-template>
+          </h4>
+        </div>
+        <div class="col-md-6">
+          <h4>Private Key (n,d): 
+            <div *ngIf="N.value.length != 0 && D.value.length != 0; else elsePrvK">
+              ({{N.value}}, {{D.value}})
+            </div>
+            <ng-template #elsePrvK>
+              Not set.
+            </ng-template>
+          </h4>
+        </div>
+      </div>
+      
+  
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-lg-12 mr-auto random-btn-cont">
+          <button class="btn mr-1 random-btn" (click)="random()">Random</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+          <textarea
+            placeholder="Text to cipher"
+            class="texrtocr form-control"
+            formControlName="plainText"
+            [ngClass]="{ plainTextError: plainText.invalid && plainText.dirty }"
+          ></textarea>
+        </div>
+        <div class="col-sm-6 col-lg-5 mr-auto ml-auto submit">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="encrypt()"
+            [disabled]="!arguments.valid"
+          >
+            Encrypt
+          </button>
+        </div>
+        <div class="col-sm-6 col-lg-5 mr-auto ml-auto submit">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="decrypt()"
+            [disabled]="!arguments.valid"
+          >
+            Decrypt
+          </button>
+        </div>
+      </div>
+  
+      <div class="row" *ngIf="submitted">
+        <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+          <div>
+            <h3 class="mb-3">{{ resposeDymcMess }} text</h3>
+          </div>
+        </div>
+  
+        <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+          <blockquote>
+            <p class="blockquote blockquote-danger">
+              {{ cipherText }}
+            </p>
+          </blockquote>
+        </div>
+      </div>
+
+  </form>
+  

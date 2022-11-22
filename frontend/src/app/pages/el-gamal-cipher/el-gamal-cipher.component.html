@@ -1,0 +1,176 @@
+<form [formGroup]="arguments">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-sm-6 col-lg-6 ml-auto">
+          <div
+            [ngClass]="
+            P.invalid && P.dirty ? 'form-group has-danger' : 'input-group'
+            "
+          >
+            <input
+              class="form-control"
+              placeholder="P"
+              type="text"
+              autofocus
+              formControlName="P"
+            />
+            <ng-template [ngIf]="!P.invalid || !P.dirty">
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="tim-icons icon-lock-circle"> </i>
+                </span>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-6 ml-auto">
+          <div
+          [ngClass]="
+          G.invalid && G.dirty ? 'form-group has-danger' : 'input-group'
+          "
+        >
+          <input
+            class="form-control"
+            placeholder="G"
+            type="text"
+            autofocus
+            formControlName="G"
+          />
+          <ng-template [ngIf]="!G.invalid || !G.dirty">
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="tim-icons icon-lock-circle"> </i>
+              </span>
+            </div>
+          </ng-template>
+        </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        
+        <div class="col-sm-6 col-lg-6 ml-auto">
+          <div
+            [ngClass]="
+            H.invalid && H.dirty ? 'form-group has-danger' : 'input-group'
+            "
+          >
+            <input
+              class="form-control"
+              placeholder="H"
+              type="text"
+              autofocus
+              formControlName="H"
+            />
+            <ng-template [ngIf]="!H.invalid || !H.dirty">
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="tim-icons icon-lock-circle"> </i>
+                </span>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-6 ml-auto">
+          <div
+            [ngClass]="
+            X.invalid && X.dirty ? 'form-group has-danger' : 'input-group'
+            "
+          >
+            <input
+              class="form-control"
+              placeholder="X"
+              type="text"
+              autofocus
+              formControlName="X"
+            />
+            <ng-template [ngIf]="!X.invalid || !X.dirty">
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="tim-icons icon-lock-circle"> </i>
+                </span>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+    </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <h4>Public Key (p, g, h): 
+            <div *ngIf="P.value.length != 0 && G.value.length != 0 && H.value.length != 0; else elsePubK">
+              ({{P.value}}, {{G.value}}, {{H.value}})
+            </div>
+            <ng-template #elsePubK>
+              Not set.
+            </ng-template>
+          </h4>
+        </div>
+        <div class="col-md-6">
+          <h4>Private Key X:
+            <div *ngIf="P.value.length != 0 && G.value.length != 0 && X.value.length != 0; else elsePrvK">
+              {{X.value}}
+            </div>
+            <ng-template #elsePrvK>
+              Not set.
+            </ng-template>
+          </h4>
+        </div>
+      </div>
+      
+  
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-lg-12 mr-auto random-btn-cont">
+          <button class="btn mr-1 random-btn" (click)="random()" [disabled]="isRandomKey">Random</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+          <textarea
+            placeholder="Text to cipher"
+            class="texrtocr form-control"
+            formControlName="plainText"
+            [ngClass]="{ plainTextError: plainText.invalid && plainText.dirty }"
+          ></textarea>
+        </div>
+        <div class="col-sm-6 col-lg-5 mr-auto ml-auto submit">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="encrypt()"
+            [disabled]="!arguments.valid"
+          >
+            Encrypt
+          </button>
+        </div>
+        <div class="col-sm-6 col-lg-5 mr-auto ml-auto submit">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="decrypt()"
+            [disabled]="!arguments.valid"
+          >
+            Decrypt
+          </button>
+        </div>
+      </div>
+  
+      <div class="row" *ngIf="submitted">
+        <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+          <div>
+            <h3 class="mb-3">{{ resposeDymcMess }} text</h3>
+          </div>
+        </div>
+  
+        <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+          <blockquote>
+            <p class="blockquote blockquote-danger">
+              {{ cipherText }}
+            </p>
+          </blockquote>
+        </div>
+      </div>
+
+  </form>
+  
