@@ -88,11 +88,11 @@ export interface RSAKeys{
   privateKey: RSAPrivateKey
 }
 export interface rabinPublicKey {
-  N: BigInt;
+  N: string;
 }
 export interface rabinPrivateKey {
-  P: BigInt;
-  Q: BigInt;
+  P: string;
+  Q: string;
 }
 export interface rabinKeys {
   publicKey: rabinPublicKey;

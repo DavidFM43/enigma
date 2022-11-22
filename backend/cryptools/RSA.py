@@ -2,7 +2,7 @@ import rsa.pkcs1
 from sympy.ntheory.factor_ import totient
 import base64
 def getKeyPair():
-    (publicKey, privateKey) = rsa.newkeys(64)
+    (publicKey, privateKey) = rsa.newkeys(512)
     return publicKey, privateKey
 
 def encrypt(plain_text: str, key) -> str:
