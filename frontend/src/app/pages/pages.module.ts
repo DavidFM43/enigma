@@ -50,6 +50,7 @@ import { RabinCipherComponent } from './rabin-cipher/rabin-cipher.component';
 import { RSACipherComponent } from './rsacipher/rsacipher.component';
 import { PublicKeyCiphersComponent } from './public-key-ciphers/public-key-ciphers.component';
 import { ElGamalCipherComponent } from './el-gamal-cipher/el-gamal-cipher.component';
+import { ElGamalElipCipherComponent } from './el-gamal-elip-cipher/el-gamal-elip-cipher.component';
 
 @NgModule({
   imports: [
@@ -103,6 +104,7 @@ import { ElGamalCipherComponent } from './el-gamal-cipher/el-gamal-cipher.compon
     RSACipherComponent,
     PublicKeyCiphersComponent,
     ElGamalCipherComponent,
+    ElGamalElipCipherComponent,
   ],
   exports: [
     IndexComponent,

@@ -1,0 +1,254 @@
+<form [formGroup]="arguments">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-sm-6 col-lg-6 ml-auto">
+          <div
+            [ngClass]="
+            X.invalid && X.dirty ? 'form-group has-danger' : 'input-group'
+            "
+          >
+            <input
+              class="form-control"
+              placeholder="X"
+              type="text"
+              autofocus
+              formControlName="X"
+            />
+            <ng-template [ngIf]="!X.invalid || !X.dirty">
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="tim-icons icon-lock-circle"> </i>
+                </span>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-6 ml-auto">
+          <div
+          [ngClass]="
+          Y.invalid && Y.dirty ? 'form-group has-danger' : 'input-group'
+          "
+        >
+          <input
+            class="form-control"
+            placeholder="Y"
+            type="text"
+            autofocus
+            formControlName="Y"
+          />
+          <ng-template [ngIf]="!Y.invalid || !Y.dirty">
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="tim-icons icon-lock-circle"> </i>
+              </span>
+            </div>
+          </ng-template>
+        </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        
+        <div class="col-sm-12 col-lg-12 ml-auto">
+          <div
+            [ngClass]="
+            Pk.invalid && Pk.dirty ? 'form-group has-danger' : 'input-group'
+            "
+          >
+            <input
+              class="form-control"
+              placeholder="Pk"
+              type="text"
+              autofocus
+              formControlName="Pk"
+            />
+            <ng-template [ngIf]="!Pk.invalid || !Pk.dirty">
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="tim-icons icon-lock-circle"> </i>
+                </span>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+    </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <h4>Public Key (x, y): 
+            <div *ngIf="X.value.length != 0 && Y.value.length != 0; else elsePubK">
+              ({{X.value}}, {{Y.value}})
+            </div>
+            <ng-template #elsePubK>
+              Not set.
+            </ng-template>
+          </h4>
+        </div>
+        <div class="col-md-6">
+          <h4>Private Key:
+            <div *ngIf="Pk.value.length != 0; else elsePrvK">
+              {{Pk.value}}
+            </div>
+            <ng-template #elsePrvK>
+              Not set.
+            </ng-template>
+          </h4>
+        </div>
+      </div>
+      
+  
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-lg-12 mr-auto random-btn-cont">
+          <button class="btn mr-1 random-btn" (click)="random()" [disabled]="isRandomKey">Random</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+          <textarea
+            placeholder="Text to cipher"
+            class="texrtocr form-control"
+            formControlName="plainText"
+            [ngClass]="{ plainTextError: plainText.invalid && plainText.dirty }"
+          ></textarea>
+        </div>
+        <div class="col-sm-12 col-lg-12 mr-auto ml-auto submit">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="encrypt()"
+            [disabled]="!arguments.valid"
+          >
+            Encrypt
+          </button>
+        </div>
+      </div>
+</form>
+<form [formGroup]="argumentsDecrypt">
+      <div class="row" >
+        <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+          <div>
+            <h3 class="mb-3">{{ resposeDymcMess }} text</h3>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-sm-6 col-lg-6 ml-auto">
+              <div
+                [ngClass]="
+                nonce.invalid && nonce.dirty ? 'form-group has-danger' : 'input-group'
+                "
+              >
+                <input
+                  class="form-control"
+                  placeholder="nonce"
+                  type="text"
+                  autofocus
+                  formControlName="nonce"
+                />
+                <ng-template [ngIf]="!nonce.invalid || !nonce.dirty">
+                  <div class="input-group-append">
+                    <span class="input-group-text">
+                      <i class="tim-icons icon-lock-circle"> </i>
+                    </span>
+                  </div>
+                </ng-template>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-6 ml-auto">
+              <div
+              [ngClass]="
+              authTag.invalid && authTag.dirty ? 'form-group has-danger' : 'input-group'
+              "
+            >
+              <input
+                class="form-control"
+                placeholder="authTag"
+                type="text"
+                autofocus
+                formControlName="authTag"
+              />
+              <ng-template [ngIf]="!authTag.invalid || !authTag.dirty">
+                <div class="input-group-append">
+                  <span class="input-group-text">
+                    <i class="tim-icons icon-lock-circle"> </i>
+                  </span>
+                </div>
+              </ng-template>
+            </div>
+            </div>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-sm-6 col-lg-6 ml-auto">
+              <div
+                [ngClass]="
+                ciphertextPubKey_x.invalid && ciphertextPubKey_x.dirty ? 'form-group has-danger' : 'input-group'
+                "
+              >
+                <input
+                  class="form-control"
+                  placeholder="ciphertextPubKey_x"
+                  type="text"
+                  autofocus
+                  formControlName="ciphertextPubKey_x"
+                />
+                <ng-template [ngIf]="!ciphertextPubKey_x.invalid || !ciphertextPubKey_x.dirty">
+                  <div class="input-group-append">
+                    <span class="input-group-text">
+                      <i class="tim-icons icon-lock-circle"> </i>
+                    </span>
+                  </div>
+                </ng-template>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-6 ml-auto">
+              <div
+              [ngClass]="
+              ciphertextPubKey_y.invalid && ciphertextPubKey_y.dirty ? 'form-group has-danger' : 'input-group'
+              "
+            >
+              <input
+                class="form-control"
+                placeholder="ciphertextPubKey_y"
+                type="text"
+                autofocus
+                formControlName="ciphertextPubKey_y"
+              />
+              <ng-template [ngIf]="!ciphertextPubKey_y.invalid || !ciphertextPubKey_y.dirty">
+                <div class="input-group-append">
+                  <span class="input-group-text">
+                    <i class="tim-icons icon-lock-circle"> </i>
+                  </span>
+                </div>
+              </ng-template>
+            </div>
+            </div>
+          </div>
+  
+        <div class="col-sm-12 col-lg-10 mr-auto ml-auto">
+          <blockquote>
+            <p class="blockquote blockquote-danger">
+              {{ cipherText }}
+            </p>
+          </blockquote>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center submit">
+                <div class="col-sm-12 col-lg-12 mr-auto ml-auto">
+                            <button
+                              type="button"
+                              class="btn btn-primary"
+                              (click)="decrypt()"
+                              [disabled]="!arguments.valid"
+                            >
+                              Decrypt
+                            </button>
+                          </div>
+                        </div>
+        </div>
+        
+      </div>
+
+  </form>
+  

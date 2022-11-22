@@ -109,3 +109,22 @@ export interface ElGamalKeys{
   H?: string,
   X?: string
 }
+
+export interface ElGamalElipKeys{
+  X: string,
+  Y: string,
+  Pk?: string
+}
+
+export interface cipherTextElGamal{
+  ciphertext: string, 
+    nonce: string,
+    authTag: string,
+    ciphertextPubKey_x: string,
+    ciphertextPubKey_y: string,
+}
+export interface ElGamalElipResponse{
+  cipherText: cipherTextElGamal,
+  error: boolean,
+  typeError: string
+}
