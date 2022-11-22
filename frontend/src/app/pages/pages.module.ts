@@ -46,6 +46,7 @@ import { AesCipherComponent } from './aes-cipher/aes-cipher.component';
 import { SimplifiedDesCipherComponent } from './simplified-des-cipher/simplified-des-cipher.component';
 import { GammaComponent } from './gamma/gamma.component';
 import { GammaCipherComponent } from './gamma-cipher/gamma-cipher.component';
+import { RabinCipherComponent } from './rabin-cipher/rabin-cipher.component';
 import { RSACipherComponent } from './rsacipher/rsacipher.component';
 import { PublicKeyCiphersComponent } from './public-key-ciphers/public-key-ciphers.component';
 
@@ -97,6 +98,7 @@ import { PublicKeyCiphersComponent } from './public-key-ciphers/public-key-ciphe
     SimplifiedDesCipherComponent,
     GammaComponent,
     GammaCipherComponent,
+    RabinCipherComponent,
     RSACipherComponent,
     PublicKeyCiphersComponent,
   ],

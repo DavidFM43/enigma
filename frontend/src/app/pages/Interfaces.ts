@@ -57,10 +57,10 @@ export interface substitutionAttackerResponse {
   typeError: string;
 }
 export interface gammaEncyptersReponse {
-  error?: boolean,
-  cipherText: string[],
-  percentage: number,
-  grapgJSON: string
+  error?: boolean;
+  cipherText: string[];
+  percentage: number;
+  grapgJSON: string;
 }
 export interface gammaDecyptersReponse {
   decipherText: string;
@@ -77,8 +77,8 @@ export interface RSAPrivateKey{
   D: string,
   P?: number,
   Q?: number,
-
 }
+
 export interface RSAND{
   N: string,
   D: string
@@ -86,4 +86,20 @@ export interface RSAND{
 export interface RSAKeys{
   publicKey: RSAPublicKey,
   privateKey: RSAPrivateKey
+}
+export interface rabinPublicKey {
+  N: BigInt;
+}
+export interface rabinPrivateKey {
+  P: BigInt;
+  Q: BigInt;
+}
+export interface rabinKeys {
+  publicKey: rabinPublicKey;
+  privateKey: rabinPrivateKey;
+}
+export interface rabinDecryptersResponse {
+  decipherTextOps: string[];
+  error: boolean;
+  typeError: string;
 }
