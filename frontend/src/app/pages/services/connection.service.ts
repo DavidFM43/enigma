@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { throwError } from "rxjs";
 import { environment } from "src/environments/environment";
 import { catchError } from "rxjs/operators";
-import { ElGamalKeys, RSAPrivateKey, RSAPublicKey } from "../Interfaces";
+import { cipherTextElGamal, ElGamalElipKeys, ElGamalKeys, RSAPrivateKey, RSAPublicKey } from "../Interfaces";
 
 @Injectable({
   providedIn: "root",
@@ -13,7 +13,7 @@ export class ConnectionService {
   public baseUrl: string;
   constructor(private http: HttpClient) {
     this.type = null;
-    this.baseUrl = environment.endpoint;
+    this.baseUrl = "http://127.0.0.1:5000/";
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -242,7 +242,7 @@ export class ConnectionService {
       })
       .pipe(catchError(this.handleError));
   }
-  ElGamal
+  //RSA
   RSAEncrypt(key: RSAPublicKey, plainText: string) {
     return this.http
     .post(this.baseUrl + "/rsa/encrypt", {
@@ -319,6 +319,30 @@ export class ConnectionService {
   ElGamalGetKeys() {
     return this.http
       .get(this.baseUrl + '/elgamal/getKeys')
+      .pipe(catchError(this.handleError));
+  }
+  //ELGamalElip
+  ElGamalElipEncrypt(key: ElGamalElipKeys, plainText: string) {
+    return this.http
+    .post(this.baseUrl + "/gammaleip/encrypt", {
+      plainText: plainText,
+      Pk: key.Pk
+    })
+    .pipe(catchError(this.handleError));
+  }
+  ElGamalElipDecrypt(key: ElGamalElipKeys,  cipherText: cipherTextElGamal) {
+    return  this.http
+    .post(this.baseUrl + "/gammaleip/decrypt", {
+      cipherText: cipherText,
+      X: key.X,
+      Y: key.Y,
+      Pk: key.Pk
+    })
+    .pipe(catchError(this.handleError));
+  }
+  ElGamalElipGetKeys() {
+    return this.http
+      .get(this.baseUrl + '/gammaleip/getKeys')
       .pipe(catchError(this.handleError));
   }
 }
