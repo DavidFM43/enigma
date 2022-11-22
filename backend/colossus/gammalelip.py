@@ -54,25 +54,23 @@ def encrypt_r():
     """
     request_data = request.get_json()
     plain_text: str = request_data["plainText"]
+    plain_text:bytes = (plain_text, 'utf-8')
+    
     privKey: int = request_data["p"]
     pubKey = privKey * curve.g
 
-    encryptedMsg = encrypt_ECC(msg, pubKey)
+    encryptedMsg = encrypt_ECC(plain_text, pubKey)
     encryptedMsgObj = {
     'ciphertext': binascii.hexlify(encryptedMsg[0]),
     'nonce': binascii.hexlify(encryptedMsg[1]),
     'authTag': binascii.hexlify(encryptedMsg[2]),
     'ciphertextPubKey': hex(encryptedMsg[3].x) + hex(encryptedMsg[3].y % 2)[2:]}
-    print("encrypted msg:", encryptedMsgObj)
-
-
     
-    cipher_text = encrypt(pub_key, plain_text) 
     error = False
     typeError = ""
     # lo que vamos enviar: 
    
-    response_dict = {"cipherText": cipher_text,  "error": error, "typeError": typeError}
+    response_dict = {"encryptedMsgObj": encryptedMsgObj,  "error": error, "typeError": typeError}
     
     return dumps(response_dict)
 
