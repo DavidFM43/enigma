@@ -52,6 +52,11 @@
                 ></span>
               </div>
             </div>
+            <!-- key validation alerts -->
+            <div *ngIf="primeP.invalid && primeP.dirty" class="alert alert-danger">
+              <div *ngIf="primeP.errors?.required">P can't be empty.</div>
+              <div *ngIf="primeP.errors?.incorrectKey">P must be a prime number.</div>
+            </div>
           </div>
         </div>
 
@@ -72,6 +77,12 @@
                   ><i class="tim-icons icon-lock-circle"></i
                 ></span>
               </div>
+            </div>
+
+            <!-- key validation alerts -->
+            <div *ngIf="primeQ.invalid && primeQ.dirty" class="alert alert-danger">
+              <div *ngIf="primeQ.errors?.required">Q can't be empty.</div>
+              <div *ngIf="primeQ.errors?.incorrectKey">Q must be a prime number.</div>
             </div>
           </div>
         </div>

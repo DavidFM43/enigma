@@ -72,9 +72,6 @@ def decrypt_r():
 
         plain_text_ops = decrypt_rabin(cipher_text, p, q)
         
-        print(cipher_text)
-        print(plain_text_ops)
-        
         error = False
         typeError = ""
 
