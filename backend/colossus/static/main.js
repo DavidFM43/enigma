@@ -2637,7 +2637,7 @@ let ElGamalCipherComponent = /*#__PURE__*/(() => {
         G: this.G.value,
         H: this.H.value
       };
-      this.connection.ElGamalEncrypt(publicKey, this.arguments.get("plainText").value).subscribe(ans => {
+      this.connection.ElGamalEncrypt(publicKey, this.arguments.get("plainText").value.replace(/ /g, "")).subscribe(ans => {
         if (!ans.error) {
           this.cipherText = ans.cipherText;
           this.resposeDymcMess = "Cipher";
@@ -2648,14 +2648,12 @@ let ElGamalCipherComponent = /*#__PURE__*/(() => {
     }
 
     decrypt() {
-      console.log(1);
       let privateKey = {
         P: this.P.value,
         G: this.G.value,
         X: this.X.value
       };
-      let arrNums = this.arguments.get("plainText").value.split(",");
-      console.log(arrNums);
+      let arrNums = this.arguments.get("plainText").value.replace(/ /g, "").split(",");
       let regexp = new RegExp(/^[0-9]\d*$/);
 
       for (let i = 0; i < arrNums.length; i += 2) {
@@ -2667,11 +2665,10 @@ let ElGamalCipherComponent = /*#__PURE__*/(() => {
 
       let arrCop = [];
 
-      for (let i = 0; i < arrNums.length / 2; i += 2) {
+      for (let i = 0; i < arrNums.length; i += 2) {
         arrCop.push([parseInt(arrNums[i]), parseInt(arrNums[i + 1])]);
       }
 
-      console.log(arrCop);
       this.connection.ElGamalDecrypt(privateKey, arrCop).subscribe(ans => {
         if (!ans.error) {
           this.cipherText = ans.decipherText;
