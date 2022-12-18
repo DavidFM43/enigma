@@ -10,7 +10,7 @@ Enigma is a web-based cryptography tool that allows you to encrypt, decrypt, and
 
   </p>
 
-  Deployed Project: [https://www.tracjam.com.co/](https://www.tracjam.com.co/ )
+  Deployed Project: [https://enigma-crypto.herokuapp.com](https://enigma-crypto.herokuapp.com)
 
   **Note**: The project is currently offline due to because heroku free tier no longer exists.
 </div>
