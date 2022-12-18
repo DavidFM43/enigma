@@ -23,6 +23,8 @@ Enigma supports the following cryptsystems:
 
 **Classic ciphers**
 
+![Classic](images/classic.png)
+
 The following ciphers are implemented for text encryption only:
 
 - Shift cipher
@@ -34,6 +36,8 @@ The following ciphers are implemented for text encryption only:
 
 **Block ciphers**
 
+![Block](images/block.png)
+
 The following cipher are implemented for image encyption:
 
 - Triples DES
@@ -41,6 +45,8 @@ The following cipher are implemented for image encyption:
 - Simplified DES(text only)
 
 **Public ciphers**
+
+![Block](images/publickey.png)
 
 The following ciphers are implemented for text encryption only:
 
